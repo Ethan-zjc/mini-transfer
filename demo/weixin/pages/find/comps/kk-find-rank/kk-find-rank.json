@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-icon": "/components/kk-icon/kk-icon",
-        "kk-cover": "/components/kk-cover/kk-cover",
-        "kk-find-topics": "/pages/find/comps/kk-find-topics/kk-find-topics"
-    }
-}

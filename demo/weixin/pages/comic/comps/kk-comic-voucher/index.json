@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-countdown": "/components/kk-countdown/kk-countdown"
-    }
-}

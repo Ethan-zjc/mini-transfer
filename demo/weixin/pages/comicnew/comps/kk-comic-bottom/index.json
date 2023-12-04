@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-ad": "/components/kk-ad/kk-ad"
-    }
-}

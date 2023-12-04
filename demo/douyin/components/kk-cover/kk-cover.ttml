@@ -1,8 +1,0 @@
-<!-- kk-cover -->
-<view class="kk-cover" style="width: {{ width }}rpx; height: {{ height }}rpx;">
-    <view class="kk-cover_img" tt:if="{{ loaded && isBg }}" style="background-image:url({{ computedSrc }});">
-    </view>
-    <image class="cover" lazy-load mode="{{ mode }}" src="{{ computedSrc }}" bindload="loaded" style="opacity: {{ loaded ? 1 : 0 }};"></image>
-    <view class="kk-cover_placeholder" hidden="{{ loaded }}"></view>
-    <!-- <image class="placeholder" mode="aspectFit" src="/images/placeholder.png" hidden="{{ loaded }}" style="{{ style }}"></image> -->
-</view>

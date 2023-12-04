@@ -1,7 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-find-btn-wrap": "/pages/find/comps/kk-find-btn-wrap/kk-find-btn-wrap",
-        "kk-find-topics": "/pages/find/comps/kk-find-topics/kk-find-topics"
-    }
-}

@@ -1,7 +1,0 @@
-{
-    "navigationStyle": "custom",
-    "usingComponents": {
-        "kk-toast": "/components/kk-toast/kk-toast",
-        "kk-login": "/components/kk-login/kk-login"
-    }
-}

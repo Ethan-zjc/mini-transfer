@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-welfare-dialog": "/components/kk-welfare-dialog/index"
-    }
-}

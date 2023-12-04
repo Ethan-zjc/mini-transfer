@@ -1,7 +1,0 @@
-{
-    "component": true,
-    "pureDataPattern": "^_",
-    "usingComponents": {
-        "bubble": "/components/kk-barrage/bubble/bubble"
-    }
-}

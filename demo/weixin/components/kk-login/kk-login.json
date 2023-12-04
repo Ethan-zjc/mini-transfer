@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-toast": "/components/kk-toast/kk-toast",
-        "mp-dialog": "/components/kk-weui-dialog/dialog",
-        "t-captcha": "plugin://captcha/t-captcha"
-    }
-}

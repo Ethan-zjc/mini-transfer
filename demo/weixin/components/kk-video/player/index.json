@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "video-tools": "../tools",
-        "video-content": "../content",
-        "video-controls": "../controls"
-    }
-}

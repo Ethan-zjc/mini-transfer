@@ -1,9 +1,0 @@
-<view class="time-1" wx:if="{{ type == 1 }}" style="color:{{ fontColor }}">{{ timeStr }}</view>
-<view class="time-2" wx:else>
-    <text style="font-weight:500;color:{{ fontColor }}">{{ timeData.H }}</text>
-    <text>小时</text>
-    <text style="font-weight:500;color:{{ fontColor }}">{{ timeData.M }}</text>
-    <text>分钟</text>
-    <text style="font-weight:500;color:{{ fontColor }}">{{ timeData.S }}</text>
-    <text>秒</text>
-</view>

@@ -1,3 +1,0 @@
-<view class="wrap"></view>
-
-<kk-toast toast="{{ toast }}"></kk-toast>

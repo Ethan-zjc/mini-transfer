@@ -1,9 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-pay-info": "./comp/kk-pay-info/index",
-        "kk-icon": "/components/kk-icon/kk-icon",
-        "kk-cover": "/components/kk-cover/kk-cover",
-        "mp-dialog": "/components/kk-weui-dialog/dialog"
-    }
-}

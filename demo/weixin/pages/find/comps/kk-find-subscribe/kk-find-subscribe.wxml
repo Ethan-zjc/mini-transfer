@@ -1,7 +1,0 @@
-<kk-dialog
-    show="{{ dialogMsg.show }}"
-    title="{{ dialogMsg.title }}"
-    content="{{ dialogMsg.content }}"
-    buttons="{{ dialogMsg.button }}"
-    bindbuttontap="tapButtonMsg">
-</kk-dialog>

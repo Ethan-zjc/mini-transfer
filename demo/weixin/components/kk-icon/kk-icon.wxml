@@ -1,8 +1,0 @@
-<!-- kk-icon -->
-<image
-	mode="aspectFit"
-	src="{{ src }}"
-	webp="{{ webp }}"
-	bindload="loaded"
-	style="{{ style }}">
-</image>

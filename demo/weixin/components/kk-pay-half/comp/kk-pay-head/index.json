@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-head-txt": "../kk-head-txt/index"
-    }
-}

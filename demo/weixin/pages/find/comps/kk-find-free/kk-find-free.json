@@ -1,7 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-countdown": "/components/kk-countdown/kk-countdown",
-        "kk-find-btn-wrap": "/pages/find/comps/kk-find-btn-wrap/kk-find-btn-wrap"
-    }
-}

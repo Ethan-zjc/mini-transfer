@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "login-success-pop": "../login-success-pop/index",
-        "treasure-pop": "../treasure-pop/index",
-        "welcome-pop": "../welcome-pop/index"
-    }
-}

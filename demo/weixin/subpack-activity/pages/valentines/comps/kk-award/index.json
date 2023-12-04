@@ -1,7 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-error-dialog": "../kk-error-dialog/index",
-        "kk-success-dialog": "../kk-success-dialog/index"
-    }
-}

@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-green-hands-dialog": "/components/kk-green-hands-dialog/kk-green-hands-dialog"
-    }
-}

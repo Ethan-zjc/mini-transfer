@@ -1,9 +1,0 @@
-
-<view class="wrap">
-    <web-view wx:if="{{ fullurl !== '' }}" src="{{ fullurl }}" bindmessage="handlerMessage">
-        <!-- <cover-view class="btn"></cover-view> -->
-    </web-view>
-    
-</view>
-
-<kk-toast toast="{{ toast }}"></kk-toast>

@@ -1,7 +1,0 @@
-{
-    "navigationStyle": "default",
-    "navigationBarTitleText": "我的订单",
-    "usingComponents": {
-        "kk-bottom": "/components/kk-bottom/kk-bottom"
-    }
-}

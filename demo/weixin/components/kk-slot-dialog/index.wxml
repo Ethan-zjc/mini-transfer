@@ -1,8 +1,0 @@
-<view class="dialog-wrap" catchtouchmove>
-    <view wx:if="{{ !noMask }}" class="mask {{ maskAnimationName }}" bindtap="onMask"></view>
-    <view class="dialog-component {{ scaleAnimationName }}" bindtap="onMask" style="margin-top: {{ marginTop }}rpx">
-        <view catchtap="catchReturn">
-            <slot></slot>
-        </view>
-    </view>
-</view>

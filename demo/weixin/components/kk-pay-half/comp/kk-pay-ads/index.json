@@ -1,7 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-button-base": "../kk-button-base/index",
-        "kk-button-buy": "../kk-button-buy/index"
-    }
-}

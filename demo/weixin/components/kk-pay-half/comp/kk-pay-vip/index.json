@@ -1,9 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "kk-icon": "/components/kk-icon/kk-icon",
-        "kk-cover": "/components/kk-cover/kk-cover",
-        "kk-vip-detainment": "/components/kk-vip-detainment/index",
-        "kk-pay-spree": "/components/kk-pay-spree/index"
-    }
-}

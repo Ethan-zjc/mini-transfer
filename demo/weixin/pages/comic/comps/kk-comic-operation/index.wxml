@@ -1,9 +1,0 @@
-<view wx:if="{{ operationList.length }}" class="kk-comic-operation">
-    <swiper class="operation-swiper" autoplay="{{ operationList.length >= 2 ? true : false }}" interval="2500" duration="500" circular bindchange="swiperChange">
-        <swiper-item class="operation-item" wx:for="{{ operationList }}" wx:key="id">
-            <view class="image-wrapper" data-index="{{ index }}" catchtap="bannerTap">
-                <image class="image" src="{{ item.image_url }}"></image>
-            </view>
-        </swiper-item>
-    </swiper>
-</view>
