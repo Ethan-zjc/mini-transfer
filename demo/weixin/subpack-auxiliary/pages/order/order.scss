@@ -1,0 +1,125 @@
+Page {
+    /* 全局样式 */
+    background-color: transparent;
+    height: 100%;
+}
+.tab {
+    width: 100%;
+    //设置导航栏固定在顶部
+    position: sticky;
+    z-index: 99;
+    top: 0;
+    .navBox {
+        /* 顶部tab盒子样式 */
+        width: 100%;
+        height: 80rpx;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.titleBox {
+    /* 未选中文字的样式 */
+    width: 50%;
+    color: #999999;
+    font-size: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fontColorBox {
+    /* 文字默认颜色 */
+    color: #222222;
+    font-weight: 500;
+}
+
+.swiperTtemBox {
+    height: 100%;
+}
+
+.order-page {
+    background-color: #fafafa;
+    height: 100%;
+    .order-list {
+        .order-item {
+            background-color: #ffffff;
+            border-radius: 16rpx;
+            margin: 24rpx;
+            .order-up {
+                display: flex;
+                padding: 24rpx;
+                font-size: 22rpx;
+                color: #999999;
+                align-items: center;
+                justify-content: space-between;
+                // border-bottom: solid 1rpx #EAEAEA;
+                .order-id {
+                    // margin-left: 24rpx;
+                }
+                .order-status {
+                    // margin-right: 24rpx;
+                }
+            }
+            .order-line {
+                height: 2rpx;
+                background-color: #eaeaea;
+                margin: 0 24rpx 0 24rpx;
+                transform: scaleY(0.5);
+            }
+            .order-down {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 32rpx 24rpx 32rpx 24rpx;
+                .order-down-left {
+                    .order-title {
+                        //   width: 350rpx;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-size: 28rpx;
+                        color: #222222;
+                        font-weight: 500;
+                        line-height: 39rpx;
+                    }
+                    .order-time {
+                        margin-top: 12rpx;
+                        font-size: 24rpx;
+                        color: #999999;
+                        line-height: 34rpx;
+                    }
+                }
+                .order-down-right {
+                    //   margin-left: 100rpx;
+                    text-align: right;
+                    .order-price {
+                        font-size: 28rpx;
+                        color: #222222;
+                        line-height: 39rpx;
+                    }
+                    .order-gift {
+                        margin-top: 12rpx;
+                        font-size: 24rpx;
+                        color: #999999;
+                        line-height: 34rpx;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.error {
+    margin-top: 300rpx;
+    text-align: center;
+    .error-image {
+        width: 100%;
+        height: 373rpx;
+    }
+    .error-text {
+        color: #999999;
+        font-size: 28rpx;
+    }
+}

@@ -1,0 +1,30 @@
+<view class="wrap">
+	<view class="benefits-top">
+		<view class="benefits-search">
+			<kk-search word="搜索作品名"></kk-search>
+		</view>
+	</view>
+	<view class="benefits-list">
+
+		<!-- 动态渲染模块 -->
+		<block wx:for="{{ pageList }}" wx:for-index="parentIndex" wx:for-item="newList" wx:key="parentIndex">
+			<block wx:for="{{ newList }}" wx:for-index="childIndex" wx:for-item="childList" wx:key="childIndex">
+				
+				<!-- 单图模块 -->
+				<view style="margin-bottom:32rpx;" class="benefits-observer " data-idx="{{ parentIndex }}" data-key="{{ childIndex }}"  wx:if="{{ childList.module_type == 1 }}">
+					<kk-benefits-single params="{{ childList }}"></kk-benefits-single>
+				</view>
+
+			</block>
+		</block>
+
+		<!-- 底部加载状态 -->
+		<kk-bottom
+			loading="{{ pageLoading }}"
+			finish="{{ !pageLoading }}">
+		</kk-bottom>
+		
+	</view>
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

@@ -1,0 +1,146 @@
+.kk-open-label {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 0;
+    z-index: 6999;
+    .user-label-bg {
+        width: 576rpx;
+        background-color: #fff;
+        border-radius: 24rpx;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        z-index: 999;
+        .titlebg {
+            width: 100%;
+            height: 170rpx;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+        .user-label-title {
+            width: 100%;
+            height: 170rpx;
+            line-height: 170rpx;
+            text-align: center;
+            color: #333;
+            font-size: 36rpx;
+            font-weight: 500;
+        }
+        .user-label-content {
+            display: flex;
+            &.sex-box {
+                padding: 0 75rpx 72rpx 75rpx;
+                .sex-icon {
+                    width: 190rpx;
+                    height: 190rpx;
+                }
+                .chose-sex {
+                    width: 190rpx;
+                    height: 238rpx;
+                    color: #ff5b5b;
+                    &.boy {
+                        margin-right: 45rpx;
+                        text {
+                            color: #3baaff;
+                        }
+                    }
+                    text {
+                        display: inline-block;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+            &.like-box {
+                display: block;
+                .label-scroll,
+                .label-scroll-0,
+                .label-scroll-1 {
+                    width: 100%;
+                    height: 118rpx; //118
+                    ::-webkit-scrollbar {
+                        width: 0;
+                        height: 0;
+                        color: transparent;
+                    }
+                }
+                .label-scroll-2 {
+                    height: 210rpx; //210
+                }
+                .label-scroll-3 {
+                    height: 302rpx; //302
+                }
+                .label-scroll-4 {
+                    height: 394rpx; //394
+                }
+                .label-scroll-5 {
+                    height: 486rpx; //486
+                }
+                .label-scroll-6 {
+                    height: 578rpx; //578
+                }
+                .label-scroll-7 {
+                    height: 670rpx; //670
+                }
+                .label-scroll-8 {
+                    height: 762rpx; //762
+                }
+                .label-box {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    padding: 0 21rpx 26rpx 21rpx;
+                    &:after {
+                        content: "";
+                        width: 32.5%;
+                        display: block;
+                        height: 0;
+                    }
+                }
+                .label {
+                    display: flex;
+                    padding: 0 20rpx;
+                    width: 156rpx;
+                    height: 70rpx;
+                    align-items: center;
+                    justify-content: center;
+                    box-sizing: border-box;
+                    border: 1rpx solid #e4eaed;
+                    border-radius: 13rpx;
+                    margin: 0rpx 11rpx 22rpx 11rpx;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: 28rpx;
+                    font-weight: 400;
+                    color: #333;
+                    text-align: center;
+                    &.check {
+                        border-color: #fde23d;
+                        background-color: #fde23d;
+                    }
+                }
+                .user-label-btn {
+                    height: 112rpx;
+                    line-height: 112rpx;
+                    text-align: center;
+                    font-size: 36rpx;
+                    font-weight: 500;
+                    color: #333;
+                    border-top: 1rpx solid #e4eaed;
+                    &.disable {
+                        color: #e0e0e0;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+    }
+}

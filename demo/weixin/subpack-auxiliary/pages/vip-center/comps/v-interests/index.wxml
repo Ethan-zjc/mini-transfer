@@ -1,0 +1,12 @@
+<!-- 多充多送弹窗详情 -->
+<view class="v-interests">
+    <view class="title">更多会员权益</view>
+    <view class="vip-rights">
+        <view class="candy-line" wx:for="{{ candyList }}" wx:for-item="candies" wx:for-index="line" wx:key="index">
+            <view class="candy" wx:for="{{ candies }}" wx:for-item="candy" wx:for-index="index" wx:key="*this">
+                <image src="{{ images['vip'+(line + 1)+'_'+(index + 1)] }}" />
+                <text>{{ candy }}</text>
+            </view>
+        </view>
+    </view>
+</view>

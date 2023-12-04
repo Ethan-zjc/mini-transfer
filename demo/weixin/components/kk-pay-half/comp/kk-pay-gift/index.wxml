@@ -1,0 +1,114 @@
+<view class="pay-gift  {{ isVip ? 'vip-pay-gift' : '' }}">
+
+    <!-- 充值礼包 title -->
+    <view class="pay-gift-title">
+        {{ main_title[0] || "" }}<text>{{ main_title[1] || "" }}</text>
+        {{ main_title[2] || "" }}<text>{{ main_title[3] || "" }}</text>
+    </view>
+    <view class="pay-gift-subtitle">
+        <view class="text-box">
+            <view class="text">领取专属福利</view>
+        </view>
+    </view>
+
+    <view class="pay-gift-content">
+        <view class="pay-gift-list-box">
+            <view class="pay-gift-list-item {{item.type == 1 ? 'kkb':'comic'}}"
+            wx:for="{{award_info_list}}"
+            wx:key="index">
+
+                <!-- 左侧图片icon -->
+                <view class="list-icon">
+                    <view wx:if="{{ item.label_text }}" class="label-text">{{ item.label_text }}
+                    </view>
+                    <image class="award-image" src="{{item.award_image}}" mode="aspectFill" />
+                </view>
+
+                <!-- 右侧文字区域 -->
+                <view class="right-content">
+                    
+                    <!-- 主标题和按钮 -->
+                    <view class="top-title">
+                        <text class="title">{{item.award_title}}</text>
+                        <block wx:if="{{item.award_type==21}}">
+                            <view 
+                                wx:if="{{item.status==0}}"
+                                class="get-gift-btn disable">
+                                    {{item.button_text}}
+                            </view>
+                            <view 
+                                wx:elif="{{item.status==2}}"
+                                class="get-gift-btn" 
+                                bindtap="getGift" 
+                                data-button="{{item.button_text}}"
+                                data-assign="{{item.assign_topic.assign_encrypt_str}}">
+                                    {{item.button_text}}
+                            </view>
+                            <view 
+                                wx:elif="{{item.status==3}}"
+                                class="get-gift-btn purple" 
+                                data-title="{{item.assign_topic.topic_title}}"
+                                data-id="{{item.assign_topic.topic_id}}"
+                                bindtap="topicItemTap"
+                                data-button="立即阅读">
+                                立即阅读
+                            </view>
+                        </block>
+                        <view class="get-gift-btn {{ item.status==0 ? 'disable' : '' }}" wx:else>
+                            {{item.button_text}}
+                        </view>
+                    </view>
+
+                    <!-- 副标题和？ -->
+                    <view class="bottom-content">
+                        <view class="gift-descript">
+                            {{item.sub_title_0}}
+                            <text class="bold">{{item.sub_title_1}}</text>
+                            {{item.sub_title_2}}
+                            <view wx:if="{{item.award_type==21}}" class="help-icon-box" data-status="true" bindtap="freeComic">
+                                <image class="help-icon" src="{{ globalImgs['help-icon'] }}" />
+                            </view>
+                        </view>
+                        <view wx:if="{{item.award_tips}}" class="grey-bg">{{item.award_tips}}</view>
+                    </view>
+                </view>
+                <block wx:if="{{item.award_type==21}}">
+                    <view class="comic-list-box" wx:if="{{showFreeComic == 'true'}}">
+                        <scroll-view class="comic-list" scroll-y="{{true}}">
+                            <view wx:for="{{item.assign_topic.comic_desc_list}}"
+                            wx:key="index"
+                            wx:for-item="detail">{{detail}}</view>
+                        </scroll-view>
+                        <view class="bottom-control">
+                            <text>有效期永久</text>
+                            <view bindtap="freeComic" data-status="false" class="closeBox">
+                                <image src="{{ globalImgs['close-icon'] }}" />
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <!-- 购买礼包、支付kkb -->
+    <view class="and-no-ad-btn">
+        <view class="relativeBox">
+            <view class="bubble" hidden="{{ !bubble_text }}">{{bubble_text}}</view>
+            <button wx:if="{{charge_button.button_status==0}}" data-des="充值礼包支付"
+                class="btn-pay ios-not-btn">
+                {{ charge_button.button_text }}
+            </button>
+            <button wx:else data-des="充值礼包支付" class="btn-pay purchase-btn"
+                data-id="{{charge_button.charge_product_id}}"
+                data-button="{{ charge_button.button_text }}" bindtap="giftDirectPay">
+                {{ charge_button.button_text }}
+            </button>
+            <button wx:if="{{ !isLogin }}" class="origin-login" hover-class="btn-hover"
+                    loading="{{ false }}" type="success" bindtap="onLoginTap">
+            </button>
+        </view>
+    </view>
+
+    <view class="limit-block"></view>
+    
+</view>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "阅读劵",
+    "usingComponents": {
+        "kk-cover": "/components/kk-cover/kk-cover"
+    }
+}

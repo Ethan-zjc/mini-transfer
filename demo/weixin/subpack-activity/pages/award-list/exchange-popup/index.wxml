@@ -1,0 +1,21 @@
+<!--subpack-activity/pages/award-list/exchange-popup/index.wxml-->
+<view wx:if="{{ prizeData }}" class="exchange-popup">
+    <view class="wrap">
+        <view class="title">
+            <text>{{ prizeData.title }}</text>
+        </view>
+        <view wx:if="{{ prizeData.exchange }}" class="clipboard">
+            <text>{{ prizeData.exchange }}</text>
+            <view class="copy" catchtap="copy">
+                <text>复制</text>
+            </view>
+        </view>
+        <view wx:if="{{ prizeData.intr }}" class="intr">
+            <rich-text nodes="{{ prizeData.intr }}"/>
+        </view>
+    </view>
+
+    <view class="close" catchtap="close">
+        <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/lottery-close_832a13e.png" />
+    </view>
+</view>

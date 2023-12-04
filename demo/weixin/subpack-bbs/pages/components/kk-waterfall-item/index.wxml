@@ -1,0 +1,41 @@
+<!-- components/waterfall-item/waterfall-item.wxml -->
+<view class="w-item" data-id="{{ itemData.id }}" bindtap="actionPost">
+    <view class="w-image">
+        <!-- <image class="cover" src="{{itemData.recommendCover.content}}" style="height:{{itemData.imgHeight}}rpx" /> -->
+          
+        <kk-cover
+            rules="{{ false }}"
+            imgLoad="{{ itemData.imgLoadStatus }}"
+            src="{{ itemData.recommendCover.content }}"
+            height="{{ itemData.imgHeight }}"
+            width="{{ 350 }}"
+            mode="{{ 'widthFix' }}"
+            class="w-image">
+        </kk-cover>
+        <image class="sign" wx:if="{{ itemData.structureType == 6 || itemData.structureType == 8 }}" src="/subpack-bbs/pages/images/ic-type-{{ itemData.structureType }}.png"></image>
+    </view>
+      
+	<view class="w-intro">
+        <view class="follow" wx:if="{{ itemData.recommendReason || itemData.labels.length }}">
+            <image src="{{ itemData.recommendReason ? itemData.recommendIcon : '/subpack-bbs/pages/images/ic-label.png' }}"></image>
+            <text>{{ itemData.recommendReason ? itemData.recommendReason : itemData.labels.length ? itemData.labels[0] : '' }}</text>
+        </view>
+        <view class="title">
+            <text>{{ itemData.cardTitle }}</text>
+            <!-- <rich-text nodes="{{ '一共四万多金币追好24部恋爱铃和蝉女是一定好等好久啊百度撒的' }}"></rich-text> -->
+        </view>
+        <view class="desc">
+            <view class="author">
+                <image class="head" src="{{ itemData.authorInfo.avatar_url }}"></image>
+                <image class="vipIcon" wx:if="{{ itemData.authorInfo.user_role_mark }}" src="/subpack-bbs/pages/images/ic-v.png"></image>
+                  
+                <text>{{ itemData.authorInfo.nickname }}</text>
+            </view>
+            <view class="praise" data-id="{{ itemData.id }}" data-isLiked="{{ itemData.isLiked }}"  catchtap="pariseClick">
+                <image src="/subpack-bbs/pages/images/small-parise-{{ itemData.isLiked ? 'active' : 'default' }}.png"></image>
+                <text>{{ itemData.strLikeCount }}</text>
+            </view>
+        </view>
+    </view>
+</view>
+

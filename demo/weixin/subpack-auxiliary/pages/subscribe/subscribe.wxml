@@ -1,0 +1,38 @@
+<!-- 消息订阅-确认页  -->
+<view class="kk-subscribe">
+    <!-- 返回按钮 -->
+    <view class="top-navigator" bindtap="topNavigateBack" style="top:{{top}}px">
+        <image 
+            class="icon-img" 
+            src="{{ images.tabBtn }}" 
+            lazy-load="false"
+        ></image>
+    </view>
+
+    <!-- 背景图 -->
+    <view 
+        wx:if="{{ images.bg }}" 
+        class="subscribe-bg" 
+        style="background-image: url({{ images.bg }})"
+    ></view>
+
+    <!-- 弹窗部分 -->
+    <view wx:if="{{ popup }}" class="authorize-popup {{ isBgColor ? 'authorize-bg':'' }}">
+        <view class="content">
+            <view class="title">{{ popup.title }}</view>
+            <view class="tips">
+                {{ popup.tips_text }}<text class="hot" wx:if="{{ !!popup.tips_hot }}">{{ popup.tips_hot }}</text>
+            </view>
+            <view class="btn-list">
+                <view class="cancel-btn btn" bindtap="tapClose">
+                    <text class="text">{{ popup.cancel_text }}</text>
+                </view>
+                <view class="agree-btn btn" bindtap="tapConfirm">
+                    <text class="text">{{ popup.confirm_text }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

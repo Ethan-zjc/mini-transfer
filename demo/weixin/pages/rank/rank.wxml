@@ -1,0 +1,144 @@
+<!-- 排行榜页面 -->
+<view class="kk-rank-page">
+	<!-- 首次进入展示的加载 -->
+	<kk-bottom loading="{{ rankNavList.length == 0 }}" finish="{{ false }}" />
+	<!-- 首次进入展示的加载 -->
+
+	<!-- 头部图片/标题/icon -->
+	<view class="rank-top-title" id="rank-top-title" style="{{ !navActive.image_url? 'background:'+navActive.main_color+';':'' }}">
+		<!-- 头部图片 -->
+		<kk-cover
+			wx:if="{{ navActive.image_url }}"
+			src="{{ navActive.image_url }}"
+			mode="widthFix"
+			height="{{ 334 }}"
+			width="{{ 750 }}"
+		/>
+		<kk-cover
+			wx:if="{{ !navActive.image_url && topicList.length > 0}}"
+			src="{{ topicList[0].image_url }}"
+			mode="widthFix"
+			height="{{ 334 }}"
+			width="{{ 750 }}"
+		/>
+
+		<view class="top-centered" wx:if="{{ rankNavList.length > 0 }}">
+			<view class="content">
+				<view class="kk-icon-box">
+					<kk-icon
+						class="image"
+						src="{{ rankImgs['rank-icon'] }}"
+						height="{{ 160 }}"
+						width="{{ 160 }}"
+					/>
+				</view>
+				<view class="top-text-list">
+					<view class="title">{{ navActive.title }}</view>
+					<view class="update-time">{{ navActive.next_update_date }}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<!-- 排行榜内容 -->
+	<view class="rank-content">
+		<!-- 左侧排行榜导航 -->
+		<view class="left-nav" style="height:{{ leftNavHeight }}px;" catchtouchmove>
+			<scroll-view
+				class="nav-list-scroll"
+				scroll-y="{{true}}"
+				style="{{ navIsFixed ? 'position: fixed;' : '' }}height:{{ sys.windowHeight }}px;"
+				catchtouchmove
+			>
+				<view
+					class="nav-item-box"
+					wx:for="{{rankNavList}}"
+					wx:key="index"
+					wx:for-item="items"
+					data-id="{{ items.id }}"
+					data-title="{{ items.title }}"
+					data-maincolor="{{ items.main_color }}"
+					data-url="{{ items.image_url }}"
+					data-updatetime="{{ items.next_update_date }}"
+					catchtap="rankNavTap"
+				>
+					<view class="nav-item {{ navActive.id == items.id ? 'active' : ''}}" style="{{navActive.id==items.id?'background:'+items.main_color+';':''}}">
+						{{ items.title }}
+					</view>
+				</view>
+				<view class="stance" />
+				<view data-dse="防止滚动条抖动" style="width: 100%; height:{{ sys.windowHeight-leftNavHeight }}px;" />
+			</scroll-view>
+		</view>
+
+		<!-- 右侧内容区域 -->
+		<view class="right-list">
+			<!-- 专题列表 -->
+			<view
+				class="topic-items"
+				wx:for="{{ topicList }}"
+				wx:for-index="index"
+				wx:key="uuid"
+				wx:for-item="items"
+				data-id="{{ items.id }}"
+				data-title="{{ items.title }}"
+				catchtap="topicItemsTap"
+			>
+				<!-- 封面 -->
+				<view class="cover">
+					<kk-cover
+						class="cover-image"
+						src="{{ items.image_url }}"
+						height="{{ 265 }}"
+						width="{{ 199 }}"
+					/>
+					<view class="top-icon">
+						<kk-icon
+							class="icon"
+							src="{{ rankImgs['rank-seat-' + (index+1) >= 4 ? 4 : index+1] }}"
+							height="{{ 50 }}"
+							width="{{ 50 }}"
+						/>
+						<view class="text {{ (index+1) >= 10 ?'text-all' : '' }}  {{ (index+1) == 1 ?'text-1' : '' }}"> {{ index+1 }} </view>
+					</view>
+					<view class="bottom">{{ items.right_bottom }}</view>
+				</view>
+
+				<!-- 专题描述 -->
+				<view class="infor">
+					<view class="title">{{ items.title }}</view>
+					<view class="des">{{ items.description }}</view>
+					<view class="tag">
+						<block
+							wx:for="{{items.category}}"
+							wx:for-index="i"
+							wx:key="i"
+							wx:for-item="tag"
+						>
+							<view class="tag-item" wx:if="{{ i < 2 }}" data-des="最多两个标签">{{ tag }}</view>
+						</block>
+					</view>
+					<view class="bottom">
+						<kk-icon
+							class="image"
+							src="{{ items.rank_icon }}"
+							height="{{ 20 }}"
+							width="{{ 20 }}"
+						/>
+						<view class="text">{{ items.rank_message }}</view>
+					</view>
+				</view>
+			</view>
+
+			<!-- 加载效果 -->
+			<kk-bottom loading="{{ rankNavList.length > 0 && navActive.since > -1 }}" finish="{{ rankNavList.length > 0 && navActive.since == -1 }}" />
+		</view>
+	</view>
+	<!-- 排行榜内容 -->
+
+</view>
+
+<kk-toast toast="{{ toast }}" />
+
+<!-- 新用户充值弹窗 -->
+<kk-newuser-recharge></kk-newuser-recharge>

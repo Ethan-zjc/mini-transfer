@@ -1,0 +1,99 @@
+.v-head {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 360rpx;
+    background: linear-gradient(106.18deg, rgba(255, 255, 255, 0.7) -0.45%, rgba(255, 255, 255, 0.5) 100%), #775BFA;
+    .card {
+        position: absolute;
+        bottom: 0;
+        width: 702rpx;
+        height: 168rpx;
+        left: 24rpx;
+        z-index: 2;
+        overflow: hidden;
+        border-radius: 16rpx 16rpx 0rpx 0rpx;
+        .bg-card {
+            display: block;
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .user-info {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        padding: 36rpx;
+        .user-face {
+            flex-shrink: 0;
+            box-sizing: border-box;
+            width: 100rpx;
+            height: 100rpx;
+            border: 2rpx solid #fff;
+            border-radius: 50rpx;
+        }
+        .user-name {
+            flex-grow: 1;
+            padding: 0 16rpx;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .name {
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                max-width: 100%;
+                box-sizing: border-box;
+                font-size: 32rpx;
+                line-height: 40rpx;
+                color: #222222;
+                font-weight: bold;
+                align-items: center;
+                text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .vip-icon {
+                    flex-shrink: 0;
+                    padding-left: 8rpx;
+                }
+            }
+            .info {
+                width: 100%;
+                float: left;
+                display: flex;
+                font-size: 22rpx;
+                color: rgba(34, 34, 34, 0.8);
+                line-height: 22rpx;
+                font-weight: 300;
+                margin-top: 12rpx;
+                image {
+                    width: 8rpx;
+                    height: 14rpx;
+                }
+            }
+        }
+        .ios-user-name {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.is-vip {
+    background: linear-gradient(106.18deg, rgba(255, 255, 255, 0.3) -0.45%, rgba(255, 255, 255, 0) 100%), #775BFA;
+    .user-name {
+        .name {
+            color: #FFF!important;
+        }
+        .info {
+            color: rgba(255, 255, 255, 0.8)!important;
+        }
+    }
+}

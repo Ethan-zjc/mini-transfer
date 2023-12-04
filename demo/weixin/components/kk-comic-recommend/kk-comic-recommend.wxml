@@ -1,0 +1,168 @@
+<view class="comic-recommend observe-comic-recommend {{ border ? 'comic-recommend-border' : '' }}" wx:if="{{ visible }}">
+        <view class="comic-recommend-top">
+            <text class="recommend-top-title">{{ title }}</text>
+            <view class="recommend-top-more" catchtap="tapMore">
+                <text>更多</text>
+                <image mode="aspectFit" src="{{ comRecImgs['arrow-right'] }}"></image>
+            </view>
+        </view>
+        <view class="comic-recommend-content">
+            <!-- 普通模块 -->
+            <view class="comic-recommend-base" wx:if="{{ cardType == 1 }}">
+                <scroll-view scroll-x="true">
+                    <view class="recommend-base-list">
+                        <block 
+                            wx:for="{{ list }}"
+                            wx:key="index">
+                                <view class="recommend-base-box">
+                                    <view 
+                                        class="info"
+                                        data-index="{{ index }}"
+                                        catchtap="tapTopic">
+                                        <view class="info-cover">
+                                            <kk-cover
+                                                src="{{ item.src }}"
+                                                width="{{ item.width }}"
+                                                height="{{ item.height }}">
+                                            </kk-cover>
+                                        </view>
+                                        <view class="info-tag" wx:if="{{ item.labelTop }}">
+                                            <text>{{ item.labelTop }}</text>
+                                            <view class="bg">
+                                                <image mode="scaleToFill" src="{{ comRecImgs['c1'] }}"></image>
+                                            </view>
+                                        </view>
+                                        <view class="info-tips">
+                                            <text>{{ item.labelBottom }}</text>
+                                        </view>
+                                    </view>
+                                    <view class="title">{{ item.title }}</view>
+                                    <view class="subtitle">{{ item.subTitle }}</view>
+                                </view>
+                        </block>
+                        <view class="more" catchtap="tapMore">
+                            <view class="more-icon">
+                                <image mode="aspectFit" src="{{ comRecImgs['more'] }}"></image>
+                            </view>
+                            <view class="more-text">
+                                <text>查</text><text>看</text><text>更</text><text>多</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+
+            <!-- 榜单模块 -->
+            <view class="comic-recommend-rank" wx:elif="{{ cardType == 2 }}">
+                <scroll-view scroll-x="true">
+                    <view class="recommend-rank-list">
+                        <block 
+                            wx:for="{{ list }}"
+                            wx:key="index">
+                                <view class="recommend-rank-box">
+                                    <view 
+                                        class="info"
+                                        data-index="{{ index }}"
+                                        catchtap="tapTopic">
+                                        <view class="info-cover">
+                                            <kk-cover
+                                                src="{{ item.src }}"
+                                                width="{{ item.width }}"
+                                                height="{{ item.height }}">
+                                            </kk-cover>
+                                        </view>
+                                        <view class="info-tag">
+                                            <image mode="aspectFit" src="{{ comRecImgs[index > 3 ? 'top-3' : 'top-'+index] }}"></image>
+                                            <text class="info-tag-top">TOP</text>
+                                            <text class="info-tag-num">{{ item.sort }}</text>
+                                        </view>
+                                        <view class="info-tips">
+                                            <text>{{ item.labelBottom }}</text>
+                                        </view>
+                                    </view>
+                                    <view class="title">{{ item.title }}</view>
+                                    <view class="subtitle">{{ item.subTitle }}</view>
+                                </view>
+                        </block>
+                        <view class="more" catchtap="tapMore">
+                            <view class="more-icon">
+                                <image mode="aspectFit" src="{{ comRecImgs['more'] }}"></image>
+                            </view>
+                            <view class="more-text">
+                                <text>查</text><text>看</text><text>更</text><text>多</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+
+            <!-- 精品模块 -->
+            <view class="comic-recommend-common" wx:else>
+                <scroll-view scroll-x="true">
+                    <view class="recommend-common-list">
+                        <block
+                            wx:for="{{ list }}"
+                            wx:key="index">
+                                <view class="recommend-common-box">
+                                    <view 
+                                        class="info"
+                                        data-index="{{ index }}"
+                                        catchtap="tapTopic">
+                                        <view class="info-cover">
+                                            <kk-cover
+                                                index="{{ index }}"
+                                                src="{{ item.src }}"
+                                                width="{{ item.width }}"
+                                                height="{{ item.height }}"
+                                                bind:onImageLoad="onImageLoad">
+                                            </kk-cover>
+                                        </view>
+                                        <view class="info-tag" wx:if="{{ item.labelTop }}">
+                                            <view class="info-tag-before">
+                                                <image mode="scaleToFill" src="{{ comRecImgs['h1'] }}"></image>
+                                            </view>
+                                            <view class="info-tag-icon">
+                                                <image mode="aspectFit" src="{{ comRecImgs['h3'] }}"></image>
+                                            </view>
+                                            <text>{{ item.labelTop }}</text>
+                                            <view class="info-tag-after">
+                                                <image mode="scaleToFill" src="{{ comRecImgs['h2'] }}"></image>
+                                            </view>
+                                        </view>
+                                        <view class="info-tips" wx:if="{{ item.isShowTips }}">
+                                            <view class="info-tips-bg">
+                                                <view class="bg" style="background-image:url('{{ item.computedSrc }}')"></view>
+                                            </view>
+                                            <view class="info-tips-mark"></view>
+                                            <view class="info-tips-text">
+                                                <view class="title">
+                                                    {{ item.title }}
+                                                </view>
+                                                <view class="subtitle">
+                                                    {{ item.subTitle }}
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                        </block>
+                        <view class="more" catchtap="tapMore">
+                            <view class="more-icon">
+                                <image mode="aspectFit" src="{{ comRecImgs['more'] }}"></image>
+                            </view>
+                            <view class="more-text">
+                                <text>查</text><text>看</text><text>更</text><text>多</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view 
+            class="comic-recommend-home"
+            wx:if="{{ homeTipVisible }}"
+            catchtap="tapTip">
+                <image mode="aspectFit" src="{{ comRecImgs['home'] }}"></image>
+                <text>去首页，发现更多精彩漫画</text>
+        </view>
+</view>

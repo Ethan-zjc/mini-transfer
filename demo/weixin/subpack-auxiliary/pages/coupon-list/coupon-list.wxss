@@ -1,0 +1,212 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  overflow: hidden;
+  background: #F7F9FA;
+}
+
+.type {
+  position: relative;
+  padding-top: 24rpx;
+  text-align: center;
+  line-height: 24rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.type text {
+  position: relative;
+  z-index: 1;
+  padding: 0 40rpx;
+  background-color: #F7F9FA;
+}
+
+.type::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 710rpx;
+  height: 1px;
+  background-color: #E6E6E6;
+  left: 20rpx;
+  bottom: 12rpx;
+  transform: translateY(50%);
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  width: 686rpx;
+  height: 400rpx;
+  margin: 22rpx auto 36rpx;
+  background: #fff;
+  box-shadow: 0 2rpx 16rpx 0 rgba(0, 0, 0, 0.16);
+  border-radius: 20rpx;
+}
+
+.card .bg {
+  position: relative;
+  z-index: 0;
+}
+
+.rules {
+  position: absolute;
+  z-index: 1;
+  padding: 8rpx;
+  right: 0;
+  top: 0;
+  width: 160rpx;
+  height: 40rpx;
+}
+
+.rules .inner {
+  line-height: 24rpx;
+  padding: 8rpx 16rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 100rpx;
+}
+
+.rules .inner image {
+  display: block;
+  float: left;
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.infos {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  left: 0;
+  bottom: 100rpx;
+  width: 100%;
+  height: 100rpx;
+  background: linear-gradient(360deg, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+}
+
+.infos text {
+  padding: 0 16rpx;
+  color: #fff;
+}
+
+.infos .title {
+  flex-grow: 1;
+  font-size: 36rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  margin-top: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.infos .discount {
+  flex-shrink: 0;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-top: 52rpx;
+}
+
+.handle {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+}
+
+.handle .use {
+  flex-shrink: 0;
+  width: 130rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #432504;
+  text-align: center;
+  background: #FFE120;
+}
+
+.handle .coupon {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;
+}
+
+.coupon .money {
+  font-size: 80rpx;
+  line-height: 80rpx;
+  color: #FF751A;
+  font-weight: 700;
+  margin: 10rpx 5rpx 0 18rpx;
+}
+
+.coupon .kkb {
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #FF751A;
+  margin-top: 52rpx;
+}
+
+.coupon .split {
+  width: 2rpx;
+  height: 30rpx;
+  background: #D8D8D8;
+  margin: 51rpx 10rpx 0;
+}
+
+.coupon .time {
+  font-size: 20rpx;
+  line-height: 20rpx;
+  color: #999;
+  margin-top: 56rpx;
+}
+
+.gray {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #929292;
+  opacity: 0.59;
+}
+
+.intro {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 232rpx;
+  height: 88rpx;
+  background: #fff;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  text-align: center;
+  opacity: 0.98;
+}
+
+/************/
+.type {
+  margin-bottom: 22rpx;
+  padding-top: 0;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon-list {
+  width: 750rpx;
+}

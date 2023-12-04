@@ -1,0 +1,438 @@
+<!-- my.wxml/我的书架 -->
+<!-- 引导任务 -->
+<kk-guide
+    userInfo="{{ userInfo }}"
+    curPage="{{ 'BookshelfPage' }}">
+</kk-guide>
+
+<view class="kk-mys-page">
+    <!-- 缓存图片 -->
+    <view style="display: none;">
+        <image src="{{ myImgs['nohistory'] }}"></image>
+        <image src="{{ myImgs['err-load'] }}"></image>
+        <image src="{{ myImgs['notlogin'] }}"></image>
+        <image src="{{ myImgs['nofollow'] }}"></image>
+    </view>
+
+    <kk-mounting
+        class="mys-scroll"
+        scrollTop="{{ scrollTop }}"
+        scroll="{{ setScroll ? scrollTop : 0 }}"
+        scrollAnimation="{{ flase }}"
+        bind:onMountingState="moutingChange"
+        bind:onMounting="onMounting">
+        <!-- 吸顶展示 -->
+        <view slot="top" class="my-top">
+            <template is="kk-mys-tab" data="{{ active, reddot , name:'top', develop, myImgs }}"></template>
+        </view>
+
+        <!-- 内容部分 mounted 吸顶状态需要单独的样式 -->
+        <view slot="middle" class="mys-middle">
+            <!-- 顶部的用户信息展示 -->
+            <view class="section-top" id="section-top">
+                <view class="header">
+                    <view class="userinfo">
+                        <kk-avatar
+                            class="avatar"
+                            size="{{ 114 }}"
+                            src="{{ userInfo ? userInfo.user.avatar_url : '' }}"
+                            vip="{{ userInfo ? !!userInfo.user.grade : false }}"
+                            border="3rpx solid #fff"
+                            bindtap="interceptLogin"
+                            bindlongpress="pressShowUid">
+                        </kk-avatar>
+                        <view class="nickname {{ benefitText ? 'has-benifit' : '' }}" bindtap="interceptLogin">
+                            <text>{{ userInfo ? userInfo.user.nickname : '点击登录' }}</text>
+                        </view>
+                        <view class="icon {{ benefitText ? 'has-benifit' : '' }}" bindtap="interceptLogin">
+                            <kk-icon wx:if="{{ vipInfo.vip_type }}" class="vip-icon" src="{{ vipInfo.vip_big_icon }}" height="{{ 36 }}"></kk-icon>
+                        </view>
+                        <image wx:if="{{ userInfo }}" class="switch {{ benefitText ? 'has-benifit' : '' }}" src="{{ myImgs['switch'] }}" bindtap="triggerLogin"></image>
+                    </view>
+
+                    <!-- 切换性别 -->
+                    <view class="sex-icon" wx:if="{{ userInfo }}">
+                        <view bindtap="changeSex">
+                            <image class="img" src="{{ myImgs[gender == 1 ? 'found_boy' : 'found_girl'] }}"></image>
+                        </view>
+                    </view>
+
+                    <!-- 新手福利文案展示 -->
+                    <view class="benifit" wx:if="{{ userInfo && benefitText }}">
+                        <image src="{{ myImgs['time-red'] }}" class="benifit-image"></image>
+                        <view class="benifit-text">{{ benefitText }}</view>
+                    </view>
+                </view>
+                
+                <!-- 用户kkb/会员中心/问题反馈按钮 -->
+                <view class="entry">
+                    <view class="normal" bindtap="routeWallet" style="margin-left: 0;">
+                        <image src="{{ myImgs['my-wallet'] }}"></image>
+                        <text wx:if="{{ wallet === '' }}">我的钱包</text>
+                        <view class="bubble" wx:else>
+                            <text wx:if="{{ !showActivityBubble && !wallet && activity }}">{{ activity }}</text>
+                            <text wx:else>{{ wallet || 0}}KK币</text>
+                            <view wx:if="{{ activity && showActivityBubble }}" class="activity">{{ activity }}</view>
+                        </view>
+                    </view>
+                    <view class="normal" bindtap="routeVipCenter">
+                        <image src="{{ myImgs['my-vip'] }}"></image>
+                        <text>会员中心</text>
+                    </view>
+                    <view class="normal" bindtap="routeRecordH5Url">
+                        <image src="{{ myImgs['record-icon'] }}"></image>
+                        <text>每日签到</text>
+                    </view>
+
+                    <!-- 问题反馈 -->
+                    <!-- <view class="feedback">
+                        <view class="button" catchtap="feedbackTap">
+                            <image src="{{ myImgs['feedback'] }}"></image>
+                            <text>问题反馈</text>
+                        </view>
+                    </view> -->
+                </view>
+            </view>
+
+            <!-- 书架页运营banner -->
+            <kk-book-banner bind:bannerShowEvent="bannerShowEvent"></kk-book-banner>
+
+            <!-- 用户签到信息展示 -->
+            <!-- <view class="sign-box" id="sign-box" wx:if="{{showSignMoudle}}">
+                <view class="radius-box">
+                    <view class="sign-top">
+                        <view class="sign-title">
+                            每日签到
+                            <view bindtap="showRules">
+                                <image src="{{ myImgs['sign-help'] }}"></image>
+                            </view>
+                        </view>
+                        <view>连续签到领好礼</view>
+                    </view>
+                    <view class="sign-content">
+                        <view class="sign-list {{ item.checkin?'sign-yes':'' }}" 
+                            wx:for="{{ signList }}" 
+                            wx:key="days">
+                            <view class="sign-status" bindtap="isLogin">
+                                <block wx:if="{{ !item.checkin }}">
+                                    <block 
+                                        wx:for="{{ item.award_list }}" 
+                                        wx:for-index="index" 
+                                        wx:for-item="giftItem" 
+                                        wx:key="index">
+                                        <text wx:if="{{ giftItem.award_type == 1 }}">{{ giftItem.award_count }}</text>
+                                        <image src="{{ myImgs[giftItem.award_type == 1 ? 'score-icon' : 'sign-vip'] }}"></image>
+                                    </block>
+                                </block>
+                                <block wx:else>
+                                    <image src="{{ myImgs['signed-icon'] }}"></image>
+                                </block>
+                            </view>
+                            <view class="sign-line">
+                                <view class="sign-circle"></view>
+                                <view class="line-half"></view>
+                                <view class="line-half {{ (index+1) == signDays ? 'last-half':'' }}"></view>
+                            </view>
+                            <view class="sign-text" wx:if="{{ (index+1) == signDays }}">今天</view>
+                            <view class="sign-text" wx:else>{{ index+1 }}天</view>
+                        </view>
+                    </view>
+                </view>
+            </view> -->
+
+            <!-- 内容部分的 阅读历史/我的关注 模板 -->
+            <view class="middle-tab">
+                <template is="kk-mys-tab" data="{{ active, reddot, name:'middle', develop, myImgs }}"></template>
+            </view>
+
+            <view>
+                <template is="kk-tabs-type" data="{{ listType, shieldVideo }}"></template>
+            </view>
+
+            <!-- 阅读历史列表数据 -->
+            <view class="mys-list-wrap kk-read-list" hidden="{{ active != 1 }}">
+                <!-- <view class="history-top" wx:if="{{ false }}">
+                    <view class="radio-item {{ readRadio1 ? 'checked' : '' }}" data-type="1" bindtap="readRadioTap" style="margin-left: 20rpx;">
+                        <image class="radio-checked" src="{{ myImgs[readRadio1 ? 'radio-2' : 'radio-1'] }}"></image>
+                        <text>已关注漫画</text>
+                    </view>
+                    <view class="radio-item {{ readRadio2 ? 'checked' : '' }}" data-type="2" bindtap="readRadioTap">
+                        <image class="radio-checked" src="{{ myImgs[readRadio2 ? 'radio-2' : 'radio-1'] }}"></image>
+                        <text>阅读大于1话</text>
+                    </view>
+                </view>
+                <view wx:else class="history-top-show" data-des="未登录状态展示的占位符"></view> -->
+
+                <!-- 阅读历史为空 -->
+                <view class="kk-mys-img" wx:if="{{ readEmpty }}">
+                    <image src="{{ myImgs['nohistory'] }}"></image>
+                </view>
+
+                <!-- 请求加载失败（初次） -->
+                <view class="kk-mys-img" wx:elif="{{ readError }}">
+                    <image src="{{ myImgs['err-load'] }}"></image>
+                </view>
+
+                <!-- 没有数据 -->
+                <view 
+                    class="kkmh-empty_img" 
+                    wx:if="{{ !readEmpty && !readError && ((listType == 1 && readList.length == 0) || (listType == 2 && videoHistoryList.length == 0)) }}" 
+                    style="margin-top: 45px;"
+                >
+                    <image class="img" src="{{ myImgs['empty-img'] }}" mode="widthFix"></image>
+                    <image class="text" src="{{ myImgs['empty-text'] }}" mode="widthFix"></image>
+                </view>
+
+                <!-- 数据列表 -->
+                <view 
+                    class="item-wrap" 
+                    wx:if="{{ (listType == 1 && readList.length > 0) || (listType == 2 && videoHistoryList.length > 0) }}"
+                >
+                    <block wx:if="{{ listType === 1 }}">
+                        <view
+                            wx:for="{{ readList }}"
+                            wx:key="id"
+                            class="history-item">
+                            <view
+                                data-index="{{ index }}"
+                                data-topicid="{{ item.id }}"
+                                data-id="{{ item.continue_read_comic.id }}" 
+                                data-count="{{ item.continue_read_comic.read_count }}" 
+                                bindtap="routeComic"
+                                bindlongpress="hisPress">
+                                <view class="label-default" wx:if="{{ item.label_image }}">
+                                    <kk-icon 
+                                        src="{{ item.label_image }}" 
+                                        height="{{ 36 }}"/>
+                                </view>
+                                <kk-cover 
+                                    class="cover" 
+                                    src="{{ item.vertical_image_url }}" 
+                                    width="{{ 234 }}" 
+                                    height="{{ 310 }}">
+                                </kk-cover>
+
+                                <!-- 引导删除 -->
+                                <view class="guide-warp" wx:if="{{ index == 0 }}">
+                                    <view class="guide {{ guideShowTime ? 'transShow' : '' }}">
+                                        <view class="guide-image">
+                                            <image class="hand" src="{{ myImgs['hand'] }}"></image>
+                                        </view>
+                                        <text>长按可删除</text>
+                                    </view>
+                                </view>
+                                <view class="title">{{ item.title }}</view>
+                                <view class="description">
+                                    <text>{{ item.read_count }}话/{{ item.comics_count }}话</text>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:if="{{ listType === 2 }}">
+                        <kk-video-item 
+                            data-index="{{ index }}"
+                            style="margin: 0 9rpx 32rpx;"
+                            wx:for="{{ videoHistoryList }}"
+                            wx:key="index"
+                            videoInfo="{{ item }}"
+                            bindtap="routeVideo"
+                            bindlongpress="hisPress"></kk-video-item>
+                    </block>
+                </view>
+            </view>
+            
+            <!-- 我的关注列表 -->
+            <view class="mys-list-wrap kk-follow-list" hidden="{{ active != 2 }}">
+                <!--  我的关注筛选项(登录状态才会显示) -->
+                <!-- <view
+                    wx:if="{{ userInfo }}"
+                    class="follow-top">
+                    <view 
+                        class="follow-tab update {{ followType == 1 ? 'active' : '' }}" 
+                        data-type="{{ 1 }}" 
+                        bindtap="followTypeTap">
+                        <text>最近更新</text>
+                    </view>
+                    <view class="line"></view>
+                    <view 
+                        class="follow-tab follow {{ followType == 2 ? 'active' : '' }}" 
+                        data-type="{{ 2 }}" 
+                        bindtap="followTypeTap">
+                        <text>最近关注</text>
+                    </view>
+                </view>
+                <view wx:else class="follow-top-show" data-des="未登录状态展示的占位符"></view> -->
+
+                <view class="kk-mys-img" wx:if="{{ !userInfo }}">
+                    <!-- 未登录 -->
+                    <image src="{{ myImgs['notlogin'] }}"></image>
+                </view>
+                <block wx:else>
+                    <view class="kk-mys-img" wx:if="{{ followEmpty }}">
+                        <!-- 关注为空 -->
+                        <image src="{{ myImgs['nofollow'] }}"></image>
+                    </view>
+                    <view class="kk-mys-img" wx:if="{{ followError }}">
+                        <!-- 请求加载失败（初次） -->
+                        <image src="{{ myImgs['err-load'] }}"></image>
+                    </view>
+                </block>
+
+                <!-- 数据列表 -->
+                <view class="item-wrap">
+                    <block wx:if="{{ listType === 1 }}">
+                        <view
+                            wx:for="{{ followList }}"
+                            wx:key="uuid"
+                            class="follow-item"
+                            data-id="{{ item.latest_comic_id }}"
+                            data-topicid="{{ item.topic_id }}"
+                            bindtap="routeTopic">
+                            <view class="label-default" wx:if="{{ item.label_image }}">
+                                <kk-icon 
+                                    src="{{ item.label_image }}" 
+                                    height="{{ 36 }}"/>
+                            </view>
+                            <!-- 封面 -->
+                            <view class="cover-box">
+                                <kk-cover
+                                    class="cover" 
+                                    src="{{ item.cover_image_url }}" 
+                                    width="{{ 354 }}" 
+                                    height="{{ 222 }}">
+                                </kk-cover>
+
+                                <!-- 封面底部阴影 -->
+                                <view class="cover-label">
+                                    <text wx:if="{{ !!item.unread_count }}">更新{{ item.unread_count }}话</text>
+                                    <text wx:else>暂无更新</text>
+                                </view>
+                            </view>
+
+                            <!-- 底部内容 -->
+                            <view class="title">{{ item.topic_title }}</view>
+                            <view class="description">
+                                <text class="icons {{ item.remind_label!='已读' ? 'pale-blue' : ''}}">{{ item.remind_label }}</text><text class="text">{{ item.latest_comic_title }}</text>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:if="{{ listType === 2 }}">
+                        <kk-video-item 
+                            style="margin: 0 9rpx 32rpx;" 
+                            wx:for="{{ videoFollowList }}" 
+                            wx:key="index" width="343"
+                            data-index="{{ index }}"
+                            coverHeight="216"
+                            videoInfo="{{ item }}"
+                            bindtap="routeVideo"
+                        ></kk-video-item>
+                    </block>
+                </view>
+            </view>
+        </view>
+
+        <!-- 底部 -->
+        <view slot="bottom" class="mys-bottom">
+            <!-- 加载状态 -->
+            <kk-bottom
+                loading="{{ readLoading || followLoading}}"
+                finish="{{ false }}">
+            </kk-bottom>
+        </view>
+    </kk-mounting>
+</view>
+
+<!-- 阅读历史/我的关注 tab(吸顶和内容部分)模板 -->
+<template name="kk-mys-tab">
+    <view class="kk-mys-tab">
+        <view 
+            class="mys-tab {{ active == 1 ? 'tab-active':'' }}" 
+            data-active="1" 
+            data-des="阅读历史" 
+            data-name="{{ name }}"
+            bindtap="tabChangeTap" >
+            阅读历史
+            <view class="tab-active-line" data-name="选中线"></view>
+        </view>
+        <view 
+            class="mys-tab {{ active == 2 ? 'tab-active':'' }}" 
+            data-active="2" 
+            data-des="我的关注"
+            data-name="{{ name }}"
+            bindtap="tabChangeTap" >
+            我的关注
+            <view class="tab-active-line" data-name="选中线"></view>
+            <view class="tab-reddot" wx:if="{{ reddot }}" data-name="红点"></view>
+        </view>
+        <view class="r-btn-warp">
+            <!-- 开发者选项 -->
+            <view wx:if="{{ develop }}" class="developers" bindtap="faceClick">开发者选项</view>
+
+            <!-- 问题反馈 -->
+            <view class="feedback">
+                <view class="button" catchtap="feedbackTap">
+                    <image src="{{ myImgs['setting'] }}"></image>
+                    <text>设置</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<!-- 漫画/漫剧 tabs -->
+<template name="kk-tabs-type">
+    <view class="kk-tabs-type">
+        <view 
+            class="item {{ listType === 1 ? 'active' : '' }}"
+            data-type="{{ 1 }}" 
+            bindtap="typeHandler">
+            <text>漫画</text>
+        </view>
+        <view class="cut"></view>
+        <view 
+            wx:if="{{ !shieldVideo }}"
+            class="item {{ listType === 2 ? 'active' : '' }}"
+            data-type="{{ 2 }}" 
+            bindtap="typeHandler">
+            <text>漫剧</text>
+        </view>
+    </view>
+</template>
+
+<kk-toast toast="{{ toast }}"></kk-toast>
+
+<!-- 
+ * ** success-dialog(成功弹窗/规则弹窗)[书架签到/任务中心新手任务]
+ * @show ->       是否显示弹窗         必填      类型:布尔     false:不显示  true:显示  默认:不显示
+ * @type ->       弹窗类型             必填     类型:字符串    type:sign->签到(签到弹窗)  task:->任务[日常任务](任务弹窗)  newTask:->新手任务(新手任务弹窗)
+ * @title->       弹窗标题             非必填    类型:字符串    默认:''   如果传递了标题,覆盖默认标题
+ * @isRule ->     是否为规则弹窗        非必填   类型:布尔      false:不是规则弹窗  true:是规则弹窗   默认:不是规则弹窗
+ * @ruleList->    规则弹窗是数据        非必填    类型:数组     默认:[]
+ * @clickMask ->  是否允许遮罩层,关闭弹窗 非必填  类型:布尔       false:不允许点击蒙层关闭弹窗  true:允许点击蒙层关闭弹窗   默认:不允许点击蒙层关闭弹窗
+ * @subtitle ->  副标题内容(标题下方的小文子)  非必填  类型:字符串  默认:''  如果不传递默认不显示  
+ * @rewardType -> 显示奖励的icon  非必填  类型:数字  rewardType:0无图标 / 1(KKB图标) / 2(vip图标) / 3(优惠卷图标) / 4(福利礼包图标)
+ * @content ->   如果是奖励弹窗的情况下使用  非必填    类型:字符串 默认:空字符
+ * @btnName ->   按钮名称   非必填    类型:字符串 默认:如果是规则弹窗默认:知道了 成功弹窗默认:悄悄收下
+ *
+ * fn:clickCallback -> 点击按钮(或者遮罩层的)返回回调 -> 以上参数会全部返回  注意:show=false(关闭弹窗)
+ * 
+ -->
+<success-dialog 
+    show="{{ successDialogData.show }}" 
+    type="{{ successDialogData.type }}" 
+    isRule="{{ successDialogData.isRule }}" 
+    ruleList="{{ successDialogData.ruleList }}" 
+    clickMask="{{ successDialogData.clickMask }}" 
+    subtitle="{{ successDialogData.subtitle }}" 
+    content="{{ successDialogData.content }}" 
+    rewardType="{{ successDialogData.rewardType }}" 
+    title="{{ successDialogData.title }}" 
+    btnName="{{ successDialogData.btnName }}" 
+    bind:clickCallback="closeSignWindow">
+</success-dialog>
+
+<!-- 半屏login -->
+<kk-login wx:if="{{ showLogin }}" title="{{ userInfo ? '切换账号登录继续看' : '登录后查看更多精彩' }}" show="{{ showLogin }}" refresh istab></kk-login>
+
+<!-- 新用户充值弹窗 -->
+<kk-newuser-recharge></kk-newuser-recharge>

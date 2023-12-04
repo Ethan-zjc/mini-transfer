@@ -1,0 +1,15 @@
+.kk-button-buy {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 32rpx;
+    width: 686rpx;
+    // 购买按钮浮层图标
+    .pay-btn-icon {
+        position: absolute;
+        top: 0;
+        right: 40rpx;
+    }
+}

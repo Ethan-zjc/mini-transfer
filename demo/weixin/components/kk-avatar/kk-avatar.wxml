@@ -1,0 +1,8 @@
+<!-- kk-avatar -->
+<view style="width: {{ size }}rpx; height: {{ size }}rpx;">
+    <view class="wrap" wx:if="{{ src }}" style="opacity: {{ loaded ? 1 : 0 }};">
+        <image class="avatar" src="{{ computedSrc }}" style="border: {{ border }};" bindload="loaded"></image>
+        <image class="vip" wx:if="{{ vip }}" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/avatar-vip_3665ef7.png"></image>
+    </view>
+    <image wx:else class="avatar" src="/images/avatar-default.png" style="border: {{ border }};" />
+</view>

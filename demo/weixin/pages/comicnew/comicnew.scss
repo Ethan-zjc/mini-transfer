@@ -1,0 +1,826 @@
+/* stylelint-disable keyframes-name-pattern */
+button {
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    border-radius: 0;
+    background: #fff;
+}
+.warp {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.navigation {
+    // position: -webkit-sticky;
+    // position: sticky;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    // height: auto;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+// 长列表内容
+.recycle-wrap {
+    font-size: 0;
+    box-sizing: border-box;
+    transition: padding-top 0.3s;
+    .pos-image,
+    .pos-ad,
+    .pos-handle {
+        position: relative;
+        width: 100%;
+        font-size: 0;
+        line-height: 0;
+        .picture {
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
+        .holder {
+            position: absolute;
+            left: 50%;
+            z-index: 0;
+            width: 50%;
+            max-width: 210rpx;
+            max-height: 106rpx;
+            transform: translate(-50%, -320%);
+        }
+    }
+    .pos-ad {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 4rpx;
+        box-sizing: border-box;
+        flex-direction: column;
+        .ad-view {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            flex-direction: column;
+        }
+        .ad {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            // height: 261px;
+            // height: 522rpx;
+            min-height: 582rpx;
+            max-height: 582rpx;
+            border-radius: 16rpx;
+            // background: #999999;
+        }
+        .ad-holder {
+            z-index: 0;
+            max-width: 260rpx;
+            max-height: 126rpx;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            // height: 74px;
+            height: 148rpx;
+            // padding: 32rpx 0 56rpx;
+            box-sizing: border-box;
+            .page-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                flex: 1;
+                .btn {
+                    display: flex;
+                    align-items: center;
+                    font-size: 24rpx;
+                    font-weight: bold;
+                    color: #555;
+                    image {
+                        width: 24rpx;
+                        height: 24rpx;
+                    }
+                    .prev,
+                    .next {
+                        transform: rotate(180deg);
+                    }
+                    .prevImg {
+                        margin-right: 8rpx;
+                    }
+                    .nextImg {
+                        margin-left: 8rpx;
+                    }
+                }
+            }
+            .divide {
+                width: 2rpx;
+                height: 60rpx;
+                background: #e8e8e8;
+            }
+        }
+    }
+    .pos-handle {
+        .update-remind {
+            display: flex;
+            justify-content: center;
+            padding: 48rpx 0 24rpx;
+            width: 100%;
+            height: 124rpx;
+            box-sizing: border-box;
+            text {
+                position: relative;
+                margin-right: 8rpx;
+                font-size: 28rpx;
+                border-bottom: 2px solid #ccc;
+                color: #333;
+                line-height: 52rpx;
+            }
+            image {
+                width: 44rpx;
+                height: 44rpx;
+            }
+        }
+        .btns-bottom {
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 170rpx;
+            border-bottom: 1rpx solid rgba(232, 232, 232, 1);
+            background: #fff;
+            box-sizing: border-box;
+            > view {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            button[size='mini'] {
+                padding: 0;
+            }
+            .btn {
+                position: relative;
+                width: 100%;
+                image {
+                    margin: auto;
+                    width: 56rpx;
+                    height: 56rpx;
+                }
+                text {
+                    display: block;
+                    width: 100%;
+                    font-size: 24rpx;
+                    font-weight: 500;
+                    text-align: center;
+                    color: #555;
+                    line-height: 30rpx;
+                }
+                .award {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 56rpx;
+                    view {
+                        position: relative;
+                        display: inline-block;
+                        margin: auto;
+                        width: 56rpx;
+                        height: 56rpx;
+                        text {
+                            position: absolute;
+                            top: 0;
+                            right: -24rpx;
+                            display: inline-block;
+                            width: 26rpx;
+                            height: 26rpx;
+                            font-size: 18rpx;
+                            font-weight: bold;
+                            border-radius: 27rpx 27rpx 27rpx 6rpx;
+                            color: rgba(255, 255, 255, 1);
+                            background: rgba(255, 104, 96, 1);
+                            line-height: 26rpx;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.new-hands {
+    position: fixed;
+    bottom: 302rpx;
+    left: 0;
+    z-index: 30;
+    display: none;
+    width: 196rpx;
+    height: 156rpx;
+    transition: all 0.3s linear;
+    &.show {
+        display: block;
+    }
+    &.hidden {
+        display: none;
+    }
+    &.translate-y {
+        bottom: 100rpx;
+    }
+}
+.super-btns {
+    position: fixed;
+    right: 32rpx;
+    // top: -304rpx;
+    bottom: 190rpx;
+    display: flex;
+    justify-content: space-between;
+    padding: 16rpx 0;
+    width: 104rpx;
+    height: 304rpx;
+    opacity: 1;
+    transition: all 0.3s linear;
+    flex-direction: column;
+    box-sizing: border-box;
+    &.hidden-trans {
+        right: -136rpx;
+        opacity: 0;
+    }
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 16rpx 0;
+        width: 104rpx;
+        height: 104rpx;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.3);
+        flex-direction: column;
+        image {
+            width: 48rpx;
+            height: 48rpx;
+        }
+        text {
+            font-size: 20rpx;
+            color: #fff;
+        }
+    }
+}
+
+// 底部操作栏内容
+.bottom-tools {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 190rpx;
+    background: #fff;
+    box-shadow: 0 -1rpx 0 0 #e6e6e6;
+    transition: transform 0.3s;
+    .btn-bottom {
+        display: flex;
+        justify-content: space-between;
+        height: 98rpx;
+        background: #fff;
+        .list,
+        .view-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            image {
+                width: 48rpx;
+                height: 48rpx;
+            }
+            text {
+                display: inline-block;
+                font-size: 18rpx;
+                font-weight: bold;
+                line-height: 22rpx;
+            }
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            font-size: 28rpx;
+            text-align: center;
+            color: #f9d410;
+        }
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 40rpx;
+            font-size: 28rpx;
+            color: #555;
+            line-height: 98rpx;
+            &.disabled {
+                background-color: #fafafa;
+            }
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .bottom-img {
+            margin-right: 10rpx;
+            width: 32rpx;
+            height: 32rpx;
+            vertical-align: super;
+            &.next {
+                transform: rotate(180deg);
+            }
+        }
+        .bottom-txt {
+            display: block;
+            height: 32rpx;
+            line-height: 32rpx;
+        }
+    }
+}
+
+// 公共操作栏
+.btn {
+    &.disabled {
+        text {
+            color: rgba(0, 0, 0, 0.18);
+        }
+    }
+}
+
+// 右上角气泡
+.bubble {
+    position: fixed;
+    right: 16rpx;
+    z-index: 1;
+    display: flex;
+    // top:4rpx;
+    color: #fff;
+    transition: all 0.5s;
+    flex-wrap: nowrap;
+    &-paper {
+        position: relative;
+        padding: 20rpx 84rpx 20rpx 32rpx;
+        border-radius: 16rpx;
+        background: rgba(0, 0, 0, 0.8);
+    }
+    &-info {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .title {
+            font-size: 28rpx;
+            font-weight: bold;
+        }
+        .tip {
+            margin-top: 2rpx;
+            font-size: 24rpx;
+            opacity: 0.6;
+        }
+        .icon {
+            position: relative;
+            right: 110rpx;
+            width: 27rpx;
+            height: 12rpx;
+            image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    &-close {
+        position: absolute;
+        top: 50%;
+        right: 24rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 36rpx;
+        height: 36rpx;
+        transform: translateY(-50%);
+        image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+// 滑动更多引导
+.slide-guide {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 909rpx;
+    background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.42) 42%, rgba(0, 0, 0, 0));
+    .slide {
+        position: relative;
+        width: 28rpx;
+        height: 220rpx;
+        .arrow {
+            width: 100%;
+            height: 100%;
+        }
+        .circle,
+        .hand {
+            position: absolute;
+        }
+        .circle {
+            bottom: 0rpx;
+            left: -4rpx;
+            width: 36rpx;
+            height: 36rpx;
+            opacity: 0;
+            animation: fingerCircle 1.2s ease infinite both;
+        }
+        .hand {
+            bottom: -56rpx;
+            left: 10rpx;
+            width: 74rpx;
+            height: 78rpx;
+            animation: fingerHandle 1.2s ease infinite both;
+        }
+    }
+}
+
+@keyframes fingerCircle {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-80px);
+    }
+}
+
+@keyframes fingerHandle {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-80px);
+    }
+}
+
+.recycle-barrage-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    pointer-events: none;
+}
+//领取成功购买弹窗  模板 E
+.kk-buykkb-popup-gift {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    //align-items: center;
+    justify-content: center;
+    width: 750rpx;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+
+    //弹窗内容  居中
+    .popup-content {
+        position: relative;
+        margin-top: 85rpx;
+        width: 745rpx;
+        height: 802rpx;
+    }
+    //弹窗内容背景图S
+    .popup-content .popup-content-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        image {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    //弹窗内容背景图E
+
+    //弹窗内容展示部分S
+    .popup-content .content {
+        position: absolute;
+        top: 202rpx;
+        right: -1rpx;
+        left: 0;
+        z-index: 10;
+        margin: 0 auto;
+        width: 540rpx;
+        height: 600rpx;
+        border-radius: 24rpx;
+
+        //内容头部S
+        .top {
+            padding: 91rpx 40rpx 0;
+        }
+        .top .title {
+            font-size: 36rpx;
+            font-family: PingFangSC-Regular, 'PingFang SC';
+            font-weight: 400;
+            text-align: center;
+            color: rgba(255, 90, 0, 1);
+            line-height: 50rpx;
+        }
+        .top .bug-text {
+            padding: 6rpx 0 40rpx;
+            font-size: 24rpx;
+            font-family: PingFangSC-Light, 'PingFang SC';
+            font-weight: 300;
+            text-align: center;
+            color: rgba(153, 153, 153, 1);
+            line-height: 34rpx;
+            &.has-coupon {
+                padding-bottom: 63rpx;
+            }
+        }
+        .top .coupon-text {
+            width: 100%;
+            font-size: 24rpx;
+            font-weight: 300;
+            text-align: center;
+            color: rgba(153, 153, 153, 1);
+        }
+        //内容头部E
+
+        //专题列表 S
+        .topic-list {
+            display: flex;
+            justify-content: space-between; //中间适应
+            padding: 0 40rpx;
+            box-sizing: border-box;
+            justify-items: center;
+        }
+        .topic-list .list-item {
+            padding: 0 4rpx;
+            width: 148rpx;
+            .cover {
+                margin-bottom: 9rpx;
+                width: 148rpx;
+                height: 204rpx;
+                border-radius: 8rpx;
+                image {
+                    border-radius: 8rpx;
+                }
+            }
+            .des {
+                overflow: hidden;
+                width: 100%;
+                text-align: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                box-sizing: border-box;
+                word-break: break-all;
+            }
+            .title {
+                margin-bottom: 10rpx;
+                height: 40rpx;
+                font-size: 28rpx;
+                font-family: PingFangSC-Light, 'PingFang SC';
+                font-weight: 300;
+                color: rgba(51, 51, 51, 1);
+                line-height: 40rpx;
+            }
+            .tag {
+                margin: 0 auto;
+                width: 108rpx;
+                height: 36rpx;
+                font-size: 22rpx;
+                font-family: PingFangSC-Light, 'PingFang SC';
+                font-weight: 300;
+                border-radius: 20rpx;
+                color: #442509;
+                line-height: 36rpx;
+                &.yellow {
+                    background: #fdeb3d;
+                }
+                &.grey {
+                    color: #ccc;
+                    background: #f9f6ff;
+                }
+                &.purple {
+                    color: #7121ff;
+                    background: #f9f6ff;
+                }
+            }
+        }
+        //专题列表 E
+
+        //关闭按钮 S
+        .close {
+            position: absolute;
+            bottom: -107rpx;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            .btn {
+                width: 60rpx;
+                height: 60rpx;
+                border-radius: 50%;
+                image {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        //关闭按钮 E
+    }
+    //弹窗内容展示部分E
+}
+//领取成功购买弹窗  模板 E
+
+// 自动领取代金劵弹窗
+.get-coupon-shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    .get-coupon-window {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        margin-top: -514rpx;
+        margin-left: -305rpx;
+        width: 610rpx;
+        height: 935rpx;
+        .close {
+            position: absolute;
+            top: -60rpx;
+            right: 0rpx;
+            z-index: 1000;
+            display: block;
+            width: 50rpx;
+            height: 50rpx;
+            .closeimg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .get-coupon-content {
+            overflow: hidden;
+            width: 610rpx;
+            height: 791rpx;
+            border-radius: 20rpx;
+            background: #fff;
+            .top-img {
+                width: 610rpx;
+                height: 531rpx;
+                background-color: #000;
+            }
+            .get-coupon-descript {
+                display: flex;
+                flex-direction: row;
+                background-color: #333;
+                .get-coupon-text {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 261rpx;
+                    height: 72rpx;
+                    font-size: 32rpx;
+                    font-weight: 500;
+                    color: #442509;
+                    background-color: #ffe23d;
+                    border-top-right-radius: 10rpx;
+                    image {
+                        margin-left: 8rpx;
+                        width: 32rpx;
+                        height: 32rpx;
+                    }
+                }
+                .get-coupon-time {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    padding: 0 10rpx;
+                    font-size: 20rpx;
+                    color: #909090;
+                    background-color: #333;
+                    flex: 1;
+                    flex-direction: row;
+                    line-height: 72rpx;
+                }
+            }
+            .get-coupon-title {
+                margin: 28rpx 32rpx 0;
+                font-size: 32rpx;
+                font-weight: 500;
+                color: #333;
+            }
+            .get-coupon-tips {
+                margin: 0rpx 32rpx 12rpx;
+                text {
+                    margin-right: 10rpx;
+                    padding: 0 10rpx;
+                    height: 36rpx;
+                    font-size: 24rpx;
+                    border-radius: 4rpx;
+                    line-height: 36rpx;
+                }
+                .orange {
+                    color: #ff751a;
+                    background: rgba(255, 117, 26, 0.1);
+                }
+                .grey {
+                    color: #b89668;
+                    background: #f9f3e8;
+                }
+            }
+            .get-coupon-warn {
+                margin: 0 32rpx;
+                font-size: 24rpx;
+                color: #999;
+            }
+        }
+        .get-coupon-button {
+            margin: 56rpx auto 0;
+            width: 360rpx;
+            height: 88rpx;
+            font-size: 40rpx;
+            font-weight: 500;
+            border-radius: 44rpx;
+            text-align: center;
+            color: #442509;
+            background: #ffe23d;
+            line-height: 88rpx;
+        }
+    }
+}
+.countdown {
+    height: 36rpx;
+    line-height: 36rpx;
+}
+// 倒计时样式
+.countdown-number {
+    width: 36rpx;
+    height: 36rpx;
+    font-size: 20rpx;
+    font-weight: 500;
+    border-radius: 4rpx;
+    text-align: center;
+    color: #442509;
+    background: #fff;
+    line-height: 36rpx;
+}
+.countdown-space-first::before {
+    margin: 0 5rpx;
+    font-size: 20rpx;
+    color: #fff;
+    content: '天';
+}
+.countdown-space-second::before {
+    margin: 0 5rpx;
+    font-size: 20rpx;
+    color: #fff;
+    content: '时';
+}
+.countdown-space-third::before {
+    margin: 0 5rpx;
+    font-size: 20rpx;
+    color: #fff;
+    content: '分';
+}
+// 自动领取代金劵弹窗

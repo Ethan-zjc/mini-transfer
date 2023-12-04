@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "漫剧分类",
+    "usingComponents": {
+        "kk-video-item": "/components/kk-video-item/index",
+        "kk-bottom": "/components/kk-bottom/kk-bottom"
+    }
+}

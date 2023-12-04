@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-new-welfare": "/components/kk-new-welfare/index"
+    }
+}

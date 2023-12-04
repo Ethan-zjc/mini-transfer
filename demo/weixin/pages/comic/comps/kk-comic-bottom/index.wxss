@@ -1,0 +1,213 @@
+.kk-comic-bottom .unfold-btn {
+  width: 100%;
+  height: 61rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kk-comic-bottom .unfold-btn .txt {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #F5A623;
+}
+
+.kk-comic-bottom .unfold-btn .img-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 4rpx;
+}
+
+.kk-comic-bottom .comic-bottom {
+  display: flex;
+  justify-content: center;
+  margin: 52rpx 0 32rpx 0;
+}
+
+.kk-comic-bottom .comic-bottom text {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin-right: 8rpx;
+}
+
+.kk-comic-bottom .comic-bottom image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.kk-comic-bottom .btns-bottom {
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  width: 100%;
+  background: #fff;
+  height: 170rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.kk-comic-bottom .btns-bottom > view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.kk-comic-bottom .btns-bottom .btn {
+  width: 100%;
+  position: relative;
+}
+
+.kk-comic-bottom .btns-bottom .btn image {
+  width: 56rpx;
+  height: 56rpx;
+  margin: auto;
+}
+
+.kk-comic-bottom .btns-bottom .btn text {
+  width: 100%;
+  text-align: center;
+  line-height: 30rpx;
+  display: block;
+  font-size: 24rpx;
+  color: #555555;
+  font-weight: 500;
+}
+
+.kk-comic-bottom .btns-bottom .btn .award {
+  position: absolute;
+  width: 100%;
+  height: 56rpx;
+  top: 0;
+}
+
+.kk-comic-bottom .btns-bottom .btn .award view {
+  width: 56rpx;
+  height: 56rpx;
+  display: inline-block;
+  margin: auto;
+  position: relative;
+}
+
+.kk-comic-bottom .btns-bottom .btn .award view text {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: -24rpx;
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  font-size: 18rpx;
+  font-weight: bold;
+  color: white;
+  background: #ff6860;
+  border-radius: 27rpx 27rpx 27rpx 6rpx;
+}
+
+.kk-comic-bottom .pagination {
+  height: 179rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  width: 100%;
+  transition: opacity 0.4s linear;
+}
+
+.kk-comic-bottom .pagination.show {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.kk-comic-bottom .pagination > view:nth-child(1), .kk-comic-bottom .pagination > view:nth-child(3) {
+  flex: 1;
+  line-height: 98rpx;
+}
+
+.kk-comic-bottom .pagination > view:nth-child(1) .btn, .kk-comic-bottom .pagination > view:nth-child(3) .btn {
+  display: flex;
+  line-height: 98rpx;
+  padding: 0 40rpx;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.kk-comic-bottom .pagination > view:nth-child(2) {
+  width: 2rpx;
+  height: 60rpx;
+  background: #e8e8e8;
+}
+
+.kk-comic-bottom .btn-prev,
+.kk-comic-bottom .btn-next {
+  width: 18rpx;
+  height: 30rpx;
+}
+
+.kk-comic-bottom .btn-prev text,
+.kk-comic-bottom .btn-next text {
+  display: block;
+  width: 18rpx;
+  height: 2rpx;
+  background: #555;
+}
+
+.kk-comic-bottom .btn-prev {
+  padding-left: 10rpx;
+  margin-right: 13rpx;
+}
+
+.kk-comic-bottom .btn-prev text:first-child {
+  transform: rotate(-45deg);
+  margin-top: 8rpx;
+}
+
+.kk-comic-bottom .btn-prev text:last-child {
+  transform: rotate(45deg);
+  margin-top: 11rpx;
+}
+
+.kk-comic-bottom .btn-next {
+  padding-right: 10rpx;
+  margin-left: 13rpx;
+}
+
+.kk-comic-bottom .btn-next text:first-child {
+  transform: rotate(45deg);
+  margin-top: 8rpx;
+}
+
+.kk-comic-bottom .btn-next text:last-child {
+  transform: rotate(-45deg);
+  margin-top: 11rpx;
+}
+
+.kk-comic-bottom .btn.disabled {
+  background-color: #fafafa;
+}
+
+.kk-comic-bottom .btn.disabled text {
+  color: rgba(0, 0, 0, 0.18);
+}
+
+.kk-comic-bottom .btn.disabled .btn-prev text,
+.kk-comic-bottom .btn.disabled .btn-next text {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.kk-comic-bottom .btn.back-color {
+  background-color: #ffffff;
+}
+
+.kk-comic-bottom .free-program-entry {
+  margin-top: 48rpx;
+  margin-bottom: 44rpx;
+  padding: 0 24rpx;
+  height: 108rpx;
+}
+
+.kk-comic-bottom .free-program-entry image {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,27 @@
+
+<view class="wrap">
+    <!-- iOS充值方法介绍 -->
+    <view wx:if="{{ type == 'iosinvest' }}" class="title">iOS内获取会员&KK币步骤：</view>
+    <!-- hr内推招聘介绍 -->
+    <view wx:if="{{ type == 'hrneitui' }}" class="content">
+        <text selectable="{{ true }}">用户破2亿，月活4000万的漫画垂类top1 #快看# 等你加入！\n\n别等啦，内推传送门限时开放！简历发给我，欢乐做同事！</text>
+    </view>
+    <!-- 代金券使用说明 -->
+    <view wx:if="{{ type == 'coupon' }}" class="coupon">
+        <block wx:for="{{ list }}" wx:key="title">
+            <view class="question">{{ item.question }}</view>
+            <view class="answer">
+                <text selectable="{{ true }}">{{ item.answer }}</text>
+            </view>
+        </block>
+    </view>
+    <!-- 图片 -->
+    <image
+        wx:if="{{ !!src }}"
+        src="{{ src }}"
+        mode="aspectFit"
+        show-menu-by-longpress="{{ true }}"
+        style="height: {{ height }}rpx" />
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

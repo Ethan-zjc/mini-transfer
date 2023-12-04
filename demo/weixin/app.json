@@ -1,0 +1,142 @@
+{
+    "pages": [
+        "pages/find/find",
+        "pages/feed/feed",
+        "pages/my/my",
+        "pages/benefits/benefits",
+        "pages/search/search",
+        "pages/login/login",
+        "pages/topic/topic",
+        "pages/comic/comic",
+        "pages/rank/rank",
+        "pages/class/class",
+        "pages/topic-list/topic-list",
+        "pages/webview/webview",
+        "pages/pay/pay",
+        "pages/directpay/directpay",
+        "pages/video/video",
+        "pages/comicnew/comicnew"
+    ],
+    "subpackages": [
+        {
+            "root": "subpack-activity",
+            "name": "活动子包",
+            "pages": ["pages/invitation-task/invitation-task", "pages/invitation-team/invitation-team", "pages/lottery/lottery", "pages/valentines/valentines", "pages/sy-app/sy-app", "pages/52toys/52toys", "pages/cultivate/cultivate", "pages/award-list/award-list"]
+        },
+        {
+            "root": "subpack-auxiliary",
+            "name": "辅助子包",
+            "pages": [
+                "pages/vip-topic-list/vip-topic-list",
+                "pages/welfare-list/welfare-list",
+                "pages/welfare-list-new/welfare-list-new",
+                "pages/feedback/feedback",
+                "pages/setting/setting",
+                "pages/subscribe/subscribe",
+                "pages/wallet/wallet",
+                "pages/intro/intro",
+                "pages/bought/bought",
+                "pages/buyvip/buyvip",
+                "pages/buykkb/buykkb",
+                "pages/vip-center/vip-center",
+                "pages/coupon-list/coupon-list",
+                "pages/coupon-detail/coupon-detail",
+                "pages/comment-detail/comment-detail",
+                "pages/read-coupon/read-coupon",
+                "pages/kksy/kksy",
+                "pages/order/order",
+                "pages/vip-coupon/vip-coupon"
+            ]
+        },
+        {
+            "root": "subpack-bbs",
+            "name": "社区独立分包",
+            "pages": ["pages/post/post"],
+            "independent": true
+        },
+        {
+            "root": "subpack-video",
+            "name": "漫剧分包",
+            "pages": ["pages/class/class", "pages/chapters/chapters", "pages/video-list/video-list"]
+        }
+    ],
+    "preloadRule": {
+        "pages/find/find": {
+            "network": "all",
+            "packages": ["subpack-auxiliary"]
+        },
+        "pages/my/my": {
+            "network": "all",
+            "packages": ["subpack-auxiliary"]
+        },
+        "pages/login/login": {
+            "network": "all",
+            "packages": ["subpack-auxiliary"]
+        },
+        "pages/comic/comic": {
+            "network": "all",
+            "packages": ["subpack-auxiliary"]
+        },
+        "pages/topic/topic": {
+            "network": "all",
+            "packages": ["subpack-auxiliary"]
+        },
+        "pages/feed/feed": {
+            "network": "all",
+            "packages": ["subpack-auxiliary"]
+        },
+        "subpack-bbs/pages/post/post": {
+            "network": "all",
+            "packages": ["__APP__"]
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black"
+    },
+    "lazyCodeLoading": "requiredComponents",
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "color": "#7F8389",
+        "selectedColor": "#333333",
+        "borderStyle": "white",
+        "backgroundColor": "#FFFFFF",
+        "list": [
+            {
+                "iconPath": "images/icons/tab-feed.png",
+                "selectedIconPath": "images/icons/tab-feed-active.png",
+                "pagePath": "pages/feed/feed",
+                "text": "推荐"
+            },
+            {
+                "iconPath": "images/icons/tab-find.png",
+                "selectedIconPath": "images/icons/tab-find-active.png",
+                "pagePath": "pages/find/find",
+                "text": "发现"
+            },
+            {
+                "iconPath": "images/icons/tab-video.png",
+                "selectedIconPath": "images/icons/tab-video-active.png",
+                "pagePath": "pages/video/video",
+                "text": "漫剧"
+            },
+            {
+                "iconPath": "images/icons/tab-my.png",
+                "selectedIconPath": "images/icons/tab-my-active.png",
+                "pagePath": "pages/my/my",
+                "text": "书架"
+            }
+        ]
+    },
+    "navigateToMiniProgramAppIdList": ["wxbd687630cd02ce1d"],
+    "plugins": {
+        "captcha": {
+            "version": "1.0.0",
+            "provider": "wxb302e0fc8ab232b4"
+        }
+    },
+    "debug": true
+}

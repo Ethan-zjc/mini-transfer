@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-icon": "/components/kk-icon/kk-icon",
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-dialog": "/components/kk-dialog/kk-dialog",
+        "kk-toast": "/components/kk-toast/kk-toast"
+    }
+}

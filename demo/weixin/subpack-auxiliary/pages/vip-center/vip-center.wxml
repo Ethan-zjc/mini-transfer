@@ -1,0 +1,179 @@
+<view class="wrap">
+    <!-- 头部区域 -->
+    <v-head isVip="{{ isVip }}" isiOS="{{ isiOS }}" userInfo="{{ userInfo }}" vipInfo="{{ vipInfo }}"></v-head>
+
+    <!-- 会员专享区域 -->
+    <v-exclusive wx:if="{{ !isVip }}"></v-exclusive>
+
+    <!-- 会员礼包 -->
+    <v-gifts wx:if="{{ gifts && gifts.length > 0 && isVip }}" gifts="{{ gifts }}" bindonGiftWrapClick="giftWrapClick"></v-gifts>
+
+    <!-- 会员付费档位区域 -->
+    <v-pay wx:if="{{ canPay }}" id="payComp" couponId="{{ couponId }}" userInfo="{{ userInfo }}" vipInfo="{{ vipInfo }}" bindonChoiceItem="onChoiceItem" bindonCarryCoupon="onCarryCoupon"></v-pay>
+
+    <!-- 会员礼包 -->
+    <view style="margin-top: 32rpx" wx:if="{{ gifts && gifts.length > 0 && !isVip }}">
+        <v-gifts gifts="{{ gifts }}" bindonGiftWrapClick="giftWrapClick"></v-gifts>
+    </view>
+
+    <!-- 会员专享区域 -->
+    <view style="margin-top: 32rpx" wx:if="{{ isVip }}">
+        <v-exclusive></v-exclusive>
+    </view>
+
+    <!-- 漫剧list区域 -->
+    <block wx:if="{{ videoList && videoList.length > 0 }}">
+        <v-list wx:for="{{ videoList }}" wx:key="id" type="2" title="{{ item.title }}" lists="{{ item.banner_children }}" bindonActionTap="videoActionTap"></v-list>
+    </block>
+
+    <!-- 作品list区域 -->
+    <block wx:if="{{ topicDataList && topicDataList.length > 0 }}">
+        <v-list wx:for="{{ topicDataList }}" wx:key="id" type="1" title="{{ item.title }}" lists="{{ item.banner_children }}" bindonActionTap="topicActionTap"></v-list>
+    </block>
+
+    <!-- 更多会员权益区域 -->
+    <v-interests isiOS="{{ isiOS }}"></v-interests>
+
+    <!-- 悬浮按钮区域 -->
+    <view class="fix-bottom" wx:if="{{ canPay }}">
+        <v-button isVip="{{ isVip }}" activeItem="{{ activeItem }}" bindonPaySuccess="onPaySuccess"></v-button>
+    </view>
+</view>
+
+<!-- 会员优惠券列表弹窗 -->
+<v-coupon wx:if="{{ showInitCoupon && vipCouponList.length }}" vipCouponList="{{ vipCouponList }}" bindonCouponCallback="onCouponCallback" bindonCouponClose="onCouponClose"></v-coupon>
+
+<!-- 会员充值挽留 -->
+<v-detain wx:if="{{ showDetain && vipCouponList.length }}" detainCoupon="{{ detainCoupon }}" bindonCouponCallback="onCouponCallback"></v-detain>
+
+<!-- 领取成功弹窗 -->
+<view class="vip-success dialog-wrap" wx:if="{{ success.show }}">
+    <view class="dialog">
+        <view class="card">
+            <view class="title">{{ success.title }}</view>
+            <view class="subtitle">{{ success.subtitle }}</view>
+            <view class="button" data-dialog="success" bindtap="closeDialog">确定</view>
+        </view>
+        <image class="light" src="{{ images.light }}" data-des="/images/vipcenter/light.png" />
+        <image class="silk" src="{{ images.dialog }}" data-des="/images/vipcenter/dialog.png" />
+        <view class="close" data-dialog="success" bindtap="closeDialog">
+            <image src="{{ cdnIconsImgs['delete'] }}" />
+        </view>
+    </view>
+</view>
+
+<!-- N选1礼包弹窗 -->
+<view class="vip-bags dialog-wrap" wx:if="{{ bags.show }}">
+    <view class="dialog" style="margin-top: -{{ bags.margin }}rpx">
+        <view class="card">
+            <view class="title">
+                <text>{{ bags.title }}</text>
+                <kk-icon class="icon" src="{{ bags.icon }}" height="{{ 32 }}"></kk-icon>
+            </view>
+            <view class="subtitle">{{ bags.subtitle }}</view>
+            <view class="list">
+                <view class="gift" wx:for="{{ bags.list }}" wx:key="id">
+                    <image class="cover" src="{{ item.icon }}" mode="aspectFit" />
+                    <block wx:if="{{ item.assign_status == 1 }}">
+                        <view class="tag">
+                            <text wx:if="{{ !!item.subtitle }}">{{ item.subtitle }}</text>
+                        </view>
+                        <view class="name">{{ item.title }}</view>
+                        <view class="button" data-item="{{ item }}" data-index="{{ index }}" bindtap="giftInnerClick">
+                            {{ item.button_text }}
+                        </view>
+                    </block>
+                    <block wx:elif="{{ item.assign_status == 2 }}">
+                        <view class="tag">
+                            <text wx:if="{{ !!item.assigned_subtitle }}">{{ item.assigned_subtitle }}</text>
+                        </view>
+                        <view class="name">{{ item.assigned_title }}</view>
+                        <view class="button disabled">
+                            {{ item.assigned_button_text }}
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="tag">
+                            <text wx:if="{{ !!item.subtitle }}">{{ item.subtitle }}</text>
+                        </view>
+                        <view class="name">{{ item.title }}</view>
+                        <view class="button disabled">下次可领</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{ bags.clock }}" class="clock">
+            <view class="title">领取倒计时</view>
+            <view class="time">
+                <text style="margin-left: 0">{{ times[0] }}</text>
+                天
+                <text>{{ times[1] }}</text>
+                时
+                <text>{{ times[2] }}</text>
+                分
+            </view>
+        </view>
+        <view class="close" data-dialog="bags" bindtap="closeDialog">
+            <image src="{{ cdnIconsImgs['delete'] }}" />
+        </view>
+    </view>
+</view>
+
+<!-- 会员中心聚合礼包领取文案新增弹窗提示（按钮内文案写死，不取下发的营销信息） 临时会员领取聚合礼包提醒弹窗 -->
+<!-- 需求文档:https://wiki.quickcan.com/pages/viewpage.action?pageId=160137288 -->
+<view class="temporary-vip-popup" wx:if="{{ temporaryPopup.show }}" catchtouchmove catchtap="closeTemporaryPopup">
+    <!-- 弹窗内容区域 -->
+    <view class="popup-content" catchtap>
+        <!-- 关闭按钮 -->
+        <view class="close" catchtap="closeTemporaryPopup"><image src="{{ images.temporaryClosePopup }}" /></view>
+
+        <!-- 头部kkb背景 -->
+        <view class="top-kkb-bg"><image mode="aspectFit" src="{{ images.temporaryTopKkbBg }}" /></view>
+
+        <!-- 弹窗内容 -->
+        <view class="content">
+            <!-- 纯色背景 -->
+            <view class="head"><image src="{{ images.temporaryHeadBg }}" /></view>
+
+            <!-- 文字内容 -->
+            <view class="text-warp">
+                <view class="title">开通正式会员</view>
+                <view class="des">您还不是正式会员，现在开通正式会员，领取300KK币礼包</view>
+            </view>
+
+            <!-- 跳转到会员开通页 按钮 -->
+            <view class="btn" catchtap="goVip">
+                <!-- ios设备 -->
+                <block wx:if="{{ isiOS }}">
+                    <view class="ios-text">{{ temporaryPopup.iosBtn }}</view>
+                </block>
+
+                <!-- 安卓设备 -->
+                <block wx:else>
+                    <block wx:if="{{ temporaryPopup.andBtn }}">
+                        <view class="and-red and" wx:if="{{ temporaryPopup.andBtn[0] }}">{{ temporaryPopup.andBtn[0] }}</view>
+                        <view class="and-text and" wx:if="{{ temporaryPopup.andBtn[1] }}">{{ temporaryPopup.andBtn[1] }}</view>
+                        <view class="and-icon" wx:if="{{ temporaryPopup.andBtn[2] }}">{{ temporaryPopup.andBtn[2] }}</view>
+                    </block>
+                    <block wx:else>
+                        <view class="and-text and" data-des="没有获取到弹窗数据">{{ temporaryPopup.iosBtn }}</view>
+                    </block>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 预加载弹窗需要的图片资源 -->
+<view style="display: none">
+    <image src="{{ images.temporaryClosePopup }}" style="display: none" />
+    <image mode="aspectFit" src="{{ images.temporaryTopKkbBg }}" style="display: none" />
+    <image src="{{ images.temporaryHeadBg }}" style="display: none" />
+    <image src="{{ images.vipTrue }}" />
+    <image src="{{ images.vipFalse }}" />
+</view>
+
+<!-- 充值成功弹窗 -->
+<kk-pay-success wx:if="{{ showVipPop }}" vipInfo="{{ vipInfo }}" sucData="{{ sucData }}" bindonClosePopup="closePopup"></kk-pay-success>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

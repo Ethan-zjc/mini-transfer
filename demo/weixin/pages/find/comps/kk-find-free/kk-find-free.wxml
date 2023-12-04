@@ -1,0 +1,137 @@
+<!-- 整本限免发现页模块 -->
+<view wx:if="{{ userInfo && showMode }}">
+    <!-- 已领取 -->
+    <view class="find-limitfree" wx:if="{{ hasAssigned }}">
+        <view class="top-title">
+            <text class="text">VIP限时免费送整本</text>
+            <view>
+                还剩 
+                <kk-countdown
+                    lastTime="{{diffTime}}"
+                ></kk-countdown> 
+                秒
+            </view>
+        </view>
+        <view class="main-contain">
+            <view class="left-img" data-id="{{ freeList[0].topic_id }}" bindtap="continueAction">
+                <image class="placeholder" mode="aspectFit" src="/images/placeholder.png"></image>
+                <image src="{{ freeList[0].vertical_image_url }}" class="image" mode="aspectFill"/>
+            </view>
+            <view class="right-descript">
+                <view class="free-title">
+                    <view class="free-type">
+                        <text class="top-big">{{ freeList[0].topic_title }}</text>
+                        <text class="bottom-small">
+                            <text class="label"
+                                wx:for="{{freeList[0].labels}}"
+                                wx:for-item="labelItem"
+                                wx:key="labelItem"
+                            >{{labelItem}}</text>
+                        </text>
+                    </view>
+                    <view class="free-btn" 
+                        wx:if="{{ freeList[0].assign_status == 1 }}" 
+                        data-id="{{ freeList[0].topic_id }}"
+                        data-title="{{ freeList[0].topic_title }}"
+                        bindtap="getContinueId" >
+                        免费阅读
+                    </view>
+                </view>
+                <view class="bottom-grey">{{ freeList[0].description }}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 已领取 -->
+    <!-- 未领取，并且数据 >= 4条 -->
+    <view class="find-limitfree-more" wx:elif="{{ !hasAssigned && showFreeList.length > 3 }}">
+        <view class="top-title">VIP限时免费送整本</view>
+        <view class="countdown-style">
+            还剩 
+            <kk-countdown
+                lastTime="{{ diffTime }}"
+            ></kk-countdown>
+            秒
+        </view>
+        <view class="free-list">
+            <view class="{{ index == 0 ? 'free-item-first' : 'free-item' }}" wx:for="{{ showFreeList }}" wx:for-item="item" wx:key='item'>
+                <block  wx:if="{{ index == 0 }}">
+                    <view class="left-img" data-id="{{ item.topic_id }}" bindtap="continueAction">
+                        <image class="placeholder" mode="aspectFit" src="/images/placeholder.png"></image>
+                        <image src="{{ item.cover_image_url }}" mode="aspectFill" class="image" />
+                    </view>
+                    <view class="right-descript">
+                        <view class="free-title">{{ item.topic_title }}</view>
+                        <view class="free-type">
+                            <text class="label"
+                                wx:for="{{showFreeList[0].labels}}"
+                                wx:for-item="labelItem"
+                                wx:key="labelItem"
+                            >{{labelItem}}</text>
+                        </view>
+                        <view class="free-btn" 
+                            wx:if="{{ item.assign_status == 0 }}" 
+                            data-index="{{ index }}" 
+                            data-assign="{{ item.assign_encrypt_str }}" 
+                            data-title="{{ item.topic_title }}"
+                            bindtap="assignAward" >
+                            立即领取
+                        </view>
+                        <view class="free-btn" 
+                            wx:if="{{ item.assign_status == 1 }}" 
+                            data-id="{{ item.topic_id }}"
+                            data-title="{{ item.topic_title }}"
+                            bindtap="getContinueId" >
+                            免费阅读
+                        </view>
+                        <view class="free-btn disable" 
+                            wx:if="{{ item.assign_status == 2 }}" >
+                            {{ dayTime }}天后可领
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="top-img" data-id="{{ item.topic_id }}" bindtap="continueAction">
+                        <image class="placeholder" mode="aspectFit" src="/images/placeholder.png"></image>
+                        <image src="{{ item.vertical_image_url }}" mode="aspectFill" class="image" />
+                        <view class="free-type">
+                            <text class="label"
+                                wx:for="{{showFreeList[0].labels}}"
+                                wx:for-item="labelItem"
+                                wx:key="labelItem"
+                            >{{labelItem}}</text>
+                        </view>
+                    </view>
+                    <view class="free-title">{{ item.topic_title }}</view>
+                    <view class="free-btn" 
+                        wx:if="{{ item.assign_status == 0 }}" 
+                        data-index="{{ index }}" 
+                        data-assign="{{ item.assign_encrypt_str }}" 
+                        data-title="{{ item.topic_title }}"
+                        bindtap="assignAward" >
+                        立即领取
+                    </view>
+                    <view class="free-btn" 
+                        wx:if="{{ item.assign_status == 1 }}" 
+                        data-id="{{ item.topic_id }}"
+                        data-title="{{ item.topic_title }}"
+                        bindtap="getContinueId" >
+                        免费阅读
+                    </view>
+                    <view class="free-btn disable" 
+                        wx:if="{{ item.assign_status == 2 }}" >
+                        {{ dayTime }}天后可领
+                    </view>
+                </block>
+            </view>
+        </view>
+        <block wx:if="{{ !clickAssign && freeList.length > 4 }}">
+            <view class="marginT40">
+                <kk-find-btn-wrap 
+                    bind:topicBottomMoreTap="topicBottomMoreFree" 
+                    bind:topicBottomexchangeTap="topicBottomexchangeFree"
+                />
+            </view>
+        </block>
+    </view>
+    <!-- 未领取，并且数据 >= 4条 -->
+</view>

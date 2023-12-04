@@ -1,0 +1,56 @@
+.class {
+    padding-top: 36rpx;
+    .nav {
+        display: flex;
+        padding-left: 24rpx;
+        height: 84rpx;
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        &-item {
+            flex-shrink: 0;
+            margin-right: 16rpx;
+            height: 56rpx;
+            line-height: 56rpx;
+            padding: 0 24rpx;
+            font-size: 30rpx;
+            background: transparent;
+            border: 2rpx solid transparent;
+            color: #999999;
+        }
+
+        .active {
+            background: rgba(255, 172, 0, 0.12);
+            border: 2rpx solid #FFAC00;
+            border-radius: 34rpx;
+            color: #FFAC00;
+            font-weight: 500;
+        }
+    }
+
+    .item-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 14rpx;
+    }
+
+    .placeholder {
+        margin-top: 206rpx;
+        image {
+            width: 100%;
+        }
+
+        .text {
+            color: #999999;
+            text-align: center;
+            font-size: 28rpx;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        display:none;
+        width:0;
+        height:0;
+        color:transparent;
+    }
+}

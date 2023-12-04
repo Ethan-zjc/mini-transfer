@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-icon": "/components/kk-icon/kk-icon"
+    }
+}

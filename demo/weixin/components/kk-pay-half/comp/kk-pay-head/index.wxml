@@ -1,0 +1,35 @@
+<!--顶部头像-->
+<!-- 需要调试补充充值礼包，定向限免等头像气泡，根据取值进一步整合，服务端下发是否整合到一处 -->
+<!-- 所有信息都在pic_text_banner中，使用到的字段，text1、text2、action_target -->
+<!-- 气泡内容需要重新做，后置，暂时不影响展示 -->
+<view class="pay-head" wx:if="{{ !isHidden }}">
+    <!-- 顶部图片 -->
+    <image wx:if="{{ popType == 1 || popType == 2 }}" class="image" src="{{ images.comicpay }}"></image>
+    
+    <!-- 充值礼包 -->
+    <view class="text" wx:if="{{ isLogin && isPayGift }}" bindtap="openUrl">
+        <kk-head-txt type="0" headData="{{ headData }}"></kk-head-txt>
+    </view>
+
+    <!-- 定向限免 -->
+    <view class="text" wx:elif="{{ isLogin && isLimitFree }}" bindtap="jumpVip">
+        <kk-head-txt type="0" headData="{{ headData }}"></kk-head-txt>
+    </view>
+
+    <view class="{{ popType != 2 ? 'tips' : 'infos' }}" wx:elif="{{ popType != 1 && isCanPay }}" bindtap="openVip">
+        <kk-head-txt type="{{ popType != 2 ? 2 : 1 }}" headData="{{ headData }}"></kk-head-txt>
+
+        <image wx:if="{{ popType == 3 || popType == 4 }}" class="image" src="{{ images[popType == 3 ? 'aheadLook' : 'vipFree'] }}"></image>
+    </view>
+    <view class="text" wx:elif="{{ !isCanPay && !isReadCoupon }}">
+        <view style="font-size: 17px;">章节尚未解锁</view>
+        <view style="font-size: 10px;">
+            {{ isLogin ? '解锁后即可阅读哦' : '您需要先登录才能查看哦' }}
+        </view>
+    </view>
+
+    <!-- 将外部的传入统一到 -->
+    <view class="text" wx:else>
+        <kk-head-txt type="0" headData="{{ headData }}"></kk-head-txt>
+    </view>
+</view>

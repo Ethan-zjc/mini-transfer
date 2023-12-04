@@ -1,0 +1,79 @@
+.popup-remind {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+}
+
+.popup-remind-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.popup-remind-content {
+  width: 540rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+}
+
+.popup-remind .remind-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0;
+}
+
+.popup-remind .remind-info-title {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 32rpx;
+}
+
+.popup-remind .remind-info-subtitle {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 24rpx;
+  margin-top: 16rpx;
+}
+
+.popup-remind .remind-info-button {
+  margin-top: 48rpx;
+}
+
+.popup-remind .remind-info-button button {
+  width: 380rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #FFE23D;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #442509;
+}
+
+.popup-remind .remind-info-close {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 28rpx;
+  margin-top: 32rpx;
+}

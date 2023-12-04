@@ -1,0 +1,18 @@
+<view wx:if="{{ taskList.length }}" class="task-module">
+    <image class="title" src="{{ cultivateImgs['task-background'] }}"></image>
+    <view class="content">
+        <view
+            wx:for="{{ taskList }}"
+            wx:key="index"
+            class="task-item">
+            <view class="left">
+                <text class="title">{{ item.task_title }}</text>
+                <text class="number">{{ item.award_title }}</text>
+                <image class="fire" src="{{ cultivateImgs['fire2'] }}"></image>
+            </view>
+            <button wx:if="{{ item.task_type === 5 }}" class="button {{ item.buttonType ? '' : 'disabled' }}" data-index="{{ index }}" open-type="{{ item.task_status !== 1 ? '' : 'share' }}" catchtap="doTask">{{ item.buttonName }}</button>
+            <view wx:else class="button {{ item.buttonType ? '' : 'disabled' }}" data-index="{{ index }}" catchtap="doTask">{{ item.buttonName }}</view>
+        </view>
+    </view>
+</view>
+  

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "优惠劵",
+    "usingComponents": {
+        "kk-cover": "/components/kk-cover/kk-cover"
+    }
+}

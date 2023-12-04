@@ -1,0 +1,267 @@
+<!-- kk币充值 -->
+<view class="kk-buy-kkb">
+    <!-- 头部 -->
+    <view class="kk-top-user">
+        <!-- 背景图 -->
+        <image class="top-bg-img" src="{{ images.topBg }}" />
+
+        <!-- 用户信息 -->
+        <view class="user-box">
+            <!-- 用户信息展示 -->
+            <view class="user-info" catchtap="topLoginTap">
+                <kk-avatar
+                    class="avatar"
+                    size="{{ 120 }}"
+                    src="{{ userInfo ? userInfo.user.avatar_url : '' }}"
+                    vip="{{ false }}"
+                    border="3rpx solid #fff">
+                </kk-avatar>
+                <view class="info" wx:if="{{ userInfo }}">
+                    <view class="name">{{ userInfo ? userInfo.user.nickname : '点击登录' }}</view>
+                    <view class="kkb">
+                        <text class="title">余额:</text><text>{{ wallet ? wallet : 0 }}KK币</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 代金券优惠 -->
+    <view class="kk-coupon-wrap" wx:if="{{ shotCouponActivity }}">
+        <view class="kk-coupon-content">
+            
+            <!-- 漫画图 -->
+            <image class="coupon-comic-img" src="{{ couponInfo.comicImg }}" />
+
+            <!-- 背景图 -->
+            <image class="coupon-bg-img" src="{{ images.couponBg }}" />
+
+            <!-- 代金券提示 -->
+            <view class="coupon-info">
+                <image class="info-tip" src="{{ couponInfo.icon }}" />
+
+                <view class="info-content">
+                    <!-- 代金券金额 -->
+                    <view class="info-num">
+                        <text>{{ couponInfo.infoNum }}</text>
+                    </view>
+
+                    <!-- 漫画名称 -->
+                    <text class="info-name">{{ couponInfo.topicName }}</text>
+                </view>
+
+                <view class="info-word">{{ couponInfo.desc }}</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 运营位banner/多充多送 -->
+    <kk-kkb-banner
+        bottomTxt="{{ bottomTxt }}"
+        couponInfo="{{ couponInfo }}"
+        activity="{{ accumActivity }}"
+        bind:refreshKkbPage="refreshKkbPage">
+    </kk-kkb-banner>
+
+    <!-- 充值选项 -->
+    <view class="kk-recharge-option">
+        <!-- 充值模块标题 -->
+        <view class="recharge-title">
+            <view class="name">充值金额</view>
+            <view class="subtitle" wx:if="{{ wordsInfo && wordsInfo.wallet_word }}">
+                <text>{{ wordsInfo.wallet_word }}</text>
+            </view>
+        </view>
+
+        <!-- 一元购区域 -->
+        <view class="unitary-buy {{ unitaryDefalt ? 'unitary-active' : '' }}" wx:if="{{ showUnitary }}" catchtap="choiceUnitaryTap">
+            <image class="img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/banner-kkb_3a62a01.png"></image>
+            <view>
+                <view class="title">1元萌新充值包</view>
+                <view class="desc">加送50%</view>
+            </view>
+        </view>
+
+        <!-- 充值选项列表 -->
+        <view class="recharge-list">
+            <view 
+                wx:for="{{ rechargeList }}"
+                wx:for-item="item"
+                wx:key="id"
+                data-index="{{ index }}"
+                data-id="{{ item.id }}"
+                data-title="{{ item.title }}"
+                data-des="商品列表"
+                catchtap="choiceGoodTap"
+                class="list-items-wrap {{ (index+1)%3 == 0 ? 'no-right' : '' }} {{ item.words_info && item.words_info.explain_text ? 'shot-activity' : '' }}">
+                <view class="items {{ item.id == activeItem.id ? 'items-active' : '' }}">
+                    <!-- 要充值的kkb -->
+                    <view class="kkb">
+                        <image 
+                            wx:if="{{ !item.kb_image_url }}"
+                            class="kkb-icon" 
+                            src="{{ images.kkb }}"
+                        /> 
+                        <kk-cover
+                            wx:else
+                            class="kkb-icon" 
+                            src="{{ item.kb_image_url }}"
+                            height="{{ 36 }}"
+                            width="{{ 36 }}"
+                        />
+                        <text>{{ item.recharge_value }}</text>
+                    </view>
+
+                    <!-- 人民币 -->
+                    <view class="rmb">￥{{ item.realPrice }}</view>
+
+                    <!-- 小标题 -->
+                    <view 
+                        class="items-label"
+                        wx:if="{{ item.image_info && item.image_info.icon_image  }}"
+                        style="background-image: url({{ item.image_info.icon_image }})"
+                    >
+                    </view>
+
+                    <!-- 赠送的KK币 -->
+                    <view class="items-free-kkb" wx:if="{{ item.words_info && item.words_info.explain_text  }}">
+                        <text>{{ item.words_info.explain_text }}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 说明文案 -->
+    <view class="kk-explain-text" wx:if="{{ rechargeDesc }}">
+        <text decode="{{ true }}">{{ rechargeDesc }}</text>
+    </view>
+
+    <!-- 倒计时banner -->
+    <kk-countdown-banner wx:if="{{ chargeQualificationActivity }}" activityData="{{ chargeQualificationActivity }}"></kk-countdown-banner>
+
+    <!-- 购买按钮 -->
+    <view class="kk-buy-btn {{ iPhoneX ? 'kk-buy-btn-x' : '' }}" wx:if="{{ rechargeList && rechargeList.length > 0 }}">
+        <button 
+            wx:if="{{ !isiOS }}"
+            class="btn" 
+            hover-class="none"
+            catchtap="buyBtnTap">
+            立即支付
+        </button>
+        <button 
+            wx:if="{{ isiOS }}"
+            class="btn-ios" 
+            hover-class="none"
+            loading="{{ !isBuyBtnTap }}">
+            iOS功能暂不可用
+        </button>
+    </view>
+    <!-- 购买按钮 -->
+
+    <!-- 支付成功弹窗 -->
+    <view wx:if="{{ isShowPopup }}">
+        <!-- 新版实验，支付成功弹窗-->
+        <kk-dialog-success
+            wx:if="{{ isPayPopTest }}"
+            rechargeKkb="{{ rechargeKkb }}"
+            userAccount="{{ userAccount }}"
+            bind:onClose="closeBtnTap"
+            bind:onSuccClk="handleSucc">
+        </kk-dialog-success>
+        <block wx:else>
+            <template is="kk-buykkb-popup" data="{{ rechargeKkb, rechargeResult, userAccount, topicList, images, shotCouponText, awardList }}"/>
+        </block>
+    </view>
+
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>
+
+<!-- 购买kkb成功弹窗模板 -->
+<template name="kk-buykkb-popup" >
+    <!-- 弹窗外层盒子 -->
+    <view class="kk-buykkb-popup" catchtouchmove catchtap="closeBtnTap">
+        <!-- 内容部分 -->
+        <view class="popup-content">
+            <!-- 背景图 -->
+            <view class="popup-content-bg">
+                <image class="kkb-icon" src="{{ images.popup }}"/>
+            </view>
+            
+            <!-- 内容展示区域 -->
+            <view class="content" catchtap>
+                <!-- 弹窗头部信息 -->
+                <view class="top">
+                    <!-- 标题 -->
+                    <view class="title">充值成功</view>
+
+                    <!-- 代金券发放展示 -->
+                    <view class="coupon-text" wx:if="{{ shotCouponText }}">
+                        代金券已放入“我的钱包”
+                    </view>
+
+                    <!-- 充值金额展示 本次充值xx，获赠xx，当前余额xxx -->
+                    <view class="bug-text {{ shotCouponText ? 'has-coupon' : '' }}">
+                        本次充值{{rechargeKkb.recharge_value}}，{{
+                            rechargeKkb.present_red_kkb ? '获赠'+rechargeKkb.present_red_kkb+'，' : ''
+                        }}当前余额{{ userAccount }}
+                    </view>
+                </view>
+
+                <!-- 赠送联合会员内容 -->
+                <view wx:if="{{ awardList }}" class="unite-vip">
+                    <view class="unite-text">
+                        <block wx:for="{{ awardList.description }}" wx:key="index">
+                            <text wx:if="{{ index%2 == 0 }}">{{ item }}</text>
+                            <text wx:else style="color: #FF751A;">{{ item }}</text>
+                        </block>
+                    </view>
+                    <view class="unite-button" data-traget="{{ awardList.action_target }}" bindtap="actionUnite">{{ awardList.button_text }}</view>
+                </view>
+
+                <!-- 专题列表 -->
+                <view wx:else class="topic-list">
+                    <!-- item -->
+                    <view 
+                        class="list-item" 
+                        wx:for="{{ topicList }}" 
+                        wx:key="uuid" 
+                        wx:for-item="item"
+                        data-title="{{item.topicTitle}}"
+                        data-id="{{item.topicId}}"
+                        bindtap="topicItemTap">
+                        <!-- 封面 -->
+                        <kk-cover
+                            class="cover"
+                            src="{{item.topicCoverImageUrl}}"
+                            height="{{ 224 }}"
+                            width="{{ 168 }}"
+                        />
+
+                        <!-- 底部描述 -->
+                        <view class="des title">{{ item.topicTitle }}</view>
+                        <view class="des tag">{{ item.recommendReason }}</view>
+                    
+                    </view>
+                </view>
+
+                <!-- 关闭按钮 -->
+                <view class="close">
+                    <view class="btn" catchtap="closeBtnTap">
+                        <image src="{{ images.close }}"/>
+                    </view>
+                </view>
+            </view>
+            <!-- 内容展示区域 -->
+        </view>
+    </view>
+</template>
+
+
+<mp-dialog
+    show="{{ isShowMpDialog }}"
+    content="订单状态获取失败"
+    buttons="{{ [{ text: '取消' },{ text: '重试' }] }}"
+    bindbuttontap="tapDialogButton">
+</mp-dialog>

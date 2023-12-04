@@ -1,0 +1,10 @@
+
+<view wx:if="{{ isShow }}" class="kk-newuser-recharge" catchtouchmove>
+    <view class="contain">
+        <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/newuser_recharge/background_8b0ee05.png"></image>
+        <view bindtap="clickBtn" class="hot-area"></view>
+        <view bindtap="clickClose" class="close">
+            <image style="width: 100%; height: 100%" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/newuser_recharge/close_f45debc.png"></image>
+        </view>
+    </view>
+</view>

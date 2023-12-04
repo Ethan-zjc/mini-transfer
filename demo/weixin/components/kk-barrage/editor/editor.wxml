@@ -1,0 +1,34 @@
+<view
+    class="editor {{focus && keybordHeight > 0 ? 'editing' : ''}}"
+    style="{{focusInputStyle}}"
+>
+    <view
+        class="status-btn"
+        hidden="{{status < 0 || fullScreen || editing}}"
+        catchtap="switchStatus"
+    >
+        <image
+            src="{{status === 1 ? 'https://f2.kkmh.com/game/200322/QZXfmdU5f.png' : 'https://f2.kkmh.com/game/200322/douI09fwO.png'}}"
+        />
+        <text>弹幕</text>
+    </view>
+    <input
+        value="{{inputValue}}"
+        placeholder="弹幕撩一下～"
+        placeholder-class="placeholder"
+        confirm-type="send"
+        hold-keyboard="{{true}}"
+        confirm-hold="{{true}}"
+        adjust-position="{{false}}"
+        disabled="{{ !isLogined || disable || danmuHidden || unusable }}"
+        focus="{{focus}}"
+        bindinput="onInput"
+        bindconfirm="onSend"
+        bindtap="onTap"
+        bindkeyboardheightchange="onKeyboardHeightChange"
+    />
+    <view
+        class="send"
+        bindtap="onSend"
+    >发射</view>
+</view>

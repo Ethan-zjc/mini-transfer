@@ -1,0 +1,273 @@
+.kk-kkb-banner {
+  width: 100%;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 24rpx 0 0;
+}
+
+.kk-kkb-banner .operate-banner {
+  width: 686rpx;
+  margin: auto;
+  height: 180rpx;
+}
+
+.kk-kkb-banner .operate-banner .banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-kkb-banner .more-recharge {
+  width: 686rpx;
+  background: linear-gradient(178.76deg, #FF8B3F 1.08%, #FFDB95 98.97%);
+  border-radius: 16rpx;
+  margin: 0 auto;
+  padding: 24rpx 0 20rpx;
+}
+
+.kk-kkb-banner .more-recharge .top {
+  height: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  margin-bottom: 12rpx;
+  box-sizing: border-box;
+}
+
+.kk-kkb-banner .more-recharge .top .left {
+  height: 100%;
+  width: 192rpx;
+}
+
+.kk-kkb-banner .more-recharge .top .more {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.kk-kkb-banner .more-recharge .top .more .total {
+  font-size: 24rpx;
+  color: #fff;
+  vertical-align: middle;
+  margin-top: -2rpx;
+  line-height: 1;
+}
+
+.kk-kkb-banner .more-recharge .top .more .total .money {
+  color: #FDE23D;
+}
+
+.kk-kkb-banner .more-recharge .top .more .img {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 6rpx;
+}
+
+.kk-kkb-banner .more-recharge .contain {
+  width: 100%;
+  height: 113px;
+  overflow: hidden;
+}
+
+.kk-kkb-banner .more-recharge .bottom {
+  width: 606rpx;
+  margin: auto;
+  line-height: 28rpx;
+  font-size: 24rpx;
+  color: #FF771B;
+  margin-top: 20rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+  font-weight: 500;
+}
+
+.kk-kkb-banner .scroll {
+  width: 100%;
+  height: 260rpx;
+  white-space: nowrap;
+  position: relative;
+}
+
+.kk-kkb-banner .scroll .award-item {
+  background: #FFFBF3;
+  margin: 0 4px;
+  width: 124px;
+  height: 88px;
+  display: inline-block;
+  position: relative;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+.kk-kkb-banner .scroll .award-item:first-child {
+  margin-left: 24rpx;
+}
+
+.kk-kkb-banner .scroll .award-item.last-item {
+  margin-right: 24rpx;
+}
+
+.kk-kkb-banner .scroll .award-item .mark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 0 12rpx 0 12rpx;
+  background: linear-gradient(133.81deg, #FFC13B -2.94%, #FF2E58 11.91%, #FF0E67 80.88%, #FF00CE 99.23%);
+  font-weight: 500;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  padding: 0rpx 8rpx;
+  box-sizing: border-box;
+}
+
+.kk-kkb-banner .scroll .award-item .mark.already {
+  background: #FFECDF;
+  color: #FF771B;
+}
+
+.kk-kkb-banner .scroll .award-item .sign {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 32rpx;
+  max-width: 120rpx;
+  overflow: hidden;
+  border-top-right-radius: 12rpx;
+}
+
+.kk-kkb-banner .scroll .award-item .cover-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  background: rgba(255, 251, 243, 0.5);
+  border-radius: 12rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.kk-kkb-banner .scroll .award-item .cover-bg .btn {
+  position: absolute;
+  bottom: 44rpx;
+  width: 128rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  background: #F7F8F9;
+  border-radius: 28rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  background: linear-gradient(260.77deg, #FF8B02 6.67%, #FF771B 98.25%);
+  box-shadow: 0px 8rpx 8rpx #FFCC84;
+}
+
+.kk-kkb-banner .scroll .award-infos {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 0 0rpx;
+  box-sizing: border-box;
+}
+
+.kk-kkb-banner .scroll .award-infos .icons {
+  position: relative;
+  width: 96px;
+  height: 48px;
+  margin-bottom: 4px;
+}
+
+.kk-kkb-banner .scroll .award-infos .picture {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.kk-kkb-banner .scroll .award-infos .img-search {
+  position: absolute;
+  left: 0rpx;
+  z-index: 2;
+  bottom: -4rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.kk-kkb-banner .scroll .award-infos .infos {
+  width: 90%;
+  text-align: center;
+  overflow: hidden;
+  font-size: 20rpx;
+  font-weight: 500;
+  color: #FF771B;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-kkb-banner .scroll .progs {
+  line-height: 1;
+  height: 36rpx;
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+
+.kk-kkb-banner .scroll .progress-item {
+  width: 132px;
+  height: 12rpx;
+  background: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+.kk-kkb-banner .scroll .progress-item:first-child {
+  margin-left: 24rpx;
+  width: 62px;
+  border-radius: 30rpx 0 0 30rpx;
+}
+
+.kk-kkb-banner .scroll .progress-item .strip {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-kkb-banner .scroll .progress-item .dot {
+  position: absolute;
+  height: 36rpx;
+  padding: 0 14rpx;
+  border-radius: 36rpx;
+  background: #FF771B;
+  right: 0;
+  transform: translateX(50%);
+  bottom: -12rpx;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kk-kkb-banner .scroll .progress-item .dot.color {
+  background: #fff;
+}
+
+.kk-kkb-banner .scroll .progress-item .dot.color .txt {
+  color: #FF771B;
+}
+
+.kk-kkb-banner .scroll .progress-item .dot .txt {
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 1;
+  font-weight: 500;
+  display: inline-block;
+}

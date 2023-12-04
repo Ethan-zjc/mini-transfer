@@ -1,0 +1,133 @@
+.kk-green-hands-list {
+    padding: 0 24rpx;
+    margin-bottom: 24rpx;
+    .topics-info {
+        overflow: hidden;
+        border-radius: 16rpx;
+        padding-bottom: 44rpx;
+        position: relative;
+    }
+    .topics-mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+    }
+    .topics-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        &-color {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: #e27660;
+            opacity: 0.92;
+        }
+        &-img {
+            position: relative;
+            z-index: 1;
+        }
+    }
+    .topics-top {
+        position: relative;
+        z-index: 5;
+        height: 50rpx;
+        padding: 32rpx 24rpx;
+        display: flex;
+        align-items: center;
+        &-title {
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 36rpx;
+            line-height: 50rpx;
+            color: #ffffff;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            image {
+                width: 30rpx;
+                height: 30rpx;
+                margin-right: 16rpx;
+            }
+        }
+        &-time {
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26rpx;
+            line-height: 26rpx;
+            text-align: right;
+            color: #ffffff;
+            margin-right: 20rpx;
+        }
+        &-more {
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26rpx;
+            line-height: 26rpx;
+            text-align: right;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            image {
+                width: 22rpx;
+                height: 22rpx;
+            }
+        }
+    }
+    .topics-list {
+        position: relative;
+        z-index: 5;
+        overflow: hidden;
+        height: 270rpx;
+    }
+    .topics-scroll {
+        // overflow-x: auto;
+        display: flex;
+        white-space: nowrap;
+        padding: 0 24rpx 44rpx;
+    }
+    .topics-item {
+        width: 168rpx;
+        margin-right: 16rpx;
+        &-pic {
+            width: 168rpx;
+            height: 222rpx;
+            border-radius: 12rpx;
+            overflow: hidden;
+        }
+        &-title {
+            margin-top: 12rpx;
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 30rpx;
+            line-height: 36rpx;
+            height: 36rpx;
+            color: #ffffff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    .topics-after {
+        width: 8rpx;
+        &-pic {
+            width: 8rpx;
+            height: 222rpx;
+            overflow: hidden;
+        }
+    }
+}

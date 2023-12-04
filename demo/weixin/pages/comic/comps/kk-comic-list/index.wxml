@@ -1,0 +1,8 @@
+<!-- 漫画图片list -->
+<view class="pic-contain {{ showUnfoldAll ? 'fold' : 'unfold' }}" style="height: {{ !!unfoldHeight ? unfoldHeight : '100%' }}">
+    <view class="picture-wrap" wx:for="{{ imgList }}" wx:key="key" style="height: {{ item.height }}">
+        <image lazy-load class="picture" id="{{ item.id }}" src="{{ item.src }}" bindload="loadSuccess" binderror="loadError" data-index="{{ index }}" data-src="{{ item.src }}" style="opacity: {{ item.loaded ? 1 : 0 }}"></image>
+        <image class="holder" id="{{ item.id }}" src="/images/placeholder.png" hidden="{{ item.loaded || item.numHeight < 160 }}"></image>
+    </view>
+    <view wx:if="{{ showUnfoldAll }}" class="unfold-shadow"></view>
+</view>

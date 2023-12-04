@@ -1,0 +1,8 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-login": "/components/kk-login/kk-login",
+        "kk-navigation-bar": "/components/kk-navigation-bar/kk-navigation-bar"
+    }
+}

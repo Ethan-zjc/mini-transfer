@@ -1,0 +1,169 @@
+.toys-header {
+  width: 100%;
+  height: 881rpx;
+  position: relative;
+}
+
+.toys-header .package-btn {
+  width: 70rpx;
+  height: 184rpx;
+  position: absolute;
+  top: 334rpx;
+  right: 14rpx;
+}
+
+.toys-body {
+  width: 100%;
+  background: #affaff;
+}
+
+.toys-body .list-box {
+  box-sizing: border-box;
+  position: relative;
+  margin-top: -39rpx;
+  padding-top: 166rpx;
+  display: flex;
+  background: url(https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/mainBgImage_1177dbf.png) no-repeat;
+  background-size: 100% 100%;
+  width: 750rpx;
+  height: 2036rpx;
+}
+
+.toys-body .list-box .operate-btn {
+  display: block;
+  width: 226rpx;
+  height: 84rpx;
+  margin-bottom: 20rpx;
+}
+
+.toys-body .list-box .comic-list {
+  flex: 1;
+}
+
+.toys-body .list-box .comic-list .operate-btn {
+  margin-left: 94rpx;
+}
+
+.toys-body .list-box .comic-list .comic-item {
+  margin-bottom: 39rpx;
+  margin-left: 53rpx;
+}
+
+.toys-body .list-box .product-list {
+  flex: 1;
+}
+
+.toys-body .list-box .product-list .operate-btn {
+  margin-left: 52rpx;
+}
+
+.toys-body .list-box .product-list .product-item {
+  margin-bottom: 39rpx;
+  margin-left: 15rpx;
+}
+
+.toys .dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2;
+}
+
+.toys .code-dialog {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toys .code-dialog .dialog-body {
+  box-sizing: border-box;
+  padding-top: 320rpx;
+  width: 750rpx;
+  height: 580rpx;
+  background: url(https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/codeDialogBg_780646f.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.toys .code-dialog .dialog-body .code-content {
+  font-size: 37rpx;
+  font-weight: bold;
+  color: #8366D9;
+  text-align: center;
+}
+
+.toys .code-dialog .dialog-body .copy-btn {
+  width: 240rpx;
+  height: 81rpx;
+  display: block;
+  margin: 85rpx auto auto;
+}
+
+.toys .code-dialog .close-btn {
+  margin: 32rpx auto auto;
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.toys .package-dialog {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toys .package-dialog .dialog-body {
+  box-sizing: border-box;
+  padding-top: 439rpx;
+  width: 750rpx;
+  height: 780rpx;
+  background: url(https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/packageDialogBg_9d08534.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.toys .package-dialog .dialog-body .operate-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.toys .package-dialog .dialog-body .operate-btns .view-code-btn {
+  width: 151rpx;
+  height: 61rpx;
+  display: block;
+}
+
+.toys .package-dialog .dialog-body .operate-btns .to-coin-btn {
+  margin-left: 69rpx;
+  width: 150rpx;
+  height: 60rpx;
+  display: block;
+}
+
+.toys .package-dialog .dialog-body .block-title {
+  margin-top: 49rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 800;
+  color: #674EB3;
+  margin-bottom: 6rpx;
+}
+
+.toys .package-dialog .dialog-body .code-desc {
+  margin: 0 auto;
+  width: 556rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #674EB3;
+  line-height: 32rpx;
+}
+
+.toys .package-dialog .close-btn {
+  margin: 32rpx auto auto;
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}

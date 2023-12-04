@@ -1,0 +1,187 @@
+// 需要的kkb和折扣
+.pay-info-title {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    .icon-img {
+        width: 36rpx;
+        height: 36rpx;
+        overflow: hidden;
+        image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .icon-warp {
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+        width: 36rpx;
+        height: 36rpx;
+        background: linear-gradient(180deg, #ffef8b 0%, #ffde8b 100%);
+        box-shadow: 0px 0px 1px 0px #ffc58a;
+        border-radius: 50%;
+    }
+    .icon-warp .icon {
+        width: 26rpx;
+        height: 26rpx;
+        background: linear-gradient(180deg, #ff9900 0%, #ffbb03 42%, #ffc505 100%);
+        border-radius: 50%;
+        font-size: 14rpx;
+        color: #fff3ba;
+        text-align: center;
+        line-height: 30rpx;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 900;
+    }
+    .kkb {
+        padding: 0 16rpx 0 8rpx;
+        height: 40rpx;
+        font-size: 40rpx;
+        font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+        font-weight: 500;
+        color: #ff751a;
+        line-height: 40rpx;
+    }
+    .discount-icon {
+        position: relative;
+        width: 64rpx;
+        height: 28rpx;
+        image {
+            width: 64rpx;
+            height: 28rpx;
+        }
+        .icon-text {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20rpx;
+            font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            line-height: 28rpx;
+        }
+    }
+    .vip-icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        .icon {
+            width: 50rpx;
+            height: 28rpx;
+        }
+        .mark {
+            height: 28rpx;
+            line-height: 28rpx;
+            background-color: #ca00d5;
+            color: #fff;
+            padding: 0 6rpx;
+            font-size: 20rpx;
+            font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+        }
+        .text {
+            padding: 0 4rpx;
+            max-width: 450rpx;
+            height: 24rpx;
+            background: rgba(207, 0, 214, 0.08);
+            border-radius: 0px 4rpx 4rpx 0rpx;
+            border: 2rpx solid #ca00d5;
+            font-size: 20rpx;
+            font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+            font-weight: 500;
+            color: #9a00d2;
+            line-height: 24rpx;
+            text-align: center;
+        }
+    }
+}
+
+// 折扣的价格
+.pay-info-subtitle {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    padding: 16rpx 0 0;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    .coupon {
+        width: 30rpx;
+        height: 30rpx;
+        background: rgba(255, 117, 26, 0.1);
+        border-radius: 4rpx;
+        font-size: 20rpx;
+        font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+        font-weight: 500;
+        color: #ff751a;
+        line-height: 30rpx;
+        text-align: center;
+    }
+    .line {
+        padding-left: 8rpx;
+        height: 28rpx;
+        font-size: 28rpx;
+        font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+        font-weight: 400;
+        color: #b2b4c4;
+        line-height: 28rpx;
+        margin-right: 8rpx;
+    }
+    .delete {
+        text-decoration: line-through;
+    }
+    .text {
+        padding-left: 8rpx;
+        height: 28rpx;
+        font-size: 28rpx;
+        font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+        font-weight: 400;
+        color: #b2b4c4;
+        line-height: 28rpx;
+        margin-right: 4rpx;
+    }
+    .more {
+        position: relative;
+        height: 32rpx;
+        height: 32rpx;
+        image {
+            width: 32rpx;
+            height: 32rpx;
+        }
+        .tips {
+            position: absolute;
+            top: 50%;
+            right: -100%;
+            margin-right: 68rpx;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 12rpx;
+            padding: 20rpx 24rpx;
+            box-sizing: content-box;
+            color: #fff;
+            &-text {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 300rpx;
+                font-size: 28rpx;
+                line-height: 36rpx;
+                height: 36rpx;
+            }
+        }
+    }
+}
+
+// vip样式
+.vip-kk-pay-info {
+    .pay-info-title {
+        .kkb {
+            color: #d223d7;
+        }
+    }
+}

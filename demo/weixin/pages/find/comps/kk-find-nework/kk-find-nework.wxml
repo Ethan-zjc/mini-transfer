@@ -1,0 +1,102 @@
+<view class="kk-find-nework" wx:if="{{ list.length }}">
+    <view class="title-box">
+        <text class="title">{{ title }}</text>
+        <text 
+            wx:if="{{ showmore }}"
+            data-title="{{ title ? title : '模块名称'}}"
+            data-id="{{ moduleId }}"
+            data-moduletype="{{ moduleType }}"
+            data-cardtype="{{ cardType }}"
+            class="more"
+            bindtap="clickMore"
+            >更多</text>
+        <kk-icon 
+            wx:if="{{ showmore }}"
+            data-title="{{ title ? title : '模块名称'}}"
+            data-id="{{ moduleId }}"
+            data-moduletype="{{ moduleType }}"
+            data-cardtype="{{ cardType }}"
+            src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/arrow-right_29d3caf.png" 
+            height="{{ 24 }}"
+            width="{{ 24 }}" 
+            bindtap="clickMore"/>
+    </view>
+    
+    <view class="scroll-box">
+        <scroll-view scroll-x="{{true}}">
+            <view class="topic-list">
+                <view wx:for="{{ list }}" wx:key="index" class="topic-box">
+                    <view class="topic {{ type === 1 ? 'type1' : type === 2 ? 'type2' : 'type3'}}">
+                        <view class="time-line">
+                            <view class="line" />
+                            <view class="time">{{ item.publish_time }}</view>
+                            <view class="line {{ index === list.length - 1 ? 'marginRight' : '' }}" />
+                        </view>
+                        <view class="topic-info">
+                            <view 
+                                data-listwrapindex="{{ listWrapIndex }}"
+                                data-index="{{ listIndex }}" 
+                                data-idx="{{ i }}" 
+                                data-type="{{ item.action_type.type }}" 
+                                data-id="{{ item.action_type.target_id }}"
+                                data-parentid="{{ item.action_type.parent_target_id }}"
+                                data-moduletype="{{ moduleType }}"
+                                data-childindex="{{ index }}"
+                                catchtap="subnavTap"
+                                class="cover">
+                                <kk-cover
+                                    class="cover"
+                                    prestrain="{{ true }}"
+                                    index="{{ index }}"
+                                    src="{{ item.image }}"
+                                    height="{{ type === 1 ? 370 : type === 2 ? 350 : 445 }}"
+                                    width="{{ type === 1 ? 280 : type === 2 ? 350 : 718 }}">
+                                </kk-cover>
+                                <view class="mask">
+                                    {{ item.right_bottom }}
+                                </view>
+                            </view>
+                            <view class="{{ type === 3 ? 'flex' : ''}}">
+                                <view style="{{ type === 3 ? 'flex: 1; width: 240px' : ''}}">
+                                    <view class="title">{{ item.title }}</view>
+                                    <view class="desc {{ type === 3 ? 'line1' : 'line2' }}">{{ item.sub_title }}</view>
+                                </view>
+                                <view
+                                    data-id="{{ item.id }}"
+                                    data-listwrapindex="{{ listWrapIndex }}"
+                                    data-index="{{ listIndex }}" 
+                                    data-idx="{{ i }}" 
+                                    data-type="{{ item.action_type.type }}" 
+                                    data-moduletype="{{ moduleType }}"
+                                    data-childindex="{{ index }}"
+                                    class="button {{ item.favourite ? 'followed' : 'unfollowed'}} {{ type !== 1 ? 'center' : '' }}" 
+                                    catchtap="clickFollowed">{{ item.favourite ? "已关注" : "关注" }}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="more-box" wx:if="{{ showmore }}">
+                    <view 
+                        data-title="{{ title ? title : '模块名称'}}"
+                        data-id="{{ moduleId }}"
+                        data-moduletype="{{ moduleType }}"
+                        data-cardtype="{{ cardType }}"
+                        class="more"
+                        bindtap="clickMore">
+                        查看更多
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+
+<kk-dialog
+    title="{{ dialogMsg.title }}"
+    content="{{ dialogMsg.content }}"
+    show="{{ dialogMsg.show }}"
+    buttons="{{ dialogMsg.buttons }}"
+    bindbuttontap="handleDialogClick"
+/>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

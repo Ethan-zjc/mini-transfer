@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-welfare-animation": "/components/kk-welfare-animation/index"
+    }
+}

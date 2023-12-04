@@ -1,0 +1,24 @@
+<view class="dialog-succ">
+    <view class="succ-wrap">
+        <view class="succ-title">拯救雪糕成功！</view>
+        <view class="succ-info">
+            <image class="succ-bg" mode="widthFix" src="{{ valentImgs['pop-bg-succ'] }}"/>
+            <view class="succ-award">
+                <view class="succ-award-icon" wx:if="{{ infoData.icon }}">
+                    <image mode="widthFix" src="{{ infoData.icon }}"/>
+                </view>
+                <view class="succ-award-title" wx:if="{{ infoData.title }}">{{ infoData.title }}</view>
+            </view>
+        </view>
+        <view class="succ-button">
+            <view class="succ-close" data-type="1" bindtap="dialogRecordClose">
+                <image mode="widthFix" src="{{ valentImgs['pop-btn-1'] }}"/>
+                <text>开心收下</text>
+            </view>
+            <view class="succ-close" data-type="2" bindtap="dialogRecordClose">
+                <image mode="widthFix" src="{{ valentImgs['pop-btn-2'] }}"/>
+                <text>继续参与</text>
+            </view>
+        </view>
+    </view>
+</view>

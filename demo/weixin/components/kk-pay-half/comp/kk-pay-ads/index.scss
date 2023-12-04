@@ -1,0 +1,44 @@
+.kk-button-ads {
+    .btn-pay {
+        width: 686rpx;
+        height: 88rpx;
+        font-size: 30rpx;
+        border-radius: 44rpx;
+        line-height: 88rpx;
+    }
+    .ios-not-btn {
+        color: #cfc6e9;
+        background: #f9f6ff;
+    }
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .ads-not-btn {
+            color: #cfc6e9;
+            background: #f9f6ff;
+        }
+        .ads-btn {
+            color: #fff;
+            background: #ff751a;
+        }
+        .adv-times {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 24rpx;
+        }
+        .adv-times::before {
+            content: '· ';
+        }
+        .adv-loading {
+            opacity: 0.6 !important;
+        }
+    }
+    .vip-content {
+        .ads-btn {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(209, 0, 214, 1) 0%, rgba(108, 1, 207, 1) 100%);
+        }
+    }
+}

@@ -1,0 +1,230 @@
+.guide-task {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10999;
+    position: fixed;
+    .guide-board {
+        margin: 8rpx auto 0;
+        max-width: 686rpx;
+        width: 686rpx;
+        height: 76rpx;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 16rpx;
+        overflow: hidden;
+        padding: 0 32rpx;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        .icons {
+            width: 40rpx;
+            height: 40rpx;
+        }
+        .txt {
+            color: #fff;
+            font-family: PingFangSC-Regular, PingFang SC;
+            flex: 1;
+            text-align: left;
+            padding-left: 8rpx;
+            font-size: 28rpx;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .close {
+            width: 40rpx;
+            height: 40rpx;
+            .img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .guide-detail {
+        position: absolute;
+        display: flex;
+        flex-wrap: nowrap;
+        right: 55rpx;
+        top: 34rpx;
+        color: #fff;
+        z-index: 9;
+        // transition: all 0.5s;
+        .bubble-info {
+            background: #ffffff;
+            border-radius: 12rpx;
+            width: 630rpx;
+            height: auto;
+            max-height: 680rpx;
+            padding: 32rpx;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .arrows {
+                position: absolute;
+                transform: rotate(45deg);
+                width: 40rpx;
+                height: 40rpx;
+                top: -18rpx;
+                background: #fff;
+                z-index: -1;
+                border-radius: 6rpx 0rpx 0rpx 0rpx;
+            }
+            .title {
+                font-size: 36rpx;
+                font-weight: 500;
+                color: #222222;
+                margin-bottom: 20rpx;
+            }
+            .desc {
+                font-size: 30rpx;
+                color: #222222;
+                display: block;
+            }
+            .step1 {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin-bottom: 16rpx;
+            }
+            .step2 {
+                margin-bottom: 32rpx;
+            }
+            .step3 {
+                .desc {
+                    margin-bottom: 8rpx;
+                }
+            }
+            .capsule {
+                width: 134rpx;
+                height: 72rpx;
+                margin-left: 24rpx;
+            }
+            .toolbar {
+                width: 490rpx;
+                height: 303rpx;
+                margin-left: 36rpx;
+                margin-top: 16rpx;
+            }
+            .desc-detail {
+                font-size: 26rpx;
+                color: #666666;
+                margin-left: 38rpx;
+                display: block;
+                &.color {
+                    color: #f5a623;
+                    margin-left: 38rpx;
+                }
+            }
+        }
+    }
+}
+
+.guide-task-award {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 4999;
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .guide-award {
+        width: 540rpx;
+        height: auto;
+        background: #ffffff;
+        border-radius: 20rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 56rpx 0 54rpx 0;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: all 0.15s;
+        &.trans {
+            opacity: 1;
+        }
+        &.hidden {
+            opacity: 0;
+        }
+        .close,
+        .head {
+            position: absolute;
+        }
+        .close {
+            right: 0;
+            top: -76rpx;
+            width: 56rpx;
+            height: 56rpx;
+            .img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .head {
+            left: 186rpx;
+            top: -84rpx;
+            width: 168rpx;
+            height: 168rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .success {
+                width: 100%;
+                height: 100%;
+            }
+            &-img {
+                width: 100rpx;
+                height: 100rpx;
+                border-radius: 50%;
+            }
+        }
+        .title {
+            position: relative;
+            margin-bottom: 28rpx;
+            .bg {
+                width: 400rpx;
+                height: 80rpx;
+            }
+            .txt {
+                position: absolute;
+                width: 100%;
+                height: 40rpx;
+                text-align: center;
+                top: 28rpx;
+                font-weight: 600;
+                color: #ff751a;
+                font-size: 40rpx;
+            }
+        }
+        .content {
+            display: flex;
+            height: 120rpx;
+            align-items: center;
+            margin-bottom: 42rpx;
+            .icon {
+                width: 120rpx;
+                height: 120rpx;
+            }
+            .kkb {
+                font-size: 36rpx;
+                font-weight: 500;
+                color: #333333;
+            }
+        }
+        .btn {
+            width: 380rpx;
+            height: 80rpx;
+            text-align: center;
+            line-height: 80rpx;
+            font-size: 32rpx;
+            color: #442509;
+            font-weight: 500;
+            background: #ffe23d;
+            border-radius: 40rpx;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "enablePullDownRefresh": false,
+    "navigationBarTitleText": "设置",
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-dialog": "/components/kk-dialog/kk-dialog",
+        "kk-icon": "/components/kk-icon/kk-icon"
+    }
+}

@@ -1,0 +1,286 @@
+//发现页 限免模块 单个数据
+.find-limitfree {
+    padding: 24rpx;
+    .placeholder {
+        width: 105rpx;
+        height: 53rpx;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 105px;
+        max-height: 53px;
+        z-index: 0;
+    }
+    .top-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #a8a1b6;
+        font-size: 24rpx;
+        margin-bottom: 24rpx;
+        .text {
+            font-size: 34rpx;
+            color: #333;
+            font-weight: bolder;
+        }
+    }
+    .main-contain {
+        display: flex;
+        //左侧图片部分
+        .left-img {
+            width: 224rpx;
+            height: 224rpx;
+            position: relative;
+            .image {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                z-index: 10;
+            }
+        }
+        //右侧描述部分
+        .right-descript {
+            position: relative;
+            padding-left: 20rpx;
+            padding-top: 4rpx;
+            flex: 1;
+            .free-title {
+                .free-type {
+                    display: flex;
+                    flex-direction: column;
+                    .label {
+                        display: inline-block;
+                        margin: 0 5rpx;
+                    }
+                    .top-big {
+                        line-height: 40rpx;
+                        font-size: 32rpx;
+                        color: #000;
+                        margin-bottom: 16rpx;
+                        width: 70%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    .bottom-small {
+                        line-height: 20rpx;
+                        font-size: 20rpx;
+                        color: #999;
+                    }
+                }
+                .free-btn {
+                    position: absolute;
+                    width: 136rpx;
+                    height: 48rpx;
+                    line-height: 48rpx;
+                    text-align: center;
+                    background: #ffe23d;
+                    color: #442509;
+                    font-size: 22rpx;
+                    top: 6rpx;
+                    right: 8rpx;
+                    border-radius: 100rpx;
+                }
+            }
+            //底部灰字描述部分
+            .bottom-grey {
+                width: 100%;
+                font-size: 24rpx;
+                line-height: 36rpx;
+                margin-top: 32rpx;
+                color: #999;
+                text-overflow: -o-ellipsis-lastline;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                .disable {
+                    pointer-events: none;
+                    color: #a8a1b6;
+                    background-color: #f9f6ff;
+                }
+            }
+        }
+    }
+}
+// 倒计时样式
+.countdown {
+    display: inline-block;
+}
+.countdown-number {
+    width: 32rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    text-align: center;
+    background: #f9f6ff;
+    border-radius: 4rpx;
+    font-size: 20rpx;
+    color: #5b29f4;
+}
+.countdown-space-first::before {
+    font-size: 20rpx;
+    color: #a8a1b6;
+    content: "天";
+    margin: 0 5rpx;
+    font-weight: normal;
+}
+.countdown-space-second::before {
+    font-size: 20rpx;
+    color: #a8a1b6;
+    content: "时";
+    margin: 0 5rpx;
+    font-weight: normal;
+}
+.countdown-space-third::before {
+    font-size: 20rpx;
+    color: #a8a1b6;
+    content: "分";
+    margin: 0 5rpx;
+    font-weight: normal;
+}
+
+//发现页限免模块 多个数据
+.find-limitfree-more {
+    padding: 15rpx 24rpx 24rpx;
+    .placeholder {
+        width: 105rpx;
+        height: 53rpx;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 105px;
+        max-height: 53px;
+        z-index: 0;
+    }
+    .top-title {
+        font-size: 34rpx;
+        color: #333;
+        text-align: center;
+        margin-bottom: 12rpx;
+        font-weight: 500;
+    }
+    .countdown-style {
+        color: #a8a1b6;
+        font-size: 24rpx;
+        margin-bottom: 32rpx;
+        text-align: center;
+    }
+    .free-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .free-item-first {
+            width: 100%;
+            display: flex;
+            border-radius: 4rpx;
+            overflow: hidden;
+            .left-img {
+                flex: 1;
+                height: 234rpx;
+                position: relative;
+                .image {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: 10;
+                }
+            }
+            .right-descript {
+                width: 234rpx;
+                height: 234rpx;
+                background-color: #1f273e;
+                .free-title {
+                    width: 100%;
+                    font-size: 30rpx;
+                    color: #fdfdfd;
+                    text-align: center;
+                    margin-top: 34rpx;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .free-type {
+                    color: #999;
+                    font-size: 24rpx;
+                    margin-top: 8rpx;
+                    margin-bottom: 30rpx;
+                    text-align: center;
+                    .label {
+                        display: inline-block;
+                        margin: 0 5rpx;
+                    }
+                }
+            }
+        }
+        .free-item {
+            width: 224rpx;
+            border-radius: 4rpx;
+            margin-top: 16rpx;
+            .top-img {
+                width: 224rpx;
+                height: 310rpx;
+                position: relative;
+                border-radius: 4rpx;
+                overflow: hidden;
+                .image {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: 10;
+                }
+                .free-type {
+                    font-size: 20rpx;
+                    color: #fff;
+                    position: absolute;
+                    right: 12rpx;
+                    bottom: 14rpx;
+                    z-index: 11;
+                    .label {
+                        display: inline-block;
+                        margin: 0 5rpx;
+                    }
+                }
+            }
+            .free-title {
+                width: 100%;
+                font-size: 30rpx;
+                color: #333;
+                text-align: center;
+                margin: 20rpx 0 14rpx;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+    .free-btn {
+        width: 136rpx;
+        height: 48rpx;
+        margin: 0 auto;
+        line-height: 48rpx;
+        text-align: center;
+        background: #ffe23d;
+        color: #442509;
+        font-size: 22rpx;
+        border-radius: 100rpx;
+        &.disable {
+            pointer-events: none;
+            color: #a8a1b6;
+            background-color: #f9f6ff;
+        }
+    }
+    .marginT40 {
+        margin-top: 40rpx;
+    }
+}

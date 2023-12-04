@@ -1,0 +1,71 @@
+<!-- 专题页付费(20220928) -->
+<view 
+    wx:if="{{ isShow }}"
+    class="t-special"
+    catchtouchmove>
+    <view class="intro {{ showTrans ? 'show' : 'hide' }}" catchtap="containTap">
+        <!-- 折扣存在展示head样式 -->
+        <image wx:if="{{ discount }}" class="top-img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/topic-gift_c4f3a1a.png"></image>
+        <view wx:if="{{ discount }}" class="top">
+            <view class="title">今日特惠</view>
+            <view class="subtitle" wx:if="{{ !!countDown }}">
+                <text class="txt">倒计时 </text>
+                <kk-countdown lastTime="{{ countDown }}"></kk-countdown>
+            </view>
+        </view>
+
+        <!-- 折扣不存在展示head样式 -->
+        <view wx:if="{{ !discount }}" class="head">
+            <view class="title">整本购买</view>
+            <view class="subtitle">一次过瘾全读完</view>
+        </view>
+        <view class="contain">
+            <view class="t-img" style="width: {{ isLogin ? '226' : '308' }}rpx; height: {{ isLogin ? '142' : '192' }}rpx;">
+                <kk-cover src="{{ topicInfo.cover_image_url }}" width="{{ isLogin ? 226 : 308 }}" height="{{ isLogin ? 142 : 192 }}"></kk-cover>
+                <view class="shadow" style="font-size: {{ isLogin ? '24' : '28' }}rpx"><text>{{ topicInfo.topic_title }}</text></view>
+            </view>
+            <view class="chapter">
+                <text>{{ prchaseData.batch_count }}话</text>
+                <view class="discount" wx:if="{{ prchaseData.total_discounts && prchaseData.total_discounts > 0 && prchaseData.total_discounts < 10 }}">{{ prchaseData.total_discounts }}折</view>
+            </view>
+
+            <view class="infos">
+                <!-- 支付金额、优惠信息 -->
+                <kk-pay-info
+                    isVip="{{ vipInfo.vip_type && vipInfo.vip_type > 0 }}"
+                    wallet="{{ wallet }}"
+                    price="{{ prchaseData.selling_kk_currency || 0 }}"
+                    priceInfo="{{ prchaseData }}"
+                    discountInfo="{{ discountInfo }}">
+                </kk-pay-info>
+            </view>
+        </view>
+
+        <!-- 登录且余额不足展示充值档位 -->
+        <view class="lists" wx:if="{{ !balance && isLogin }}">
+            <view class="item {{ item.id == activeItem.id ? 'items-active' : '' }} {{ item.image_info && item.image_info.icon_image ? 'hasMark' : 'noMark' }}" wx:for="{{ rechargeList }}" wx:key="id" data-index="{{ index }}" data-id="{{ item.id }}" catchtap="choiceGoodTap">
+                <view class="count">
+                    <view class="kkb-icon">
+                        <kk-cover src="{{ item.kb_image_url || images.kkb }}" height="{{ 32 }}" width="{{ 32 }}" /> 
+                    </view>
+                    <text>{{ item.recharge_value }}</text>
+                </view>
+                <view class="money">{{ item.realPrice }}</view>
+
+                <!-- 角标 -->
+                <view class="mark" wx:if="{{ item.image_info && item.image_info.icon_image }}" style="background-image: url({{ item.image_info.icon_image }})">
+                </view>
+            </view>
+        </view>
+        <view class="btn">
+            <button wx:if="{{ !isLogin }}"  class="get-btn" hover-class="none" catchtap="getOneKeyBuy">一键购买</button>
+            <block wx:else>
+                <button class="get-btn" hover-class="none" catchtap="surePay">{{ balance ? "确认购买" : "立即充值" }}</button>
+            </block>
+            <view wx:if="{{ isLogin }}" class="balance">余额：{{ wallet }}</view>
+        </view>
+        <view class="abandon" catchtap="abandon">
+            <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/topic-close_d071dcc.png"></image>
+        </view>
+    </view>
+</view>

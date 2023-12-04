@@ -1,0 +1,26 @@
+<view
+    class="menu {{animClass}}"
+    hidden="{{hidden}}"
+    bindtransitionend="onTransitionEnd"
+    style="left:{{left}}px; top:{{top}}px"
+>
+    <image
+        class="like"
+        data-interact-type="{{1}}"
+        catchtap="interact"
+        src="https://f2.kkmh.com/game/200322/NIc7nwNmi.png"
+    />
+    <image
+        wx:if="{{danmuData.editable}}"
+        class="delete"
+        catchtap="del"
+        src="https://f2.kkmh.com/game/200322/YLHpNKWrf.png"
+    />
+    <image
+        wx:else
+        class="disdain"
+        data-interact-type="{{2}}"
+        catchtap="interact"
+        src="https://f2.kkmh.com/game/200322/abhu2FBnO.png"
+    />
+</view>

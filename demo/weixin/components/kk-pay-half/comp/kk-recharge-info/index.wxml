@@ -1,0 +1,19 @@
+
+<!-- 充值档位，调收银台 -->
+<view class="kk-recharge-info {{ isVip ? 'vip-kk-recharge-info' : '' }}">
+    <view 
+        class="info-item {{ rechargeIndex == index ? 'item-active' : '' }}" 
+        wx:for="{{ rechargeInfo }}" 
+        wx:key="index"
+        data-index="{{ index }}"
+        bindtap="handleTap">
+        <view class="info-item-title {{ item.present_value ? '' : 'title-active' }}">
+            <view class="info-item-img">
+                <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/pay/kkb_b9c228a.png"></image>
+            </view>
+            <text>{{ item.recharge_value }}</text>
+        </view>
+        <view class="info-item-subtitle">￥{{ item.real_price_text }}</view>
+        <view class="info-item-bottom" wx:if="{{ item.present_value }}">加送{{ item.present_value }}KK币</view>
+    </view>
+</view>

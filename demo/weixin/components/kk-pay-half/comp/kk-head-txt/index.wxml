@@ -1,0 +1,15 @@
+<view>
+    <view class="title_{{ type }}">
+        <block wx:for="{{ headData.text1 }}" wx:key="index">
+            <text wx:if="{{ index%2 == 0 }}" class="txt">{{ item }}</text>
+            <text wx:else class="txt color">{{ item }}</text>
+        </block>
+    </view>
+    <view class="desc_{{ type }}">
+        <block wx:for="{{ headData.text2 }}" wx:key="index">
+            <text wx:if="{{ index%2 == 0 }}" class="txt">{{ item }}</text>
+            <text wx:else class="txt color">{{ item }}</text>
+        </block>
+    </view>
+</view>
+  

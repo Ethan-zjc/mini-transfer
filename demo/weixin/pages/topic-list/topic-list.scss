@@ -1,0 +1,167 @@
+@import "../../common/_color.scss";
+
+.container {
+    color: $color-brown;
+    background: #fff;
+}
+
+//会员整本限免部分样式 S
+.free-btn-box {
+    position: relative;
+    width: 136rpx;
+    min-width: 136rpx;
+    display: flex;
+    flex-direction: column;
+}
+.free-btn {
+    width: 136rpx;
+    min-width: 136rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    text-align: center;
+    background: #ffe23d;
+    color: #442509;
+    font-size: 22rpx;
+    border-radius: 100rpx;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    &.disable {
+        color: #a8a1b6;
+        background-color: #f9f6ff;
+    }
+}
+
+.topic {
+    padding: 48rpx 24rpx 16rpx;
+    &-item {
+        display: flex;
+        .pic {
+            width: 200rpx;
+            height: 265rpx;
+            border-radius: 12rpx;
+            overflow: hidden;
+        }
+        .info {
+            flex: 1;
+            min-width: 0;
+            padding-left: 24rpx;
+            position: relative;
+            &-top {
+                padding-top: 4rpx;
+                height: 48rpx;
+                display: flex;
+            }
+        }
+        .like {
+            height: 48rpx;
+            border-radius: 100rpx;
+            width: 96rpx;
+            color: #442509;
+            font-weight: 400;
+            border: 2rpx solid #e6e6e6;
+            box-sizing: border-box;
+            color: #333;
+        }
+        .liked {
+            background: #f7f9fa;
+            border: 2rpx solid #f7f9fa;
+            color: #ccc;
+        }
+        .like-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22rpx;
+            height: 100%;
+        }
+        .like-btn {
+            height: 48rpx;
+            border-radius: 100rpx;
+            width: 96rpx;
+            color: #442509;
+            font-weight: 400;
+            border: 2rpx solid #e6e6e6;
+            box-sizing: border-box;
+            color: #333;
+            button {
+                color: #333;
+                width: 100%;
+                background: none;
+            }
+        }
+        .title {
+            flex: 1;
+            min-width: 0;
+            height: 48rpx;
+            line-height: 48rpx;
+            font-size: 32rpx;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #333333;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: block;
+        }
+        .des {
+            height: 30rpx;
+            font-size: 24rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #999999;
+            line-height: 30rpx;
+            margin-top: 24rpx;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 10rpx;
+            text {
+                background: #f2f2f2;
+                border-radius: 22rpx;
+                font-size: 20rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #666666;
+                padding: 0 16rpx;
+                margin-right: 16rpx;
+                white-space: nowrap;
+                height: 40rpx;
+                line-height: 40rpx;
+                margin-top: 10rpx;
+            }
+        }
+        .fav {
+            height: 28rpx;
+            font-size: 22rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #999999;
+            line-height: 28rpx;
+            position: absolute;
+            bottom: 8rpx;
+            left: 24rpx;
+            text {
+                font-size: 28rpx;
+                color: #333;
+                font-weight: 500;
+                padding-right: 4rpx;
+            }
+        }
+        .putaway {
+            height: 28rpx;
+            font-size: 22rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #999999;
+            line-height: 28rpx;
+            position: absolute;
+            bottom: 8rpx;
+            left: 24rpx;
+        }
+    }
+}

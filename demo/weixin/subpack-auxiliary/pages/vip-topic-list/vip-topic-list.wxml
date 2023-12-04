@@ -1,0 +1,119 @@
+<!-- 会员特权专题列表 -->
+<view class="vip-topic-list">
+		<!-- 专题列表 -->
+		<view class="topic-list" wx:if="{{ list && list.length > 0 }}">
+				<!-- 专题列表循环 -->
+				<block wx:for="{{ list }}" wx:key="uuid">
+						<!-- 专题item -->
+						<view class="item" data-id="{{ item.id }}" catchtap="topicItemTap">
+								<!-- 左侧卡片 -->
+								<view class="left">
+										<kk-cover 
+												class="cover"
+												src="{{ item.img }}"
+												width="{{ 324 }}"
+												height="{{ 203 }}"
+												prestrain="{{ true }}"
+												index="{{ 1 }}"
+												data-des=""
+												data-prestrain=""
+												bind:onImageLoad="onImageLoad"
+										/>
+										<view class="icon" wx:if="{{ item.iconData.image_url }}">
+											<kk-icon 
+												wx:if="{{item.height <= 40 && item.height >= 120}}" 
+												class="icon" 
+												src="{{ item.iconData.image_url }}" 
+												height="{{ 32 }}"/>
+												<!-- {{item.width?'display: block;':''}} -->
+											<image 
+													wx:else
+													class="image {{ item.height <= 32 ? 'min-img':'' }} {{ item.height > 120 ?'max-img':'' }}"
+													style="width:{{item.width}}px; height:{{item.height}}px; {{item.width?'display: block;':''}}"  
+													data-index="{{index}}" 
+													src="{{ item.iconData.image_url }}" 
+													bindload="imgbindload"/>
+										</view>
+										<view class="bottom-text" wx:if="{{item.time || pageType == 5}}">
+												剩余{{ item.time }}天
+										</view>
+								</view>
+
+								<!-- 右侧内容描述 -->
+								<view class="right">
+										<!-- 标题&关注按钮 -->
+										<view class="top">
+												<!-- 标题 -->
+												<view class="title {{ follows[item.id] ? 'max-title' :'' }}" >
+													{{ item.title }}
+												</view>
+
+												<!-- 关注按钮 -->
+												<view 
+													class="btn" 
+													data-id="{{ item.id }}"
+													data-index="{{ index }}"
+													data-state="{{ item.fav }}"
+													hidden="{{ follows[item.id] }}"
+													catchtap="handleFav"
+												>
+														<image src="{{ cdnIconsImgs['btn-follow'] }}"/>
+													</view>
+										</view>
+
+										<!-- 标签列表 -->
+										<view class="tag-list">
+												<block wx:if="{{ pageType != 5 }}">
+														<view
+															wx:for="{{ item.category }}"
+															wx:for-index="i"
+															wx:for-item="str"
+															wx:key="i"
+															data-i="{{i < 3}}"
+														>
+															<view class='tag' wx:if='{{i < 3}}'>{{ str }}</view>
+														</view>
+												</block>
+												<view wx:else class="tag" > {{ item.data.recommended_text }} </view>
+										</view>
+
+										<!-- 点赞和关注数 -->
+										<view class="number-show">
+												<!-- 点赞数 -->
+												<view class="praise">
+														<!-- 点赞数图标 -->
+														<image class="iocn" src="{{ cdnIconsImgs['praise'] }}"/>
+														<view class="text">{{item.praise}}</view>
+												</view>
+
+												<!-- 评论 -->
+												<view class="comment">
+														<!-- 评论数图标 -->
+														<image class="iocn" src="{{ cdnIconsImgs['comment'] }}"/>
+														<view class="text">{{item.comment}}</view>
+												</view>
+												<!-- 评论 -->
+										</view>
+										<!-- 点赞和关注数 -->
+								</view>
+						</view>
+				</block>
+		</view>
+
+		<!-- 加载提示 -->
+		<kk-bottom
+				loading="{{ isLoad && list.length<=0 }}"
+				finish="{{ !isLoad && list.length>0 }}"
+		/>
+
+		<!-- 开通会员常驻按钮 -->
+		<view class="bugvip-btn" wx:if="{{ !isiOS && isVip!=null }}" catchtap="goVipTap">
+				{{ isVip ? '续费会员' : '开通会员' }}
+		</view>
+		<view class="btn-stick"  wx:if="{{ !isiOS && isVip!=null }}" data-des="站位"/>
+
+		<!-- 无数据 -->
+</view>
+
+<!-- toast 提示 -->
+<kk-toast toast="{{ toast }}"></kk-toast>

@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "收银台",
+    "backgroundColorTop": "#F7F9FA",
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "mp-dialog": "/components/kk-weui-dialog/dialog"
+    }
+}

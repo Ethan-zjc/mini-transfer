@@ -1,0 +1,76 @@
+.setting {
+  position: relative;
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+.setting-content {
+  padding-top: 16rpx;
+}
+
+.setting-list {
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  height: 112rpx;
+  background: #fff;
+}
+
+.setting-title {
+  overflow: hidden;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, 'PingFang SC';
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #303030;
+  flex: 1;
+}
+
+.setting-btn .icon-img {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.setting-bottom {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  width: 100%;
+}
+
+.setting-bottom .version-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 48rpx;
+  width: 100%;
+  height: 88rpx;
+}
+
+.setting-bottom .version-text text {
+  font-size: 28rpx;
+  color: #999;
+  line-height: 34rpx;
+}
+
+.setting-bottom .setting-login {
+  margin: 0 auto;
+  width: 686rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+}
+
+.setting-bottom .setting-login-btn {
+  width: 100%;
+  font-size: 32rpx;
+  font-family: 'PingFang SC';
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-radius: 40rpx;
+  text-align: center;
+  color: #222;
+  background: none;
+  line-height: 80rpx;
+}

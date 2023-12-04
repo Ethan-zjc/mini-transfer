@@ -1,0 +1,81 @@
+<!-- 
+1: 普通付费
+普通付费：android （全集、余额、充值、自动购买） ios（全集、余额）
+充值礼包：android（全集、支付多少kkb购买本话） ios（查看全集）
+定向限免：android（全集、支付多少kkb购买本话） ios（全集、余额）
+广告解锁：android （全集、余额、充值、自动购买） ios（全集、余额）
+阅读劵：android （全集、余额、充值） ios（全集、余额）
+
+2: 会员限免
+展示，android（全集、支付多少kkb购买本华） ios（查看全集）
+3: 会员提前看不引入
+不展示，android查看全集   ios展示弹窗
+4: 固定锁住不引入
+不展示，android查看全集   ios展示弹窗 -->
+
+<!-- 总结为三种类型 -->
+<!-- 1: 普通付费、广告解锁 -->
+<!-- 2: 充值礼包、会员限免、定向限免（ios有区分） -->
+<!-- 3: 会员提前看、固定锁住android 的查看全集，待定 -->
+<view class="kk-footer">
+    <!-- 1: 普通付费、广告解锁 -->
+    <view class="pay-dialog-bottom pay-wallet" wx:if="{{ type == 1 }}">
+        <view class="topic-btn {{ isvip ? 'topic-btn-vip' : '' }}" bindtap="topicBtnTap">全集</view>
+        <view class="text">KK币余额：{{ wallet }}</view>
+        <view 
+            wx:if="{{ isCanPay }}" 
+            class="invest"
+            bindtap="goInvest">
+            <view class="invest-text">充值</view><image src="{{ images.arrowRight }}"></image>
+        </view>
+        <view class="stance"></view>
+        <view class="auto-pay" wx:if="{{ !isReadCoupon }}" bindtap="switchAuto">
+            <image wx:if="{{ autoPay }}" src="{{ images.icoRadioTrue }}"/>
+            <image wx:if="{{ !autoPay }}" src="{{ images.icoRadioFalse }}"/>
+            <text>自动购买下一话</text>
+        </view>
+    </view>
+
+    <!-- 2: 充值礼包、会员限免、定向限免 -->
+    <view class="limit-bottom" wx:elif="{{ type == 2 }}">
+        <block wx:if="{{ !isCanPay }}">
+            <!-- 定向限免ios -->
+            <block wx:if="{{ isLimitFree }}">
+                <view class="topic-btn free" bindtap="topicBtnTap">全集</view>
+                <view class="balance">KK币余额：{{ wallet }}</view>
+            </block>
+
+            <!-- 充值礼包、会员限免 -->
+            <block wx:else>
+                <view class="content" bindtap="topicBtnTap">
+                    <view class="text">查看全集</view>
+                    <image class="arrow" src="{{ images.arrowOpen }}"></image>
+                </view>
+            </block>
+        </block>
+        <block wx:else>
+            <view class="topic-btn" bindtap="topicBtnTap">全集</view>
+            <view class="limit-kkb-btn">
+                <view class="limit-kkb-btn-box" bindtap="onPayClick">
+                    <text 
+                        data-btnname="支付{{ price }}KK币看本话"
+                        data-btntype="{{ (wallet > price || wallet == price) ? '购买按钮' : '充值按钮'}}">支付 {{ price }} KK币购买本话</text>
+                    <image class="arrow" src="{{ images.arrowOpen }}"></image>
+                </view>
+            </view>
+        </block>
+    </view>
+
+    <!-- 3: 会员提前看、固定锁住android 的查看全集，待定 -->
+    <view class="vip-right-wrap vip-right-wrap-ios{{ iPhoneX ? 'x' : ''}}" wx:elif="{{ type == 3 }}">
+        <view class="content" bindtap="topicBtnTap">
+            <view class="text">查看全集</view>
+            <image class="arrow" src="{{ images.arrowOpen }}"></image>
+        </view>
+    </view>
+
+    <!-- 其他情况扩展 -->
+    <view wx:else></view>
+
+    <view class="blank" wx:if="{{ iPhoneX }}" data-des="iPhoneX设备占位符"></view>
+</view>

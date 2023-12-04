@@ -1,0 +1,91 @@
+@import "../../../common/main.scss";
+.video {
+    &-wrap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+    &-box {
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+        position: relative;
+        z-index: 1;
+    }
+    &-play {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        image {
+            height: 96rpx;
+            width: 96rpx;
+        }
+    }
+    &-pic {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+
+        .img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &-loading {
+        position: absolute;
+        z-index: 11;
+        width: 216rpx;
+        height: 216rpx;
+        background: #000;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 16rpx;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .dot {
+            width: 60rpx;
+            height: 60rpx;
+        }
+    }
+    &-bottom {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 30;
+        width: 100%;
+    }
+    &-full {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 20;
+        height: 310rpx;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.501925) 100%);
+        transform: translateZ(0);
+    }
+    &-full-iphone {
+        height: 376rpx;
+    }
+}
+
+.blank {
+    position: relative;
+    z-index: 3;
+    height: 66rpx;
+    background: none;
+    width: 100%;
+}

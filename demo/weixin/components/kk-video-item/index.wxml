@@ -1,0 +1,31 @@
+<view class="kk-video-item" style="width: {{ width }}rpx;">
+    <view class="cover" style="height: {{ coverHeight }}rpx;">
+        <kk-cover
+            src="{{ videoInfo.cover_url }}"
+            height="{{ coverHeight }}"
+            width="{{ width }}"
+        />
+        <image class="play" mode="aspectFit" src="{{ videoImgs['play'] }}"></image>
+        <view wx:if="{{ videoInfo.labels.length }}" class="labels">
+            <text 
+                style="background: {{ item.background_color }}; color: {{ item.font_color }};"
+                wx:for="{{ videoInfo.labels }}"
+                wx:key="index">{{ item.text }}</text>
+        </view>
+    </view>
+    <view class="item-bottom-wrap">
+        <view class="text-wrap">
+            <view class="title ellipsis">
+                <text>{{ videoInfo.title }}</text>
+            </view>
+            <view class="desc ellipsis">
+                <text>{{ videoInfo.subtitle }}</text>
+            </view>
+        </view>
+        <view 
+            wx:if="{{ showFollowBtn }}" class="button {{ videoInfo.favourite ? 'disable' : ''}}"
+            catchtap="clickFollowButton">
+            {{ videoInfo.favourite ? '已关注' : '关注' }}
+        </view>
+    </view>
+</view>

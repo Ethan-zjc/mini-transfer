@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-button-base": "../kk-button-base/index",
+        "kk-icon": "/components/kk-icon/kk-icon"
+    }
+}

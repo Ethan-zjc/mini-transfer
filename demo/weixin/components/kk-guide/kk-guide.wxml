@@ -1,0 +1,78 @@
+<view class="guide-task" style="top:{{ rectTop }}px;{{ styleStr }}" wx:if="{{ showGuide }}" catchtouchmove bindtap="closeGuide">
+    <view class="guide-board" wx:if="{{ guideStatus == 1 }}" catchtap="openDetail">
+        <image class="icons" src="{{ taskImgs['task-guide-kkb'] }}"></image>
+        <view class="txt">{{ showGuideText }}</view>
+        <view class="close" catchtap="closeToast">
+            <image class="img" src="{{ taskImgs['task-guide-close'] }}"></image>  
+        </view>
+    </view>
+    <view class="guide-detail" wx:if="{{ guideStatus == 2 }}" catchtap="prevent">
+        <view class="bubble-info">
+            <view class="arrows" style="right: {{ arrowRight }}px;"></view>
+            <view class="title">收藏小程序</view>
+            <view class="step1">
+                <text class="desc">1. 点击右上角按钮</text>
+                <image class="capsule" src="{{ taskImgs['task-' + channel + '-capsule'] }}"></image>
+            </view>
+            <view class="step2">
+                <text class="desc">2. 选择添加至桌面</text>
+                <image class="toolbar" src="{{ taskImgs['task-' + channel + '-desktop'] }}"></image>
+            </view>
+            <view class="step3">
+                <view class="desc">3. 领取奖励</view>
+                <!-- <text class="desc-detail color">次日后</text> -->
+                <text class="desc-detail">通过桌面入口进入就可以领取奖励啦！</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="guide-task-award" wx:if="{{ showAward }}">
+    <!-- 领取奖励 -->
+    <view class="guide-award {{ showAward ? 'trans' : 'hidden' }}">
+        <!-- close -->
+        <view class="close" catchtap="closeAward">
+            <image class="img" src="{{ taskImgs['task-award-close'] }}"></image>
+        </view>
+
+        <!-- 头像/领取成功 -->
+        <view class="head">
+            <image wx:if="{{ !!userInfo }}" class="head-img" src="{{ userInfo.user.avatar_url }}"></image>
+            <image wx:else class="success" src="{{ taskImgs['task-award-success'] }}"></image>
+        </view>
+        
+        <!-- title -->
+        <view class="title">
+            <image class="bg" src="{{ taskImgs['task-title-bg'] }}"></image>
+            <view class="txt">成功添加至桌面</view>
+        </view>
+
+        <!-- 奖励内容 -->
+        <view class="content">
+            <image class="icon" src="{{ taskImgs['task-guide-kkb'] }}"></image>
+            <view class="kkb">{{ awardText }}</view>
+        </view>
+
+        <!-- 按钮 -->
+        <view wx:if="{{ userInfo }}" class="btn" catchtap="getAward">领取至当前账号</view>
+        <button wx:else class="btn" catchtap="originLogin">登录后领取</button>
+    </view>
+</view>
+
+<!-- 微信获取手机号授权dialog -->
+<mp-dialog
+    show="{{ dialog.show }}"
+    title="{{ dialog.title }}"
+    content="{{ dialog.content }}"
+    buttons="{{ dialog.button }}"
+    bindbuttontap="onDialogButtontapEvent"
+    bindgetphonenumber="onDiallogGetPhoneNumberEvent"
+    buttonGetPhoneNumber="{{true}}">
+    <!-- 内容区块：额外增加内容 slot -->
+    <view slot="bd-content" class="weui-dialog__content2">
+        <text class="content-two">{{dialog.contentTwo}}</text>
+        <text catchtap="onDialogTapEvent" class="content-three">{{dialog.contentThree}}</text>
+    </view>
+    <!-- 内容区块：额外增加内容 slot [END] -->
+</mp-dialog>
+

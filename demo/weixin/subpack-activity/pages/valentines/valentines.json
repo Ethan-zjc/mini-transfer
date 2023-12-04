@@ -1,0 +1,17 @@
+{
+    "backgroundColorTop": "#FFFFFF;",
+    "backgroundColorBottom": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "mp-dialog": "/components/kk-weui-dialog/dialog",
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-award": "./comps/kk-award/index",
+        "kk-task": "./comps/kk-task/index",
+        "kk-record-dialog": "./comps/kk-record-dialog/index",
+        "kk-error-dialog": "./comps/kk-error-dialog/index",
+        "kk-success-dialog": "./comps/kk-success-dialog/index"
+    }
+}

@@ -1,0 +1,113 @@
+.kk-feedback {
+  height: auto;
+}
+
+.kk-feedback .top-navigator {
+  position: fixed;
+  top: 0rpx;
+  left: 22rpx;
+  width: 66rpx;
+  height: 48rpx;
+  z-index: 9999;
+  padding: 9rpx 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.kk-feedback .top-header {
+  width: 100%;
+  height: 66rpx;
+}
+
+.kk-feedback .header-text .problem-title {
+  box-sizing: border-box;
+  height: 254rpx;
+  font-size: 48rpx;
+  font-family: PingFangSC-Semibold,PingFang SC;
+  font-weight: 600;
+  color: #333333;
+  line-height: 68rpx;
+  text-align: center;
+  padding: 102rpx 0 86rpx;
+}
+
+.kk-feedback .header-text .explain-title {
+  padding: 0 32rpx;
+  font-size: 48rpx;
+  font-family: PingFangSC-Semibold,PingFang SC;
+  font-weight: 600;
+  color: #333333;
+  padding: 0 32rpx;
+  line-height: 200rpx;
+}
+
+.kk-feedback .problem {
+  padding: 42rpx 64rpx;
+}
+
+.kk-feedback .problem .item {
+  box-sizing: border-box;
+  height: 112rpx;
+  width: 100%;
+  border-top: 2rpx solid #e7e8e9;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+
+.kk-feedback .problem .item .text {
+  font-size: 36rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+
+.kk-feedback .problem .item .station {
+  flex: 1;
+}
+
+.kk-feedback .problem .item .btn {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.kk-feedback .explain {
+  padding: 0 32rpx;
+  padding-top: 30rpx;
+}
+
+.kk-feedback .explain .item .text {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #303030;
+  line-height: 54rpx;
+  padding-bottom: 24rpx;
+}
+
+.kk-feedback .wx-feedback-wrap {
+  position: fixed;
+  left: 0;
+  bottom: 24rpx;
+  height: 88rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16rpx;
+  z-index: 2;
+}
+
+.kk-feedback .wx-feedback-wrap .button {
+  width: 100%;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  background: #fde23d;
+  border-radius: 100rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium,PingFang SC;
+  font-weight: 500;
+  color: #442509;
+}
+
+.kk-feedback .wx-feedback-wrap-x {
+  bottom: 68rpx;
+}

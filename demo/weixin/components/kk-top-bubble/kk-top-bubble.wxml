@@ -1,0 +1,16 @@
+<view class="bubble" wx:if="{{ showTopBubble }}" style="top:{{ top || rectTop }}px;">
+    <view class="bubble-info">
+        <view class="icon" style="right: {{ arrowRight }}px;">
+            <image mode="aspectFit" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/arrow-top_ef52ac3.png"></image>
+        </view>
+        <view class="bubble-paper">
+            <view class="content">
+                <view><rich-text class="title" nodes="{{ title }}"></rich-text></view>
+                <view><rich-text class="tip" wx:if="{{ tip }}" nodes="{{ tip }}"></rich-text></view>
+            </view>
+            <view class="bubble-close" wx:if="{{ showClose }}" bindtap="close">
+                <image mode="aspectFit" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/close-comic_2ee84a8.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

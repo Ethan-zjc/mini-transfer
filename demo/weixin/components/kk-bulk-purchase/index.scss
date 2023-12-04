@@ -1,0 +1,384 @@
+// 一键购买弹窗
+.kk-bulk-purchase {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 999;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    animation: fade-in ease-in-out 0.6s 1 alternate forwards;
+    .bulk-purchase-wrap {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: -100%;
+        z-index: 55;
+        transition: 0.4s ease;
+    }
+}
+
+.bulk-purchase-wrap {
+    min-height: 516rpx;
+    background: #ffffff;
+    border-radius: 24rpx 24rpx 0px 0px;
+    // 专题封面部分
+    .topic-warp {
+        position: relative;
+        margin: 0 auto;
+        width: 308rpx;
+        height: 116rpx;
+
+        .image-warp {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: -76rpx;
+            width: 308rpx;
+            height: 192rpx;
+            border-radius: 8rpx;
+            overflow: hidden;
+        }
+        .topic-warp {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 96rpx;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+            .title {
+                margin: 0 auto;
+                padding-top: 48rpx;
+                max-width: 292rpx;
+                height: 36rpx;
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 36rpx;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: center;
+            }
+        }
+    }
+    // 购买章节数量
+    .comic-num {
+        padding-top: 16rpx;
+        padding-bottom: 54rpx;
+        height: 28rpx;
+        font-size: 28rpx;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #333333;
+        line-height: 28rpx;
+        text-align: center;
+    }
+    // 需要的kkb和折扣
+    .pay-price-warp {
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+        .icon-warp {
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+            align-items: center;
+            width: 36rpx;
+            height: 36rpx;
+            background: linear-gradient(180deg, #ffef8b 0%, #ffde8b 100%);
+            box-shadow: 0px 0px 1px 0px #ffc58a;
+            border-radius: 50%;
+        }
+        .icon-warp .icon {
+            width: 26rpx;
+            height: 26rpx;
+            background: linear-gradient(180deg, #ff9900 0%, #ffbb03 42%, #ffc505 100%);
+            border-radius: 50%;
+            font-size: 14rpx;
+            color: #fff3ba;
+            text-align: center;
+            line-height: 30rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 900;
+        }
+        .kkb {
+            padding: 0 16rpx 0 8rpx;
+            height: 40rpx;
+            font-size: 40rpx;
+            font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+            font-weight: 500;
+            color: #ff751a;
+            line-height: 40rpx;
+        }
+        .discount-icon,
+        .discount-icon .icon {
+            position: relative;
+            width: 64rpx;
+            height: 28rpx;
+            .icon-text {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                font-size: 20rpx;
+                font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+                font-weight: 500;
+                color: #fff;
+                text-align: center;
+                line-height: 28rpx;
+            }
+        }
+        .vip-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            .icon {
+                width: 50rpx;
+                height: 28rpx;
+            }
+            .text {
+                padding: 0 4rpx;
+                max-width: 450rpx;
+                height: 24rpx;
+                background: rgba(207, 0, 214, 0.08);
+                border-radius: 0px 4rpx 4rpx 0rpx;
+                border: 2rpx solid #ca00d5;
+                font-size: 20rpx;
+                font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+                font-weight: 500;
+                color: #9a00d2;
+                line-height: 24rpx;
+                text-align: center;
+            }
+        }
+    }
+    // 折扣的价格
+    .concessional-rate {
+        display: flex;
+        padding: 16rpx 0 28rpx 0;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        .coupon {
+            width: 30rpx;
+            height: 30rpx;
+            background: rgba(255, 117, 26, 0.1);
+            border-radius: 4rpx;
+            font-size: 20rpx;
+            font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+            font-weight: 500;
+            color: #ff751a;
+            line-height: 30rpx;
+            text-align: center;
+        }
+        .text {
+            padding-left: 8rpx;
+            height: 28rpx;
+            font-size: 28rpx;
+            font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+            font-weight: 400;
+            color: #b2b4c4;
+            line-height: 28rpx;
+            text-decoration: line-through;
+        }
+    }
+    // 购买漫画(跳转充值)按钮
+    .buy-btn {
+        margin: 0 auto 26rpx auto;
+        width: 530rpx;
+        height: 80rpx;
+        border-radius: 40rpx;
+        background: #fde53f;
+        font-size: 28rpx;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #442509;
+        line-height: 80rpx;
+        text-align: center;
+        position: relative;
+    }
+    // 底部余额+充值按钮
+    .footer-warp {
+        display: flex;
+        align-items: center;
+        .balance {
+            padding: 28rpx 12rpx 28rpx 32rpx;
+            height: 24rpx;
+            font-size: 24rpx;
+            font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+            font-weight: 400;
+            color: #999999;
+            line-height: 24rpx;
+        }
+        .recharge {
+            padding: 28rpx 20rpx 28rpx 0;
+            display: flex;
+            align-items: center;
+            .text {
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #6f93bd;
+                line-height: 24rpx;
+            }
+            .icon {
+                margin-left: 10rpx;
+                width: 8rpx;
+                height: 15rpx;
+            }
+        }
+    }
+    // iphonex及其已上设备 底部边距
+    .iphonex-bottom {
+        width: 100%;
+        height: 64rpx;
+    }
+    // 点击vip折扣显示的vip提示框
+    .vip-tips-warp {
+        display: block;
+        padding: 18rpx 44rpx;
+        position: absolute;
+        // position: relative;
+        z-index: 1;
+        left: 50%;
+        bottom: -100%;
+        transform: translate(-50%, 70%);
+        // height: 48rpx;
+        min-width: 100rpx;
+        max-width: 500rpx;
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 6rpx;
+        .up-arrow {
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 28rpx;
+            height: 12rpx;
+            top: -9rpx;
+            .arrow-icon {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .stars {
+            position: absolute;
+            left: 12rpx;
+            top: 2rpx;
+            z-index: 1;
+            width: 32rpx;
+            height: 32rpx;
+            .stars-icon {
+                width: 32rpx;
+                height: 32rpx;
+            }
+        }
+        .vip-text {
+            font-size: 22rpx;
+            font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 32rpx;
+            text-align: center;
+            white-space: nowrap;
+        }
+    }
+    .vip-tips-warp-1 {
+        transform: translate(-50%, 80%);
+    }
+    .vip-tips-warp-2 {
+        transform: translate(-50%, 85%);
+    }
+    .vip-tips-warp-3 {
+        transform: translate(-50%, 90%);
+    }
+    .vip-tips-warp-4 {
+        transform: translate(-50%, 93%);
+    }
+    .vip-tips-warp-5 {
+        transform: translate(-50%, 95%);
+    }
+    .vip-tips-warp-6 {
+        transform: translate(-50%, 96%);
+    }
+
+    // 购买按钮浮层图标
+    .pay-btn-icon {
+        position: absolute;
+        right: 40rpx;
+        top: -34rpx;
+    }
+}
+
+.show-kk-bulk-purchase {
+    width: 100%;
+    height: 100%;
+    animation: fade-in ease-in-out 0.6s 1 alternate forwards;
+    .bulk-purchase-wrap {
+        bottom: 0;
+        transition: 0.4s ease;
+    }
+}
+.hide-kk-bulk-purchase {
+    height: 0;
+}
+@keyframes fade-in {
+    0% {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+//延迟查询遮罩层 S
+.lazy-load-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 750rpx;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .contnet {
+        width: 80%;
+        height: auto;
+        .loding {
+            margin: 0 auto;
+            width: 32rpx;
+            height: 32rpx;
+            .icon {
+                animation: spin 1s linear infinite;
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .text {
+            margin-top: 20rpx;
+            text-align: center;
+            color: #fff;
+            font-size: 24rpx;
+            line-height: 30rpx;
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

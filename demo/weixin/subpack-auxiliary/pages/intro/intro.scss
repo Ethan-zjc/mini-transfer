@@ -1,0 +1,35 @@
+@import "../../../common/_color.scss";
+
+.wrap {
+    image {
+        width: 750rpx;
+        height: 1158rpx;
+        overflow: auto;
+    }
+    .title {
+        padding: 20rpx 0 0 32rpx;
+        font-size: 28rpx;
+        color: $color-light;
+    }
+    .content {
+        padding: 30rpx 20rpx;
+        font-size: 28rpx;
+        color: #666;
+    }
+    .coupon {
+        padding: 14rpx 32rpx;
+        text-align: justify;
+        .question {
+            margin: 36rpx 0 14rpx;
+            font-size: 28rpx;
+            line-height: 28rpx;
+            color: #555;
+            font-weight: 500;
+        }
+        .answer {
+            font-size: 24rpx;
+            line-height: 36rpx;
+            color: $color-light;
+        }
+    }
+}

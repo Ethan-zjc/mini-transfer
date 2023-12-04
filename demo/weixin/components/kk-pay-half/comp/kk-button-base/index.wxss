@@ -1,0 +1,49 @@
+.kk-button-base {
+  position: relative;
+  margin: 0 auto;
+  width: 686rpx;
+}
+
+.kk-button-base .button {
+  position: relative;
+  width: 686rpx;
+  height: 88rpx;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+  line-height: 88rpx;
+}
+
+.kk-button-base .disabled {
+  color: #cfc6e9;
+  background: #f9f6ff;
+}
+
+.kk-button-base .solid {
+  color: #fff;
+  background: #ff751a;
+}
+
+.kk-button-base .border {
+  border: 1px solid #ff751a;
+  color: #ff751a;
+}
+
+.kk-button-base .login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100% !important;
+  height: 100%;
+  background: none !important;
+}
+
+.vip-kk-button-base .solid {
+  color: #fff;
+  background: linear-gradient(135deg, #d100d6 0%, #6c01cf 100%);
+}
+
+.vip-kk-button-base .border {
+  border: 1px solid #5d04b5;
+  color: #5d04b5;
+}

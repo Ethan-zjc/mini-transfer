@@ -1,0 +1,81 @@
+.task-module {
+  padding-top: 32rpx;
+  padding-bottom: 32rpx;
+}
+
+.task-module > .title {
+  margin: 0 auto;
+  width: 222rpx;
+  height: 48rpx;
+}
+
+.task-module .content {
+  margin: 0 auto;
+  padding: 14rpx 42rpx 40rpx;
+  width: 694rpx;
+  border: 2rpx solid #146CFF;
+  box-sizing: border-box;
+}
+
+.task-module .content .task-item {
+  margin-top: 24rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74rpx;
+  background-color: #09398B;
+  border: 2rpx solid #146CFF;
+}
+
+.task-module .content .task-item .left {
+  display: flex;
+  align-items: center;
+  max-width: 450rpx;
+}
+
+.task-module .content .task-item .left .title {
+  margin-right: 42rpx;
+  font-size: 32rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.task-module .content .task-item .left .number {
+  margin-right: 10rpx;
+  font-size: 30rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: bold;
+  color: #FF973A;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.task-module .content .task-item .left .fire {
+  width: 28rpx;
+  height: 40rpx;
+}
+
+.task-module .content .task-item .button {
+  width: 98rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  background-color: #146CFF;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-radius: 0;
+  margin: 0;
+}
+
+.task-module .content .task-item .disabled {
+  color: #ffffff;
+  background-color: #7e7e7e;
+}

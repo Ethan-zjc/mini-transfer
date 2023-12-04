@@ -1,0 +1,37 @@
+
+<view class="kk-pay-info {{ isVip ? 'vip-kk-pay-info' : '' }}">
+    <!-- 需要的kkb和折扣 -->
+    <view class="pay-info-title">
+        <!-- <view class="icon-warp">
+            <view class="icon">k</view>
+        </view> -->
+        <view class="icon-img">
+            <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/pay/kkb_b9c228a.png"></image>
+        </view>
+        <view class="kkb">{{ price || 0 }}</view>
+        <view class="vip-icon" catchtap="tapButtonVip" wx:if="{{ isVip }}">
+            <view class="mark">{{ discountInfo.discount_left || 'VIP' }}</view>
+            <view class="text">{{ discountInfo.discount_right || "会员" }}</view>
+        </view>
+        <view class="discount-icon" wx:elif="{{ priceInfo.total_discounts && priceInfo.total_discounts > 0 && priceInfo.total_discounts < 10 }}">
+            <image class="icon" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/buyvip/discount_abb9369.png"></image>
+            <view class="icon-text">{{ priceInfo.total_discounts }}折</view>
+        </view>
+    </view>
+
+    <!-- 折扣的价格信息 -->
+    <view class="pay-info-subtitle" wx:if="{{ discountInfo.discount_text }}" >
+        <view class="line {{ discountInfo.market_delete ? 'delete' : '' }}">{{ discountInfo.market_text }}</view>
+        <view class="text">{{ discountInfo.discount_text }}</view>
+        <view class="more" wx:if="{{ priceInfo.deduction_texts && priceInfo.deduction_texts.length }}">
+            <view catchtap="tapButtonMore">
+                <image class="icon" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/sign-help_5abdf5c.png"></image>
+            </view>
+            <view class="tips" wx:if="{{ showTips }}">
+                <view class="tips-text" wx:for="{{ priceInfo.deduction_texts }}" wx:key="index">
+                    {{ item }}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

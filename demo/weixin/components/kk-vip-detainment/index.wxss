@@ -1,0 +1,340 @@
+.kk-vip-detainment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  animation: fade-in ease-in-out 0.5s 1 alternate forwards;
+  z-index: 3000;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kk-vip-detainment .detainment-warp {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.kk-vip-detainment .detainment-warp .popup-icon-warp {
+  position: absolute;
+  left: 0;
+  top: -88rpx;
+  width: 100%;
+  height: 160rpx;
+  z-index: 10;
+}
+
+.kk-vip-detainment .detainment-warp .popup-icon-warp .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-vip-detainment .detainment-warp .content-warp {
+  position: relative;
+  width: 616rpx;
+  height: 504rpx;
+  background: linear-gradient(180deg, #F9F6FF 0%, #FFFFFF 100%);
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.kk-vip-detainment .detainment-warp .mini-con-warp {
+  height: 376rpx;
+  width: 600rpx;
+}
+
+.kk-vip-detainment .detainment-warp .top-bg {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 136rpx;
+}
+
+.kk-vip-detainment .detainment-warp .top-bg .white {
+  width: 34rpx;
+  height: 154rpx;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.kk-vip-detainment .detainment-warp .title-text-warp {
+  position: absolute;
+  left: 0;
+  top: 66rpx;
+  z-index: 1;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kk-vip-detainment .detainment-warp .title-text-warp .icon {
+  width: 400rpx;
+  height: 100%;
+}
+
+.kk-vip-detainment .detainment-warp .title-text-warp .text, .kk-vip-detainment .detainment-warp .title-text-warp .text-warp {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kk-vip-detainment .detainment-warp .title-text-warp .text .texts, .kk-vip-detainment .detainment-warp .title-text-warp .text-warp .texts {
+  line-height: 80rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+}
+
+.kk-vip-detainment .detainment-warp .title-text-warp .text .color, .kk-vip-detainment .detainment-warp .title-text-warp .text-warp .color {
+  padding: 4rpx;
+  color: #FF751A;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left, .kk-vip-detainment .detainment-warp .coupon-warp .right {
+  position: relative;
+  height: 100%;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .icon, .kk-vip-detainment .detainment-warp .coupon-warp .right .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .con-warp, .kk-vip-detainment .detainment-warp .coupon-warp .right .con-warp {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left {
+  width: 240rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .con-warp {
+  padding-left: 40rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .top-text {
+  padding-top: 40rpx;
+  padding-bottom: 14rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .top-text .min {
+  padding-top: 30rpx;
+  width: 20rpx;
+  height: 20rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 20rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .top-text .max {
+  height: 60rpx;
+  font-size: 60rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 60rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .left .bottom-text {
+  height: 20rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 20rpx;
+  text-align: center;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .right {
+  width: 376rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .right .con-warp {
+  padding: 60rpx 40rpx 20rpx 40rpx;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .right .con-warp .top-text {
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 28rpx;
+  height: 40rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-vip-detainment .detainment-warp .coupon-warp .right .con-warp .bottom-text {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 36rpx;
+  background: rgba(255, 117, 26, 0.1);
+  border-radius: 6rpx;
+  padding: 0 6rpx;
+  font-size: 24rpx;
+  font-family: NotoSansHans-Medium, NotoSansHans;
+  font-weight: 500;
+  color: #FF751A;
+  line-height: 36rpx;
+}
+
+.kk-vip-detainment .detainment-warp .btn-warp {
+  margin: 12rpx auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  width: 400rpx;
+  background: #FFE23D;
+  border-radius: 44rpx;
+}
+
+.kk-vip-detainment .detainment-warp .btn-warp .text-1 {
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #442509;
+}
+
+.kk-vip-detainment .detainment-warp .btn-warp .text-2 {
+  padding-left: 8rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(68, 37, 9, 0.6);
+  text-decoration: line-through;
+}
+
+.kk-vip-detainment .detainment-warp .close-warp {
+  position: absolute;
+  left: 50%;
+  margin-left: -49rpx;
+  bottom: -128rpx;
+  width: 56rpx;
+  height: 56rpx;
+  padding: 20rpx;
+}
+
+.kk-vip-detainment .detainment-warp .close-warp .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-vip-detainment .detainment-warp .con-text {
+  margin: 0 auto;
+  padding: 32rpx 0 54rpx 0;
+  width: 96%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kk-vip-detainment .detainment-warp .con-text .text {
+  max-width: 50%;
+  display: inline-block;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+  font-weight: 400;
+  color: #333333;
+  line-height: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-vip-detainment .detainment-warp .con-text .text-2 {
+  max-width: 60%;
+  padding-left: 4rpx;
+  color: #FF751A;
+}
+
+.kk-vip-detainment .detainment-warp .btn-list-warp {
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.kk-vip-detainment .detainment-warp .btn-list-warp .btn {
+  width: 260rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 36rpx;
+  font-weight: 400;
+  line-height: 88rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-vip-detainment .detainment-warp .btn-list-warp .cancel-btn {
+  background: #F9F6FF;
+  color: #666666;
+  font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+}
+
+.kk-vip-detainment .detainment-warp .btn-list-warp .confirm-btn {
+  margin-left: 24rpx;
+  background: #FFE23D;
+  color: #442509;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+}
+
+.kk-vip-detainment .load-image-warp {
+  display: none;
+}
+
+.kk-vip-detainment .load-image-warp .load-image {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.show-kk-vip-detainment {
+  width: 100%;
+  height: 100%;
+  animation: fade-in ease-in-out 0.5s 1 alternate forwards;
+}

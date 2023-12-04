@@ -1,0 +1,10 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-icon": "/components/kk-icon/kk-icon",
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "mp-dialog": "/components/kk-weui-dialog/dialog"
+    }
+}

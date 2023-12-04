@@ -1,0 +1,66 @@
+.video-tools {
+    position: absolute;
+    right: 20rpx;
+    bottom: 92rpx;
+    z-index: 20;
+    .tools-cell {
+        position: relative;
+        margin-top: 40rpx;
+        width: 88rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .tools-img {
+        width: 56rpx;
+        height: 56rpx;
+        transform-origin: center;
+        &.gift {
+            height: 67rpx;
+            animation: shakea 1.5s linear 3;
+        }
+        .img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .tools-text {
+        margin-top: 8rpx;
+        font-family: "PingFang SC";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 26rpx;
+        line-height: 32rpx;
+        text-align: center;
+        color: #ffffff;
+    }
+    .button-share {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        background: none;
+    }
+}
+
+.blank {
+    position: relative;
+    z-index: 3;
+    height: 66rpx;
+    background: none;
+    width: 100%;
+}
+
+@keyframes shakea {
+    65%, 90% {
+        transform: rotate(0deg);
+    }
+    70%, 80% {
+        transform: rotate(15deg);
+    }
+    75%, 85% {
+        transform: rotate(-15deg);
+    }
+}

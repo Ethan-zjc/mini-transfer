@@ -1,0 +1,158 @@
+@import "../../common/_color.scss";
+@import "../../common/_mixin.scss";
+
+//kkb充值页面
+
+//充值kkb成功购买弹窗  模板 S
+.kk-buykkb-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 750rpx;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+
+    //弹窗内容  居中
+    .popup-content {
+        margin-top: 85rpx;
+        position: relative;
+        width: 745rpx;
+        height: 802rpx;
+    }
+    //弹窗内容背景图S
+    .popup-content .popup-content-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        image {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    //弹窗内容背景图E
+
+    //弹窗内容展示部分S
+    .popup-content .content {
+        position: absolute;
+        top: 202rpx;
+        left: 0;
+        right: -1rpx;
+        margin: 0 auto;
+        width: 540rpx;
+        height: 600rpx;
+        border-radius: 24rpx;
+        z-index: 10;
+
+        //内容头部S
+        .top {
+            padding-top: 91rpx;
+        }
+        .top .title {
+            font-size: 36rpx;
+            line-height: 50rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(255, 90, 0, 1);
+            text-align: center;
+        }
+        .top .bug-text {
+            padding: 6rpx 0 81rpx 0;
+            line-height: 33rpx;
+            font-size: 24rpx;
+            font-family: PingFangSC-Light, PingFang SC;
+            font-weight: 300;
+            color: rgba(153, 153, 153, 1);
+            text-align: center;
+            &.has-coupon {
+                padding-bottom: 63rpx;
+            }
+        }
+        .top .coupon-text {
+            width: 100%;
+            font-size: 24rpx;
+            text-align: center;
+            font-weight: 300;
+            color: rgba(153, 153, 153, 1);
+        }
+        //内容头部E
+
+        //专题列表 S
+        .topic-list {
+            box-sizing: border-box;
+            padding: 0 6rpx;
+            display: flex;
+            justify-items: center;
+            justify-content: space-between; //中间适应
+        }
+        .topic-list .list-item {
+            padding: 0 4rpx;
+            width: 168rpx;
+            .cover {
+                margin-bottom: 9rpx;
+                width: 168rpx;
+                height: 224rpx;
+                border-radius: 8rpx;
+                image {
+                    border-radius: 8rpx;
+                }
+            }
+            .des {
+                width: 100%;
+                box-sizing: border-box;
+                padding-left: 10rpx;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                word-break: break-all;
+            }
+            .title {
+                height: 40rpx;
+                line-height: 40rpx;
+                font-size: 28rpx;
+                font-family: PingFangSC-Light, PingFang SC;
+                font-weight: 300;
+                color: rgba(51, 51, 51, 1);
+            }
+            .tag {
+                font-size: 24rpx;
+                line-height: 32rpx;
+                font-family: PingFangSC-Light, PingFang SC;
+                font-weight: 300;
+                color: rgba(153, 153, 153, 1);
+            }
+        }
+        //专题列表 E
+
+        //关闭按钮 S
+        .close {
+            position: absolute;
+            left: 0;
+            bottom: -107rpx;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .btn {
+                width: 60rpx;
+                height: 60rpx;
+                border-radius: 50%;
+                image {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        //关闭按钮 E
+    }
+    //弹窗内容展示部分E
+}
+//充值kkb成功购买弹窗  模板 E

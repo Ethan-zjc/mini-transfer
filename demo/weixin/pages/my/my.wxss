@@ -1,0 +1,726 @@
+@charset "UTF-8";
+/**
+* 溢出省略号
+* @param {Number} 行数
+*/
+/**
+* 等边三角形
+* @param {String} 尺寸
+* @param {Color} 颜色
+* @param {String} 方向
+*/
+/**
+* 真.1px边框
+* {List}: 多个方向边框, 默认值为bottom, 你可以根据需要传入(top, left, bottom, right) 4个方向;
+* {Color} 边框的颜色, 默认#ccc;
+* {List} 4个圆角半径, 默认0;
+* {String} 一个高级设置, 一般都不需要改动, 由于细边框的实现使用了css的伪类, 所以为了规避可能出现的样式冲突, 我们可以自己指定使用:after还是:before, 默认after;
+*/
+/**
+* 棋盘背景
+* @param {Color} 背景色
+*/
+page {
+  background-color: #ffe120;
+}
+
+.kk-mys-page {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.kk-mys-page .mys-scroll {
+  background: #fff;
+}
+
+.kk-mys-page .mys-list-wrap {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding: 0 12rpx;
+  background-color: #fff;
+}
+
+.kk-mys-page .middle-mounted .mys-list-wrap {
+  min-height: 100vh;
+}
+
+.kk-mys-page .kk-read-list .history-top {
+  box-sizing: border-box;
+  padding: 14rpx 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.kk-mys-page .kk-read-list .history-top-show {
+  width: 100%;
+  height: 24rpx;
+}
+
+.kk-mys-page .kk-read-list .radio-item {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  margin-left: 36rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.kk-mys-page .kk-read-list .radio-item view {
+  display: block;
+  box-sizing: border-box;
+  width: 24rpx;
+  height: 24rpx;
+  border: 2px solid #999;
+  border-radius: 100%;
+  margin: 2rpx 8rpx 4rpx 6rpx;
+}
+
+.kk-mys-page .kk-read-list .radio-item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 4rpx;
+}
+
+.kk-mys-page .kk-read-list .radio-item.checked view {
+  display: none;
+}
+
+.kk-mys-page .kk-read-list .radio-item.checked image {
+  display: block;
+}
+
+.kk-mys-page .kk-read-list .item-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 4rpx;
+  width: 234rpx;
+  height: 438rpx;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .guide-warp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 310rpx;
+  border-radius: 4rpx;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .guide-warp .guide {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .guide-warp .guide.transShow {
+  opacity: 1;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .guide-warp text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: bold;
+  color: white;
+  line-height: 40rpx;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .guide-image {
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  text-align: center;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .guide-image .hand {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .cover {
+  width: 100%;
+  height: 310rpx;
+  transition: opacity 0.15s;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .title {
+  box-sizing: border-box;
+  width: 100%;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .history-item .description {
+  box-sizing: border-box;
+  width: 100%;
+  color: #999;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-top: 14rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-mys-page .kk-read-list .item-wrap .label-default {
+  position: absolute;
+  right: 8rpx;
+  top: 8rpx;
+  z-index: 5;
+  height: 36rpx;
+}
+
+.kk-mys-page .kk-follow-list .follow-top {
+  box-sizing: border-box;
+  padding: 14rpx 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.kk-mys-page .kk-follow-list .follow-top .line {
+  margin: 0 24rpx;
+  width: 1px;
+  height: 16rpx;
+  background: #e6e6e6;
+  border-radius: 1px;
+}
+
+.kk-mys-page .kk-follow-list .follow-top .follow-tab {
+  padding: 10rpx 0;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.kk-mys-page .kk-follow-list .follow-top .update {
+  margin-left: 20rpx;
+}
+
+.kk-mys-page .kk-follow-list .follow-top .active {
+  color: #333;
+  font-weight: 500;
+}
+
+.kk-mys-page .kk-follow-list .follow-top-show {
+  width: 100%;
+  height: 24rpx;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item {
+  position: relative;
+  margin: 0 4rpx;
+  width: 355rpx;
+  height: 342rpx;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .cover-box {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 222rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .cover-box .cover {
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .cover-box .cover-label {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 7rpx;
+  color: #fff;
+  font-size: 22rpx;
+  text-align: right;
+  text-shadow: 0px 1rpx 8rpx rgba(0, 0, 0, 0.24);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .title {
+  box-sizing: border-box;
+  padding: 0 8rpx;
+  width: 100%;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .description {
+  box-sizing: border-box;
+  padding: 0 8rpx;
+  width: 100%;
+  color: #999;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-top: 14rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .description .icons {
+  display: inline-block;
+  min-width: 56rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  background: rgba(205, 205, 215, 0.2);
+  border-radius: 7rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #adadb9;
+  text-align: center;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .description .pale-blue {
+  background: #f0f9fe;
+  color: #4dadff;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .follow-item .description .text {
+  padding-left: 8rpx;
+}
+
+.kk-mys-page .kk-follow-list .item-wrap .label-default {
+  position: absolute;
+  right: 8rpx;
+  top: 8rpx;
+  z-index: 5;
+  height: 36rpx;
+}
+
+.middle-tab {
+  position: relative;
+}
+
+.kk-mys-tab {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 90rpx;
+  padding: 20rpx 4rpx 0;
+  background: #fff;
+}
+
+.kk-mys-tab .mys-tab {
+  position: relative;
+  height: 44rpx;
+  line-height: 44rpx;
+  padding: 10rpx;
+  margin: 0 18rpx;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 400;
+}
+
+.kk-mys-tab .mys-tab .tab-active-line {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 6rpx;
+  border-radius: 6rpx;
+}
+
+.kk-mys-tab .mys-tab .tab-reddot {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f43530;
+}
+
+.kk-mys-tab .tab-active {
+  font-weight: 500;
+}
+
+.kk-mys-tab .tab-active .tab-active-line {
+  background-color: #fde23d;
+}
+
+.kk-mys-tab .r-btn-warp {
+  position: absolute;
+  bottom: 0;
+  right: 32rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+}
+
+.kk-mys-tab .r-btn-warp .developers {
+  font-size: 28rpx;
+  color: #17b4ea;
+}
+
+.kk-mys-tab .r-btn-warp .feedback {
+  flex: 1;
+  padding-left: 8rpx;
+  width: 128rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+
+.kk-mys-tab .r-btn-warp .feedback .button {
+  display: flex;
+  align-items: center;
+  float: right;
+  width: auto;
+  color: #999;
+  font-size: 26rpx;
+}
+
+.kk-mys-tab .r-btn-warp .feedback image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 4rpx;
+}
+
+.kk-tabs-type {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 32rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #fff;
+}
+
+.kk-tabs-type .item {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+}
+
+.kk-tabs-type .active {
+  color: #333333;
+  font-weight: 500;
+}
+
+.kk-tabs-type .cut {
+  margin: 0 24rpx;
+  width: 1rpx;
+  height: 16rpx;
+  background-color: #E6E6E6;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.section-top {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 252rpx;
+  padding: 0 32rpx;
+  border-bottom: 60rpx solid #fff;
+  background-color: #ffe120;
+}
+
+.section-tab {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  height: 90rpx;
+  padding: 26rpx 4rpx 0;
+  background: #fff;
+}
+
+.section-tab .tab {
+  position: relative;
+  height: 44rpx;
+  line-height: 44rpx;
+  padding: 10rpx;
+  margin: 0 18rpx;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 400;
+}
+
+.section-tab .tab.active {
+  font-weight: 500;
+}
+
+.section-tab .tab.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background-color: #fed23d;
+}
+
+.section-tab .tab.reddot::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: #f43530;
+}
+
+.swiper {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.swiper scroll-view {
+  height: 100%;
+}
+
+.header {
+  position: relative;
+  margin-top: 6rpx;
+  margin-left: -6rpx;
+  display: flex;
+  justify-content: left;
+  float: left;
+  width: 100%;
+  height: 114rpx;
+  justify-content: space-between;
+}
+
+.header .sex-icon {
+  width: 66rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header .sex-icon .img {
+  width: 66rpx;
+  height: 66rpx;
+}
+
+.userinfo {
+  display: flex;
+  justify-content: left;
+  width: auto;
+  max-width: calc(100% - 64px);
+  height: 114rpx;
+}
+
+.userinfo .avatar {
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.userinfo .nickname {
+  color: #333;
+  font-size: 48rpx;
+  font-weight: 500;
+  line-height: 114rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userinfo .nickname.has-benifit {
+  position: relative;
+  top: -16rpx;
+}
+
+.userinfo .icon {
+  margin: 40rpx 0 0 16rpx;
+}
+
+.userinfo .icon.has-benifit {
+  position: relative;
+  top: -16rpx;
+}
+
+.userinfo .icon .sex {
+  width: 26rpx;
+  height: 26rpx;
+  margin-top: 5rpx;
+}
+
+.userinfo .switch {
+  flex-shrink: 0;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 37rpx 0 0 32rpx;
+}
+
+.userinfo .switch.has-benifit {
+  position: relative;
+  top: -16rpx;
+}
+
+.benifit {
+  width: 100%;
+  position: absolute;
+  top: 70rpx;
+  left: 130rpx;
+  font-size: 0;
+}
+
+.benifit-image {
+  display: inline-block;
+  position: absolute;
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 4rpx;
+  vertical-align: top;
+  top: 6rpx;
+}
+
+.benifit-text {
+  display: inline-block;
+  box-sizing: border-box;
+  width: calc(100% - 128rpx);
+  height: 32rpx;
+  padding-left: 30rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 26rpx;
+  color: #f56c6c;
+}
+
+.entry {
+  box-sizing: border-box;
+  display: flex;
+  float: left;
+  width: 686rpx;
+  height: 108rpx;
+  margin: 24rpx auto 0;
+  padding: 0 20rpx;
+  border-radius: 13rpx;
+  background-color: #fff;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 8rpx 0rpx rgba(123, 123, 123, 0.1);
+}
+
+.entry button {
+  background-color: #fff;
+  border: none;
+}
+
+.entry .normal {
+  box-sizing: content-box;
+  position: relative;
+  display: flex;
+  margin-top: 8rpx;
+  padding: 26rpx 10rpx 8rpx 10rpx;
+  width: auto;
+  height: 48rpx;
+  line-height: 48rpx;
+  white-space: nowrap;
+  text-align: left;
+  color: #333;
+  font-size: 26rpx;
+  min-width: 150rpx;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.entry .normal image {
+  flex-shrink: 0;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 8rpx;
+}
+
+.entry .normal .bubble {
+  position: relative;
+}
+
+.entry .normal .activity {
+  position: absolute;
+  left: -8rpx;
+  top: -24rpx;
+  width: auto;
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 6rpx;
+  color: #fff;
+  font-size: 16rpx;
+  border-radius: 12rpx 16rpx 16rpx 0;
+  background: linear-gradient(90deg, #ff0047 0%, #ff257f 100%);
+  white-space: nowrap;
+}
+
+.kk-mys-img {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.kk-mys-img image {
+  width: 500rpx;
+  height: 500rpx;
+}

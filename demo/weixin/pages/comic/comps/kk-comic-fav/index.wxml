@@ -1,0 +1,20 @@
+<view class="super-fav" style="bottom: {{ ipxBottom ? ipxBottom + 190 : 190 }}rpx;">
+    <view class="super-fav-content">
+        <view class="super-fav-title">
+            关注后可收到更新提醒哦
+        </view>
+        <view class="super-fav-button">
+            <view class="view-btn" catchtap="followClick" wx:if="{{ userInfo }}">
+                关注
+            </view>
+            <view class="view-btn" catchtap="stopPop" wx:else>
+                <button  size="mini" hover-class="none" bindtap="originLogin">
+                    关注
+                </button>
+            </view>
+        </view>
+        <view class="super-fav-close" catchtap="closeFav">
+            <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/close-comic_2ee84a8.png"></image>
+        </view>
+    </view>
+</view>

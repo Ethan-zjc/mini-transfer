@@ -1,0 +1,6 @@
+<!-- 新手福利-专题列表-手势动画 -->
+<canvas
+    type="2d"
+    id="welfare-canvas"
+    style="width: 200rpx; height: 200rpx;">
+</canvas>

@@ -1,0 +1,24 @@
+<view class="setting" catchtap="openDebug">
+    <view class="setting-content">
+        <view class="setting-list" wx:for="{{ list }}" wx:key="index" data-index="{{ index }}" catchtap="handleClick" wx:if="{{ item.func !== CLEAR_STORAGE || enableDebug }}">
+            <view class="setting-title">{{ item.title }}</view>
+            <view class="setting-btn">
+                <kk-icon class="icon-img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/item-btn_96f6c65.png" height="{{ 32 }}" width="{{ 32 }}" />
+            </view>
+        </view>
+    </view>
+    <view class="setting-bottom">
+        <view class="setting-login" wx:if="{{ userInfo }}">
+            <view class="setting-login-btn" catchtap="tapLogin">退出登录</view>
+        </view>
+
+        <!-- 版本号设置 -->
+        <view class="version-text">
+            <text>版本号：v{{ versionName }}</text>
+        </view>
+    </view>
+
+    <kk-dialog show="{{ dialogShow }}" title="确定退出登录账号？" buttons="{{ dialogButtons }}" bindbuttontap="tapButtons"></kk-dialog>
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

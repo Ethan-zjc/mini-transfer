@@ -1,0 +1,118 @@
+.kk-buy-vip .title {
+  height: 240rpx;
+  font-size: 60rpx;
+  padding-top: 150rpx;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.kk-buy-vip .price {
+  font-size: 60rpx;
+  padding-top: 60rpx;
+  text-align: center;
+}
+
+.kk-buy-vip .price text {
+  font-size: 40rpx;
+}
+
+.wrap .bd {
+  background: #fff;
+  padding: 40rpx 20rpx 0;
+}
+
+.wrap .bd .ico {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto;
+}
+
+.wrap .bd .ico.ico_success {
+  background: url(https://static3w.kuaikanmanhua.com/assets/img/pay/ico_success_9161c08.png) no-repeat 0 0;
+  background-size: 100% 100%;
+}
+
+.wrap .bd .ico.ico_error {
+  background: url(https://static3w.kuaikanmanhua.com/assets/img/pay/ico_error_0fe8482.png) no-repeat 0 0;
+  background-size: 100% 100%;
+}
+
+.wrap .bd .message {
+  font-size: 32rpx;
+  padding: 40rpx 0 80rpx;
+  text-align: center;
+}
+
+.wrap .bd .info view {
+  border-top: 1px solid #F0F0F0;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}
+
+.wrap .bd .info view text {
+  color: #A8A1B6;
+  padding-right: 20rpx;
+}
+
+.wrap .bottom {
+  margin-top: 50rpx;
+}
+
+.wrap .bottom .btn {
+  margin: 0 auto;
+  background: #FDE23D;
+  border-radius: 80rpx;
+  width: 70%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.lazy-load-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lazy-load-popup .contnet {
+  width: 80%;
+  height: auto;
+}
+
+.lazy-load-popup .contnet .loding {
+  margin: 0 auto;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.lazy-load-popup .contnet .loding .icon {
+  animation: spin 1s linear infinite;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lazy-load-popup .contnet .text {
+  margin-top: 20rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 30rpx;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

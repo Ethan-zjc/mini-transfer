@@ -1,0 +1,8 @@
+{
+    "backgroundColor": "#F7F9FA",
+    "navigationBarTitleText": "会话详情",
+    "usingComponents": {
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "kk-comment-chunk": "/components/kk-comment/chunk/chunk"
+    }
+}

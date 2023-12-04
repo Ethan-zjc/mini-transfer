@@ -1,0 +1,33 @@
+<!--subpack-activity/pages/award-list.wxml-->
+<view class="award-list">
+    <block wx:if="{{ recordList.length }}">
+        <view wx:for="{{ recordList }}" wx:key="index" class="award-item">
+            <view class="icon">
+                <image src="{{ item.award_icon }}" />
+            </view>
+
+            <view class="desc">
+                <view class="title">
+                    <text>{{ item.award_title }}</text>
+                </view>
+                <view class="time">
+                    <text>{{ item.award_time }}</text>
+                </view>
+            </view>
+
+            <view class="button" data-index="{{ index }}" bindtap="clickUse">
+                <text>去使用</text>
+            </view>
+        </view>
+    </block>
+
+    <view wx:else class="no-data">
+        <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/no-data_37e0263.png" mode="widthFix" />
+        <view class="text">
+            <text>还没有抽到奖品哦~</text>
+        </view>
+    </view>
+</view>
+
+<exchange-popup prizeData="{{ prizeData }}" bindclose="onExchangeClose"></exchange-popup>
+<kk-toast toast="{{ toast }}"></kk-toast>

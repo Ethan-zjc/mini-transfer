@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-ad": "/components/kk-ad/kk-ad",
+        "kk-comic-operation": "../kk-comic-operation/index"
+    }
+}

@@ -1,0 +1,8 @@
+<view class="kk-navigator">
+    <view style="height: {{ height }}px; line-height: {{ height }}px; padding-top: {{ top }}px; color: {{ color }};">
+        <view class="fullscreen-back" style="left: {{ left }}px; width: {{ height }}px; height: {{ height }}px; color: red;" catchtap="navigateBack">
+            <image class="arrow-back" src="{{ cdnIconsImgs[icon] }}" />
+        </view>
+        {{ title }}
+    </view>
+</view>

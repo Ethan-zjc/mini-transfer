@@ -1,0 +1,258 @@
+<!-- 支付全屏弹窗(基本版[迁移]) -->
+<view wx:if="{{ isShowPopup }}" class="pay-main" catchtouchmove catchtap>
+    <!-- 预加载图片内容 -->
+    <view style="display: none">
+        <image wx:for="{{ cacheImgs }}" wx:key="index" src="{{ item }}"></image>
+    </view>
+
+    <!-- 充值礼包运营位20211103 -->
+    <kk-pay-spree customNav topicId="{{ topicId }}" comicId="{{ comicId }}" wx:if="{{ isShowPopupCon }}" bind:paySpreeShow="paySpreeShow"></kk-pay-spree>
+
+    <!-- 弹窗内容 -->
+    <view class="pay-content {{ isShowPopupCon ? 'anim' : '' }} {{ isShowRecharge ? 'styl-cotain' : '' }}">
+        <!-- 付费提示图标 -->
+        <kk-pay-head
+            wx:if="{{ popType }}"
+            images="{{ images }}"
+            popType="{{ popType }}"
+            isCanPay="{{ isCanPay }}"
+            isPayGift="{{ isPayGift }}"
+            isHidden="{{ hidePerson }}"
+            isLimitFree="{{ isLimitFree }}"
+            isReadCoupon="{{ isReadCoupon }}"
+            headData="{{ headData }}"
+            bind:openVipPageFun="openVipPageFun"
+            bind:limitFreeVipFun="limitFreeVipFun"
+        ></kk-pay-head>
+
+        <!-- 自定义弹窗标题, 单点付费余额不足时添加 -->
+        <view class="cus-title" wx:if="{{ isShowRecharge }}">
+            <text>当前余额不足</text>
+            <view class="close" catchtap="clickCloseBtn">
+                <image class="close-img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/video/pay-close_1eefa4f.png"></image>
+            </view>
+        </view>
+
+        <!-- 中间区域 -->
+        <!-- 1、普通付费弹窗、2、会员限免弹窗、 3、会员专享提前看弹窗、 4、会员专享固定话弹窗 -->
+        <view class="pay-dialog-middle {{ isvip ? 'vip-pay-dialog-middle' : '' }} {{ isLogin && popType == 2 && isiOS ? 'pay-dialog-middle-mini' : '' }} {{ popType == 1 || popType == 2 ? 'bg' : '' }} {{ isShowRecharge ? 'nopad' : '' }}">
+            <!-- 关闭弹窗返回上级页面 -->
+            <view wx:if="{{ (popType == 1 || popType == 2) && !isShowRecharge }}" class="popup-close {{ hidePerson ? 'top' : '' }}" catchtap="clickCloseBtn">
+                <image class="close-icon" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/vipdialog/popup-close_b6f4bfd.png"></image>
+            </view>
+
+            <!-- 运营位的展示(没有激励视频广告展示) payTop && isLogin && !advReady -->
+            <view class="operate-banner" wx:if="{{ payTop && popType != 2 }}">
+                <view class="pay-top {{ isCanPay ? 'iso-pay-top' : '' }}" data-btnname="{{ payTop.btn }}" data-btntype="顶部通栏运营位" bindtap="goActivity">
+                    <image wx:if="{{ payTop.icon }}" class="icon" src="{{ payTop.icon }}" />
+                    <view class="text">{{ payTop.text }}</view>
+                    <view class="btn" wx:if="{{ !!payTop.btn }}">
+                        {{ payTop.btn }}
+                        <image wx:if="{{ isvip }}" src="{{ images.arrowRightPurple }}" />
+                        <image wx:if="{{ !isvip }}" src="{{ images.arrowRightBrown }}" />
+                    </view>
+                </view>
+            </view>
+
+            <!-- 不可支付区域 -->
+            <view wx:if="{{ !isCanPay }}">
+                <!-- 未登录 -->
+                <view class="kk-not-login" wx:if="{{ !isLogin }}">
+                    <view class="title">新用户登录后免费看</view>
+                    <view class="login-btn-box">
+                        <kk-button-base comicId="{{ comicId }}" text="立即登录"></kk-button-base>
+                    </view>
+                </view>
+
+                <!-- 已登录 -->
+                <view class="kk-pay-special" wx:else>
+                    <!-- 激励视频 -->
+                    <block wx:if="{{ isAdv }}">
+                        <kk-pay-ads
+                            isVip="{{ isvip }}"
+                            wallet="{{ wallet }}"
+                            price="{{ price }}"
+                            topicId="{{ topicId }}"
+                            comicId="{{ comicId }}"
+                            isCanPay="{{ isCanPay }}"
+                            advData="{{ advData }}"
+                            payTrackData="{{ payTrackData }}"
+                            bind:onPreLoad="advPreLoad"
+                            bind:onTrackClick="advClickTrack"
+                            bind:onPayClick="onPayClick"
+                        ></kk-pay-ads>
+                    </block>
+
+                    <!-- 阅读券 -->
+                    <block wx:elif="{{ isReadCoupon }}">
+                        <kk-read-coupon isVip="{{ isvip }}" wallet="{{ wallet }}" price="{{ price }}" topicId="{{ topicId }}" comicId="{{ comicId }}" isCanPay="{{ isCanPay }}" count="{{ readCouponCount }}" payTrackData="{{ payTrackData }}" bind:onPayClick="onPayClick"></kk-read-coupon>
+                    </block>
+
+                    <!-- 钱包余额充足 -->
+                    <view wx:elif="{{ wallet >= price }}">
+                        <!-- 支付金额、优惠信息 -->
+                        <kk-pay-info isVip="{{ isvip }}" wallet="{{ wallet }}" price="{{ price }}" priceInfo="{{ priceInfo }}" discountInfo="{{ discountInfo }}"></kk-pay-info>
+
+                        <!-- 支付按钮 -->
+                        <kk-button-buy isVip="{{ isvip }}" wallet="{{ wallet }}" price="{{ price }}" comicId="{{ comicId }}" payIconUrl="{{ payIconUrl }}" bind:onPayClick="onPayClick"></kk-button-buy>
+                    </view>
+
+                    <!-- 钱包余额不足 -->
+                    <block wx:else>
+                        <!-- 不可支付按钮 -->
+                        <kk-button-base comicId="{{ comicId }}" type="disabled" text="iOS功能暂不可用"></kk-button-base>
+                    </block>
+
+                    <!-- 满足条件展示底部强提示按钮ios/android均有，此部分需优化，是否需要登录是否根据后台下发，或者没有使用下掉 -->
+                    <kk-remind-btn
+                        wx:if="{{ bottomVipBanner && bottomVipBanner.text_type >= 3 && bottomVipBanner.text_type <= 6 }}"
+                        isVip="{{ isvip }}"
+                        topicId="{{ topicId }}"
+                        comicId="{{ comicId }}"
+                        activityId="{{ activityId }}"
+                        bottomVipBanner="{{ bottomVipBanner }}"
+                        bottomVipBannerText="{{ bottomVipBannerText }}"
+                        bind:limitFreeVipFun="limitFreeVipFun"
+                    ></kk-remind-btn>
+                </view>
+            </view>
+
+            <!-- 可支付区域 -->
+            <view wx:else>
+                <!-- 不区分登录，区分弹窗类型 -->
+                <!-- 1、普通付费弹窗类型 -->
+                <view wx:if="{{ popType == 1 }}">
+                    <!-- 普通付费弹窗 -->
+
+                    <!-- 激励视频 -->
+                    <view class="kk-ads-space" wx:if="{{ isAdv }}">
+                        <kk-pay-ads
+                            isVip="{{ isvip }}"
+                            wallet="{{ wallet }}"
+                            price="{{ price }}"
+                            topicId="{{ topicId }}"
+                            comicId="{{ comicId }}"
+                            isCanPay="{{ isCanPay }}"
+                            advData="{{ advData }}"
+                            payTrackData="{{ payTrackData }}"
+                            bind:onPreLoad="advPreLoad"
+                            bind:onTrackClick="advClickTrack"
+                            bind:onPayClick="onPayClick"
+                        ></kk-pay-ads>
+                    </view>
+
+                    <!-- 充值礼包 -->
+                    <block wx:elif="{{ isPayGift }}">
+                        <kk-pay-gift isVip="{{ isvip }}" topicId="{{ topicId }}" comicId="{{ comicId }}" topicTitle="{{ topicTitle }}" payGiftData="{{ payGiftData }}"></kk-pay-gift>
+                    </block>
+
+                    <!-- 定向限免 -->
+                    <block wx:elif="{{ isLimitFree }}">
+                        <kk-orient-limit topicTitle="{{ topicTitle }}" orientLimitData="{{ orientLimitData }}" bind:limitFreeVipFun="limitFreeVipFun"></kk-orient-limit>
+                    </block>
+
+                    <!-- 阅读券 -->
+                    <view class="kk-read-coupon" wx:elif="{{ isReadCoupon }}">
+                        <kk-read-coupon isVip="{{ isvip }}" wallet="{{ wallet }}" price="{{ price }}" topicId="{{ topicId }}" comicId="{{ comicId }}" isCanPay="{{ isCanPay }}" count="{{ readCouponCount }}" payTrackData="{{ payTrackData }}" bind:onPayClick="onPayClick"></kk-read-coupon>
+                    </view>
+
+                    <!-- 普通支付 -->
+                    <view class="kk-pay-wrap" wx:else>
+                        <!-- 批量购档位 -->
+                        <view wx:if="{{ batchPriceList.length > 1 }}" class="kk-batch-buy {{ isvip ? 'vip-kk-batch-buy' : '' }}">
+                            <view wx:for="{{ batchPriceList }}" wx:key="index" data-index="{{ index }}" class="gear {{ batchPriceIndex === index ? 'selected' : '' }}" bindtap="tapChangeGear">
+                                {{ item.text }}
+                                <view class="icon" wx:if="{{ item.price_info.icon_text }}">
+                                    {{ item.price_info.icon_text }}
+                                </view>
+                            </view>
+                        </view>
+
+                        <!-- 支付金额、优惠信息 -->
+                        <kk-pay-info isVip="{{ isvip }}" wallet="{{ wallet }}" price="{{ price }}" priceInfo="{{ priceInfo }}" discountInfo="{{ discountInfo }}"></kk-pay-info>
+
+                        <!-- 余额不足，非批量档位 -->
+                        <kk-kkb-list wx:if="{{ isShowRecharge }}" maxCount="6" bind:handleItemChange="handleItemChange"></kk-kkb-list>
+
+                        <!-- 支付按钮 -->
+                        <kk-button-buy isVip="{{ isvip }}" wallet="{{ wallet }}" price="{{ price }}" comicId="{{ comicId }}" payBtnText="{{ payBtnText }}" payIconUrl="{{ payIconUrl }}" bind:onPayClick="onPayClick"></kk-button-buy>
+
+                        <!-- 余额不足非会员可支付 -->
+                        <!-- <view wx:if="{{ isShowRecharge && !isvip }}" class="vip-guide" bindtap="clickOpenVip">
+                            <text>开通会员享85折</text>
+                        </view> -->
+
+                        <!-- 底部强提示按钮 -->
+                        <kk-remind-btn
+                            wx:if="{{ bottomVipBanner && ((bottomVipBanner.text_type >= 3 && isLogin && bottomVipBanner.text_type <= 6) || bottomVipBanner.text_type < 3) }}"
+                            isVip="{{ isvip }}"
+                            topicId="{{ topicId }}"
+                            comicId="{{ comicId }}"
+                            activityId="{{ activityId }}"
+                            bottomVipBanner="{{ bottomVipBanner }}"
+                            bottomVipBannerText="{{ bottomVipBannerText }}"
+                            bind:limitFreeVipFun="limitFreeVipFun"
+                        ></kk-remind-btn>
+                    </view>
+                </view>
+
+                <!-- 2、会员限免弹窗 3、会员专享提前看弹窗 4、会员专享固定话弹窗 -->
+                <kk-pay-vip wx:if="{{ popType == 2 || popType == 3 || popType == 4 }}" popType="{{ popType }}" vipData="{{ vipData }}" trackProps="{{ trackProps }}" bind:clickCloseBtn="clickCloseBtn" bind:openVipPageFun="openVipPageFun"></kk-pay-vip>
+            </view>
+        </view>
+
+        <!-- 这部分需要再考虑，数据需要重新封装 -->
+        <kk-pay-footer
+            wx:if="{{ popType == 1 || popType == 2 }}"
+            images="{{ images }}"
+            type="{{ fooType }}"
+            wallet="{{ wallet || 0 }}"
+            price="{{ price }}"
+            isReadCoupon="{{ isReadCoupon }}"
+            isLogin="{{ isLogin }}"
+            isvip="{{ isvip }}"
+            isLimitFree="{{ isLimitFree }}"
+            payTrackData="{{ payTrackData }}"
+            iPhoneX="{{ iPhoneX }}"
+            topicId="{{ topicId }}"
+            autoPay="{{ autoPay }}"
+            popType="{{ popType }}"
+            isCanPay="{{ isCanPay }}"
+            bind:onPayClick="onPayClick"
+            bind:switchAuto="switchAuto"
+            bind:openVipPageFun="openVipPageFun"
+        ></kk-pay-footer>
+    </view>
+
+    <!-- 充值挽留弹窗(到计时显示) -->
+    <kk-vip-detainment
+        wx:if="{{ isShowPopupCon && pageShow && isLogin && !showVipDetainment }}"
+        topicId="{{ topicId }}"
+        topicName="{{ topicTitle }}"
+        comicId="{{ comicId }}"
+        comicName="{{ comicTitle }}"
+        type="{{ 0 }}"
+        source="{{ advReady ? 5 : popType == 2 ? 2 : !isLimitFree ? 1 : comic_list && comic_list.length == 1 ? 7 : 6 }}"
+        pageName="comic"
+        isShowNow="{{ showVipDetainment }}"
+        bind:onVipDetaClose="onVipDetaClose"
+    ></kk-vip-detainment>
+
+    <!-- 
+    需要支持类型: 会员专享固定锁住弹窗 会员专享 提前看 会员限免  (定向限免 整本限免)
+    服务端接口需要对应的值: 1普通付费弹窗，2会员限免弹窗，3会员专享提前看弹窗，4会员专享固定锁住弹窗，5广告前置弹窗，6定向限免前置弹窗
+    -->
+    <!-- 充值挽留弹窗(提前看点击弹窗关闭立即显示弹窗) -->
+    <kk-vip-detainment
+        wx:if="{{ isShowPopupCon && pageShow && isLogin && showVipDetainment }}"
+        topicId="{{ topicId }}"
+        topicName="{{ topicTitle }}"
+        comicId="{{ comicId }}"
+        comicName="{{ comicTitle }}"
+        type="{{ 0 }}"
+        source="{{ advReady ? 5 : popType == 2 ? 2 : !isLimitFree ? 1 : comic_list && comic_list.length == 1 ? 7 : 6 }}"
+        pageName="comic"
+        isShowNow="{{ showVipDetainment }}"
+        bind:onVipDetaClose="onVipDetaClose"
+    ></kk-vip-detainment>
+</view>

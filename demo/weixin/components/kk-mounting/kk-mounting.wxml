@@ -1,0 +1,39 @@
+<!-- kk-mounting 吸顶组件 S-->
+<scroll-view
+		class="kk-mounting"
+		scroll-top="{{scroll}}"
+		scroll-with-animation="{{scrollAnimation}}"
+		scroll-y="{{true}}"
+		bindscroll="onScroll"
+>
+		<!--
+			upper-threshold="0"
+		lower-threshold="0"
+		scroll-top="0"
+		scroll-left="0"
+		scroll-into-view=""
+		scroll-with-animation="false"
+		enable-back-to-top="false"
+		bindscrolltoupper=""
+		bindscrolltolower=""
+		-->
+		<!-- 吸顶部分 mountingTop  -->
+		<view
+				class="mounting {{ isFixed ? 'mounting-fixed': ''}} {{anamorphism?'anamorphism':''}}"
+				style="top:{{ isFixed? 0 : '-'+height }}px"
+				id="mounting"
+		>
+				<slot name="top"></slot>
+		</view>
+		<!-- 吸顶部分 E class="stance {{ anamorphism ? 'anamorphism':'' }}"  -->
+
+
+		<!-- 内容部分 -->
+		<slot name="middle"></slot>
+		<!-- 内容部分 -->
+
+		<!-- 底部(非必传) -->
+  	<slot name="bottom"></slot>
+		<!-- 底部(非必传) -->
+</scroll-view>
+<!-- kk-mounting 吸顶组件 E-->

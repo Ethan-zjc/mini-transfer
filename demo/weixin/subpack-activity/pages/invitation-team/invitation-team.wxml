@@ -1,0 +1,208 @@
+<!-- 导航返回按钮 -->
+<view class="team-navigator" bindtap="topNavigateBack" style="top:{{top}}px">
+    <image class="icon-img" src="{{ images.close }}" lazy-load="false"/>
+</view>
+
+<view class="team-wrap" style="background-color:{{ pageColor }}" wx:if="{{ !loading }}">
+
+    <!-- 头图 -->
+    <view class="team-banner">
+        <image mode="widthFix" src="{{ bannerUrl }}" lazy-load="false"/>
+    </view>
+
+    <!-- 组队 -->
+    <view class="team-box team-invite">
+        <view class="team-box-border">
+            <view class="team-invite-content">
+                <view class="invite-top" style="background-color:{{ pageColor }}">
+                    <text>分享活动页面</text>
+                    <text class="space">></text>
+                    <text>好友加入队伍</text>
+                    <text class="space">></text>
+                    <text>组队成功领奖</text>
+                </view>
+                <block wx:if="{{ teamStatus == 2 }}">
+                    <view class="invite-time">
+                        <text>剩余时间：</text>
+                        <kk-team-count-time fontColor="{{ pageColor }}" lastTime="{{ teamTime }}" type="{{2}}" bindtimeEnd="timeEnd"></kk-team-count-time>
+                    </view>
+                </block>
+                <block wx:elif="{{ teamStatus == 4 }}">
+                    <view class="invite-time">
+                        <text>本次组队已超时</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="invite-space"></view>
+                </block>
+                <view class="invite-list invite-list-{{ teamUsers.length }}">
+                    <view 
+                        class="invite-list-item"
+                        wx:for="{{ teamUsers }}"
+                        wx:key="index">
+                        <view class="photo">
+                            <view class="invite-login" wx:if="{{ !isLogin && item.selected }}" bindtap="originLogin"></view>
+                            <view class="invite-mask" wx:if="{{ isTeamError }}"></view>
+                            <button 
+                                class="share" 
+                                type="success"
+                                open-type="share" 
+                                data-text="继续邀请好友" 
+                                share-type="{{27}}"
+                                wx:if="{{ item.selected }}">
+                            </button>
+                            <image src="{{ item.avatar_url }}"></image>
+                        </view>
+                        <view class="name {{ item.selected ? 'disabled' : '' }}">
+                            {{ item.nick_name }}
+                        </view>
+                    </view>
+                </view>
+                <view class="invite-button" wx:if="{{ teamButtons.length > 0  }}">
+                    <view 
+                        class="invite-button-cell cell-{{ teamButtons.length }}"
+                        wx:for="{{ teamButtons }}"
+                        wx:key="index">
+                        <view class="invite-login" wx:if="{{ !isLogin && item.type != 3 }}" bindtap="originLogin"></view>
+                        <block wx:if="{{ item.type == 1 }}">
+                            <button 
+                                class="{{ isInvite ? 'share' : 'troops' }}" 
+                                style="{{ isInvite ? item.borderStyle : item.style }}"
+                                data-text="{{ item.text }}"
+                                bindtap="tapTroops">
+                                {{ item.text }}
+                            </button>
+                        </block>
+                        <block wx:elif="{{ item.type == 2 }}">
+                            <button 
+                                class="share" 
+                                type="success"
+                                open-type="share" 
+                                data-text="{{ item.text }}" 
+                                share-type="{{27}}"
+                                style="{{ item.borderStyle }}">
+                                {{ item.text }}
+                            </button>
+                        </block>
+                        <block wx:else>
+                            <button class="disabled" style="{{ item.borderStyle }}">{{ item.text }}</button>
+                        </block>
+                    </view>
+                </view>
+                <view class="invite-award" wx:if="{{ awardList.length }}">
+                    <view 
+                        class="invite-award-item"
+                        style="{{ item.borderStyle }}"
+                        wx:for="{{ awardList }}"
+                        wx:key="index">
+                        <image class="award-bg" mode="widthFix" src="{{ item.bg }}" wx:if="{{ item.bg }}"/>
+                        <view class="award-icon" wx:if="{{ item.icon }}">
+                            <image src="{{ item.icon }}"/>
+                        </view>
+                        <view class="award-info">
+                            <view class="award-title" style="color:{{ item.titleColor }}">{{ item.title }}</view>
+                        </view>
+                        <view class="award-button">
+                            <text 
+                                class="{{ item.status != 2 ? 'disabled' : '' }}"
+                                style="{{ item.buttonStyle }}"
+                                data-index="{{ index }}"
+                                data-title="{{ item.title }}"
+                                data-id="{{ item.id }}"
+                                bindtap="tapAwardBtn">{{ item.buttonText }}</text>
+                        </view>
+                    </view>
+                    <view class="invite-award-more">
+                        <text bindtap="tapAwardMore" style="color:{{ pageColor }}">查看历史获奖记录 ></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 作品专区 -->
+    <view class="team-box team-topics">
+        <view class="team-box-title" style="background-color:{{ pageColor }}">{{ topicsTitle }}</view>
+        <view class="team-box-border">
+            <view class="team-topics-list">
+                <view 
+                    class="team-topics-item"
+                    wx:for="{{ topicsList }}"
+                    wx:key="index"
+                    data-index="{{ index }}"
+                    bindtap="topicsAction">
+                    <view class="topics-bg" style="background-color:{{ pageColor }}"></view>
+                    <view class="topics-cover">
+                        <kk-cover
+                            src="{{ item.url }}"
+                            width="{{ 196 }}"
+                            height="{{ 262 }}">
+                        </kk-cover>
+                        <view 
+                            class="topics-cover-bottom" 
+                            style="background: linear-gradient(90deg, {{ pageColor }} 0%, rgba(133, 71, 240, 0) 100%);"
+                            wx:if="{{ item.favText }}">
+                            {{ item.favText }}
+                        </view>
+                    </view>
+                    <div class="view topics-info">
+                        <view class="topics-title">{{ item.title }}</view>
+                        <view class="topics-subtitle">{{ item.subtitle }}</view>
+                    </div>
+                </view>
+            </view>
+            <view class="team-topics-more">
+                <text bindtap="tapTopicsMore" style="color:{{ pageColor }}">查看更多漫画 ></text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 活动规则 -->
+    <view class="team-box team-rule">
+        <view class="team-box-title" style="background-color:{{ pageColor }}">活动规则</view>
+        <view class="team-box-border">
+            <view class="team-rule-content">
+                <block wx:for="{{ ruleList }}" wx:key="index">
+                    <view class="{{ index%2 == 0 ? 'info' : 'title' }}">{{ item }}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+<!-- 底部加载状态 -->
+<view style="margin-top:120rpx;" wx:else>
+    <kk-bottom loading="{{ loading }}" finish="{{ false }}"></kk-bottom>
+</view>
+
+<!-- 弹窗 -->
+<view class="dialog" wx:if="{{ dialogInfo.show }}">
+    <view class="dialog-info">
+        <view class="dialog-title">{{ dialogInfo.title }}</view>
+        <view class="dialog-subtitle" wx:if="{{ dialogInfo.subtitle }}">{{ dialogInfo.subtitle }}</view>
+        <view class="dialog-icon" wx:if="{{ dialogInfo.icon }}" >
+            <image mode="widthFix" src="{{ dialogInfo.icon }}"/>
+        </view>
+        <view class="dialog-btn" bindtap="dialogClose">知道了</view>
+    </view>
+</view>
+
+<!-- 获取手机号授权dialog -->
+<mp-dialog
+	wx:if="{{ dialog.show }}"
+    show="{{ dialog.show }}"
+    title="{{ dialog.title }}"
+    content="{{ dialog.content }}"
+    buttons="{{ dialog.button }}"
+    bindbuttontap="onDialogButtontapEvent"
+    bindgetphonenumber="onDiallogGetPhoneNumberEvent"
+    buttonGetPhoneNumber="{{true}}">
+    <!-- 内容区块：额外增加内容 slot -->
+    <view slot="bd-content" class="weui-dialog__content2">
+        <text class="content-two">{{dialog.contentTwo}}</text>
+        <text catchtap="onDialogTapEvent" class="content-three">{{dialog.contentThree}}</text>
+    </view>
+</mp-dialog>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

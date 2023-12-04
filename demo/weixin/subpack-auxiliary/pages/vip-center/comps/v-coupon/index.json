@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-slot-dialog": "/components/kk-slot-dialog/index"
+    }
+}

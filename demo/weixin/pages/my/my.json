@@ -1,0 +1,19 @@
+{
+    "navigationBarBackgroundColor": "#FFE120",
+    "backgroundColorTop": "#FFE120",
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "kk-icon": "/components/kk-icon/kk-icon",
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-avatar": "/components/kk-avatar/kk-avatar",
+        "kk-mounting": "/components/kk-mounting/kk-mounting",
+        "success-dialog": "/components/kk-activity-dialog/success-dialog/success-dialog",
+        "kk-login": "/components/kk-login/kk-login",
+        "kk-suspended-win": "/components/kk-suspended-win/index",
+        "kk-guide": "/components/kk-guide/kk-guide",
+        "kk-book-banner": "/components/kk-book-banner/index",
+        "kk-newuser-recharge": "/components/kk-newuser-recharge/index",
+        "kk-video-item": "/components/kk-video-item/index"
+    }
+}

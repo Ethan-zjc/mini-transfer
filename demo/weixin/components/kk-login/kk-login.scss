@@ -1,0 +1,296 @@
+@import '../../common/_color';
+$color-weixin: #55b837;
+
+.kk-login {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 4999;
+    width: 100%;
+    height: 100%;
+    button::after {
+        border: none;
+    }
+}
+.login-warp {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: all 0.3s linear;
+    &.show {
+        opacity: 1;
+    }
+    &.hide {
+        opacity: 0;
+    }
+}
+.login-half {
+    position: absolute;
+    bottom: 0;
+    bottom: -500rpx;
+    padding-bottom: 500rpx;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    // transform: translateY(100%);
+    transition: all 0.5s linear;
+    &.show {
+        transform: translateY(0);
+    }
+    &.hide {
+        transform: translateY(100%);
+    }
+    .head {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 32rpx;
+        width: 100%;
+        height: 98rpx;
+        box-sizing: border-box;
+        .title {
+            display: block;
+            font-size: 28rpx;
+            text-align: center;
+            color: #333;
+            flex: 1;
+        }
+        .close {
+            width: 40rpx;
+            height: 40rpx;
+            &-img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .middle {
+        box-sizing: border-box;
+        padding: 0rpx 90rpx;
+    }
+    .footer {
+        height: 72rpx;
+        &.ipx {
+            padding-bottom: 66rpx;
+        }
+    }
+}
+
+// 中间区域
+.account {
+    padding: 8rpx 0 58rpx;
+    box-sizing: border-box;
+    .phone-number {
+        display: flex;
+        align-items: center;
+        padding-top: 32rpx;
+        padding-bottom: 32rpx;
+        border-bottom: 2rpx solid rgba(216, 216, 216, 0.4);
+        .title-text {
+            padding-right: 32rpx;
+            font-size: 28rpx;
+            font-family: PingFangSC, PingFangSC-Regular;
+            font-weight: 400;
+            text-align: left;
+            color: #333;
+            line-height: 46rpx;
+        }
+        .eye {
+            display: flex;
+            justify-content: flex-end;
+            width: 60rpx;
+            height: 40rpx;
+            &-img {
+                width: 40rpx;
+                height: 40rpx;
+            }
+        }
+        .code-btn {
+            width: 130rpx;
+            font-size: 24rpx;
+            text-align: right;
+            color: rgba(111, 147, 189, 0.3);
+            &.count {
+                color: #ccc;
+            }
+            &.click {
+                color: #6f93bd;
+            }
+        }
+        .login-input {
+            flex: 1;
+            height: 34rpx;
+            line-height: 34rpx;
+            font-size: 28rpx;
+            font-family: PingFangSC-Regular, 'PingFang SC';
+            font-weight: 400;
+            text-align: left;
+            color: #333;
+        }
+        .placeholder-text {
+            color: #999;
+            &.disabled {
+                color: rgba(153, 153, 153, 0.3);
+            }
+        }
+    }
+    .way {
+        display: flex;
+        justify-content: flex-end;
+        &-btn {
+            margin: 24rpx 0;
+            font-size: 24rpx;
+            color: #999;
+        }
+    }
+    .form-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 84rpx;
+        border-radius: 58rpx;
+        background: rgba(255, 225, 32, 1) !important;
+        &.validate {
+            background: rgba(255, 225, 32, 0.6) !important;
+        }
+        .login-text {
+            position: relative;
+            font-family: PingFangSC, PingFangSC-Medium;
+            font-weight: 500;
+            text-align: center;
+            color: #333;
+            flex: 1;
+            .loadings {
+                position: absolute;
+                top: -2rpx;
+                bottom: 0;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.auth-btn {
+    margin-bottom: 66rpx;
+    width: 100%;
+    .desc {
+        display: inline-block;
+        margin: 8rpx 0 24rpx;
+        font-size: 28rpx;
+        color: #333;
+    }
+    // 手机号一键登录
+    .oneKey {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 32rpx 0 40rpx;
+        width: 100%;
+        height: 84rpx;
+        font-size: 32rpx;
+        font-weight: 500;
+        border-radius: 58rpx;
+        color: #333;
+        background: #fde23d;
+    }
+    .applets-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 84rpx;
+        font-size: 32rpx;
+        font-weight: 500;
+        border-radius: 58rpx;
+        color: #fff;
+        .channel-img {
+            margin-right: 10rpx;
+            width: 40rpx;
+            height: 40rpx;
+        }
+        &.wechat {
+            background-color: $color-weixin;
+        }
+    }
+}
+
+// 用户协议
+.user-agree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .radio-group {
+        display: flex;
+        align-items: center;
+        height: 32rpx;
+        font-size: 24rpx;
+        text-align: center;
+        color: #999;
+        line-height: 32rpx;
+    }
+    .radio-wrapper {
+        display: flex;
+        align-items: center;
+        height: 32rpx;
+    }
+    .radio-checked {
+        margin-right: 4rpx;
+        width: 32rpx;
+        height: 32rpx;
+    }
+    .link {
+        display: flex;
+        align-items: center;
+        height: 32rpx;
+        color: #4990e2;
+    }
+}
+.user-agree.user-agree-no {
+    .radio-group {
+        color: red;
+        .link {
+            color: red !important;
+        }
+    }
+}
+.user-agree.is-sway {
+    animation: sway 2.5s 0.15s linear infinite;
+}
+@keyframes sway {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+// 全屏
+.login-full {
+    .head {
+        display: none;
+    }
+    .middle {
+        box-sizing: border-box;
+        padding: 0rpx 90rpx;
+    }
+    .footer {
+        margin-top: 8rpx;
+        height: 72rpx;
+    }
+}

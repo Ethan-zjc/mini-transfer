@@ -1,0 +1,4 @@
+<!-- APP导流私域能力 -->
+<view>
+    <image src="{{ imageSrc }}" mode="widthFix" show-menu-by-longpress="true" />
+</view>

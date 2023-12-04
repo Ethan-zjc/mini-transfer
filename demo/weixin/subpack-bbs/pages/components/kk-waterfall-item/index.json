@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-cover": "../kk-cover/kk-cover"
+    }
+}

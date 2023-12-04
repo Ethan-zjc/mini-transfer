@@ -1,0 +1,103 @@
+// 作品更新提醒
+.popup-message-login {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    .login-content {
+        width: 590rpx;
+        height: 740rpx;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .login-bg {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        image {
+            display: block;
+            width: 590rpx;
+            height: 740rpx;
+        }
+    }
+    .login-btn {
+        position: absolute;
+        left: 50%;
+        bottom: 88rpx;
+        z-index: 3;
+        width: 312rpx;
+        height: 110rpx;
+        margin-left: -156rpx;
+        image {
+            width: 312rpx;
+            height: 110rpx;
+            display: block;
+        }
+    }
+    .login-close {
+        position: relative;
+        width: 80rpx;
+        height: 80rpx;
+        margin: 0rpx auto 0;
+        image {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+}
+
+.popup-message-send {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    .send-content {
+        width: 746rpx;
+        height: 727rpx;
+        position: absolute;
+        left: 2rpx;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .send-bg {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        image {
+            display: block;
+            width: 746rpx;
+            height: 727rpx;
+        }
+    }
+    .send-btn {
+        position: relative;
+        width: 438rpx;
+        height: 106rpx;
+        margin: 8rpx auto 0;
+        image {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+    .send-close {
+        position: relative;
+        width: 80rpx;
+        height: 80rpx;
+        margin: 10rpx auto 0;
+        image {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+}

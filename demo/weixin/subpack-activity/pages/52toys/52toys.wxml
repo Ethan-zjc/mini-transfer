@@ -1,0 +1,138 @@
+<!-- 52toys活动页 -->
+<view class="navigation" id="navigation">
+    <kk-navigation-bar></kk-navigation-bar>
+</view>
+<view class="toys">
+    <view class="toys-header">
+        <kk-cover 
+            src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/headerImage_a18dd53.png"
+            width="{{ 750 }}"
+            height="{{ 881 }}"
+        />
+        <image
+            class="package-btn"
+            src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/packageBtn_a74ba59.png"
+            mode="aspectFill"
+            bindtap="openPackageDialog"
+        />
+    </view>
+    <view class="toys-body">
+        <kk-cover 
+            src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/grid_fb9f01f.png"
+            width="{{ 750 }}"
+            height="{{ 96 }}"
+        />
+        <view class="list-box">
+            <view class="comic-list">
+                <image
+                    wx:if="{{!focusStatus}}"
+                    class="operate-btn"
+                    src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/doFocusBtn_dfb916b.png"
+                    mode="aspectFill"
+                    bindtap="focusTopic"
+                />
+                <image
+                    wx:if="{{focusStatus}}"
+                    class="operate-btn"
+                    src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/focused_ef5de4e.png"
+                    mode="aspectFill"
+                />
+                <block wx:for="{{topicList}}" wx:for-item="item" wx:key="id">
+                    <view class="comic-item" data-id="{{item.id}}" bindtap="toComicetail"> 
+                        <kk-cover 
+                            src="{{item.iamgeCover}}"
+                            width="{{ 310 }}"
+                            height="{{ 310 }}"
+                        />
+                    </view>
+                </block>
+            </view>
+            <view class="product-list">
+                <image
+                    wx:if="{{!code}}"
+                    class="operate-btn"
+                    src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/getCouponBtn_0269c7b.png"
+                    mode="aspectFill"
+                    bindtap="getPackage"
+                />
+                <image
+                    wx:if="{{code}}"
+                    class="operate-btn"
+                    src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/covertBtn_0f3d14b.png"
+                    mode="aspectFill"
+                    bindtap="toCoin"
+                />
+                <block wx:for="{{productList}}" wx:for-item="item" wx:key="id">
+                    <view class="product-item" data-id="{{item.id}}" bindtap="toParnterApp"> 
+                        <kk-cover 
+                            src="{{item.iamgeCover}}"
+                            width="{{ 310 }}"
+                            height="{{ 310 }}"
+                        />
+                    </view>
+                </block>
+            </view>
+        </view>
+        <kk-cover 
+            src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/grid_fb9f01f.png"
+            width="{{ 750 }}"
+            height="{{ 96 }}"
+        />
+    </view>
+    <view class="dialog" wx:if="{{isShowCodeDialog}}">
+        <view class="code-dialog">
+            <view class="dialog-body">
+                <view class="code-content">{{code}}</view>
+                <image
+                    class="copy-btn"
+                    src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/copyBtn_9060e5b.png"
+                    mode="aspectFill"
+                    bindtap="copyCode"
+                />
+            </view>
+            <image
+                class="close-btn"
+                src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/closeBtn_b0cffc5.png"
+                mode="aspectFill"
+                bindtap="closeCodeDialog"
+            />
+        </view>
+    </view>
+    <view class="dialog" wx:if="{{isShowPackageDialog}}">
+        <view class="package-dialog">
+            <view class="dialog-body">
+                <view class="operate-btns">
+                    <image
+                        class="view-code-btn"
+                        src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/viewCodeBtn_31534e7.png"
+                        mode="aspectFill"
+                        bindtap="viewCode"
+                    />
+                    <image
+                        class="to-coin-btn"
+                        src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/covertBtn_0f3d14b.png"
+                        mode="aspectFill"
+                        bindtap="toCoin"
+                    />
+                </view>
+                <view class="block-title">-券码说明-</view>
+                <view class="code-desc">{{codeDesc1}}</view>
+                <view class="code-desc">{{codeDesc2}}</view>
+            </view>
+            <image
+                class="close-btn"
+                src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/52toys/closeBtn_b0cffc5.png"
+                mode="aspectFill"
+                bindtap="closePackageDialog"
+            />
+        </view>
+    </view>
+    <kk-login
+        wx:if="{{ showLogin }}"
+        show="{{ showLogin }}"
+        refresh 
+        mask
+        istab
+    >
+    </kk-login>
+</view>

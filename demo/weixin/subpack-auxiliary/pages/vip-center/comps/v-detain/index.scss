@@ -1,0 +1,198 @@
+.v-detain {
+    display: flex;
+    align-items: center;
+    padding: 48rpx 0;
+    width: 574rpx;
+    height: 468rpx;
+    border-radius: 24rpx;
+    background-color: #fff;
+    flex-direction: column;
+    box-sizing: border-box;
+    .desc {
+        font-size: 34rpx;
+        font-weight: bold;
+        text-align: center;
+        color: #222;
+        line-height: 42rpx;
+    }
+    .contain {
+        position: relative;
+        margin-top: 16rpx;
+        width: 498rpx;
+        height: 174rpx;
+        .bg {
+            position: absolute;
+            bottom: 0;
+            z-index: 2;
+            width: 494rpx;
+            height: 174rpx;
+            border-radius: 12rpx;
+            background-color: #ff751a;
+        }
+    }
+    .expire {
+        position: absolute;
+        top: 0rpx;
+        right: 0;
+        z-index: 6;
+        display: flex;
+        align-items: center;
+        padding: 0rpx 8rpx;
+        height: 32rpx;
+        border-radius: 0 12rpx;
+        background: #ff5058;
+        .txt {
+            font-size: 20rpx;
+            font-weight: bold;
+            color: #fff;
+            line-height: 32rpx;
+        }
+    }
+    .list {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 4;
+        .item {
+            position: relative;
+            display: flex;
+            margin: 16rpx auto 0rpx;
+            width: 494rpx;
+            height: 174rpx;
+            border: 2rpx solid rgba(0, 0, 0, 0.05);
+            border-radius: 12rpx;
+            background-color: #fff;
+            box-sizing: border-box;
+            .cut-box {
+                position: relative;
+                display: flex;
+                align-items: center;
+                width: 2rpx;
+                .line {
+                    width: 0rpx;
+                    height: 148rpx;
+                    border: 2rpx dashed #e7e7e7;
+                    box-sizing: border-box;
+                }
+                .circle {
+                    position: absolute;
+                    left: -12rpx;
+                    width: 24rpx;
+                    height: 24rpx;
+                    border: 2rpx solid rgba(0, 0, 0, 0.05);
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                }
+                .shelter {
+                    position: absolute;
+                    z-index: 10;
+                    width: 24rpx;
+                    height: 18rpx;
+                }
+
+                .top {
+                    top: -12rpx;
+                    .shelter {
+                        top: -10rpx;
+                        left: -2rpx;
+                        background-color: #fff;
+                    }
+                }
+                .bottom {
+                    bottom: -12rpx;
+                    .shelter {
+                        bottom: -10rpx;
+                        left: -2rpx;
+                        background-color: #fff;
+                    }
+                }
+            }
+            .coupon-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 154rpx;
+                box-sizing: border-box;
+                .con {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    width: 100%;
+                    height: 60rpx;
+                    .symbol {
+                        width: 30rpx;
+                        font-size: 30rpx;
+                        font-weight: 500;
+                        text-align: center;
+                        color: #ff751a;
+                        line-height: 36rpx;
+                    }
+                    .num {
+                        font-size: 64rpx;
+                        font-weight: 600;
+                        color: #ff751a;
+                        line-height: 60rpx;
+                    }
+                }
+            }
+            .infos {
+                display: flex;
+                flex-direction: column;
+                padding: 32rpx;
+                box-sizing: border-box;
+                .title {
+                    font-size: 30rpx;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 36rpx;
+                    color: #222;
+                }
+                .validity {
+                    margin-top: 8rpx;
+                    font-size: 24rpx;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 30rpx;
+                    color: #999;
+                }
+                .label {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 4rpx;
+                    height: 36rpx;
+                    .txt {
+                        padding: 6rpx 12rpx;
+                        font-size: 20rpx;
+                        border-radius: 6rpx;
+                        color: #999;
+                        background-color: #f5f5f5;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+        }
+    }
+    .btns {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 48rpx;
+        width: 494rpx;
+        height: 88rpx;
+        .btn {
+            width: 236rpx;
+            height: 88rpx;
+            font-size: 32rpx;
+            border-radius: 44rpx;
+            text-align: center;
+            color: #222;
+            line-height: 88rpx;
+        }
+        .cancel {
+            background: #f5f5f5;
+        }
+        .use {
+            font-weight: bold;
+            background: #ffe120;
+        }
+    }
+}

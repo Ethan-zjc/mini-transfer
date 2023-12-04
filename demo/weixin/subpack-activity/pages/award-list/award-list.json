@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "我的奖品",
+    "enablePullDownRefresh": false,
+    "backgroundColor": "#F7F9FA",
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "exchange-popup": "./exchange-popup/index"
+    }
+}

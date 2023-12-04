@@ -1,0 +1,392 @@
+.lucky {
+    position: relative;
+    .hit_box {
+        width: 120rpx;
+        height: 120rpx;
+        position: absolute;
+        top: -120rpx;
+        left: 0rpx;
+    }
+    &-bg {
+        position: relative;
+        width: 654rpx;
+        height: 838rpx;
+    }
+    &-down {
+        position: absolute;
+        width: 207rpx;
+        height: 209rpx;
+        left: 81rpx;
+        top: 576rpx;
+        z-index: 3;
+        .down-bg {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .down-box {
+            position: absolute;
+            left: 46rpx;
+            top: 30rpx;
+            z-index: 5;
+            width: 136rpx;
+            height: 146rpx;
+            overflow: hidden;
+        }
+    }
+    &-start {
+        position: absolute;
+        width: 306rpx;
+        height: 214rpx;
+        right: 42rpx;
+        top: 565rpx;
+        z-index: 3;
+        .start-bg {
+            width: 100%;
+            height: 100%;
+        }
+        .start-btn {
+            position: absolute;
+            left: 20rpx;
+            top: 45rpx;
+            z-index: 4;
+            width: 152rpx;
+            height: 152rpx;
+        }
+        .start-text {
+            position: absolute;
+            left: 92rpx;
+            top: 0;
+            z-index: 4;
+            line-height: 26rpx;
+            font-size: 26rpx;
+            font-family: Source Han Sans CN;
+            font-weight: 500;
+            color: #fdff8c;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+}
+.lucky-box {
+    width: 370rpx;
+    height: 370rpx;
+    position: absolute;
+    left: 138rpx;
+    top: 96rpx;
+    z-index: 10;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    .egg_box {
+        width: 136rpx;
+        height: 136rpx;
+        position: absolute;
+    }
+
+    .egg_box1 {
+        left: 19%;
+        top: 76%;
+    }
+    .egg_box2 {
+        left: 68%;
+        top: 68%;
+    }
+    .egg_box3 {
+        left: 74%;
+        top: 42%;
+    }
+    .egg_box4 {
+        left: 49%;
+        top: 21%;
+    }
+
+    .egg_box5 {
+        left: -2%;
+        top: 18%;
+    }
+    .egg_box6 {
+        left: 9%;
+        top: 42%;
+    }
+    .egg_box7 {
+        left: 40%;
+        top: 56%;
+    }
+}
+
+// 设置动画
+.ant_1 {
+    animation: around1 0.75s linear infinite;
+    -webkit-animation: around1 0.75s linear infinite;
+}
+.ant_2 {
+    animation: around2 0.75s linear infinite;
+    -webkit-animation: around2 0.75s linear infinite;
+}
+.ant_3 {
+    animation: around3 0.75s linear infinite;
+    -webkit-animation: around3 0.75s linear infinite;
+}
+.ant_4 {
+    animation: around4 0.75s linear infinite;
+    -webkit-animation: around4 0.75s linear infinite;
+}
+.ant_5 {
+    animation: around5 0.75s linear infinite;
+    -webkit-animation: around5 0.75s linear infinite;
+}
+.ant_6 {
+    animation: around6 0.75s linear infinite;
+    -webkit-animation: around6 0.75s linear infinite;
+}
+.ant_7 {
+    animation: around7 0.75s linear infinite;
+    -webkit-animation: around7 0.75s linear infinite;
+}
+
+.ant_down {
+    animation: upInDown 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.2s;
+    -webkit-animation: upInDown 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.ant_btn {
+    animation: upInBtn 0.4s;
+    -webkit-animation: upInBtn 0.4s;
+    animation-fill-mode: forwards;
+}
+
+/* 蛋滚动 */
+@keyframes around1 {
+    0% {
+        transform: rotate(-30deg);
+        left: 19%;
+        top: 76%;
+    }
+
+    26% {
+        transform: rotate(60deg);
+        left: 41.2%;
+        top: 18.9%;
+    }
+
+    44% {
+        transform: rotate(110deg);
+        left: 52.2%;
+        top: 31.8%;
+    }
+
+    64% {
+        transform: rotate(56deg);
+        left: 72%;
+        top: 48%;
+    }
+
+    100% {
+        transform: rotate(-30deg);
+        left: 19%;
+        top: 76%;
+    }
+}
+
+@keyframes around2 {
+    0% {
+        transform: rotate(85deg);
+        left: 68%;
+        top: 68%;
+    }
+
+    23% {
+        transform: rotate(210deg);
+        left: 70%;
+        top: 46%;
+    }
+
+    45% {
+        transform: rotate(120deg);
+        left: 45%;
+        top: 18%;
+    }
+
+    72% {
+        transform: rotate(30deg);
+        left: 8%;
+        top: 44%;
+    }
+
+    100% {
+        transform: rotate(85deg);
+        left: 68%;
+        top: 68%;
+    }
+}
+
+@keyframes around3 {
+    0% {
+        transform: rotate(-10deg);
+        left: 74%;
+        top: 42%;
+    }
+
+    38% {
+        transform: rotate(-30deg);
+        left: 38%;
+        top: 21.4%;
+    }
+
+    65% {
+        transform: rotate(-50deg);
+        left: 7%;
+        top: 48.7%;
+    }
+
+    100% {
+        transform: rotate(-10deg);
+        left: 74%;
+        top: 42%;
+    }
+}
+
+@keyframes around4 {
+    0% {
+        transform: rotate(20deg);
+        left: 49%;
+        top: 21%;
+    }
+
+    35% {
+        transform: rotate(-30deg);
+        left: 53.4%;
+        top: 21.3%;
+    }
+
+    64% {
+        transform: rotate(-53deg);
+        left: 24.3%;
+        top: 66%;
+    }
+
+    100% {
+        transform: rotate(20deg);
+        left: 49%;
+        top: 21%;
+    }
+}
+
+@keyframes around5 {
+    0% {
+        transform: rotate(-65deg);
+        left: -2%;
+        top: 18%;
+    }
+
+    29% {
+        transform: rotate(-180deg);
+        left: 40%;
+        top: 21.5%;
+    }
+
+    53% {
+        transform: rotate(-222deg);
+        left: 9%;
+        top: 51.3%;
+    }
+
+    76% {
+        transform: rotate(-160deg);
+        left: 21.8%;
+        top: 67.9%;
+    }
+
+    100% {
+        transform: rotate(-65deg);
+        left: -2%;
+        top: 18%;
+    }
+}
+
+@keyframes around6 {
+    0% {
+        transform: rotate(16deg);
+        left: 9%;
+        top: 42%;
+    }
+
+    28% {
+        transform: rotate(-60deg);
+        left: 18%;
+        top: 67%;
+    }
+
+    40% {
+        transform: rotate(-45deg);
+        left: 8%;
+        top: 51.3%;
+    }
+
+    80% {
+        transform: rotate(70deg);
+        left: 52.7%;
+        top: 19.9%;
+    }
+
+    100% {
+        transform: rotate(16deg);
+        left: 9%;
+        top: 42%;
+    }
+}
+
+@keyframes around7 {
+    0% {
+        transform: rotate(-13deg);
+        left: 40%;
+        top: 56%;
+    }
+
+    17% {
+        transform: rotate(50deg);
+        left: 37.5%;
+        top: 67.9%;
+    }
+
+    44% {
+        transform: rotate(75deg);
+        left: 75%;
+        top: 51.3%;
+    }
+
+    67% {
+        transform: rotate(42deg);
+        left: 50.18%;
+        top: 18%;
+    }
+
+    100% {
+        transform: rotate(-13deg);
+        left: 40%;
+        top: 56%;
+    }
+}
+
+/* 蛋下降动画 */
+@keyframes upInDown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 16rpx;
+    }
+}
+
+// 按钮旋转
+@keyframes upInBtn {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-72deg);
+    }
+}

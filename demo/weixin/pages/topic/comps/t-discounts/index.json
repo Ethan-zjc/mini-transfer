@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-countdown": "/components/kk-countdown/kk-countdown",
+        "kk-pay-info": "../kk-pay-info/index"
+    }
+}

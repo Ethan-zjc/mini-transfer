@@ -1,0 +1,35 @@
+@import "../../common/_color.scss";
+
+page {
+    height: 100%;
+}
+.wrap {
+    background: #fff;
+    min-height: 100%;
+}
+
+.container {
+    color: $color-brown;
+}
+
+.main-list {
+    padding-top: 24rpx;
+}
+
+.main-top {
+    position: -webkit-sticky;
+    position: sticky;
+    // position: relative;
+    top: 0px;
+    z-index: 2000;
+    width: 100%;
+}
+
+.main-search {
+    position: relative;
+    z-index: 89;
+    background: #fff;
+    &-active {
+        background: none;
+    }
+}

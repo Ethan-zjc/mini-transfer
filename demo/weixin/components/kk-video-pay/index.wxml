@@ -1,0 +1,106 @@
+<view
+    class="pay-main"
+    catchtouchmove
+    catchtap>
+    <!-- 弹窗内容 -->
+    <view class="pay-half {{ showTrans ? 'show' : 'hide' }}">
+        <!-- 头部 -->
+        <view class="pay-head">
+            <text class="txt">{{ enough ? "支付一点点KK币，解锁漫剧" : "余额不足，请进行充值" }}</text>
+            <view class="close" bindtap="closeVideoPay">
+                <image src="{{ videoImgs['pay-close'] }}"></image>
+            </view>
+        </view>
+
+        <view class="container">
+            <!-- 余额充足 -->
+            <view class="batch" wx:if="{{ enough }}">
+
+                <!-- 存在批量档位 -->
+                <view class="line" wx:if="{{ !virPopupsType }}">
+                    <view class="block {{ activeIndex == index ? 'active' : 'noactive-1' }}" wx:for="{{ batchList }}" wx:key="index" data-index="{{ index }}" bindtap="changeBatch">
+                        <text class="title">{{ item.text }}</text>
+                        <text class="price">{{ item.price_info.origin_kk_currency }}KKB</text>
+
+                        <!-- <text class="icon" wx:if="{{ item.price_info.icon_text }}">{{ item.price_info.icon_text }}</text> -->
+                    </view>
+                </view>
+
+                <!-- 虚拟币价格/折扣信息等 -->
+                <view class="vprice">
+                    <image class="kkb" src="{{ videoImgs['big-kkb'] }}" />
+                    <text class="price">{{ batchList[activeIndex] && batchList[activeIndex].price_info.selling_kk_currency }}</text>
+                    <view class="vip-icon" wx:if="{{ isVip }}">
+                        <text class="mark">{{ discountInfo.discount_left || "VIP" }}</text>
+                        <text class="text">{{ discountInfo.discount_right || "会员" }}</text>
+                    </view>
+                    <view class="discount-icon" wx:if="{{ batchList[activeIndex].price_info.total_discount && batchList[activeIndex].price_info.total_discount > 0 && batchList[activeIndex].price_info.total_discount < 100 }}">
+                        <image class="icon" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/buyvip/discount_abb9369.png"></image>
+                        <text class="icon-text">{{ batchList[activeIndex].price_info.total_discount / 10 }}折</text>
+                    </view>
+                </view>
+
+                <!-- 折扣的价格信息 -->
+                <view class="pay-info-subtitle" wx:if="{{ discountInfo.discount_text }}">
+                    <text class="pay-line {{ discountInfo.market_delete ? 'delete' : '' }}">{{ discountInfo.market_text }}</text>
+                    <text class="pay-desc">{{ discountInfo.discount_text }}</text>
+                    <view class="more" wx:if="{{ priceInfo.deduction_texts && priceInfo.deduction_texts.length }}">
+                        <view catchtap="tapButtonMore">
+                            <image class="icon" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/sign-help_5abdf5c.png"></image>
+                        </view>
+                        <view class="tips" wx:if="{{ showTips }}">
+                            <view class="tips-text" wx:for="{{ priceInfo.deduction_texts }}" wx:key="index">
+                                {{ item }}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 支付按钮/虚拟币购买 -->
+                <view class="pay-btn btn" bindtap="virtualPay">
+                    <text>{{ virPopupsType ? "购买全剧" : (batchList[activeIndex] && batchList[activeIndex].price_info.selling_kk_currency > wallet ? "立即充值" : "确认支付") }}</text>
+                </view>
+            </view>
+
+            <!-- 余额不足 -->
+            <view class="cards" wx:if="{{ !enough }}">
+                <block wx:if="{{ canPay }}">
+                    <view class="line">
+                        <view class="block {{ item.words_info && item.words_info.explain_text ? 'give-info' : '' }} {{ activeIndex == index ? 'active' : 'noactive-2' }} {{ (index+1)%4 == 0 ? 'isLeft' : '' }}" data-index="{{ index }}" wx:for="{{ rechargeList }}" wx:key="id" bindtap="changeCard">
+                            <view class="top">
+                                <image class="kkb" src="{{ videoImgs['small-kkb'] }}" />
+                                <text class="count">{{ item.recharge_value }}</text>
+                            </view>
+                            <text class="price">{{ item.realPrice }}元</text>
+                            <view class="give" wx:if="{{ item.words_info && item.words_info.explain_text }}">
+                                <text class="txt">{{ item.words_info.explain_text }}</text>
+                            </view>
+                        </view>
+                    </view>
+
+                    <!-- 立即充值 -->
+                    <view class="pay-btn btn" bindtap="realPay">
+                        <text>立即充值</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="nopay">
+                        <image class="img" src="{{ videoImgs['nopay'] }}"></image>
+                        <text class="txt">Sorry…由于相关规范，iOS该功能暂不可用</text>
+                    </view>
+                    <view class="no-pay-btn btn">
+                        <text>iOS功能暂不可用</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+
+        <view class="footer">
+            <text class="balance">余额：{{ wallet || 0 }}</text>
+            <view wx:if="{{ canPay }}" class="recharge" bindtap="openKkbPage">
+                <text>充值</text>
+                <image class="arrow" src="{{ videoImgs['pay-arrow'] }}" />
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "kk-act-detail": "../kk-act-detail/index"
+    }
+}

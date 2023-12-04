@@ -1,0 +1,9 @@
+<view class="benefits-single">
+    <view class="single-pic" bindtap="tapAction">
+        <kk-cover src="{{ moduleImg }}" width="702" height="394"></kk-cover>
+    </view>
+    <view class="single-info">
+        <view class="single-title">{{ params.title }}</view>
+        <view class="single-subtitle">{{ params.subtitle }}</view>
+    </view>
+</view>

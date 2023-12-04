@@ -1,0 +1,113 @@
+.kk-subscribe {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.kk-subscribe .top-navigator {
+  position: fixed;
+  top: 0rpx;
+  left: 16rpx;
+  padding: 0 10rpx;
+  width: 68rpx;
+  height: 68rpx;
+  z-index: 9990;
+}
+
+.kk-subscribe .top-navigator .icon-img {
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.kk-subscribe .subscribe-bg {
+  width: 100%;
+  min-height: 100vh;
+  background-size: 100% auto;
+  filter: blur(-2rpx);
+}
+
+.kk-subscribe .authorize-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.kk-subscribe .authorize-popup .content {
+  position: relative;
+  box-sizing: border-box;
+  padding: 48rpx 40rpx;
+  width: 574rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+}
+
+.kk-subscribe .authorize-popup .content .title {
+  margin-bottom: 16rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  overflow: hidden;
+  font-size: 34rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+}
+
+.kk-subscribe .authorize-popup .content .tips {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: normal;
+  color: #666666;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.kk-subscribe .authorize-popup .content .tips .hot {
+  color: red;
+}
+
+.kk-subscribe .authorize-popup .btn-list {
+  padding-top: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kk-subscribe .authorize-popup .btn-list .btn {
+  width: 236rpx;
+  height: 88rpx;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #F5F5F5;
+}
+
+.kk-subscribe .authorize-popup .btn-list .btn .text {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: normal;
+  color: #222;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.kk-subscribe .authorize-popup .btn-list .agree-btn {
+  background: #FFE120;
+}
+
+.kk-subscribe .authorize-popup .btn-list .agree-btn .text {
+  font-weight: 500;
+}
+
+.kk-subscribe .authorize-bg {
+  background: rgba(0, 0, 0, 0.7);
+}

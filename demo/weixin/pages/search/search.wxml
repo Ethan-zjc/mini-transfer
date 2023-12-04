@@ -1,0 +1,170 @@
+
+<!-- 搜索按钮 -->
+<view class="search-wrap">
+	<view class="search-view search-sear {{ value && 'search-blot' }}">
+		<image src="{{ searchImgs['ico-search-new'] }}"></image>
+		<input type="text" value="{{ value }}" focus bindinput="handleInput" confirm-type="search" bindconfirm="searchConfirm" placeholder="{{ holder || '搜索作品名' }}" placeholder-class="placeholder" />
+	</view>
+	<view class="btn-delete" bindtap="clearValue" hidden="{{ !value }}">
+		<image src="{{ searchImgs['ico-delete'] }}"></image>
+	</view>
+	<navigator class="btn-cancel" hover-class="none" open-type="navigateBack">取消</navigator>
+</view>
+
+<!-- 搜索结果 -->
+<view class="search-mask" hidden="{{ !value }}" bindtap="clearValue">
+	<!-- 实时反馈 -->
+	<view class="hits-wrap" hidden="{{ !searching }}">
+		<view class="hits-btn" catchtap="search">
+			<view>搜索<text>"{{value}}"</text></view>
+		</view>
+		<view class="hits-item" wx:for="{{ hitsList }}" wx:key="topic_id">
+			<view class="search-btn search-padding" data-id="{{ item.topic_id }}" data-tit="{{ item.title }}" catchtap="jumpSug">
+				<text>{{ item.title }}</text>
+			</view>
+		</view>
+	</view>
+
+	<!-- 搜索结果 -->
+    <scroll-view class="search-list" scroll-y bindscrolltolower="loadMore" hidden="{{ searching }}" scroll-top="{{ scrollTop }}">
+		<view class="search-rec-tips" wx:if="{{ isRec }}">
+			<view class="rec-tips-box">
+				<text>Sorry~没有找到“</text><text class="active">{{ value }}</text><text>”相关漫画</text>
+			</view>
+			<view class="rec-tips-title">
+				<text>为你推荐</text>
+			</view>
+		</view>
+		<view class="topic-list" style="min-height: {{ resultList.length ? '100%' : 'auto' }}">
+			<block wx:for="{{ resultList }}" wx:key="id">
+				<view class="topic" data-id="{{ item.id }}" data-count="{{ item.comics_count }}" data-index="{{ index }}" data-title="{{ item.title }}" data-type="{{ item.comic_video ? 'video' : 'normal' }}" catchtap="jumpList">
+					<view class="pic">
+						<kk-cover src="{{ item.img }}" width="224" height="287"></kk-cover>
+					</view>
+					<view class="txt">
+                        <view class="top">
+                            <text class="tit">{{ item.title }}</text>
+                            <view class="btn" wx:if="{{ !item.comic_video }}">
+                                <view 
+                                    class="like {{ follows[item.id] ? 'liked' : '' }}"
+                                    data-id="{{ item.id }}"
+                                    data-index="{{ index }}"
+                                    catchtap='handleFav'>
+                                        <text>{{ follows[item.id] ? '已' : '' }}关注</text>
+                                </view>
+                            </view>
+                        </view>
+						<view class="tags" wx:if="{{ item.category && item.category.length > 0 }}">
+							<text wx:for="{{ item.category }}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+						</view>
+                        <text class="author" wx:if="{{ item.author }}">{{ item.author }}</text>
+						<view class="bottom" wx:if="{{ item.praise || item.comment }}">
+							<view class="comment" wx:if="{{ item.comment }}">
+								<image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/search-comment_635e3c0.png"></image>
+								<text>{{ item.comment }}</text>
+							</view>
+							<view class="praise" wx:if="{{ item.praise }}">
+								<image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/search-like_306a934.png"></image>
+								<text>{{ item.praise }}</text>
+							</view>
+						</view>
+						<text class="des" wx:if="{{ item.description }}">{{ item.description }}</text>
+					</view>
+				</view>
+				<view class="video" wx:if="{{ item.comic_video }}">
+					<view class="btn-list">
+						<view
+							class="btn like {{ follows[item.id] ? 'liked' : '' }}"
+							data-id="{{ item.id }}"
+							data-index="{{ index }}"
+							catchtap='handleFav'>
+							<text>{{ follows[item.id] ? '已' : '' }}关注</text>
+						</view>
+						<view
+							class="btn comic"
+							data-id="{{ item.id }}"
+							data-title="{{ item.title }}"
+							data-index="{{ index }}"
+							data-count="{{ item.comics_count }}"
+							catchtap='jumpWatchComic'>
+							<text>观看漫画</text>
+						</view>
+					</view>
+					<view class="manju" data-id="{{ item.comic_video.action_type.target_id }}" data-title="{{ item.comic_video.title  }}" catchtap='jumpVideo'>
+						<view class="icon">漫剧</view>
+						<text class="title">{{ item.comic_video.title }}</text>
+						<view class="right">
+							<image class="play" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/search-play_4e4c2ed.png"></image>
+							<text>观看漫剧</text>
+							<image class="arrow" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/search-arrow_4810a82.png"></image>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+        <view class="kkmh-empty" wx:if="{{ isShowEmpty }}">
+			<view class="kkmh-empty_img">
+				<image class="img" src="{{ globalImgs['empty-img'] }}" mode="widthFix"></image>
+				<image class="text" src="{{ globalImgs['empty-text'] }}" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="loadmore-wrap" style="background: #fff" wx:else>
+			<kk-bottom
+				loading="{{ !listOver }}"
+				finish="{{ listOver }}">
+			</kk-bottom>
+		</view>
+	</scroll-view>
+</view>
+
+<view class="search-content" hidden="{{ value }}">
+    <!-- 搜索历史 -->
+	<view class="searchnew-history" hidden="{{ !searchHis.length }}">
+		<view class="search-tit">
+			<view>搜索历史</view>
+			<view bindtap="clearHistory">
+				<image class="ico-clear" src="{{ searchImgs['ico-clear-new'] }}"></image>
+			</view>
+		</view>
+
+		<view class="searchnew-history-content">
+			<block wx:for="{{ searchHis }}" wx:key="item">
+				<view class="searchnew-history-item">
+					<view class="tag" data-value="{{ item }}" data-index="{{ index }}" bindtap="clickHistory">
+						<text>{{ item }}</text>
+					</view>
+				</view>
+			</block>
+            <view class="searchnew-history-item" wx:if="{{ historyMoreShow }}">
+                <view class="tag" bindtap="clickHistoryMore">
+                    <image class="ico-more" src="{{ searchImgs['ico-more'] }}"></image>
+                </view>
+            </view>
+		</view>
+	</view>
+
+	<!-- 热门搜索 -->
+	<view class="searchnew-hot" hidden="{{ !hotsList.length }}">
+		<view class="search-tit">
+			<view>热门搜索</view>
+			<view bindtap="hotExchange">
+				<image class="ico-refresh" src="{{ searchImgs['ico-refresh-new'] }}"></image>
+			</view>
+		</view>
+
+		<view class="searchnew-hot-content">
+			<view class="searchnew-hot-item" wx:for="{{ hotsList }}" wx:key="index" data-action="{{ item.action_type }}" data-tit="{{ item.title }}" bindtap="jumpHot">
+                <view class="searchnew-hot-img">
+                    <kk-cover src="{{ item.cover_image_url }}" width="100" height="100"></kk-cover>
+                </view>
+                <view class="searchnew-hot-info">
+                    <text class="searchnew-hot-title">{{ item.title }}</text>
+                    <text class="searchnew-hot-subtitle">{{ item.heat_count }}</text>
+                </view>
+			</view>
+		</view>
+	</view>
+	
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

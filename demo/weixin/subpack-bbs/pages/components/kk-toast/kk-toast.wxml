@@ -1,0 +1,13 @@
+<!-- kk-toast -->
+<view class="wrap {{ mask ? 'mask' : '' }}" wx:if="{{ toast }}" hidden="{{ !show }}" style="opacity: {{ opacity }};top: {{ isloading ? '50%' : !image ? '' : '50%' }};bottom: {{ isloading ? '' : toast.position ? toast.position.bottom : '10%' }}">
+    <view wx:if="{{ isloading }}" class="toast loading">
+        <mp-loading type="circle" tips="{{ title }}" extClass="toast"></mp-loading>
+    </view>
+    <view wx:else id="toast" class="toast" style="border-radius: {{ lines ? 24 : 38 }}rpx">
+        <image wx:if="{{ image }}" class="image" src="{{ image }}" />
+        <view class="content">
+            <image wx:if="{{ icon }}" class="icon" src="{{ icon }}" /><text>{{ title }}</text>
+        </view>
+        <view class="blank" wx:if="{{ image }}"></view>
+    </view>
+</view>

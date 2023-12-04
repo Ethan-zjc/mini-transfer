@@ -1,0 +1,314 @@
+.kk-rank-page {
+  margin: 0 auto;
+  width: 750rpx;
+  height: auto;
+}
+
+.kk-rank-page .rank-top-title {
+  position: relative;
+  width: 100%;
+  height: 334rpx;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-top-title .top-centered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, transparent 0%, #383845 100%);
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-top-title .top-centered .content {
+  box-sizing: border-box;
+  padding: 54rpx 0;
+}
+
+.kk-rank-page .rank-top-title .top-centered .content .kk-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kk-rank-page .rank-top-title .top-centered .content .top-text-list {
+  position: relative;
+  top: -22rpx;
+}
+
+.kk-rank-page .rank-top-title .top-centered .content .title {
+  height: 44rpx;
+  font-size: 44rpx;
+  line-height: 44rpx;
+  font-family: PingFangSC-Medium,PingFang SC;
+  font-weight: 500;
+  color: white;
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
+  text-align: center;
+}
+
+.kk-rank-page .rank-top-title .top-centered .content .update-time {
+  padding-top: 14rpx;
+  line-height: 24rpx;
+  min-width: 10rpx;
+  height: 24rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: white;
+}
+
+.kk-rank-page .rank-content {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.kk-rank-page .rank-content .left-nav {
+  box-sizing: border-box;
+  padding-top: 32rpx;
+  width: 176rpx;
+  height: auto;
+}
+
+.kk-rank-page .rank-content .right-list {
+  box-sizing: border-box;
+  padding-top: 32rpx;
+  width: 574rpx;
+  height: auto;
+}
+
+.kk-rank-page .rank-content .left-nav {
+  position: relative;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .left-nav .nav-list-scroll {
+  box-sizing: border-box;
+  padding-top: 16rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200rpx;
+  height: 100%;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .left-nav .nav-list-scroll .stance {
+  width: 144rpx;
+  height: 84rpx;
+}
+
+.kk-rank-page .rank-content .left-nav .nav-item-box {
+  padding: 16rpx 0;
+  margin-bottom: 42rpx;
+}
+
+.kk-rank-page .rank-content .left-nav .nav-item {
+  box-sizing: border-box;
+  padding: 11rpx 0 11rpx 32rpx;
+  width: 144rpx;
+  border-radius: 0px 100rpx 100rpx 0px;
+  font-size: 26rpx;
+  font-family: PingFangSC-Medium,PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.kk-rank-page .rank-content .left-nav .active {
+  color: #fff;
+}
+
+.kk-rank-page .rank-content .right-list {
+  background: #fff;
+  z-index: 1;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items {
+  box-sizing: border-box;
+  padding-bottom: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover {
+  position: relative;
+  width: 199rpx;
+  height: 265rpx;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .cover-image {
+  border-radius: 6rpx;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .cover-image image {
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .top-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 6rpx 0px 0px 0rpx;
+  font-size: 28rpx;
+  font-family: FZDHTJW--GB1-0,FZDHTJW--GB1;
+  font-weight: normal;
+  color: white;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .top-icon .icon {
+  border-top-left-radius: 6rpx;
+  position: relative;
+  left: -2rpx;
+  top: -2rpx;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .top-icon .icon image {
+  border-radius: 6rpx 0 0 0;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .top-icon .text {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 7rpx;
+  padding-left: 12rpx;
+  width: 47rpx;
+  line-height: 32rpx;
+  font-size: 28rpx;
+  font-family: FZDHTJW--GB1-0,FZDHTJW--GB1;
+  font-weight: 600;
+  color: white;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .top-icon .text-all {
+  padding-left: 6rpx;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .top-icon .text-1 {
+  padding-left: 14rpx;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .cover .bottom {
+  box-sizing: border-box;
+  padding: 12rpx 8rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 48rpx;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: white;
+  line-height: 24rpx;
+  text-shadow: 0px 1px 8rpx rgba(0, 0, 0, 0.24);
+  border-radius: 0px 0px 6rpx 6rpx;
+  text-align: right;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor {
+  position: relative;
+  padding: 8rpx 48rpx 13rpx 25rpx;
+  width: 302rpx;
+  height: 244rpx;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor .title {
+  padding-bottom: 14rpx;
+  width: 100%;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium,PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor .des {
+  height: 56rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 28rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor .tag {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding-top: 20rpx;
+  width: 100%;
+  height: 40rpx;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor .tag .tag-item {
+  margin-right: 12rpx;
+  padding: 0 8rpx;
+  max-width: 38%;
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 2rpx;
+  border: 1px solid #cccccc;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor .bottom {
+  position: absolute;
+  left: 25rpx;
+  bottom: 13rpx;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box;
+  height: 20rpx;
+}
+
+.kk-rank-page .rank-content .right-list .topic-items .infor .bottom .text {
+  font-size: 20rpx;
+  line-height: 20rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: #999999;
+}

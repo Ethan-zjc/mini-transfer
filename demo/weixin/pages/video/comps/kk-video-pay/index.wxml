@@ -1,0 +1,48 @@
+<view class="video-pay" wx:if="{{ list.length }}">
+    <view class="video-pay__top">
+        <view class="video-pay__top--title">{{ title }}</view>
+        <view 
+            class="video-pay__top--subtitle" 
+            wx:if="{{ moreText }}"
+            catchtap="handleMore">
+            <text>{{ moreText }}</text>
+            <image src="{{ videoImgs['arrow-right'] }}"></image>
+        </view>
+    </view>
+    <view class="video-pay__box">
+        <view class="video-pay__scroll">
+            <scroll-view scroll-x="{{ true }}" bindscroll="handleScroll">
+                <view class="video-pay__list" style="width: {{ boxWidth }}rpx;">
+                    <view class="video-pay__item" 
+                        wx:for="{{ list }}" 
+                        wx:key="index"
+                        data-index="{{ index }}"
+                        catchtap="handleTap">
+                        <view class="item-info">
+                            <block wx:if="{{ item.label.label_type == 1 && item.label.text }}">
+                                <view 
+                                    class="item-icon-text" 
+                                    style="background:{{ item.label.background_color }}; color:{{ item.label.font_color }};">
+                                    {{ item.label.text }}
+                                </view>
+                            </block>
+                            <block wx:if="{{ item.label.label_type == 2 && item.label.icon }}">
+                                <image class="item-icon-img" src="{{ item.label.icon }}" mode='aspectFit'></image>
+                            </block>
+                            
+                            <image class="item-icon-play" src="{{ videoImgs['play'] }}"></image>
+                            <kk-cover src="{{ item.picUrl }}" width="200" height="268"></kk-cover>
+                        </view>
+                        <view class="item-title"><text>{{ item.title }}</text></view>
+                        <view class="item-subtitle">
+                            <text>{{ item.subtitle }}</text>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="video-pay__nav">
+            <view class="video-pay__nav--active" style="width: {{ boxPrecent }}%;"></view>
+        </view>
+    </view>
+</view>

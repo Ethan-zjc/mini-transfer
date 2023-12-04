@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "付费会员",
+    "backgroundColorTop": "#F7F9FA",
+    "usingComponents": {
+        "kk-icon": "/components/kk-icon/kk-icon",
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-avatar": "/components/kk-avatar/kk-avatar",
+        "mp-dialog": "/components/kk-weui-dialog/dialog",
+        "kk-vip-detainment": "/components/kk-vip-detainment/index"
+    }
+}

@@ -1,0 +1,63 @@
+.bottom-banner-box {
+  position: relative;
+  width: 686rpx;
+  margin: 0 auto;
+}
+
+.bottom-banner-box .bubble {
+  height: 34rpx;
+  line-height: 34rpx;
+  font-weight: 500;
+  right: -40rpx;
+  top: -8rpx;
+  padding: 0 12rpx;
+  color: white;
+  position: absolute;
+  font-size: 18rpx;
+  color: white;
+  text-align: center;
+  background: linear-gradient(90deg, #ff257f 0%, #ff0047 100%);
+  border-radius: 15rpx 15rpx 15rpx 4rpx;
+}
+
+.bottom-banner-box .btn-pay {
+  width: 686rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  border: 1px solid #ff751a;
+  color: #ff751a;
+  box-sizing: border-box;
+  margin-top: 20rpx !important;
+}
+
+.bottom-banner-box .btn-pay image {
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 6rpx;
+}
+
+.bottom-banner-box .btn-pay text {
+  font-weight: bolder;
+}
+
+.bottom-banner-box.vip-style .btn-pay {
+  border: 1px solid #5d04b5;
+  color: #5d04b5;
+}
+
+button,
+.invest {
+  position: relative;
+}
+
+.origin-login {
+  position: absolute;
+  width: 100% !important;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: none !important;
+}

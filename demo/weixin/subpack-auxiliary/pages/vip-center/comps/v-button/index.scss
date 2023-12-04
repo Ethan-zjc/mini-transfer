@@ -1,0 +1,60 @@
+.payBtn {
+    width: 702rpx;
+    margin: auto;
+    height: 108rpx;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 0.01%, rgba(255, 255, 255, 0) 100%), #775BFA;
+    border-radius: 52rpx;
+    display: flex;
+    padding: 12rpx;
+    box-sizing: border-box;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 36rpx;
+    box-sizing: border-box;
+    flex: 1;
+    text-align: left;
+    .price {
+        height: 40rpx;
+        display: flex;
+        align-items: center;
+        .unit {
+            font-size: 24rpx;
+            font-weight: bold;
+            color:#F9F9F9;
+            line-height: 32rpx;
+        }
+        .num {
+            font-size: 40rpx;
+            font-weight: bold;
+            color: #fff;
+            line-height: 40rpx;
+            font-family: 'PingFang SC';
+        }
+    }
+    .desc {
+        color: #F9F9F9;
+        font-size: 22rpx;
+        line-height: 22rpx;
+        text-align: center;
+        text-align: left;
+        margin-top: 6rpx;
+    }
+}
+.right {
+    width: 212rpx;
+    height: 84rpx;
+    background: #FFE120;
+    border-radius: 52rpx;
+    color: #222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .txt {
+        font-size: 32rpx;
+        font-weight: bold;
+        text-align: center;
+    }
+}

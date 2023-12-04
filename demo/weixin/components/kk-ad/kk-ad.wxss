@@ -1,0 +1,43 @@
+.ad-control {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ad-control .video {
+  background: #fff;
+  padding: 20rpx 24rpx;
+  width: 702rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ad-control .banner, .ad-control .custom {
+  padding: 0 16rpx;
+}
+
+.ad-comic_center {
+  width: 750rpx;
+}
+
+.ad-comic_center .custom {
+  padding: 20rpx 24rpx;
+}
+
+.ad-find_top {
+  margin-bottom: 24rpx;
+}
+
+.ad-find_top .banner, .ad-find_top .custom {
+  padding: 16rpx 24rpx 0;
+}
+
+.ad-feed_4, .ad-feed_8 {
+  margin-bottom: 16rpx;
+  background: #fff;
+  padding: 20rpx 24rpx;
+  width: 702rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,19 @@
+<!-- 多充多送弹窗详情 -->
+<view class="v-head {{ isVip ? 'is-vip' : '' }}">
+    <kk-navigator title="会员中心" mode="dark"></kk-navigator>
+
+    <!-- 用户信息 -->
+    <view class="card">
+        <image class="bg-card" mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/vip-center/bg{{ isVip ? '2_c5a0b99' : '1_605d53b' }}.png" />
+        <view class="user-info">
+            <image class="user-face" src="{{ userInfo.user.avatar_url }}" />
+            <view class="user-name">
+                <view class="name">
+                    <text>{{ userInfo.user.nickname }}</text>
+                    <kk-icon class="vip-icon" src="{{ vipInfo.vip_big_icon }}" height="{{ 38 }}"></kk-icon>
+                </view>
+                <view class="info">{{ vipInfo.vip_info[0] }}</view>
+            </view>
+        </view>
+    </view>
+</view>

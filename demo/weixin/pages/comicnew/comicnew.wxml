@@ -1,0 +1,170 @@
+<!-- 搜索直达内容 -->
+<view wx:scope-data="{{ service_type: 23, name: topicTit }}"></view>
+
+<!-- 顶部自定义导航 -->
+<view class="navigation" id="navigation" style="transform: translateY({{ fullScreen ? -100 : 0 }}%);">
+    <kk-navigation-bar title="{{ comicTitle }}" background="{{ '#FFFFFF' }}" bindback="handlerGobackClick"></kk-navigation-bar>
+</view>
+
+<!-- 长列表区域 -->
+<view class="warp comic-wrap">
+    <recycle-view
+        id="comic-recycle-list"
+        class="recycle-wrap"
+        batch="{{ batchSetRecycleData }}"
+        height="{{ viewHeight }}"
+        scroll-y="{{ scrollY }}"
+        scroll-top="{{ scrollTop }}"
+        scroll-to-index="{{ initIndex }}"
+        scroll-with-animation="{{ scrollAnimation }}"
+        bindtap="handleTap"
+        bindscroll="handleScroll"
+        style="padding-top: {{ fullScreen || tapScreen ? 0 : navHeight - 1 }}px"
+    >
+        <!-- 图片列表 -->
+        <recycle-item wx:for="{{ imgList }}" wx:key="key">
+            <!-- 图片 -->
+            <view class="pos-image" wx:if="{{ item.sign == 'picture' }}" style="height: {{ item.height }}px">
+                <image class="picture" mode="scaleToFill" src="{{ item.src }}" style="height: {{ item.height }}px; width: {{ viewWidth }}px;"></image>
+                <image class="holder" src="/images/placeholder.png" hidden="{{ item.height < 110 }}"></image>
+            </view>
+
+            <!-- 固定操作栏 294 (漫更提示 & 点赞 & 关注 & 分享)-->
+            <view class="pos-handle" wx:elif="{{ item.sign == 'handle' }}" style="height: {{ item.height }}px; width: {{ viewWidth }}px;">
+                <kk-comic-bottom
+                    wx:if="{{ topicId }}"
+                    hasImgList="{{ !!imgList.length }}"
+                    updateRemind="{{ updateRemind }}"
+                    lastId="{{ prevId }}"
+                    nextId="{{ nextId }}"
+                    bind:bottomCallback="bottomCallback"
+                ></kk-comic-bottom>
+            </view>
+
+            <!-- 广告位 -->
+            <view class="pos-ad" wx:elif="{{ item.sign == 'ad' }}" style="height: {{ item.height }}px; width: {{ viewWidth }}px;">
+                <view class="ad" id="item-ad-view">
+                    <kk-ad wx:if="{{ showAdView }}" position="comic_center" index="{{ item.__index__ }}" bind:adError="adError" bind:adClose="adError"></kk-ad>
+                    <image class="ad-holder" src="/images/placeholder.png"></image>
+                </view>
+            </view>
+
+            <!-- 漫低推荐 -->
+            <view class="pos-recom" wx:elif="{{ item.sign == 'recom' }}" style="height: {{ item.height }}px; width: {{ viewWidth }}px;">
+                <!-- 漫底推荐 -->
+                <kk-comic-recommend wx:if="{{ topicId && comicId }}" topicId="{{ topicId }}" topicTitle="{{ topicTitle }}" comicId="{{ comicId }}" comicTitle="{{ comicTitle }}" chapterType="{{ chapterType }}"></kk-comic-recommend>
+            </view>
+        </recycle-item>
+        <view slot="before">
+            <view hidden="{{ imgListForBarrage.length <= 0 || !initDanmu || barrageStatus == 0 }}" class="recycle-barrage-container" style="height: {{ barrageContainerScrollHeight }}px; display: {{ sendBarrageShow }}" data-offsettop="{{ fullScreen || tapScreen ? 0 : navHeight }}">
+                <!-- 弹幕播放 -->
+                <kk-barrage-controller
+                    _comic-image-list="{{ imgListForBarrage }}"
+                    scroll-top="{{ barrageScrollTop }}"
+                    status="{{ barrageStatus }}"
+                    _comic-container-selector=".comic-wrap"
+                    _scroll-container-selector=".recycle-barrage-container"
+                    comic-id="{{ comicId }}"
+                    last-created-danmu="{{ lastCreatedDanmu }}"
+                    menu-shown="{{ barrageMenuShown }}"
+                    _danmu-hidden="{{ danmuHidden }}"
+                    _view-height="{{ viewHeight }}"
+                    bindupdate="updateBarrage"
+                ></kk-barrage-controller>
+            </view>
+        </view>
+    </recycle-view>
+</view>
+
+<!-- 顶部提示通知 -->
+<kk-top-notify customNav options="{{ notifyOptions }}"></kk-top-notify>
+
+<!-- 右侧/浮层按钮 -->
+<kk-comic-aside fullScreen="{{ fullScreen }}" ipxBottom="{{ ipxBottom }}" isShowBackTop="{{ isShowBackTop }}" bind:goBackTop="goBackTop" bind:shareClick="shareClick" bind:goHomeFun="goHomeFun"></kk-comic-aside>
+
+<!-- 底部操作栏 -->
+<view class="bottom-tools" style="height: {{ !directoryShow ? padBottom + 92 : padBottom }}rpx;transform: translateY({{ fullScreen ? 270 : 0 }}rpx);" catchtouchmove>
+    <!-- 弹幕输入框 -->
+    <kk-barrage-editor
+        wx:if="{{ !directoryShow }}"
+        _comic-image-list="{{ imgListForBarrage }}"
+        _comic-container-selector=".comic-wrap"
+        _scroll-container-selector=".recycle-barrage-container"
+        full-screen="{{ fullScreen }}"
+        status="{{ barrageStatus }}"
+        editing="{{ barrageEditor.editing }}"
+        _danmu-hidden="{{ danmuHidden }}"
+        _comic-id="{{ comicId }}"
+        _comic-title="{{ comicTitle }}"
+        _topic-id="{{ topicId || '' }}"
+        _topic-title="{{ topicTitle || '' }}"
+        bindupdate="updateBarrage"
+        bindedit="updateBarrageEditor"
+        bindsend="hideBottomTools"
+        bindappeal="showAppeal"
+    ></kk-barrage-editor>
+
+    <!-- 工具栏浮层 -->
+    <kk-comic-tools lastId="{{ prevId }}" nextId="{{ nextId }}" follows="{{ follows }}" topicId="{{ topicId }}" userInfo="{{ userInfo }}" bind:toolsCallback="toolsCallback"></kk-comic-tools>
+</view>
+
+<!-- 目录组件 -->
+<kk-directory wx:if="{{ directoryShow }}" comicId="{{ comicId }}" topicId="{{ topicId }}" comicTitle="{{ comicTitle }}" topicTitle="{{ topicTitle }}" isBonusChapter="{{ isBonusChapter }}" isExperiment userInfo="{{ userInfo }}" directoryShow="{{ directoryShow }}" bind:directoryTap="directoryTap"></kk-directory>
+
+<!--  类型: 会员提示弹窗toast & ios不可用等 -->
+<mp-dialog show="{{ dialogShow }}" title="{{ dialogTitle }}" content="{{ dialogContent }}" buttons="{{ dialogButton }}" bindbuttontap="tapDialogButton"></mp-dialog>
+
+<!-- 付费弹窗 -->
+<kk-pay-half
+    wx:if="{{ payDialog || vipShow }}"
+    userInfo="{{ userInfo }}"
+    topicId="{{ topicId }}"
+    topicTitle="{{ topicTitle }}"
+    comicId="{{ comicId }}"
+    comicTitle="{{ comicTitle }}"
+    isLoad="{{ payDialog || vipShow }}"
+    paysucc="{{ paysucc }}"
+    pageShow="{{ pageShow }}"
+    trackProps="{{ trackProps }}"
+    bind:onUnlocking="onUnlocking"
+    bind:directPay="directPay"
+    bind:reloadPage="reloadPage"
+></kk-pay-half>
+
+<!-- 全局toast -->
+<kk-toast toast="{{ toast }}"></kk-toast>
+
+<!-- 弹幕位置选择 -->
+<kk-barrage-position wx:if="{{ barrageEditor.editing }}" barrage-editor="{{ barrageEditor }}" user-info="{{ userInfo }}" bindhide="hideBrrageEditor" />
+
+<!-- kk币冻结提示弹窗 -->
+<mp-dialog show="{{ kkbLocked }}" content="{{ lockedContent }}" buttons="{{ lockedButton }}" bindbuttontap="onclose"></mp-dialog>
+
+<!-- 获取手机号授权dialog -->
+<mp-dialog wx:if="{{ dialog.show }}" show="{{ dialog.show }}" title="{{ dialog.title }}" content="{{ dialog.content }}" buttons="{{ dialog.button }}" bindbuttontap="onDialogButtontapEvent" bindgetphonenumber="onDiallogGetPhoneNumberEvent" buttonGetPhoneNumber="{{ true }}">
+    <!-- 内容区块：额外增加内容 slot -->
+    <view slot="bd-content" class="weui-dialog__content2">
+        <text class="content-two">{{ dialog.contentTwo }}</text>
+        <text catchtap="onDialogTapEvent" class="content-three">{{ dialog.contentThree }}</text>
+    </view>
+    <!-- 内容区块：额外增加内容 slot [END] -->
+</mp-dialog>
+
+<!-- 直接调用支付kkb组件 -->
+<kk-kkb-directpay
+    wx:if="{{ showDirectPay }}"
+    loadDirectPay="{{ loadDirectPay }}"
+    userInfo="{{ userInfo }}"
+    topicId="{{ topicId }}"
+    topicTitle="{{ topicTit }}"
+    isPayed="{{ isPayed }}"
+    goodId="{{ giftPayGoodId }}"
+    activityName="{{ activity_name }}"
+    bannerTypeName="{{ banner_type_name }}"
+    bind:reloadPage="reloadPage"
+    bind:clearWallet="clearWallet"
+    bind:paysucc="paysucc"
+></kk-kkb-directpay>
+
+<!-- 基础悬浮运营位 -->
+<kk-suspended-win newClass triggerPage="3" topicId="{{ topicId }}" suspendAnimation="{{ suspendAnimation }}" wx:if="{{ readyTime && topicId }}"></kk-suspended-win>

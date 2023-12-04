@@ -1,0 +1,62 @@
+.award-list .award-item {
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  height: 128rpx;
+}
+
+.award-list .award-item .icon {
+  margin-right: 16rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.award-list .award-item .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.award-list .award-item .desc {
+  flex: 1;
+}
+
+.award-list .award-item .desc .title {
+  font-weight: 500;
+  color: #222222;
+  font-size: 30rpx;
+}
+
+.award-list .award-item .desc .time {
+  color: #999999;
+  font-size: 28rpx;
+}
+
+.award-list .award-item .button {
+  margin-left: 40rpx;
+  width: 152rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  border-radius: 28rpx;
+  background-color: #FFE120;
+  text-align: center;
+  color: #222222;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.award-list .no-data {
+  margin-top: 200rpx;
+}
+
+.award-list .no-data image {
+  width: 750rpx;
+  height: 480rpx;
+}
+
+.award-list .no-data .text {
+  color: #999999;
+  font-size: 28rpx;
+  text-align: center;
+}

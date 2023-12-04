@@ -1,0 +1,13 @@
+{
+    "backgroundColorTop": "#FFFFFF;",
+    "backgroundColorBottom": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "mp-dialog": "/components/kk-weui-dialog/dialog",
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-lucky": "./comps/kk-lucky/index"
+    }
+}

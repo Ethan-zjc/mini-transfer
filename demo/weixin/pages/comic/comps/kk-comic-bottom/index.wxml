@@ -1,0 +1,100 @@
+<!-- 漫画底部关注、点赞、广告等 -->
+<view class="kk-comic-bottom">
+    <view wx:if="{{ showUnfoldAll }}" class="unfold-btn" data-type="unfold" catchtap="clickEvent">
+        <text class="txt">展开阅读全文</text>
+        <image class="img-icon" src="{{ comicImgs['more-unfold'] }}"></image>
+    </view>
+
+    <!-- 加入点赞等内容 -->
+    <view class="observe-carton carton-action" hidden="{{ !imgList.length }}">
+        <view class="comic-bottom">
+            <text>{{ updateRemind }}</text>
+            <image hidden="{{ !updateRemind }}" src="{{ comicImgs['comic_news_pen'] }}"></image>
+        </view>
+
+        <!-- 底部点赞、关注、分享操作栏 -->
+        <view class="btns-bottom">
+            <view>
+                <view class="btn" data-type="upraise" catchtap="clickEvent" wx:if="{{ userInfo }}">
+                    <image src="{{ comicImgs[praised ? 'ico-praise-active' : 'ico-praise-comic-default'] }}"></image>
+                    <text class="{{ praised ? 'active' : '' }}">赞{{ praiseNum || '' }}</text>
+                </view>
+                <block wx:else catchtap="stopPop">
+                    <button class="btn" hover-class="btn-hover" type="success" data-type="npraise" bindtap="clickEvent">
+                        <image src="{{ comicImgs[praised ? 'ico-praise-active' : 'ico-praise-comic-default'] }}"></image>
+                        <text class="{{ praised ? 'active' : '' }}">赞{{ praiseNum || '' }}</text>
+                    </button>
+                </block>
+            </view>
+            <view>
+                <view class="btn" data-type="ufollow" catchtap="clickEvent" wx:if="{{ userInfo }}">
+                    <image src="{{ comicImgs[follows[topicId] ? 'ico-follow-active' : 'ico-follow-default'] }}"></image>
+                    <text class="{{ follows[topicId] ? 'active' : '' }}">{{ follows[topicId] ? '已关注' : '关注' }}</text>
+                </view>
+                <block wx:else catchtap="stopPop">
+                    <button class="btn" hover-class="btn-hover" type="success" data-type="nfollow" bindtap="clickEvent">
+                        <image src="{{ comicImgs[follows[topicId] ? 'ico-follow-active' : 'ico-follow-default'] }}"></image>
+                        <text class="{{ follows[topicId] ? 'active' : '' }}">{{ follows[topicId] ? '已关注' : '关注' }}</text>
+                    </button>
+                </block>
+            </view>
+            <view>
+                <button class="btn" size="mini" hover-class="none" data-type="share" catchtap="clickEvent" open-type="share">
+                    <image src="{{ comicImgs['ico-share'] }}"></image>
+                    <text>分享</text>
+                </button>
+            </view>
+        </view>
+
+        <!-- 底部上一篇、下一篇 -->
+        <view class="pagination">
+            <view>
+                <view
+                    class="btn {{ !lastId ? 'disabled back-color' : '' }}"
+                    data-disabled="{{ !lastId }}"
+                    data-id="{{ lastId }}"
+                    data-type="prev"
+                    bindtap="clickEvent"
+                >
+                    <view class="btn-prev">
+                        <text></text>
+                        <text></text>
+                    </view>
+                    <text>上一话</text>
+                </view>
+            </view>
+            <view></view>
+            <view>
+                <view
+                    class="btn {{ !nextId ? 'disabled back-color' : '' }}"
+                    data-disabled="{{ !nextId }}"
+                    data-id="{{ nextId }}"
+                    data-type="next"
+                    bindtap="clickEvent"
+                >
+                    <text>下一话</text>
+                    <view class="btn-next">
+                        <text></text>
+                        <text></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 漫底资源位 -->
+        <kk-comic-operation></kk-comic-operation>
+
+        <!-- 底部广告 -->
+        <kk-ad position="comic_center" wx:if="{{ adVisible }}"></kk-ad>
+    </view>
+    <!-- <view
+        wx:if="{{ appletAction }}"
+        class="free-program-entry"
+        data-type="appletAction"
+        bindtap="clickEvent">
+        <image
+            class="entry-image"
+            src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/entry-image_c0e5a4b.png">
+        </image>
+    </view> -->
+</view>

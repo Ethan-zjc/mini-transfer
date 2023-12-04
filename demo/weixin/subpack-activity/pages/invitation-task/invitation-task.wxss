@@ -1,0 +1,603 @@
+.team-wrap {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-navigator {
+  position: fixed;
+  top: 0rpx;
+  left: 16rpx;
+  padding: 0 10rpx;
+  width: 68rpx;
+  height: 68rpx;
+  z-index: 9990;
+}
+
+.team-navigator .icon-img {
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.team-banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.team-banner image {
+  width: 100%;
+}
+
+.team-main {
+  padding-bottom: 40rpx;
+  position: relative;
+}
+
+.team-invite-content {
+  margin-top: 30rpx;
+  margin-bottom: 8rpx;
+  padding: 0 28rpx;
+}
+
+.team-invite-content .invite-top {
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 580rpx;
+  margin: 0 auto;
+  background: #8547F0;
+  border-radius: 15rpx;
+}
+
+.team-invite-content .invite-top text {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.team-invite-content .invite-top .space {
+  opacity: .5;
+  margin: 0 14rpx;
+}
+
+.team-invite-content .invite-time {
+  margin: 32rpx 0;
+  height: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-invite-content .invite-time text {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26rpx;
+  line-height: 26rpx;
+  color: #999999;
+}
+
+.team-invite-content .invite-time .active {
+  color: #8547F0;
+  font-weight: 500;
+  margin: 0 4rpx;
+}
+
+.team-invite-content .invite-space {
+  height: 40rpx;
+  width: 100%;
+  overflow: hidden;
+}
+
+.team-invite-content .invite-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.team-invite-content .invite-list-item {
+  margin-bottom: 32rpx;
+  width: 106rpx;
+  margin-left: 36rpx;
+  margin-right: 36rpx;
+}
+
+.team-invite-content .invite-list-item .photo {
+  position: relative;
+  width: 106rpx;
+  height: 106rpx;
+  border-radius: 200rpx;
+  overflow: hidden;
+}
+
+.team-invite-content .invite-list-item .photo image {
+  width: 100%;
+  height: 100%;
+}
+
+.team-invite-content .invite-list-item .photo button.share {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.team-invite-content .invite-list-item .name {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #222222;
+  margin-top: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.team-invite-content .invite-list-item .name.disabled {
+  font-weight: normal;
+  color: #999;
+}
+
+.team-invite-content .invite-list-10 {
+  justify-content: space-between;
+}
+
+.team-invite-content .invite-list-10 .invite-list-item {
+  margin-left: 0rpx;
+  margin-right: 0rpx;
+}
+
+.team-invite-content .invite-list-8 .invite-list-item, .team-invite-content .invite-list-4 .invite-list-item {
+  margin-left: 22rpx;
+  margin-right: 22rpx;
+}
+
+.team-invite-content .invite-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+}
+
+.team-invite-content .invite-button-cell {
+  position: relative;
+}
+
+.team-invite-content .invite-button-cell.cell-1 {
+  width: 400rpx;
+  margin: 0 auto;
+}
+
+.team-invite-content .invite-button-cell.cell-2 {
+  width: 284rpx;
+}
+
+.team-invite-content .invite-button-cell button {
+  border-radius: 200rpx;
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+
+.team-invite-content .invite-button-cell button.share {
+  background: #FDF551;
+  color: #8547F0;
+}
+
+.team-invite-content .invite-button-cell button.troops {
+  background: #8547F0;
+  color: #fff;
+}
+
+.team-invite-content .invite-button-cell button.disabled {
+  opacity: .5;
+}
+
+.team-invite-content .invite-award-item {
+  margin-top: 24rpx;
+  width: 598rpx;
+  height: 140rpx;
+  background: rgba(133, 71, 240, 0.1);
+  border: 4rpx solid rgba(133, 71, 240, 0.2);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-invite-content .invite-award-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92rpx;
+}
+
+.team-invite-content .invite-award-more text {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22rpx;
+  text-align: center;
+  color: #8547F0;
+}
+
+.team-invite-content .invite-award .award-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.team-invite-content .invite-award .award-icon {
+  margin-left: 20rpx;
+  width: 114rpx;
+  height: 114rpx;
+  position: relative;
+  z-index: 3;
+}
+
+.team-invite-content .invite-award .award-icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.team-invite-content .invite-award .award-info {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  min-width: 0;
+  padding: 0 20rpx;
+}
+
+.team-invite-content .invite-award .award-title {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #8547F0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.team-invite-content .invite-award .award-time {
+  display: flex;
+  align-items: center;
+}
+
+.team-invite-content .invite-award .award-time text {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #8547F0;
+}
+
+.team-invite-content .invite-award .award-button {
+  position: relative;
+  z-index: 3;
+  width: 147rpx;
+  margin-right: 20rpx;
+}
+
+.team-invite-content .invite-award .award-button text {
+  display: block;
+  width: 100%;
+  height: 48rpx;
+  line-height: 48rpx;
+  background: #8547F0;
+  border-radius: 200rpx;
+  color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+}
+
+.team-invite-content .invite-award .award-button .disabled {
+  opacity: .5;
+}
+
+.team-invite-content .invite-login {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: .2;
+}
+
+.team-invite-content .invite-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: .2;
+}
+
+.team-box {
+  margin: 36rpx auto 0;
+  width: 686rpx;
+  border: 6rpx solid rgba(0, 0, 0, 0.8);
+  background: #fff;
+  border-radius: 20rpx;
+  min-height: 100rpx;
+  padding: 9rpx 0;
+  position: relative;
+}
+
+.team-box-title {
+  width: 340rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  font-family: PingFang SC;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -170rpx;
+  background: #8547F0;
+  border-bottom-left-radius: 36rpx;
+  border-bottom-right-radius: 36rpx;
+}
+
+.team-box-border {
+  border: 4rpx solid rgba(0, 0, 0, 0.15);
+  border-radius: 12rpx;
+  width: 662rpx;
+  margin: 0 auto;
+}
+
+.team-topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 76rpx 25rpx 0 25rpx;
+}
+
+.team-topics-list:after {
+  content: "";
+  height: 0;
+  width: 196rpx;
+  overflow: hidden;
+}
+
+.team-topics-item {
+  width: 196rpx;
+  height: 360rpx;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16rpx;
+  margin-top: 24rpx;
+}
+
+.team-topics-item .topics-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #8547F0;
+  opacity: .1;
+}
+
+.team-topics-item .topics-cover {
+  position: relative;
+  z-index: 3;
+  height: 262rpx;
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+
+.team-topics-item .topics-cover-bottom {
+  background: linear-gradient(90deg, #8547F0 0%, rgba(133, 71, 240, 0) 100%);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 10rpx;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.team-topics-item .topics-info {
+  position: relative;
+  z-index: 3;
+}
+
+.team-topics-item .topics-title {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  color: #222222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-topics-item .topics-subtitle {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  color: #222222;
+  opacity: 0.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-topics-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 96rpx;
+}
+
+.team-topics-more text {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22rpx;
+  text-align: center;
+  color: #8547F0;
+}
+
+.team-rule-content {
+  padding: 68rpx 32rpx 32rpx;
+}
+
+.team-rule-content .title {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  display: flex;
+  align-items: center;
+  color: #222222;
+  margin-top: 24rpx;
+}
+
+.team-rule-content .info {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  display: flex;
+  align-items: center;
+  color: #222222;
+  margin-top: 6rpx;
+}
+
+.team-hack {
+  position: relative;
+}
+
+.team-hack-img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.team-hack-img image {
+  width: 100%;
+}
+
+.team-hack-box {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-info {
+  width: 494rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 48rpx 40rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dialog-title {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 34rpx;
+  line-height: 42rpx;
+  text-align: center;
+  color: #222222;
+  margin-bottom: 16rpx;
+}
+
+.dialog-subtitle {
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30rpx;
+  line-height: 36rpx;
+  text-align: center;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.dialog-icon {
+  height: 180rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-icon image {
+  width: 200rpx;
+}
+
+.dialog-btn {
+  background: #FFE120;
+  border-radius: 44rpx;
+  height: 88rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32rpx;
+  color: #222222;
+  margin-top: 32rpx;
+}

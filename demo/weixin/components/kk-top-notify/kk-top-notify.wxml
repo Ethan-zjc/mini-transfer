@@ -1,0 +1,23 @@
+<view class="notify" 
+    wx:if="{{ visible }}" 
+    style="top:{{ rectTop }}px;">
+    <view class="notify-info notify-{{ type }}">
+        <view class="notify-tip" 
+            wx:if="{{ type != 'layout' }}" 
+            style="right: {{ arrowRight+10 }}px;">
+                <image mode="aspectFit" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/arrow-top_ef52ac3.png"></image>
+        </view>
+        <view class="notify-content" style="{{ style }}" catchtap="tapInfo">
+            <view class="notify-icon" wx:if="{{ icon }}">
+                <image mode="aspectFit" src="{{ icon }}"></image>
+            </view>
+            <view class="notify-text">
+                <view class="notify-title">{{ title }}</view>
+                <view class="notify-subtitle" wx:if="{{ subtitle }}">{{ subtitle }}</view>
+            </view>
+            <view class="notify-close" wx:if="{{ showClose }}" catchtap="close">
+                <image mode="aspectFit" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/close-comic_2ee84a8.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

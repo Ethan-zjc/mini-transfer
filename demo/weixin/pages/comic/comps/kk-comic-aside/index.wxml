@@ -1,0 +1,25 @@
+<view class="kk-comic-aside">
+    <!-- 右侧/浮层按钮 -->
+    <view class="super-btns {{ fullScreen ? 'hidden-trans' : '' }}" style="bottom: {{ ipxBottom ? ipxBottom + 190 : 190 }}rpx">
+        <view class="circle" catchtap="goBackTop" wx:if="{{ isShowBackTop }}">
+            <image src="{{ comicImgs['tools-top'] }}"></image>
+            <text>顶部</text>
+        </view>
+        <view class="circle">
+            <button class="view-btn" size="mini" hover-class="none" catchtap="shareClick" open-type="share">
+                <image src="{{ comicImgs['tools-share'] }}"></image>
+                <text>分享</text>
+            </button>
+        </view>
+    </view>
+
+    <!-- 左侧返回首页按钮 -->
+    <view class="super-left"  style="bottom: {{ ipxBottom ? ipxBottom + 190 : 190 }}rpx">
+        <view class="btn-home"
+            wx:if="{{ !fullScreen }}"
+            bindtap="goHomeFun">
+                <text>返回首页</text>
+                <image src="{{ comicImgs['tools-arrow'] }}"></image>
+        </view>
+    </view>
+</view>

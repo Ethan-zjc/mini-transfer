@@ -1,0 +1,29 @@
+<view class="popup-message-login" catchtouchmove wx:if="{{ isShowTips }}">
+    <view class="login-content">
+        <view class="login-bg">
+            <image mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/subscribe/login-bg_811d03d.png"></image>
+        </view>
+        <view class="login-btn" bindtap="tapLogin">
+            <image mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/subscribe/login-btn_3c9a08b.png"></image>
+        </view>
+        <view class="login-close" bindtap="tapLoginClose">
+            <image mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/activity/lottery/close_382278d.png"></image>
+        </view>
+    </view>
+</view>
+
+<view class="popup-message-send" catchtouchmove wx:if="{{ isShowSub }}">
+    <view class="send-content">
+        <view class="send-bg">
+            <image mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/subscribe/msg-bg_8b243d0.png"></image>
+        </view>
+        
+        <view class="send-btn" bindtap="tapAction">
+            <image mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/subscribe/msg-btn_186f3d1.png"></image>
+        </view>
+
+        <view class="send-close" bindtap="tapSendClose">
+            <image mode="widthFix" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/activity/lottery/close_382278d.png"></image>
+        </view>
+    </view>
+</view>

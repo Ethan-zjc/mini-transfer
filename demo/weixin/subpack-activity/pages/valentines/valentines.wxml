@@ -1,0 +1,101 @@
+
+<view class="container" wx:if="{{ !loading }}">
+
+    <!-- 头图 -->
+    <view class="banner">
+        <view class="banner-bg">
+            <image mode="widthFix" src="{{ valentImgs['banner-bg'] }}" lazy-load="false"/>
+        </view>
+        <view class="banner-title">
+            <image mode="widthFix" src="{{ valentImgs['banner-title'] }}"/>
+        </view>
+        <view class="banner-ant">
+            <view class="box-1">
+                <view class="male" style="left:{{ currentIndex }}%;top:-{{currentIndex}}%;">
+                    <image class="image-1" mode="widthFix" src="{{ valentImgs['new-start'] }}" style="opacity:{{ currentIndex < 100 ? 1 : 0 }};"/>
+                    <image class="image-2" mode="widthFix" src="{{ valentImgs['new-end'] }}" style="opacity:{{ currentIndex < 100 ? 0 : 1 }};"/>
+                </view>
+            </view>
+        </view>
+        <view class="banner-record">
+            <button 
+                class="common-login" 
+                hover-class="btn-hover" 
+                type="success" 
+                open-type="getUserInfo"
+                bindtap="originLogin"
+                wx:if="{{ !isLogin }}">
+            </button>
+            <view class="record-box" bindtap="tapLuckyRecord">
+                <text>我</text><text>的</text><text>奖</text><text>品</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 奖励 -->
+    <kk-award 
+        isLogin="{{ isLogin }}"
+        balance="{{ balance }}"
+        tokeCount="{{ tokeCount }}"
+        tokeTime="{{ tokeTime }}"
+        list="{{ luckyList }}"
+        moduleTitle="{{ luckyTitle }}"
+        activityName="{{ activity_name }}"
+        pageTitle="{{ title }}"
+        origin="{{ origin }}"
+        bind:onLogin="originLogin"
+        bind:onMove="handleLuckyMove"
+        bind:onFinish="reloadData"
+        bind:onTask="toTask">
+    </kk-award>
+
+    <!-- 任务 -->
+    <kk-task 
+        id="valentines-task"
+        wx:if="{{ tasksList.length > 0 && isShowTask }}"
+        isLogin="{{ isLogin }}"
+        tasksList="{{ tasksList }}"
+        activityName="{{ activity_name }}"
+        pageTitle="{{ title }}"
+        origin="{{ origin }}"
+        bind:onFinish="reloadData"
+        bind:onLogin="originLogin">
+    </kk-task>
+
+    <!-- 活动规则 -->
+    <view class="rule">
+        <view class="rule-info"><image mode="widthFix" src="{{ ruleUrl }}"/></view>
+    </view>
+
+</view>
+
+<!-- 底部加载状态 -->
+<view wx:else>
+    <kk-bottom loading="{{ loading }}" finish="{{ false }}"></kk-bottom>
+</view>
+
+<!-- 中奖记录弹窗 -->
+<kk-record-dialog 
+    wx:if="{{ dialogRecord.show }}"
+    list="{{ dialogRecord.list }}"
+    bind:onClose="dialogRecordClose">
+</kk-record-dialog>
+
+<!-- 获取手机号授权dialog -->
+<mp-dialog
+	wx:if="{{ dialog.show }}"
+    show="{{ dialog.show }}"
+    title="{{ dialog.title }}"
+    content="{{ dialog.content }}"
+    buttons="{{ dialog.button }}"
+    bindbuttontap="onDialogButtontapEvent"
+    bindgetphonenumber="onDiallogGetPhoneNumberEvent"
+    buttonGetPhoneNumber="{{true}}">
+    <!-- 内容区块：额外增加内容 slot -->
+    <view slot="bd-content" class="weui-dialog__content2">
+        <text class="content-two">{{dialog.contentTwo}}</text>
+        <text catchtap="onDialogTapEvent" class="content-three">{{dialog.contentThree}}</text>
+    </view>
+</mp-dialog>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

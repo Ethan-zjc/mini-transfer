@@ -1,0 +1,40 @@
+.kk-find-topic-list-btn {
+  display: flex;
+  align-items: center;
+}
+
+.kk-find-topic-list-btn .left {
+  margin-right: 16rpx;
+}
+
+.kk-find-topic-list-btn .left, .kk-find-topic-list-btn .right {
+  flex: 1;
+  height: 84rpx;
+  line-height: 84rpx;
+  background: #F7F7F8;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+  color: #666;
+  border-color: #fff;
+  opacity: .86;
+}
+
+.kk-find-topic-list-btn .left::after, .kk-find-topic-list-btn .right::after {
+  border: none;
+}
+
+.find-classify-btn {
+  padding: 0 24rpx;
+}
+
+.find-classify-btn .left, .find-classify-btn .right {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.find-classify-btn text {
+  opacity: .75;
+}

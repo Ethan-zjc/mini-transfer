@@ -1,0 +1,32 @@
+<!-- 悬浮窗(20210528-一期定位三周年活动) -->
+<view 
+    wx:if="{{ isShow }}"
+    class="kk-open-label"
+    catchtouchmove
+    catchtap="maskclose">
+    <view class="user-label-bg" catchtap>
+        <image src="{{ images.titlebgIcon }}" alt="" class="titlebg"/>
+        <view class="user-label-title">{{ showSex ? '选择性别，推荐更精准哦' : '你喜欢什么类型' }}</view>
+        <view class="user-label-content sex-box" wx:if="{{ showSex }}">
+            <view class="chose-sex boy" data-sex="1" catchtap="choseSex">
+                <image src="{{ images.boyIcon }}" alt="" class="sex-icon"/>
+                <text>男</text>
+            </view>
+            <view class="chose-sex girl" data-sex="0" catchtap="choseSex">
+                <image src="{{ images.girlIcon }}" alt="" class="sex-icon"/>
+                <text>女</text>
+            </view>
+        </view>
+        <view class="user-label-content like-box" wx:else>
+            <scroll-view class="label-scroll {{ 'label-scroll-'+ labeRow }}" scroll-y="{{true}}">
+                <view class="label-box">
+                    <view class="label {{ item.isSelect ? 'check' : '' }}" wx:for="{{ curLabels }}" wx:key="item" data-index="{{ index }}" catchtap="choseLabels">{{ item.name }}</view>
+                </view>
+            </scroll-view>
+            <view class="user-label-btn {{ choseNum > 0 ? '' : 'disable' }}" catchtap="submitLabels">选好了</view>
+        </view>
+    </view>
+</view>
+
+<!-- 新手福利弹窗 -->
+<kk-new-welfare wx:if="{{ popLevel1 }}" bindwelfareEventBack="welfareEvent" bindwelfareFinish="welfareFinish"></kk-new-welfare>

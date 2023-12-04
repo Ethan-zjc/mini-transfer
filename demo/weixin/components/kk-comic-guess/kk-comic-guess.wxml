@@ -1,0 +1,38 @@
+
+<view 
+    class="guess observe-guess"
+    wx:if="{{ visible }}">
+    <view class="comic-top">
+        <text class="top-title">{{ guessTitle }}</text>
+    </view>
+    <view class="guess-topics">
+        <scroll-view scroll-x="true">
+            <view class="topics-list">
+                <block 
+                    wx:for="{{ guessList }}"
+                    wx:key="index">
+                    <view 
+                        class="topics-item"
+                        data-action="{{ item.action_protocol }}"
+                        catchtap="tapAction">
+                        <view class="topics-item-img">
+                            <kk-cover
+                                prestrain="{{ true }}"
+                                index="{{ index+1 }}"
+                                src="{{item.cover_image_url}}"
+                                height="{{ 156 }}"
+                                width="{{ 248 }}">
+                            </kk-cover>
+                        </view>
+                        <view class="topics-item-title">
+                            {{ item.title }}
+                        </view>
+                        <view class="topics-item-subtitle">
+                            {{ item.subtitle }}
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+</view>

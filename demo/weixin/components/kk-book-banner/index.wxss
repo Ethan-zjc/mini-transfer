@@ -1,0 +1,100 @@
+.kk-book-banner {
+  width: 100%;
+  height: 136rpx;
+  background: #FFFFFF;
+  padding-top: 16rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.kk-book-banner .banner-view {
+  width: 686rpx;
+  height: 120rpx;
+}
+
+.kk-book-banner .banner-swiper, .kk-book-banner .banner-item {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-book-banner .block-view {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.kk-book-banner .contain {
+  width: 99%;
+  border-radius: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.kk-book-banner .contain.bg {
+  height: 88rpx;
+  background: rgba(255, 163, 0, 0.1);
+}
+
+.kk-book-banner .contain.img-h {
+  height: 120rpx;
+}
+
+.kk-book-banner .contain .banner {
+  width: 100%;
+  height: 100%;
+}
+
+.kk-book-banner .contain .img-place {
+  height: 100%;
+  width: 102rpx;
+}
+
+.kk-book-banner .contain .icon {
+  width: 102rpx;
+  height: 104rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-right: 8rpx;
+}
+
+.kk-book-banner .contain .banner-img {
+  width: 686rpx;
+  height: 100%;
+  border-radius: 100rpx;
+}
+
+.kk-book-banner .contain .icon-img {
+  width: 102rpx;
+  height: 104rpx;
+}
+
+.kk-book-banner .contain .txt {
+  font-size: 26rpx;
+  line-height: 36rpx;
+  color: #D0AC63;
+  width: 414rpx;
+  max-width: 414rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kk-book-banner .contain .btn {
+  width: 128rpx;
+  height: 48rpx;
+  background: #D0AC63;
+  border-radius: 100rpx;
+  line-height: 48rpx;
+  text-align: center;
+  margin-right: 32rpx;
+  font-weight: 500;
+  font-size: 22rpx;
+  color: #FFFFFF;
+}

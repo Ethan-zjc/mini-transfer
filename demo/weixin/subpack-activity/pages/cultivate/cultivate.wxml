@@ -1,0 +1,25 @@
+<!--subpack-activity/pages/cultivate/cultivate.wxml-->
+<view class="cultivate" style="background-image: url({{ cultivateImgs['cultivate-background'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+    <home-module
+        wx:if="{{ activityName }}"
+        id="homeModule"
+        activityName="{{ activityName }}"
+        userInfo="{{ userInfo }}"
+        bindinited="inited"
+    ></home-module>
+    <task-module
+        wx:if="{{ activityId }}"
+        id="taskModule"
+        activityId="{{ activityId }}"
+        activityName="{{ activityName }}"
+        userInfo="{{ userInfo }}"
+        bindtaskDone="taskDone"
+    ></task-module>
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>
+
+<!-- 顶部提示通知 -->
+<kk-top-notify  
+    options="{{ notifyOptions }}">
+</kk-top-notify>

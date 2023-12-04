@@ -1,0 +1,28 @@
+#! /usr/bin/env node
+const program = require('commander');
+const packageJson = require('../package.json');
+const build = require('../src/index');
+
+program.name('mini-trans').usage(`<command> [option]`).version(`mini-trans ${packageJson.version}`);
+
+/**
+ * -p: 待转换项目(目前固定微信)
+ * -e: 待转换项目路径
+ * -t: 要转换的目标项目(qq、baidu、douyin)
+ * -r: 自定义规则；路径，非必填写
+ * -o: 输出转换后文件路径，非必填写
+ */
+program
+    .command('build')
+    .description('Build an application')
+    .option('-p, --project <key> <value>', 'set the project to be converted')
+    .option('-e, --entry <key> <value>', 'set build stay project path')
+    .option('-t, --target <key> <value>', 'set target project')
+    .option('-r, --rules <key> <value>', 'set custom rules path')
+    .option('-o, --output <key> <value>', 'set output transfer project path')
+    .action((options) => {
+        options.target = options.target ? options.target.split(',') : '';
+        build(options);
+    });
+
+program.parse(process.argv);

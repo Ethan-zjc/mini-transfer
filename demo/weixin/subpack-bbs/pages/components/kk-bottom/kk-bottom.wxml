@@ -1,0 +1,8 @@
+<view class="wrap" wx:if="{{ loading || finish }}">
+	<view class="wrap-view" wx:if="{{ loading }}">
+        <mp-loading type="circle" tips="加载中..." extClass="kk-bottom"></mp-loading>
+	</view>
+	<view class="wrap-view" wx:elif="{{ finish }}">
+        <text>到底啦～不要再拉啦^_^</text>
+    </view>
+</view>

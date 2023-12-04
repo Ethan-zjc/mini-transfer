@@ -1,0 +1,98 @@
+.skeleton {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.skeleton .bg {
+  background: #F7F9FA;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%) #ededed;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1.5s loading ease-in-out infinite;
+}
+
+.skeleton .bg.main-txt {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%) #ededed;
+  background-size: 180% 100%;
+  background-position-x: 180%;
+}
+
+.skeleton .chunk {
+  padding: 32rpx 24rpx;
+  box-sizing: border-box;
+}
+
+.skeleton .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.skeleton .header .user {
+  display: flex;
+  align-items: center;
+}
+
+.skeleton .header .user .avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.skeleton .header .user .txt {
+  width: 100rpx;
+  height: 28rpx;
+  margin-left: 16rpx;
+}
+
+.skeleton .header .praise {
+  width: 100rpx;
+  height: 24rpx;
+}
+
+.skeleton .content {
+  width: 100%;
+  padding-left: 76rpx;
+  box-sizing: border-box;
+}
+
+.skeleton .content .main-txt {
+  width: 100%;
+  height: 32rpx;
+  margin-bottom: 16rpx;
+}
+
+.comment-detail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #F7F9FA;
+}
+
+.comment-detail .main-comment {
+  background: #fff;
+}
+
+.comment-detail .reply-comment {
+  background: #F7F9FA;
+}
+
+.comment-detail .reply-comment .module {
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.comment-detail .reply-comment .module:last-of-type {
+  border-bottom: none;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
+}

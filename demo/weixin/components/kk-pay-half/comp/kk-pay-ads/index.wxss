@@ -1,0 +1,49 @@
+@charset "UTF-8";
+.kk-button-ads .btn-pay {
+  width: 686rpx;
+  height: 88rpx;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+  line-height: 88rpx;
+}
+
+.kk-button-ads .ios-not-btn {
+  color: #cfc6e9;
+  background: #f9f6ff;
+}
+
+.kk-button-ads .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.kk-button-ads .content .ads-not-btn {
+  color: #cfc6e9;
+  background: #f9f6ff;
+}
+
+.kk-button-ads .content .ads-btn {
+  color: #fff;
+  background: #ff751a;
+}
+
+.kk-button-ads .content .adv-times {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 24rpx;
+}
+
+.kk-button-ads .content .adv-times::before {
+  content: '· ';
+}
+
+.kk-button-ads .content .adv-loading {
+  opacity: 0.6 !important;
+}
+
+.kk-button-ads .vip-content .ads-btn {
+  color: #fff;
+  background: linear-gradient(135deg, #d100d6 0%, #6c01cf 100%);
+}

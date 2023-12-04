@@ -1,0 +1,6 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "kk-icon": "/components/kk-icon/kk-icon"
+    }
+}

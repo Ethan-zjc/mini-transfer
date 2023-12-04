@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "kk-video-item": "/components/kk-video-item/index",
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "kk-toast": "/components/kk-toast/kk-toast"
+    }
+}

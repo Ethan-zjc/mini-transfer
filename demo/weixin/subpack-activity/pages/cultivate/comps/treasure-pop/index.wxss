@@ -1,0 +1,117 @@
+.treasure-pop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+
+.treasure-pop .content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 52rpx 0 0;
+  width: 630rpx;
+  height: 654rpx;
+  box-sizing: border-box;
+}
+
+.treasure-pop .content .close {
+  position: absolute;
+  top: -66rpx;
+  right: 0;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.treasure-pop .content .title {
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: 800;
+  color: #FEFEFE;
+}
+
+.treasure-pop .content .desc {
+  padding-top: 13rpx;
+  height: 20rpx;
+  line-height: 20rpx;
+  text-align: center;
+  font-size: 20rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: 800;
+  color: #FF973A;
+}
+
+.treasure-pop .content .awards {
+  margin-top: 15rpx;
+  padding: 20rpx 82rpx 0;
+  display: flex;
+  height: 448rpx;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.treasure-pop .content .awards .item {
+  position: relative;
+  padding-bottom: 24rpx;
+  width: 136rpx;
+}
+
+.treasure-pop .content .awards .item .bubble {
+  position: absolute;
+  top: -14rpx;
+  right: -22rpx;
+  width: 80rpx;
+  height: 30rpx;
+  border-radius: 16rpx;
+  background-color: #26FFFC;
+  font-size: 20rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: bold;
+  color: #00102B;
+  text-align: center;
+}
+
+.treasure-pop .content .awards .item .image-box {
+  width: 136rpx;
+  height: 140rpx;
+  border: 2rpx solid #146CFF;
+  background-color: #146CFF;
+}
+
+.treasure-pop .content .awards .item .image-box image {
+  width: 100%;
+  height: 100%;
+}
+
+.treasure-pop .content .awards .item .name {
+  margin-top: 12rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 20rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 22rpx;
+  text-align: center;
+}
+
+.treasure-pop .content .button {
+  margin: 8rpx auto;
+  width: 292rpx;
+  height: 112rpx;
+  line-height: 112rpx;
+  text-align: center;
+  font-size: 40rpx;
+  font-family: Alibaba PuHuiTi;
+  font-weight: 800;
+  color: #26FFFC;
+}

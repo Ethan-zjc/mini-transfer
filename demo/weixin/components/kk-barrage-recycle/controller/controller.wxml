@@ -1,0 +1,36 @@
+<view class="controller">
+    <container
+        wx:for="{{playImages}}"
+        wx:key="key"
+        danmu-list="{{playImageDanmuMap[item.key].danmuList}}"
+        image-data="{{playImageDanmuMap[item.key].imageData}}"
+        scroll-top="{{realScrollTop}}"
+        action-info="{{actionInfoForBubble}}"
+        menu-shown="{{menuShown}}"
+        danmu-region-height="{{danmuRegionHeight}}"
+        bindtriggermenu="onTriggereMenu"
+        bindresetmenuinfo="onMenuInfoReset"
+    ></container>
+    <bubble
+        wx:for="{{createdPlayList}}"
+        wx:key="danmuId"
+        imageData="{{item.imageData}}"
+        danmuData="{{item.danmuData}}"
+        index="{{index}}"
+        action-info="{{actionInfoForBubble}}"
+        menuShown="{{menuShown}}"
+        bindleave="onBarrageLeave"
+        bindtriggermenu="onTriggereMenu"
+    ></bubble>
+    <menu
+        danmuData="{{danmuDataForMenu}}"
+        show="{{menuShown}}"
+        comic-id="{{comicId}}"
+        topic-id="{{topicId}}"
+        topic-title="{{topicTitle}}"
+        comic-title="{{comicTitle}}"
+        bindleave="onMenuLeave"
+        bindhidebarrage="onHideBarrage"
+    ></menu>
+    <bg-scale-canvas />
+</view>

@@ -1,0 +1,412 @@
+.kk-bulk-purchase {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 999;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  animation: fade-in ease-in-out 0.6s 1 alternate forwards;
+}
+
+.kk-bulk-purchase .bulk-purchase-wrap {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  z-index: 55;
+  transition: 0.4s ease;
+}
+
+.bulk-purchase-wrap {
+  min-height: 516rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx 24rpx 0px 0px;
+}
+
+.bulk-purchase-wrap .topic-warp {
+  position: relative;
+  margin: 0 auto;
+  width: 308rpx;
+  height: 116rpx;
+}
+
+.bulk-purchase-wrap .topic-warp .image-warp {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: -76rpx;
+  width: 308rpx;
+  height: 192rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.bulk-purchase-wrap .topic-warp .topic-warp {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.bulk-purchase-wrap .topic-warp .topic-warp .title {
+  margin: 0 auto;
+  padding-top: 48rpx;
+  max-width: 292rpx;
+  height: 36rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 36rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.bulk-purchase-wrap .comic-num {
+  padding-top: 16rpx;
+  padding-bottom: 54rpx;
+  height: 28rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 28rpx;
+  text-align: center;
+}
+
+.bulk-purchase-wrap .pay-price-warp {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.bulk-purchase-wrap .pay-price-warp .icon-warp {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 36rpx;
+  height: 36rpx;
+  background: linear-gradient(180deg, #FFEF8B 0%, #FFDE8B 100%);
+  box-shadow: 0px 0px 1px 0px #FFC58A;
+  border-radius: 50%;
+}
+
+.bulk-purchase-wrap .pay-price-warp .icon-warp .icon {
+  width: 26rpx;
+  height: 26rpx;
+  background: linear-gradient(180deg, #FF9900 0%, #FFBB03 42%, #FFC505 100%);
+  border-radius: 50%;
+  font-size: 14rpx;
+  color: #FFF3BA;
+  text-align: center;
+  line-height: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 900;
+}
+
+.bulk-purchase-wrap .pay-price-warp .kkb {
+  padding: 0 16rpx 0 8rpx;
+  height: 40rpx;
+  font-size: 40rpx;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+  font-weight: 500;
+  color: #FF751A;
+  line-height: 40rpx;
+}
+
+.bulk-purchase-wrap .pay-price-warp .discount-icon, .bulk-purchase-wrap .pay-price-warp .discount-icon .icon {
+  position: relative;
+  width: 64rpx;
+  height: 28rpx;
+}
+
+.bulk-purchase-wrap .pay-price-warp .discount-icon .icon-text, .bulk-purchase-wrap .pay-price-warp .discount-icon .icon .icon-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 28rpx;
+}
+
+.bulk-purchase-wrap .pay-price-warp .vip-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bulk-purchase-wrap .pay-price-warp .vip-icon .icon {
+  width: 50rpx;
+  height: 28rpx;
+}
+
+.bulk-purchase-wrap .pay-price-warp .vip-icon .text {
+  padding: 0 4rpx;
+  max-width: 450rpx;
+  height: 24rpx;
+  background: rgba(207, 0, 214, 0.08);
+  border-radius: 0px 4rpx 4rpx 0rpx;
+  border: 2rpx solid #CA00D5;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+  font-weight: 500;
+  color: #9A00D2;
+  line-height: 24rpx;
+  text-align: center;
+}
+
+.bulk-purchase-wrap .concessional-rate {
+  display: flex;
+  padding: 16rpx 0 28rpx 0;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.bulk-purchase-wrap .concessional-rate .coupon {
+  width: 30rpx;
+  height: 30rpx;
+  background: rgba(255, 117, 26, 0.1);
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+  font-weight: 500;
+  color: #FF751A;
+  line-height: 30rpx;
+  text-align: center;
+}
+
+.bulk-purchase-wrap .concessional-rate .text {
+  padding-left: 8rpx;
+  height: 28rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC,sans-serif;
+  font-weight: 400;
+  color: #B2B4C4;
+  line-height: 28rpx;
+  text-decoration: line-through;
+}
+
+.bulk-purchase-wrap .buy-btn {
+  margin: 0 auto 26rpx auto;
+  width: 530rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: #FDE53F;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #442509;
+  line-height: 80rpx;
+  text-align: center;
+  position: relative;
+}
+
+.bulk-purchase-wrap .footer-warp {
+  display: flex;
+  align-items: center;
+}
+
+.bulk-purchase-wrap .footer-warp .balance {
+  padding: 28rpx 12rpx 28rpx 32rpx;
+  height: 24rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC, sans-serif;
+  font-weight: 400;
+  color: #999999;
+  line-height: 24rpx;
+}
+
+.bulk-purchase-wrap .footer-warp .recharge {
+  padding: 28rpx 20rpx 28rpx 0;
+  display: flex;
+  align-items: center;
+}
+
+.bulk-purchase-wrap .footer-warp .recharge .text {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6F93BD;
+  line-height: 24rpx;
+}
+
+.bulk-purchase-wrap .footer-warp .recharge .icon {
+  margin-left: 10rpx;
+  width: 8rpx;
+  height: 15rpx;
+}
+
+.bulk-purchase-wrap .iphonex-bottom {
+  width: 100%;
+  height: 64rpx;
+}
+
+.bulk-purchase-wrap .vip-tips-warp {
+  display: block;
+  padding: 18rpx 44rpx;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -100%;
+  transform: translate(-50%, 70%);
+  min-width: 100rpx;
+  max-width: 500rpx;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 6rpx;
+}
+
+.bulk-purchase-wrap .vip-tips-warp .up-arrow {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 28rpx;
+  height: 12rpx;
+  top: -9rpx;
+}
+
+.bulk-purchase-wrap .vip-tips-warp .up-arrow .arrow-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.bulk-purchase-wrap .vip-tips-warp .stars {
+  position: absolute;
+  left: 12rpx;
+  top: 2rpx;
+  z-index: 1;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.bulk-purchase-wrap .vip-tips-warp .stars .stars-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.bulk-purchase-wrap .vip-tips-warp .vip-text {
+  font-size: 22rpx;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 32rpx;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bulk-purchase-wrap .vip-tips-warp-1 {
+  transform: translate(-50%, 80%);
+}
+
+.bulk-purchase-wrap .vip-tips-warp-2 {
+  transform: translate(-50%, 85%);
+}
+
+.bulk-purchase-wrap .vip-tips-warp-3 {
+  transform: translate(-50%, 90%);
+}
+
+.bulk-purchase-wrap .vip-tips-warp-4 {
+  transform: translate(-50%, 93%);
+}
+
+.bulk-purchase-wrap .vip-tips-warp-5 {
+  transform: translate(-50%, 95%);
+}
+
+.bulk-purchase-wrap .vip-tips-warp-6 {
+  transform: translate(-50%, 96%);
+}
+
+.bulk-purchase-wrap .pay-btn-icon {
+  position: absolute;
+  right: 40rpx;
+  top: -34rpx;
+}
+
+.show-kk-bulk-purchase {
+  width: 100%;
+  height: 100%;
+  animation: fade-in ease-in-out 0.6s 1 alternate forwards;
+}
+
+.show-kk-bulk-purchase .bulk-purchase-wrap {
+  bottom: 0;
+  transition: 0.4s ease;
+}
+
+.hide-kk-bulk-purchase {
+  height: 0;
+}
+
+@keyframes fade-in {
+  0% {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.lazy-load-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lazy-load-popup .contnet {
+  width: 80%;
+  height: auto;
+}
+
+.lazy-load-popup .contnet .loding {
+  margin: 0 auto;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.lazy-load-popup .contnet .loding .icon {
+  animation: spin 1s linear infinite;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lazy-load-popup .contnet .text {
+  margin-top: 20rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 30rpx;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

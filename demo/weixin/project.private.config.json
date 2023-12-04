@@ -1,0 +1,83 @@
+{
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "漫画详情页",
+          "pathName": "pages/comic/comic",
+          "query": "id=277&comicId=&parentId=186",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "专题页",
+          "pathName": "pages/topic/topic",
+          "query": "id=10",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "漫画连续阅读",
+          "pathName": "pages/comicnew/comicnew",
+          "query": "id=142126",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "分类页",
+          "pathName": "pages/class/class",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "优惠券",
+          "pathName": "subpack-auxiliary/pages/vip-coupon/vip-coupon",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "subpack-bbs/pages/post/post",
+          "query": "id=380297368129175583",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "会员中心",
+          "pathName": "subpack-auxiliary/pages/vip-center/vip-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "subpack-video/pages/chapters/chapters",
+          "query": "parentId=190978770247942144",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/topic/topic",
+          "query": "id=4071",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "设置页面",
+          "pathName": "subpack-auxiliary/pages/setting/setting",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "libVersion": "3.0.1",
+  "setting": {
+    "skylineRenderEnable": true
+  }
+}

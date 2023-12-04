@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "home-module": "./comps/home-module/index",
+        "task-module": "./comps/task-module/index",
+        "kk-top-notify": "/components/kk-top-notify/kk-top-notify"
+    }
+}

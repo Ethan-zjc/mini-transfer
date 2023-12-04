@@ -1,0 +1,13 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "kk-cover": "../components/kk-cover/kk-cover",
+        "kk-waterfall": "../components/kk-waterfall/index",
+        "kk-waterfall-item": "../components/kk-waterfall-item/index",
+        "kk-toast": "../components/kk-toast/kk-toast",
+        "kk-bottom": "../components/kk-bottom/kk-bottom",
+        "kk-navigation-bar": "../components/kk-navigation-bar/kk-navigation-bar"
+    }
+}

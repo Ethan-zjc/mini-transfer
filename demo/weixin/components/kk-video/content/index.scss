@@ -1,0 +1,57 @@
+.video-content {
+    padding: 24rpx 24rpx 20rpx;
+    .content-tips {
+        width: 580rpx;
+        height: 32rpx;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        .img {
+            width: 32rpx;
+            height: 32rpx;
+            margin-right: 4rpx;
+            flex-shrink: 0;
+        }
+        .text {
+            font-family: "PingFang SC";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 26rpx;
+            line-height: 32rpx;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            opacity: 0.8;
+            font-weight: normal;
+        }
+    }
+    .content-title {
+        font-family: "PingFang SC";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28rpx;
+        line-height: 36rpx;
+        color: #ffffff;
+        margin-top: 16rpx;
+        display: flex;
+        align-items: center;
+        width: 580rpx;
+        .split {
+            margin: 0 16rpx;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 4rpx;
+            width: 1px;
+            height: 16rpx;
+        }
+        .num {
+            flex-shrink: 0;
+        }
+        .text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: bold;
+        }
+    }
+}

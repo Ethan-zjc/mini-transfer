@@ -1,0 +1,158 @@
+.v-gifts {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.v-gifts .title_info {
+  display: flex;
+  height: 88rpx;
+  align-items: center;
+  padding-left: 24rpx;
+  box-sizing: border-box;
+}
+
+.v-gifts .title_info .tit {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #222222;
+  margin-right: 12rpx;
+}
+
+.v-gifts .gifts {
+  width: 100%;
+  height: 248rpx;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.v-gifts .gifts .list {
+  height: 270rpx;
+}
+
+.v-gifts .gifts .gift {
+  width: 218rpx;
+  height: 248rpx;
+  background-color: #FFFFFF;
+  align-items: center;
+  border-radius: 12rpx;
+  display: inline-block;
+  margin-right: 16rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.v-gifts .gifts .gift.first-item {
+  margin-left: 24rpx;
+}
+
+.v-gifts .gifts .gift .icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.v-gifts .gifts .gift .contain {
+  width: 100%;
+  height: 222rpx;
+  background: #F9F6FF;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rpx 12rpx 0;
+  box-sizing: border-box;
+}
+
+.v-gifts .gifts .gift .contain .cover {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.v-gifts .gifts .gift .contain .title {
+  font-size: 24rpx;
+  line-height: 28rpx;
+  font-weight: bold;
+  margin-top: 6rpx;
+  color: #222222;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.v-gifts .gifts .gift .contain .subtitle {
+  margin-top: 10rpx;
+  font-size: 20rpx;
+  color: #A8A1B6;
+  line-height: 20rpx;
+}
+
+.v-gifts .gifts .gift .btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 168rpx;
+  height: 56rpx;
+  border-radius: 200rpx;
+}
+
+.v-gifts .gifts .gift .btn .bg-normal {
+  position: absolute;
+  left: 10rpx;
+  top: 36rpx;
+  width: 140rpx;
+  height: 46rpx;
+  border-radius: 30rpx;
+  background: #fde93d;
+  opacity: 0.5;
+  filter: blur(8rpx);
+}
+
+.v-gifts .gifts .gift .btn .bg-special {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.v-gifts .gifts .gift .btn .button {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  font-size: 24rpx;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-gifts .gifts .gift .btn .button text {
+  line-height: 32rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 12rpx;
+  box-sizing: border-box;
+}
+
+.v-gifts .gifts .gift .btn .button.normal {
+  color: #222222;
+  background: #ffe120;
+}
+
+.v-gifts .gifts .gift .btn .button.special {
+  color: #fff;
+}
+
+.v-gifts .gifts .gift .btn .button.disabled {
+  color: #666;
+  background: #e8e4f0;
+}

@@ -1,0 +1,23 @@
+<!--subpack-video/pages/chapters/comps/popup-buyvip/index.wxml-->
+<view class="popup-buyvip">
+    <view class="buyvip-wrapper" hidden="{{ !activeItem }}">
+        <view class="close" bindtap="hanleClose">
+            <image src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/video/pay-close2_43bfcbf.png"></image>
+        </view>
+        <view wx:if="{{ chargeActivity }}" class="guide" style="background-image: url('https://static3w.kuaikanmanhua.com/assets/img/remote_images/video/vip-guide-bg_7f79837.png')">
+            <view class="guide__title">{{ chargeActivity.words_info.main_text }}</view>
+            <view class="guide__content">{{ chargeActivity.words_info.sub_text }}</view>
+        </view>
+
+        <view class="buyvip">
+            <view class="buyvip__title">到期自动续费，可随时取消</view>
+
+            <v-pay id="payComp" userInfo="{{ userInfo }}" bindonChoiceItem="onChoiceItem"></v-pay>
+
+            <view class="buyvip__btn" bindtap="handlePay">
+                立即支付￥{{ (activeItem.price.real_price - ((activeItem.usableCouponFirst && activeItem.usableCouponFirst.amount) || 0)) / 100 }}
+                <text>￥{{ !!activeItem.usableCouponFirst ? activeItem.realPrice : activeItem.markPruice }}</text>
+            </view>
+        </view>
+    </view>
+</view>

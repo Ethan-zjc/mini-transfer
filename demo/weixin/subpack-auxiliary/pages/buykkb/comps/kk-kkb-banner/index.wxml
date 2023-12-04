@@ -1,0 +1,83 @@
+<!-- kkb充值页运营位 -->
+<view class="kk-kkb-banner">
+    <!-- 常规banenr运营位 -->
+    <view
+        class="operate-banner"
+        wx:if="{{ couponInfo.bannerType == 0 && couponInfo.viewType == 2 }}"
+        bindtap="bannerTap">
+        <image
+            class="banner-img"
+            mode="aspectFill"
+            src="{{ couponInfo.comicImg }}">
+        </image>
+    </view>
+    
+    <!-- 多充多送 -->
+    <view class="more-recharge" wx:if="{{ couponInfo.bannerType == 2 && couponInfo.viewType == 2 && activity.activity_id }}">
+        <view class="top">
+            <!-- 下发图片 -->
+            <image class="left" src="{{ activity.accum_title_image }}"></image>
+            <view class="more" bindtap="actDetail">
+                <view class="total" wx:if="{{ activity.accum_desc }}">
+                    <block wx:for="{{ activity.accum_desc }}" wx:key="index">
+                        <text wx:if="{{ index%2 == 0 }}">{{ item }}</text>
+                        <text wx:else class="money">{{ item }}</text>
+                    </block>
+                </view>
+                <image class="img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/icon-point_d3edfde.png"></image>
+            </view>
+        </view>
+        <view class="contain">
+            <scroll-view
+                scroll-x
+                class="scroll"
+                scroll-left="{{ scrollLeft }}">
+                <block wx:for="{{ activity.accum_level_list }}" wx:key="index">
+                    <view class="award-item {{ activity.accum_level_list.length == index + 1 ? 'last-item' : '' }}">
+                        <view class="award-infos" data-url="{{ item.level_award_url }}" data-status="{{ item.assign_status }}" data-index="{{ index }}" catchtap="actionAward">
+                            <view class="icons">
+                                <image class="picture" src="{{ item.image_new }}"></image>
+                                <image wx:if="{{ item.level_award_url }}" class="img-search" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/border-search_37c5b1e.png"></image>
+                            </view>
+                            <view class="infos">{{ item.recharge_bubble_text }}</view>
+                        </view>
+
+                        <!-- 角标 -->
+                        <view wx:if="{{ item.assign && item.assign_status == 2 }}" class="mark already">已领</view>
+                        <image mode="heightFix" wx:if="{{ item.assign_status != 2 && item.right_head_image }}" class="sign" src="{{ item.right_head_image }}"></image>
+            
+                        <!-- 根据状态覆盖层 -->
+                        <view class="cover-bg" wx:if="{{ item.assign_status && (item.assign_status == 1 || item.assign_status == 3 || item.assign_status == 6) }}">
+                            <view class="btn" data-index="{{ index }}" catchtap="awardBtn">领取</view>
+                        </view>
+                    </view>
+                </block>
+
+                <!-- 进度条 -->
+                <view class="progs">
+                    <view wx:for="{{ activity.accum_level_list }}" wx:key="index" class="progress-item {{ activity.accum_level_list.length == index + 1 ? 'last-item' : '' }}">
+                        <progress class="strip" border-radius="{{ index == 0 ? 15 : 0 }}" percent="{{ activity.accum_recharge_value >= item.level_value ? 100 : (index == 0 ? (activity.accum_recharge_value / item.level_value) * 100 : ((activity.accum_recharge_value - activity.accum_level_list[index - 1].level_value) >= 0 ? (activity.accum_recharge_value - activity.accum_level_list[index - 1].level_value) : 0) / (item.level_value - activity.accum_level_list[index - 1].level_value) * 100) }}" color="#FB771F" activeColor="#FB771F" backgroundColor="#FFFFFF" stroke-width="6" />
+                        
+                        <!-- 以圆点定位累计档位 -->
+                        <view class="dot {{ item.level_value > activity.accum_recharge_value ? 'color' : '' }}">
+                            <text class="txt">{{ item.level_value }}元</text>
+                        </view>
+                    </view>
+
+                    <!-- 敬请期待 -->
+                    <!-- <view wx:if="{{ activity.accum_level_list.length }}" class="progress-item">
+                        <view class="more-hit">更多活动敬请期待</view>
+                    </view> -->
+                </view>
+            </scroll-view>
+        </view>
+        <view wx:if="{{ bottomTxt }}" class="bottom">{{ bottomTxt }}</view> 
+    </view>
+</view>
+
+<!-- 活动详情弹窗 -->
+<kk-act-detail
+    wx:if="{{ showDetail }}"
+    bind:closeCallback="closeCallback"
+    bind:getAwardSuccess="getAwardSuccess">
+</kk-act-detail>

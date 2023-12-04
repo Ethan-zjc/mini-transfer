@@ -1,0 +1,57 @@
+<wxs
+    module="bubble"
+    src="./bubble.wxs"
+></wxs>
+<view class="bubble-wrap">
+    <view
+        wx:if="{{!hasStyle}}"
+        class="bubble {{danmuData.user.user_role}}"
+        style="left:{{left}}px;top:{{top}}px;{{specialStyle}}"
+        data-extend-coefficient="{{danmuData.extend_coefficient}}"
+        data-stay-time="{{danmuData.stay_time}}"
+        data-menu-shown="{{menuShown}}"
+        play-status="{{playStatus}}"
+        change:playStatus="{{bubble.playDanmu}}"
+        bindtransitionend="{{bubble.onDanmuTransitionEnd}}"
+        catchtap="{{bubble.onDanmuTap}}"
+    >
+        <view
+            class="avatar-wrap"
+            wx:if="{{danmuData.user.user_role === 'author'}}"
+        >
+            <image
+                class="avatar"
+                wx:if="{{avatarUrl}}"
+                src="{{avatarUrl}}"
+            />
+            <image
+                class="avatar"
+                wx:else
+                src="/images/avatar-default.png"
+            />
+            <image
+                class="vip"
+                src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/avatar-vip_3665ef7.png"
+            />
+        </view>
+        <text>{{danmuData.content}}</text>
+    </view>
+    <!-- ios微信不支持临时本地路径作为背景图片，所以区分安卓和ios的特殊气泡实现方式 -->
+    <view wx:else class="bubble special {{imgStyles.length > 0 ? 'no-bg' : ''}}"
+        style="left:{{left}}px;top:{{top}}px;{{specialStyle}}"
+        data-extend-coefficient="{{danmuData.extend_coefficient}}"
+        data-stay-time="{{danmuData.stay_time}}"
+        data-menu-shown="{{menuShown}}"
+        play-status="{{playStatus}}"
+        change:playStatus="{{bubble.playDanmu}}"
+        bindtransitionend="{{bubble.onDanmuTransitionEnd}}"
+        catchtap="{{bubble.onDanmuTap}}"
+    >
+        <view class="bg" wx:if="{{imgStyles.length > 0}}">
+            <image wx:for="{{imgStyles}}" wx:key="index" src="{{item.src}}" style="width:{{item.width}}; height:{{item.height}}" />
+        </view>
+        <text style="{{textStyle}}">{{danmuData.content}}</text>
+    </view>
+    <!-- 用来拿到内容宽度 -->
+    <text wx:if="{{!playStatus}}" class="fake-text">{{danmuData.content}}</text>
+</view>

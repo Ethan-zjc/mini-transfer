@@ -1,0 +1,344 @@
+@import "../../common/_color.scss";
+@import "../../common/_mixin.scss";
+
+.kk-class-page {
+    width: 100%;
+    height: auto;
+    background: #fafbfc;
+
+    //吸顶展示的样式
+    .class-nounting {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80rpx;
+        .name {
+            font-size: 28rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(51, 51, 51, 1);
+        }
+        .line {
+            margin: 0 24rpx;
+            width: 1px;
+            height: 16rpx;
+            background: #e6e6e6;
+            border-radius: 1px;
+        }
+        .arrow-box {
+            padding: 15rpx 0rpx;
+            image {
+                width: 32rpx;
+                height: 32rpx;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    //底部内容
+    .bottom {
+        line-height: 40px;
+        font-size: 22rpx;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #999;
+        text-align: center;
+    }
+
+    //内容展示的样式
+    .middle {
+        width: 100%;
+        height: auto;
+    }
+
+    //列表模块 S
+    .middle {
+        .topic-lists {
+            padding: 32rpx 16rpx 0;
+        }
+        //是否过滤关注
+        .topic-lists .is-filter-follow {
+            padding: 0 12rpx 32rpx;
+            display: flex;
+            flex-wrap: wrap; //换行且第一行在上方
+            align-items: center;
+            .round {
+                width: 32rpx;
+                height: 32rpx;
+            }
+            .color {
+                padding-left: 4px;
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                line-height: 33rpx;
+            }
+            .color-light {
+                color: #999;
+            }
+            .color-deep {
+                color: #333;
+            }
+        }
+
+        //列表
+        .topic-lists .lists {
+            box-sizing: border-box;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; //换行且第一行在上方
+            align-items: center;
+            //justify-content: space-between; //中间适应
+            width: 718rpx;
+            .items {
+                padding-right: 8rpx;
+                width: 234rpx;
+                height: auto;
+            }
+            .items .cover {
+                position: relative;
+                width: 234rpx;
+                height: 310rpx;
+                border-radius: 4rpx;
+                overflow: hidden;
+            }
+            .items .cover .bottom {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 234rpx;
+                height: 56rpx;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+                border-radius: 0px 0px 4rpx 4rpx;
+                //更新xx话
+                .update {
+                    padding-right: 12rpx;
+                    line-height: 56rpx;
+                    font-size: 22rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #fff;
+                    text-align: right;
+                }
+
+                //显示的分类
+                .tag {
+                    padding-right: 4rpx;
+                    line-height: 56rpx;
+                    text-align: right;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #fff;
+                    .tag-name {
+                        max-width: 40%;
+                        display: inline-block;
+                        //padding-right: 8rpx;
+                        margin-right: 8rpx;
+                        font-size: 22rpx;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .items .describe {
+                padding: 20rpx 8rpx 24rpx 8rpx;
+                .title {
+                    padding-top: 2rpx;
+                    box-sizing: border-box;
+                    width: 100%;
+                    line-height: 30rpx;
+                    font-size: 30rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #333;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    word-break: break-all;
+                }
+                .text {
+                    padding-top: 14rpx;
+                    height: 24rpx;
+                    line-height: 24rpx;
+                    font-size: 22rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #999;
+                }
+            }
+        }
+    }
+    //列表模块 E
+
+    .bottom .weui-loadmore {
+        align-items: center;
+    }
+
+    .bottom .no-data {
+        margin: 0 auto;
+        width: 500rpx;
+        height: 500rpx;
+        image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+//筛选模块(头部筛选/吸顶展开筛选) S
+.kk-class-screen-lists {
+    //筛选模块 S
+    // .screen-lists{
+    //     position: relative;
+    //     padding: 8rpx 0 18rpx;
+    //     box-sizing: border-box;
+    //     background: #fff;
+    // }
+    position: relative;
+    padding: 8rpx 0 0;
+    box-sizing: border-box;
+    background: #fff;
+
+    //分类列表
+    .tag-select {
+        padding: 0 16rpx;
+        display: flex;
+        flex-wrap: wrap; //换行且第一行在上方
+        align-items: center;
+        border-bottom: 1px solid rgba(243, 243, 243, 1);
+
+        .tag-item {
+            box-sizing: border-box;
+            margin-right: 18.5rpx;
+            margin-bottom: 18rpx;
+            width: 84rpx;
+            line-height: 40rpx;
+            font-size: 28rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            text-align: center;
+            color: rgba(102, 102, 102, 1);
+            overflow: hidden;
+            .active {
+                margin: 0 auto;
+                margin-top: 3rpx;
+                width: 40rpx;
+                height: 5rpx;
+                border-radius: 3rpx;
+            }
+        }
+
+        .tag-item-1 {
+            padding: 0 14rpx;
+        }
+
+        .tag-item-active {
+            color: #333333;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            .active {
+                background: rgba(253, 226, 61, 1);
+            }
+        }
+    }
+
+    // 区域(地区)筛选
+    .region-select {
+        padding: 25rpx 24rpx 0;
+    }
+
+    //付费筛选
+    .pay-select {
+        padding: 25rpx 16rpx 29rpx 16rpx;
+    }
+
+    //连载筛选
+    .serialize-select {
+        padding: 0 20rpx 25rpx;
+    }
+
+    //推荐选项
+    .recommend-select {
+        padding: 0 24rpx 25rpx;
+        //站位符
+        .stance {
+            height: 1px;
+            flex: 1;
+        }
+        //收起展开箭头
+        .arrow-btn-box {
+            .arrow-btn {
+                display: flex;
+                flex-wrap: wrap; //换行且第一行在上方
+                align-items: center;
+                //padding-right: 12rpx;
+            }
+            .arrow-btn .text {
+                //padding-right: 10rpx;
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: rgba(102, 102, 102, 1);
+            }
+            .arrow-btn .arrow {
+                image {
+                    width: 32rpx;
+                    height: 32rpx;
+                }
+                // position: relative;
+                // top: 1px;
+                // margin: 0 10rpx;
+                // @include triangle($size:7rpx, $color: #333, $dir: top);
+            }
+            .down-arrow {
+                image {
+                    width: 32rpx;
+                    height: 32rpx;
+                    transform: rotate(180deg);
+                }
+                // position: relative;
+                // top: 1px;
+                // margin: 0 10rpx;
+                //@include triangle($size:7rpx, $color: #333, $dir: bottom);
+            }
+        }
+    }
+
+    //付费筛选/连载筛选/推荐选项 通用样式
+    .select-all {
+        padding-left: 33rpx;
+        display: flex;
+        flex-wrap: wrap; //换行且第一行在上方
+        align-items: center;
+        .items {
+            box-sizing: border-box;
+            line-height: 40rpx;
+            font-size: 28rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            text-align: center;
+            color: rgba(102, 102, 102, 1);
+        }
+        .line {
+            margin: 12rpx 24rpx;
+            width: 1px;
+            height: 16rpx;
+            background: rgba(230, 230, 230, 1);
+            border-radius: 1rpx;
+        }
+        .active {
+            color: #333333;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+        }
+    }
+    //筛选模块 E
+
+    .pd-top {
+        padding-top: 25rpx;
+    }
+}
+//筛选模块(头部筛选/吸顶展开筛选) E

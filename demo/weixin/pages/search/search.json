@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "搜索页",
+    "usingComponents": {
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-cover": "/components/kk-cover/kk-cover"
+    }
+}

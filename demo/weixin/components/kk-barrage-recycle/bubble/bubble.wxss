@@ -1,0 +1,91 @@
+.bubble-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: auto;
+}
+
+.bubble {
+    position: absolute;
+    padding: 0 24rpx;
+    box-sizing: border-box;
+    height: 80rpx;
+    text-align: center;
+    border-radius: 40rpx;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    transform: scale(0) translate3d(-50%, -50%, 0);
+    transform-origin: 0 0;
+    transition: opacity 0.5s ease-in-out,
+        transform 0.8s cubic-bezier(.3,1.87,.24,.88);
+    min-width: 150rpx;
+    color: #fff;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+}
+
+.bubble.special {
+  padding: 0 36rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+}
+
+.bubble.special.no-bg {
+    padding: 0;
+    background: transparent;
+}
+
+.bubble.author {
+    padding-left: 84rpx;
+    text-align: left;
+}
+
+.bubble text, .fake-text {
+    height: 80rpx;
+    line-height: 80rpx;
+    white-space: nowrap;
+    font-size: 32rpx;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.fake-text {
+    opacity: 0;
+    word-wrap: none;
+    word-break: keep-all;
+}
+
+.bubble.special text {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.bubble .avatar-wrap {
+    position: absolute;
+    left: 10rpx;
+    top: 10rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.avatar {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.vip {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+    height: 30%;
+}

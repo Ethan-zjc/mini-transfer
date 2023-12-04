@@ -1,0 +1,10 @@
+<!-- kk-cover -->
+<view class="countdown">
+    <text class="countdown-number" wx:if="{{ endtimeD != '00' }}">{{endtimeD}}</text>
+    <text class="countdown-space-first" wx:if="{{ endtimeD != '00' }}"></text>
+    <text class="countdown-number">{{endtimeH}}</text>
+    <text class="countdown-space-second"></text>
+    <text class="countdown-number">{{endtimeM}}</text>
+    <text class="countdown-space-third"></text>
+    <text class="countdown-number">{{endtimeS}}</text>
+</view>

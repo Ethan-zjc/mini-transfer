@@ -1,0 +1,103 @@
+<view wx:if="{{ compShow }}" class="kk-bulk-purchase {{ show ? 'show-kk-bulk-purchase' : 'hide-kk-bulk-purchase' }}" hover-class="none" hover-stop-propagation="false" catchtap="clickPopupWarp">
+    <view class="bulk-purchase-wrap" catchtap>
+        <!-- 专题信息 -->
+        <view class="topic-warp">
+            <view class="image-warp">
+                <kk-cover src="{{ topicCover }}" width="{{ 308 }}" height="{{ 192 }}"></kk-cover>
+                <view class="topic-warp">
+                    <view class="title">{{ topicName || "" }}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 购买章节数 -->
+        <view class="comic-num">共{{ prchaseData.batch_count || 0 }}话</view>
+        <!-- 需要的kkb和折扣 -->
+        <!-- <view class="pay-price-warp">
+            <view class="icon-warp">
+                <view class="icon">k</view>
+            </view>
+            <view class="kkb">{{ prchaseData.selling_kk_currency || 0 }}</view>
+            <view class="vip-icon" catchtap="clickVipBtn" wx:if="{{ discountLabel.left_text == 'VIP' }}">
+                <image class="icon" src="{{ images.vipIcon }}"></image>
+                <view class="text">{{ discountLabel.right_text || "" }}</view>
+                <view 
+                    wx:if="{{ showVipTips }}" 
+                    class="vip-tips-warp vip-tips-warp-{{ prchaseData.deduction_texts.length }}"
+                >
+                    <view class="up-arrow"><image class="arrow-icon" src="{{ images.upArrow }}"></image></view>
+                    <view class="stars"><image class="stars-icon" src="{{ images.starsIcon }}"></image></view>
+                    <block 
+                        wx:if="prchaseData.deduction_texts && prchaseData.deduction_texts.length>0" 
+                    >
+                        <view class="vip-text" wx:for="{{ prchaseData.deduction_texts }}" wx:key="index">
+                            {{ item || "" }}
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view class="discount-icon" wx:elif="{{ prchaseData.total_discounts && prchaseData.total_discounts > 0 && prchaseData.total_discounts < 10 }}">
+                <image class="icon" src="{{ images.discount }}"></image>
+                <view class="icon-text">{{ prchaseData.total_discounts }}折</view>
+            </view>
+        </view> -->
+        <!-- 折扣的价格 -->
+        <!-- <view class="concessional-rate">
+            <view class="coupon" wx:if="{{ prchaseData.red_packet_deduction > 0 }}">券</view>
+            <view 
+                wx:if="{{ prchaseData.origin_kk_currency != prchaseData.selling_kk_currency }}"
+                class="text"
+            >{{ prchaseData.origin_kk_currency || 0 }}KK币</view>
+        </view> -->
+        <!-- 支付金额、优惠信息 -->
+        <kk-pay-info
+            isVip="{{ vipInfo.vip_type && vipInfo.vip_type > 0 }}"
+            wallet="{{ wallet }}"
+            price="{{ prchaseData.selling_kk_currency || 0 }}"
+            priceInfo="{{ prchaseData }}"
+            discountInfo="{{ discountInfo }}">
+        </kk-pay-info>
+        <!-- 购买漫画(跳转充值)按钮 -->
+        <view class="buy-btn" style="margin-top:28rpx" catchtap="clickBuyBtn">
+            {{ wallet >= prchaseData.selling_kk_currency ? "确认购买" : "立即充值" }}
+            <view class="pay-btn-icon" wx:if="{{ prchaseData.payIconUrl }}">
+                <kk-icon height="{{ 68 }}" src="{{ prchaseData.payIconUrl }}"></kk-icon>
+            </view>
+        </view>
+        <!-- 底部余额+充值按钮 -->
+        <view class="footer-warp">
+            <view class="balance">余额：{{ wallet }}</view>
+            <view class="recharge" catchtap="clickRecharge">
+                <view class="text">充值</view> 
+                <image class="icon" src="{{ images.arrowr }}"></image>
+            </view>
+        </view>
+        <!-- iphonex及其已上设备 底部边距 -->
+        <block wx:if="{{ iPhoneX }}">
+            <view class="iphonex-bottom"></view>
+        </block>
+    </view>
+</view>
+
+<mp-dialog
+    show="{{ showDialog }}"
+    title="购买成功"
+    content="已成功购买{{ prchaseData.batch_count || 0 }}话，快去享用吧！（已跳过临时免费的章节）"
+    buttons="{{ [{ text: '关闭' },{ text: '去看漫画' }] }}"
+    bindbuttontap="tapDialogButton">
+</mp-dialog>
+
+<mp-dialog 
+    show="{{ errDialog.show }}"
+    title="{{ errDialog.title }}"
+    content="{{ errDialog.content }}"
+    buttons="{{ [{ text: '确定' }] }}"
+    bindbuttontap="tapErrDialogButton"
+></mp-dialog>
+
+<!-- 购买中加载动效 -->
+<view wx:if="{{ isLoading }}" class="lazy-load-popup" catchtouchmove catchtap>
+    <view class="contnet">
+        <view class="loding"><image class="icon" src="{{ images.loading }}" /></view>
+        <view class="text">购买中</view>
+    </view>
+</view>

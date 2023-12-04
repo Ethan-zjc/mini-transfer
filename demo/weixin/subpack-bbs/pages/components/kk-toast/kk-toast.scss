@@ -1,0 +1,63 @@
+@mixin dialog {
+    display: table;
+    position: fixed;
+    left: 50%;
+    // top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 686rpx;
+    height: auto;
+}
+
+.wrap {
+    z-index: 9999;
+    @include dialog;
+    .toast {
+        box-sizing: border-box;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        padding: 18rpx 48rpx;
+        border-radius: 24rpx;
+        background-color: rgba(0, 0, 0, 0.7);
+        .image {
+            width: 122rpx;
+            height: 122rpx;
+            margin: 0 auto;
+        }
+        .content {
+            line-height: 40rpx;
+            text-align: justify;
+            .icon {
+                width: 40rpx;
+                height: 40rpx;
+                float: left;
+            }
+        }
+        .blank {
+            height: 8rpx;
+        }
+    }
+    .loading {
+        width: 198rpx !important;
+        padding: 18rpx 24rpx;
+        color: #fff;
+        font-size: 28rpx;
+        text-align: center;
+    }
+    .content {
+        color: #fff;
+        font-size: 28rpx;
+    }
+    &.mask {
+        left: 0;
+        top: 0;
+        transform: translate(0, 0);
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        .toast {
+            @include dialog;
+        }
+    }
+}

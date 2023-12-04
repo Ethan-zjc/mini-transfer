@@ -1,0 +1,33 @@
+:host {
+  display: table;
+  position: relative;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.15s;
+}
+
+.placeholder {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 105px;
+  max-height: 53px;
+}
+
+.kk-cover {
+  position: relative;
+}
+
+.kk-cover_img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

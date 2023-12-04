@@ -1,0 +1,73 @@
+<view class="home-module">
+    <image class="title" mode="widthFix" src="{{ cultivateImgs['title'] }}"></image>
+
+    <view class="button-area">
+        <image mode="widthFix" src="{{ cultivateImgs['raiders'] }}" catchtap="turnToStrategy"></image>
+        <image mode="widthFix" src="{{ cultivateImgs['record'] }}" bindtap="turnToRecord"></image>
+        <image mode="widthFix" src="{{ cultivateImgs['treasure'] }}" catchtap="turnToTreasure"></image>
+    </view>
+
+    <view class="animation-area" style="background-image: url({{ cultivateImgs['track'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+        <view
+            wx:for="{{ levelInfo }}"
+            wx:key="index"
+            class="planet planet{{ index }}" style="background-image: url({{ item.icon }});background-size: 100% 100%; background-repeat: no-repeat;"
+            animation="{{ item.type === 'rocket' ? animationData : '' }}"
+            data-index="{{ index }}" 
+            data-tracktype="1" 
+            catchtap="openTreasure">
+            <view wx:if="{{ item.title }}" class="planet-button" style="background-image: url({{ cultivateImgs['planet-button'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+                <text>{{ item.title }}</text>
+            </view>
+
+            <view wx:if="{{ index === levelInfo.length - 1 && item.firstAwardStatus  }}" class="treasure-button">
+                <text>前{{ item.firstAwardIndex }}名</text>登录星球将有超级大奖>
+            </view>
+            <view wx:elif="{{ item.treasureButtonText }}" class="treasure-button">
+                {{ item.treasureButtonText }}
+            </view>
+            
+            <image 
+                wx:for="{{ item.bubbles }}"
+                wx:for-item="$item"
+                wx:for-index="$idx"
+                wx:key="$idx"
+                class="{{ $item.className }}" mode="widthFix" src="{{ $item.imageUrl }}"></image>
+        </view>
+    </view>
+
+    <view class="console" style="background-image: url({{ cultivateImgs['console'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+        <view class="dash-board" style="background-image: url({{ cultivateImgs['dash-board'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+            <view class="top-box">
+                <view class="start">{{ levelInfo[currentLevel - 1].title || '启程' }}</view>
+                <view class="process-box">
+                    <view wx:if="{{ finishRequiredScore }}" class="text">{{ levelConsumeScore }} / {{ leveScore }}</view>
+                    <view wx:else class="text" style="text-align: center;">恭喜您已抵达终点！</view>
+                    <view class="process">
+                        <view wx:if="{{ leveScore }}" style="width: {{ 256 * levelConsumeScore / leveScore }}rpx"></view>
+                        <view wx:else style="width: 100%"></view>
+                    </view>
+                </view>
+                <view class="journey">{{ levelInfo[currentLevel + 1].title || '终点' }}</view>
+                <image wx:if="{{ currentLevel + 1 < levelInfo.length }}" src="{{ cultivateImgs['planet-icon' + (currentLevel + 1)] }}"></image>
+            </view>
+            <view wx:if="{{ levelInfo[currentLevel + 1] }}" class="bottom-text" data-index="{{ currentLevel + 1 }}" data-tracktype="2" catchtap="openTreasure">即将前往{{ levelInfo[currentLevel + 1].title }}，查看{{ levelInfo[currentLevel + 1].title }}奖励 ></view>
+        </view>
+
+        <view class="operation-panel">
+            <image src="{{ cultivateImgs['power'] }}" catchtap="clickPower"></image>
+            <view class="add" style="background-image: url({{ cultivateImgs['button-background'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+                <text wx:if="{{ levelInfo[currentLevel + 1].title }}" catchtap="addEnergy">加注燃料({{scoreBalance}})</text>
+                <text wx:else>征服星辰大海</text>
+                <view wx:if="{{ isShowTaskText }}" class="tips">{{ taskText }}</view>
+            </view>
+            <view class="share" style="background-image: url({{ cultivateImgs['share'] }});background-size: 100% 100%; background-repeat: no-repeat;" catchtap="onShare">
+                <view class="tips">{{ fissionText }}</view>
+            </view>
+        </view>
+    </view>
+</view>
+  
+<login-success-pop wx:if="{{ showLoginSuccessPop }}" awardList="{{ loginAwardList }}" awardTitle="{{ loginAwardTitle }}" bindclose="closeLoginSuccess"></login-success-pop>
+<treasure-pop wx:if="{{ showTreasurePop }}" awardList="{{ currentAwardList }}" awardTextData="{{ treasureTextData }}" bindclose="closeTreasure"></treasure-pop>
+<welcome-pop wx:if="{{ showWelcomePop }}" bindclose="closeWelcome"></welcome-pop>

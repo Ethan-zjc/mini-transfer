@@ -1,0 +1,44 @@
+<!-- 多充多送弹窗详情 -->
+<view 
+    wx:if="{{ isShow }}"
+    class="kk-act-detail">
+    <view class="dialog {{ showTrans ? 'show' : 'hide' }}" catchtap="containTap">
+        <view class="intro">
+            <view class="header">
+                <view class="top">
+                    <view class="title">奖励详情</view>
+                    <view class="award" catchtap="myAward">
+                        <text class="txt">我的奖励</text>
+                        <image class="img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/arrow-right_29d3caf.png"></image>
+                    </view>
+                </view>
+                <view class="price">
+                    <view class="infos">已累计充值：<text class="total">¥{{ activity.accum_recharge_value }}</text></view>
+                    <view class="tips" wx:if="{{ activity.accum_tip }}">{{ activity.accum_tip }}</view>
+                </view>
+            </view>
+            <view class="contain">
+                <view class="award-item" wx:for="{{ activity.accum_level_list }}" wx:key="index">
+                    <view class="left">
+                        <view class="title">累计充值 ¥{{ item.level_value }}</view>
+                        <view class="desc" data-status="{{ item.status }}" data-url="{{ item.level_award_url }}" catchtap="actionAward">
+                            <text class="txt">{{ item.level_award_text }}</text>
+                            <image wx:if="{{ item.level_award_url }}" class="img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/color-search_986601f.png"></image>
+                        </view>
+                    </view>
+                    <view class="btn {{ btnStatus[item.status] }}" data-status="{{ item.status }}" data-index="{{ index }}" catchtap="awardBtn">{{ item.status == 2 ? "已发放" : (item.status == 1 || item.status == 3 || item.status == 6) ? "去领取" : "待领取"  }}</view>
+                </view>
+
+                <!-- 联合会员领取中心 -->
+                <view wx:if="{{ activity.link_vip_url }}" class="unite" catchtap="uniteCenter">联合会员领取中心</view>
+                
+                <view wx:if="{{ activityDesc }}" class="act-title">活动说明：</view>
+                <rich-text wx:if="{{ activityDesc }}" class="act-desc" nodes="{{ activityDesc }}" />
+            </view>
+        </view>
+        <!-- 关闭按钮 -->
+        <view catchtap="maskclose">
+            <image class="close" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/icon-close_5963ee4.png"></image>
+        </view>
+    </view>
+</view>

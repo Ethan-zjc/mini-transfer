@@ -1,0 +1,39 @@
+.kk-newuser-recharge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    z-index: 99;
+
+    .contain {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600rpx;
+        height: 708rpx;
+        transform: translate(-50%, -45%);
+
+        image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .close {
+            position: absolute;
+            top: -96rpx;
+            right: -32rpx;
+            width: 64rpx;
+            height: 64rpx;
+        }
+
+        .hot-area {
+            position: absolute;
+            left: 54rpx;
+            bottom: 48rpx;
+            width: 498rpx;
+            height: 132rpx;
+        }
+    }
+}

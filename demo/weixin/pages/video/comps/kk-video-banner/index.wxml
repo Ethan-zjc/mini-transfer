@@ -1,0 +1,77 @@
+<view class="video-banner" wx:if="{{ videoList.length }}">
+    <swiper 
+        class="video-swiper" 
+        autoplay="{{ false }}" 
+        current="{{current}}" 
+        duration="{{ 500 }}" 
+        bindchange="changeSwiper">
+        <swiper-item class="video-swiper-item" wx:for="{{videoList}}" wx:key="index">
+            <block wx:if="{{ !item.isVideo }}">
+                <kk-cover class="video-pic" src="{{ item.picUrl }}" width="{{ 750 }}" height="{{ 800 }}"></kk-cover>
+            </block>
+            <block wx:else>
+                <kk-cover wx:if="{{ loadingMap[index] }}" class="video-cover" src="{{ item.picUrl }}" width="{{ 750 }}" height="{{ 800 }}"></kk-cover>
+                <view wx:if="{{ loadingVideo && !loadingMap[index] }}" class="loading">
+                    <view class="dot ui-loading"></view>
+                </view>
+                <video
+                    wx:if="{{ item.videoUrl && !loadingMap[index] }}"
+                    id="video_{{index}}" 
+                    class="video" 
+                    loop="{{ false }}"
+                    autoplay="{{ true }}"
+                    enable-progress-gesture="{{ false }}"
+                    auto-pause-if-open-native="{{ false }}" 
+                    show-center-play-btn="{{false}}" 
+                    controls="{{false}}" 
+                    muted="{{muted}}" 
+                    src="{{ item.videoUrl }}" 
+                    object-fit="cover" 
+                    data-index="{{index}}" 
+                    bindplay="onPlay" 
+                    bindpause="onPause" 
+                    bindended="onEnded" 
+                    binderror="onError" 
+                    bindtimeupdate="onTimeUpdate" 
+                    bindwaiting="onWaiting" 
+                    bindprogress="onProgress" 
+                    bindloadedmetadata="onLoadedMetaData" 
+                    bind:tap="handleTap">
+                </video>
+            </block>
+            <view class="mask" 
+                data-index="{{index}}" 
+                bind:tap="handleTap"
+            >
+                <view class="video-info">
+                    <view class="video-title">
+                        <text class="video-title-text">{{ item.title }}</text>
+                        <text class="video-title-icon" wx:if="{{ item.isVideo }}">漫剧</text>
+                    </view>
+                    <view class="video-desc">{{ item.subtitle }}</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="swiper-pagination" wx:if="{{ videoList.length > 1 }}">
+        <view class="swiper-pagination-dot {{activeIndex == index ?'active': ''}}" wx:for="{{videoList}}" wx:key="index"></view>
+    </view>
+    <view class="video-operation" wx:if="{{ isShowMedia }}">
+        <view class="video-mute" data-index="{{activeIndex}}" catchtap="handleMuted">
+            <image 
+                wx:if="{{muted}}" 
+                mode="aspectFit" 
+                src="https://festatic.v3mh.com/static-resource/img/remote/find/video-mute.png"></image>
+            <image 
+                wx:else 
+                mode="aspectFit" 
+                src="https://festatic.v3mh.com/static-resource/img/remote/find/video-sound.png"></image>
+        </view>
+        <view class="video-full" data-index="{{activeIndex}}" catchtap="handleTap">
+            <image 
+                mode="aspectFit" 
+                src="https://festatic.v3mh.com/static-resource/img/remote/find/video-full.png" 
+                ></image>
+        </view>
+    </view>
+</view>

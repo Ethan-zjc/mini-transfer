@@ -1,0 +1,47 @@
+<view class="container">
+
+    <view class="kkmh-empty" wx:if="{{ empty }}">
+        <view class="kkmh-empty_img">
+            <image class="img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/empty-img_5537d1d.png" mode="widthFix"></image>
+            <image class="text" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/empty-text_ef811e1.png" mode="widthFix"></image>
+        </view>
+    </view>
+
+    <block>
+        <view class="topic-list" wx:for="{{ list }}" wx:key="id">
+            <view class="topic" data-index="{{ index }}" data-id="{{ item.id }}" catchtap="toTopic">
+                <view class="cover">
+					<kk-cover src="{{ item.cover }}" width="248" height="156">
+					</kk-cover>
+                </view>
+                <view class="info">
+                    <view class="title">
+                        <text>{{ item.title }}</text>
+                        <view class="button" wx:if="{{ manage }}" data-index="{{ index }}" data-id="{{ item.id }}" catchtap="cancelAuto">取消</view>
+                    </view>
+                    <view class="text" style="margin-top: 6rpx; padding-right:{{ manage ? '104rpx' : 0 }}">
+                        <text>{{ item.text1 }}</text>
+                    </view>
+                    <view class="text" style="margin-top: 44rpx">
+                        <text>{{ item.text2 }}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <kk-bottom
+        loading="{{ loading }}"
+        finish="{{ finished }}">
+    </kk-bottom>
+
+</view>
+
+<kk-toast toast="{{ toast }}"></kk-toast>
+
+<mp-dialog
+    show="{{ dialogShow }}"
+    content="取消后，每次购买章节都会出现支付KK币的确认弹窗"
+    buttons="{{ [{text: '取消'}, {text: '确定'}] }}"
+    bindbuttontap="tapDialogButton">
+</mp-dialog>

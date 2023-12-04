@@ -1,0 +1,130 @@
+<!-- vip 开通挽留弹窗 -->
+<view 
+    class="kk-vip-detainment {{ isShow && (displayData || retainData) ? 'show-kk-vip-detainment' : '' }}" 
+    catchtouchmove 
+    catchtap
+>
+    <view class="detainment-warp" wx:if="{{ isShow && (displayData || retainData) }}">
+        <block wx:if="{{ popType == 2 }}">
+            <!-- vip 开通挽留弹窗 头部icon -->
+            <view class="popup-icon-warp">
+                <image wx:if="{{ isReceive }}" class="icon" src="{{ images.unclaimed }}"></image>
+                <image wx:else class="icon" src="{{ images.used }}"></image>
+            </view>
+        </block>
+        <block wx:if="{{ popType == 1 }}">
+            <!-- 漫画页普通挽留弹窗 头部icon -->
+            <view class="popup-icon-warp">
+                <image class="icon" src="{{ images.kkbTitleBg }}"></image>
+            </view>
+        </block>
+
+        <!-- 内容部分 -->
+        <view class="content-warp {{popType==1 ? 'mini-con-warp' : ''}}">
+            <!-- 头部标题渐变色值 -->
+            <view class="top-bg">
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+                <view class="white"></view>
+            </view>
+            
+            <!-- vip 开通挽留弹 -->
+            <block wx:if="{{ popType == 2 }}">
+                <!-- 标题 -->
+                <view class="title-text-warp">
+                    <image wx:if="{{ isReceive }}" class="icon" src="{{ images.textbg }}"></image>
+                    <view class="text">{{ isReceive ? '你已被优惠券砸中' : '你还有优惠券未使用' }}</view>
+                </view>
+
+                <!-- 优惠券 -->
+                <view class="coupon-warp">
+                    <view class="left">
+                        <image class="icon" src="{{ images.couponLeft }}"></image>
+                        <view class="con-warp">
+                            <view class="top-text">
+                                <view class="min">￥</view>
+                                <view class="max">{{ displayData.amount }}</view>
+                            </view>
+                            <view class="bottom-text">{{ displayData.tips }}</view>
+                        </view>
+                    </view>
+                    <view class="right">
+                        <image class="icon" src="{{ images.couponRight }}"></image>
+                        <view class="con-warp">
+                            <view class="top-text">{{ displayData.title }}</view>
+                            <view wx:if="{{ displayData.remaining_time }}" class="bottom-text">{{ displayData.remaining_time }}</view>
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 领取按钮 -->
+                <view class="btn-warp" catchtap="clickUseBtn">
+                    <view class="text-1">用券¥{{ displayData.final_price }}</view>
+                    <view class="text-2">¥{{ displayData.original_price }}</view>
+                </view>
+            </block>
+            
+            <!-- 漫画页普通挽留弹窗 -->
+            <block wx:if="{{ popType == 1 }}">
+                <!-- 标题 -->
+                <view class="title-text-warp">
+                    <view class="text-warp">
+                        <view class="texts" wx:if="{{ retainData.title_list[0] }}">
+                            {{ retainData.title_list[0] || "" }}
+                        </view>
+                        <view class="texts color" wx:if="{{ retainData.title_list[1] }}">
+                            {{ retainData.title_list[1] || "" }}
+                        </view>
+                        <view class="texts" wx:if="{{ retainData.title_list[2] }}">
+                            {{ retainData.title_list[2] || "" }}
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 展示的内容 -->
+                <view class="con-text">
+                    <view class="text text-1" wx:if="{{ retainData.text_list[0] }}">
+                        {{ retainData.text_list[0] || "" }}
+                    </view>
+                    <view class="text text-2" wx:if="{{ retainData.text_list[1] }}">
+                        {{ retainData.text_list[1] || "" }}
+                    </view>
+                </view>
+
+                <!-- 按钮部分 -->
+                <view class="btn-list-warp">
+                    <view class="btn cancel-btn" catchtap="clickConfirmClose" data-btnname="{{retainData.close_btn_text || ''}}">
+                        {{ retainData.close_btn_text || "" }}
+                    </view>
+                    <view class="btn confirm-btn" catchtap="clickConfirmBtn">
+                        {{ retainData.btn_link_text || "" }}
+                    </view>
+                </view>
+            </block>
+        </view>
+
+        <!-- vip挽留弹窗关闭按钮 -->
+        <view wx:if="{{ popType == 2 }}" class="close-warp" catchtap="clickTapClose">
+            <image class="icon" src="{{ images.close }}"></image>
+        </view>
+        <!-- 普通挽留弹窗关闭按钮 -->
+        <view wx:else class="close-warp" catchtap="clickConfirmClose" data-btnname="关闭按钮">
+            <image class="icon" src="{{ images.close }}"></image>
+        </view>
+    </view>
+
+    <view class="load-image-warp" style="display: none;">
+        <image class="load-image" src="{{ images.unclaimed }}"></image>
+        <image class="load-image" src="{{ images.used }}"></image>
+        <image class="load-image" src="{{ images.couponRight }}"></image>
+        <image class="load-image" src="{{ images.couponLeft }}"></image>
+        <image class="load-image" src="{{ images.close }}"></image>
+        <image class="load-image" src="{{ images.textbg }}"></image>
+    </view>
+</view>

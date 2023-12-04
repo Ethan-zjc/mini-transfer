@@ -1,0 +1,44 @@
+.kk-suspended-win {
+  position: fixed;
+  right: 24rpx;
+  bottom: 32rpx;
+  z-index: 30;
+  width: 200rpx;
+  height: 200rpx;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .6s;
+}
+
+.kk-suspended-win .swiper-item, .kk-suspended-win .swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.kk-suspended-win.max-bottom {
+  bottom: 50%;
+  margin-top: -130rpx;
+}
+
+.kk-suspended-win .suspended-icon,
+.kk-suspended-win .suspended-icon .image {
+  width: 188rpx;
+  height: 188rpx;
+}
+
+.kk-suspended-win .close-suspended {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.kk-suspended-win .close-suspended .image {
+  width: 100%;
+  height: 100%;
+}

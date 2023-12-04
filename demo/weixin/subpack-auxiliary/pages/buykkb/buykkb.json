@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "KK币充值",
+    "backgroundColorTop": "#F7F9FA",
+    "usingComponents": {
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-avatar": "/components/kk-avatar/kk-avatar",
+        "mp-dialog": "/components/kk-weui-dialog/dialog",
+        "kk-kkb-banner": "./comps/kk-kkb-banner/index",
+        "kk-dialog-success": "./comps/kk-dialog-success/index",
+        "kk-countdown-banner": "./comps/kk-countdown-banner/index"
+    }
+}

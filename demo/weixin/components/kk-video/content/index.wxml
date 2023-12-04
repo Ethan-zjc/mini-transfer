@@ -1,0 +1,9 @@
+<view class="video-content">
+    <view class="content-tips" bindtap="tapActive">
+        <image class="img" src="https://festatic.v3mh.com/static-resource/img/remote/player/{{ isTab ? 'icon-2' : 'icon-4' }}.png"></image>
+        <view class="text">{{ title }} · 共{{ count }}集</view>
+    </view>
+    <view class="content-title">
+        <view class="text">{{ params.title }}</view>
+    </view>
+</view>

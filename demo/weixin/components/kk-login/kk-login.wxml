@@ -1,0 +1,165 @@
+<view wx:if="{{ show }}" id="kk-login" class="{{ fullScreen ? 'kk-login-full' : 'kk-login' }}" hover-stop-propagation="false" hover-class="none" catchtouchmove>
+    <view class="{{ fullScreen ? '' : 'login-warp' }} {{ showTrans ? 'show' : 'hide' }}" data-type="close" catchtap="closeLogin">
+        <!-- style="transform: translateY({{ isFocus ? -25 : 0 }}%)"  -->
+        <view class="{{ fullScreen ? 'login-full' : 'login-half' }} {{ showTrans ? 'show' : 'hide' }}" data-type="half" catchtap="closeLogin">
+            <!-- 头部 -->
+            <view class="head" wx:if="{{ !fullScreen }}">
+                <text class="title">{{ title }}</text>
+                <view class="close" data-type="close" catchtap="closeLogin">
+                    <image class="close-img" src="{{ loginImgs['close'] }}"></image>
+                </view>
+            </view>
+
+            <!-- 中间区域 -->
+            <view class="middle">
+                <!-- 输入区域/帐号/密码/验证码 -->
+                <view class="account">
+                    <form bindsubmit="phoneLogin">
+                        <!-- 手机号(账号) -->
+                        <view class="phone-number {{ inputError ? 'input-error' : '' }}">
+                            <view class="title-text {{ isAddPhone ? 'title-text-ok' : '' }}">+86</view>
+                            <input
+                                always-embed
+                                class="login-input {{ isAddPhone ? 'input-ok' : '' }}"
+                                name="phone"
+                                id="phone"
+                                type="number"
+                                adjust-position="{{ !fullScreen }}"
+                                cursor-spacing="{{ 236 }}"
+                                placeholder-class="placeholder-text"
+                                placeholder="请输入手机号"
+                                maxlength="11"
+                                bindinput="handleInput"
+                                bindfocus="onbindfocus"
+                                bindblur="onbindblur"
+                            />
+                        </view>
+
+                        <!-- 密码 -->
+                        <view wx:if="{{ !switchCode || loginWay == 1 }}" class="phone-number password-num {{ password ? 'password' : '' }} {{ inputError ? 'input-error' : '' }}">
+                            <input
+                                always-embed
+                                class="login-input"
+                                name="password"
+                                id="password"
+                                adjust-position="{{ !fullScreen }}"
+                                cursor-spacing="{{ 176 }}"
+                                bindinput="handleInput"
+                                type="text"
+                                password="{{ !showPass }}"
+                                placeholder-class="placeholder-text"
+                                placeholder="请输入密码"
+                                maxlength="30"
+                                bindfocus="onbindfocus"
+                                bindblur="onbindblur"
+                            />
+                            <view class="eye" catchtap="showPassword">
+                                <image class="eye-img" src="{{ loginImgs[showPass ? 'eye-show' : 'eye-hide'] }}"></image>
+                            </view>
+                        </view>
+
+                        <!-- 验证码disabled="{{ !isGetCode }}"/{{ !isGetCode ? 'disabled' : '' }} -->
+                        <view wx:if="{{ switchCode && loginWay == 2 }}" class="phone-number authCode-num {{ authCode ? 'authCode' : '' }} {{ inputError ? 'input-error' : '' }}">
+                            <input
+                                class="login-input"
+                                name="authCode"
+                                id="authCode"
+                                adjust-position="{{ !fullScreen }}"
+                                cursor-spacing="{{ 176 }}"
+                                bindinput="handleInput"
+                                type="number"
+                                placeholder-class="placeholder-text"
+                                placeholder="请输入验证码"
+                                maxlength="6"
+                                bindfocus="onbindfocus"
+                                bindblur="onbindblur"
+                            />
+                            <view class="code-btn {{ isGetCode ? 'click' : '' }} {{ showCount ? 'count' : '' }}" bindtap="getAuthCode">{{ showCount ? countDown + 's' : '获取验证码' }}</view>
+                        </view>
+
+                        <!-- 切换登录方式 -->
+                        <view class="way" style="visibility: {{ !switchCode || hiddenSwitch ? 'hidden' : 'visible' }};">
+                            <text bindtap="changeLoginWay" class="way-btn">切换为{{ loginWay == 1 ? '验证码' : '密码' }}登录</text>
+                        </view>
+
+                        <!-- 登录按钮 -->
+                        <button wx:if="{{ radioItem.checked }}" hover-class="none" type="primary" disabled="{{ !validate }}" class="form-login {{ !validate ? 'validate' : '' }}" form-type="submit">
+                            <view class="login-text">
+                                登录
+                                <view class="weui-loading" wx:if="{{ validate && isPhoneLogin }}"></view>
+                            </view>
+                        </button>
+
+                        <!-- 未同意相关协议 -->
+                        <button wx:if="{{ !radioItem.checked }}" hover-class="none" type="primary" disabled="{{ !validate }}" class="form-login {{ !validate ? 'validate' : '' }}" bindtap="noAgreeIntercept">
+                            <view class="login-text">登录</view>
+                        </button>
+                    </form>
+                </view>
+
+                <!-- 按钮区域 -->
+                <view class="auth-btn" wx:if="{{ appIsLogin || tripAuth }}">
+                    <text class="desc">其他登录方式</text>
+
+                    <!-- 手机号一键登录 -->
+                    <button wx:if="{{ !tripAuth && appIsLogin && radioItem.checked && isOneKey }}" class="oneKey" type="default" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="authPhoneLogin">
+                        <text>手机号快捷登录</text>
+                    </button>
+                    <!-- 未勾选同意协议前 -->
+                    <button wx:if="{{ !tripAuth && appIsLogin && !radioItem.checked && isOneKey }}" class="oneKey" type="default" hover-class="none" bindtap="noAgreeIntercept">
+                        <text>手机号快捷登录</text>
+                    </button>
+
+                    <block wx:if="{{ radioItem.checked && tripAuth }}">
+                        <button wx:if="{{ canIUseGetUserProfile }}" hover-class="none" class="applets-login {{ channel }}" type="success" bindtap="originLogin">
+                            <!-- <image class="channel-img" wx:if="{{ channel }}" src="{{ loginImgs[channel] }}"></image> -->
+                            <!-- <text>{{ name }}登录</text> -->
+                            <text>手机号快捷登录</text>
+                        </button>
+                        <button wx:else hover-class="none" class="applets-login {{ channel }}" type="success" open-type="getUserInfo" bindgetuserinfo="originLogin">
+                            <!-- <image class="channel-img" wx:if="{{ channel }}" src="{{ loginImgs[channel] }}"></image> -->
+                            <!-- <text>{{ name }}登录</text> -->
+                            <text>手机号快捷登录</text>
+                        </button>
+                    </block>
+
+                    <!-- 未同意协议 -->
+                    <button wx:if="{{ !radioItem.checked && tripAuth }}" hover-class="none" class="applets-login {{ channel }}" type="success" bindtap="noAgreeIntercept">
+                        <!-- <image class="channel-img" wx:if="{{ channel }}" src="{{ loginImgs[channel] }}"></image>
+                        <text>{{ name }}登录</text> -->
+                        <text>手机号快捷登录</text>
+                    </button>
+                </view>
+            </view>
+
+            <!-- 尾部 -->
+            <view class="footer {{ iPhoneX ? 'ipx' : '' }}">
+                <view class="user-agree {{ isSway === 1 || isSway === 2 ? 'user-agree-no' : '' }}  {{ isSway === 2 ? 'is-sway' : '' }} ">
+                    <view class="radio-group">
+                        <view class="radio-wrapper" bindtap="radioChangeHandle">
+                            <image class="radio-checked" src="{{ loginImgs[isSway != 0 ? 'radio-3' : radioItem.checked ? 'login-radio-2' : 'login-radio-1'] }}"></image>
+                            <text>同意</text>
+                        </view>
+                        <text class="link" bindtap="privacyProtocolHandle">《快看隐私协议》</text>
+                        <text class="link" bindtap="serviceProtocolHandle">《用户服务协议》</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 滑动验证码 -->
+<t-captcha id="captcha" size="small" lang="zh-CN" themeColor="#2962FF" app-id="2021888175" bindverify="handlerVerify" bindready="handlerReady" bindclose="handlerClose" binderror="handlerError"></t-captcha>
+
+<!-- 微信获取手机号授权dialog -->
+<mp-dialog show="{{ dialog.show }}" title="{{ dialog.title }}" content="{{ dialog.content }}" buttons="{{ dialog.button }}" bindbuttontap="onDialogButtontapEvent" bindgetphonenumber="onDiallogGetPhoneNumberEvent" buttonGetPhoneNumber="{{ true }}">
+    <!-- 内容区块：额外增加内容 slot -->
+    <view slot="bd-content" class="weui-dialog__content2">
+        <text class="content-two">{{ dialog.contentTwo }}</text>
+        <text class="content-three">{{ dialog.contentThree }}</text>
+    </view>
+    <!-- 内容区块：额外增加内容 slot [END] -->
+</mp-dialog>
+
+<kk-toast toast="{{ toast }}"></kk-toast>

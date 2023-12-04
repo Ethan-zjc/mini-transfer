@@ -1,0 +1,27 @@
+<view catchtouchmove bindtap="close" class="weui-mask {{!show ? 'weui-mask_hidden' : '' }}" wx:if="{{mask}}"></view>
+<view catchtouchmove wx:if="{{show}}" bindtap="close" class="weui-dialog__wrp {{extClass}}">
+    <view class="weui-dialog" catchtap="stopEvent">
+        <view wx:if="{{ title }}" class="weui-dialog__hd">
+            <view class="weui-dialog__title">{{title}}</view>
+        </view>
+        <scroll-view scroll-y="{{true}}" wx:if="{{ content }}" class="weui-dialog__bd" style="color: {{ title ? '#999' : '#333' }}">
+            <view class="weui-dialog__content">
+                <text>{{content}}</text>
+                <slot name="bd-content"></slot>
+            </view>
+        </scroll-view>
+        <view class="weui-dialog__ft">
+            <block wx:if="{{ buttonShare }}">
+                <button class="go-share-button" size="mini" hover-class="none" open-type="share" data-item="{{ buttonShare }}" catchtap="buttonShareTap">
+                    <view class="weui-dialog__btn">{{ buttonShare.text }}</view>
+                </button>
+            </block>
+            <block wx:if="{{buttons && buttons.length}}">
+                <view wx:for="{{buttons}}" wx:key="item" class="weui-dialog__btn {{item.className}} {{item.extClass}}" data-index="{{index}}" bindtap="buttonTap">{{item.text}}</view>
+                <button wx:if="{{ buttonGetPhoneNumber }}" class="get-phone-number-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">同意授权</button>
+            </block>
+            <slot name="footer" wx:else></slot>
+        </view>
+    </view>
+</view>
+

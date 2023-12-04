@@ -1,0 +1,37 @@
+<!-- 新手福利入口组件 {{ enterType >=2 ? 'kk-green-hands-enter-mini' : '' }} 新增 -->
+<view class="kk-green-hands-enter {{ enterType === 2 && !custom ? 'fixed' : enterType === 2 && custom ? 'custom-hands-enter' : '' }} {{ className }} {{ enterType == 3 ? 'kk-green-hands-enter-mini' : '' }}" wx:if="{{ enterShow && enterType > 0 }}">
+    <view class="kk-enter-inner" wx:if="{{ enterType === 2 && dialogInfo.small_icon }}">
+        <block wx:if="{{userInfo}}">
+            <image class="inner-image" mode="aspectFit" src="{{ dialogInfo.small_icon }}" bindtap="handleTack"></image>
+        </block>
+        <button wx:else hover-class="btn-hover" class="inner-image" type="success" bindtap="originLogin">
+            <image data-des="静默授权登录" class="inner-image" mode="aspectFit" src="{{ dialogInfo.small_icon }}"></image>
+        </button>
+        <image class="inner-close" bindtap="handleClose" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/greenhands/close_63b4e3f.png"></image>
+    </view>
+
+    <!-- <view class="kk-enter-inner" wx:elif="{{ dialogInfo.discovery_banner }}" > -->
+    <view class="kk-enter-inner" wx:if="{{ enterType === 1  &&  dialogInfo.discovery_banner }}" >
+        <block wx:if="{{ userInfo }}">
+            <image class="inner-image" mode="scaleToFill" src="{{ dialogInfo.discovery_banner }}" bindtap="handleTack"></image>
+        </block>
+        <!-- 没有登录时，静默授权登录 -->
+        <button wx:else hover-class="btn-hover" class="inner-image" type="success"   bindtap="originLogin">
+            <image class="inner-image" mode="scaleToFill" src="{{ dialogInfo.discovery_banner }}"></image>
+        </button>
+
+    </view>
+
+    <!-- 新手福利点击领取弹窗 -->
+    <kk-green-hands-dialog 
+        wx:if="{{ dialogShow }}"
+        userInfo="{{ userInfo }}"
+        dialogInfo="{{ dialogInfo }}"
+        show="{{ dialogShow }}" 
+        topicId="{{ topicId }}"
+        comicId="{{ comicId }}"
+        binddialogclose="handleDialogClose"
+        bindclose="changeDialogStatus"
+        bindsuccess="handleSuccess"
+        bindfail="handleError"/>
+</view>

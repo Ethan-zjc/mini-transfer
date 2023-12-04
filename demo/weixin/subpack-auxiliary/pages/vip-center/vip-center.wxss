@@ -1,0 +1,409 @@
+.wrap {
+  overflow: auto;
+  padding-bottom: 200rpx;
+}
+
+.vip-success {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.vip-success .dialog {
+  padding: 182rpx 87rpx;
+}
+
+.vip-success .card {
+  padding: 94rpx 24rpx 40rpx;
+  border-radius: 24rpx;
+}
+
+.vip-success .card .title {
+  font-size: 36rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.vip-success .card .subtitle {
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: #666;
+  margin: 12rpx 0 26rpx;
+  font-weight: 300;
+}
+
+.vip-success .card .button {
+  width: 380rpx;
+  height: 80rpx;
+  margin: 0 auto;
+  line-height: 80rpx;
+  background: #ffe120;
+  font-size: 32rpx;
+  color: #442509;
+  border-radius: 40rpx;
+  font-weight: 500;
+}
+
+.vip-success .silk {
+  position: absolute;
+  z-index: 2;
+  left: 87rpx;
+  top: 126rpx;
+  width: 576rpx;
+  height: 110rpx;
+}
+
+.vip-success .light {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 402rpx;
+}
+
+.vip-success .close {
+  z-index: 3;
+  right: 105rpx;
+  top: 30rpx;
+}
+
+.vip-bags {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.vip-bags .dialog {
+  padding: 106rpx 38rpx;
+}
+
+.vip-bags .card {
+  padding: 34rpx 16rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.vip-bags .card .title {
+  display: flex;
+  justify-content: center;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.vip-bags .card .subtitle {
+  font-size: 20rpx;
+  color: #beb7cb;
+  margin-top: 12rpx;
+}
+
+.vip-bags .list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 4rpx;
+}
+
+.vip-bags .gift {
+  width: 214rpx;
+  height: 264rpx;
+  flex-shrink: 0;
+  margin-top: 16rpx;
+}
+
+.vip-bags .gift .cover {
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto;
+}
+
+.vip-bags .gift .tag {
+  width: 100%;
+  margin: -12rpx auto 0;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 20rpx;
+  color: #7121ff;
+}
+
+.vip-bags .gift .tag text {
+  box-sizing: border-box;
+  max-width: 100%;
+  display: inline-block;
+  padding: 0 8rpx;
+  background: rgba(113, 33, 255, 0.08);
+  border-radius: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vip-bags .gift .name {
+  padding: 12rpx 8rpx 0;
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #333;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vip-bags .gift .button {
+  width: 160rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  margin: 24rpx auto 0;
+  background: #ffe120;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  color: #442509;
+  font-weight: 500;
+}
+
+.vip-bags .gift .button.disabled {
+  color: #666;
+  background: #e8e4f0;
+}
+
+.vip-bags .clock {
+  background: #f9f6ff;
+  padding: 14rpx 0 16rpx;
+  text-align: center;
+  border-radius: 0 0 20rpx 20rpx;
+  border-top: 20rpx solid #fff;
+  margin-top: -20rpx;
+}
+
+.vip-bags .clock .title {
+  font-size: 20rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.vip-bags .clock .time {
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+
+.vip-bags .clock .time text {
+  display: inline-block;
+  margin: 0 4rpx 0 10rpx;
+  padding: 0 4rpx;
+  height: 100%;
+  background: #fff;
+  color: #333;
+  font-weight: 600;
+  font-family: "PingFangSC-Semibold,PingFang SC";
+}
+
+.vip-bags .close {
+  z-index: 2;
+  left: 347rpx;
+  bottom: 0;
+}
+
+.dialog-wrap {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dialog-wrap .dialog {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.dialog-wrap .card {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: #fff;
+}
+
+.dialog-wrap .close {
+  position: absolute;
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.dialog-wrap .close image {
+  width: 100%;
+  height: 100%;
+}
+
+.temporary-vip-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.temporary-vip-popup .popup-content {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 113rpx;
+  width: 576rpx;
+  height: 546rpx;
+}
+
+.temporary-vip-popup .content {
+  width: 100%;
+  height: 100%;
+  background: #f7f7f8;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.temporary-vip-popup .content .head {
+  position: relative;
+  top: -2rpx;
+  width: 100%;
+  height: 208rpx;
+}
+
+.temporary-vip-popup .content .head image {
+  width: 100%;
+  height: 100%;
+}
+
+.temporary-vip-popup .content .text-warp {
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  position: absolute;
+  top: 224rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 496rpx;
+  height: 174rpx;
+  background: white;
+  box-shadow: 0px 2rpx 24rpx -8rpx rgba(217, 17, 94, 0.07);
+  border-radius: 14rpx;
+}
+
+.temporary-vip-popup .content .text-warp .title {
+  padding-top: 26rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+}
+
+.temporary-vip-popup .content .text-warp .des {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 34rpx;
+  text-align: center;
+}
+
+.temporary-vip-popup .content .btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40rpx;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 20rpx;
+  width: 496rpx;
+  height: 88rpx;
+  background: #fde23d;
+  border-radius: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.temporary-vip-popup .content .btn .ios-text {
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #442509;
+}
+
+.temporary-vip-popup .content .btn .and {
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+}
+
+.temporary-vip-popup .content .btn .and-red {
+  color: #ff0650;
+}
+
+.temporary-vip-popup .content .btn .and-text {
+  color: #442509;
+}
+
+.temporary-vip-popup .content .btn .and-icon {
+  margin-left: 6rpx;
+  padding: 0 10rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  background: linear-gradient(90deg, #ff257f 0%, #ff0047 100%);
+  border-radius: 16rpx 12rpx 16rpx 0;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: white;
+}
+
+.temporary-vip-popup .close {
+  position: absolute;
+  top: 16rpx;
+  right: 0;
+  width: 57rpx;
+  height: 57rpx;
+  z-index: 9;
+}
+
+.temporary-vip-popup .close image {
+  width: 100%;
+  height: 100%;
+}
+
+.temporary-vip-popup .top-kkb-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 424rpx;
+  height: 313rpx;
+}
+
+.temporary-vip-popup .top-kkb-bg image {
+  margin: 46rpx;
+  width: 276rpx;
+  height: 175rpx;
+}
+
+.fix-bottom {
+  width: 100%;
+  height: 108rpx;
+  position: fixed;
+  bottom: 80rpx;
+  left: 0;
+  z-index: 10;
+}

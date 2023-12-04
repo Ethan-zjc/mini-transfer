@@ -1,0 +1,30 @@
+<view class="dialog-wrap"
+    wx:if="{{ show }}">
+    <view class="dialog-mask"></view>
+    <view class="dialog-content">
+        
+        <view class="dialog-content-title" wx:if="{{ title }}">{{ title }}</view>
+        <view class="dialog-content-des" wx:if="{{ content }}">{{ content }}</view>
+
+        <!-- 底部按钮列表 -->
+        <view class="dialog-button" wx:if="{{ buttons.length }}">
+            <view class="dialog-button-cell" wx:for="{{ buttons }}" wx:key="*this">
+                <button 
+                    class="button-{{ item.type }}"
+                    data-type="{{ item.type }}"
+                    data-text="{{ item.text }}"
+                    catchtap="tapButton">
+                        {{ item.text }}
+                </button>
+            </view>
+        </view>
+
+        <!-- 弱化按钮 -->
+        <view class="dialog-weaken" wx:if="{{ weakenText }}">
+            <text 
+                data-type="weaken" 
+                data-text="{{ weakenText }}" 
+                catchtap="tapButton">{{ weakenText }}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,16 @@
+<view class="welcome-pop">
+    <view class="content-box">
+        <image class="title" mode="widthFix" src="{{ cultivateImgs['welcome-text'] }}"></image>
+        
+        <view class="content" style="background-image: url({{ cultivateImgs['pop-ups-background2'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+            <image class="fire" src="{{ cultivateImgs['fire'] }}"></image>
+            <view class="fire-text" style="background-image: url({{ cultivateImgs['welcome-fire-background'] }});background-size: 100% 100%; background-repeat: no-repeat;">
+                恭喜您获得<text>20燃料</text>
+            </view>
+            <view class="button" style="background-image: url({{ cultivateImgs['button-background'] }});background-size: 100% 100%; background-repeat: no-repeat;" catchtap="onClose">
+                开始启程
+            </view>
+        </view>
+    </view>
+</view>
+  

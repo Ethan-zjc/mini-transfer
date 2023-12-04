@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#F7F9FA",
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "kk-cover": "/components/kk-cover/kk-cover",
+        "kk-bottom": "/components/kk-bottom/kk-bottom",
+        "mp-dialog": "/components/kk-weui-dialog/dialog"
+    }
+}

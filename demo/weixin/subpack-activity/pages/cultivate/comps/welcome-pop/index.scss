@@ -1,0 +1,64 @@
+.welcome-pop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    z-index: 99;
+
+    .content-box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        .title {
+            margin: 0 auto;
+            width: 536rpx;
+            height: 52rpx;
+        }
+
+        .content {
+            margin-top: 23rpx;
+            padding-top: 81rpx;
+            width: 630rpx;
+            height: 412rpx;
+            box-sizing: border-box;
+
+            .fire {
+                margin: 0 auto;
+                width: 124rpx;
+                height: 146rpx;
+            }
+
+            .fire-text {
+                margin: 28rpx auto 47rpx;
+                width: 288rpx;
+                height: 54rpx;
+                line-height: 54rpx;
+                text-align: center;
+                font-size: 30rpx;
+                font-family: Alibaba PuHuiTi;
+                font-weight: bold;
+                color: #ffffff;
+
+                text {
+                    color: #ff973a;
+                }
+            }
+
+            .button {
+                margin: 0 auto;
+                width: 289rpx;
+                height: 110rpx;
+                line-height: 110rpx;
+                text-align: center;
+                font-size: 40rpx;
+                font-family: Alibaba PuHuiTi;
+                font-weight: 800;
+                color: #26fffc;
+            }
+        }
+    }
+}

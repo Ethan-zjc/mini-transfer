@@ -1,0 +1,24 @@
+{
+    "navigationStyle": "custom",
+    "disableScroll": true,
+    "usingComponents": {
+        "kk-navigation-bar": "/components/kk-navigation-bar/kk-navigation-bar",
+        "kk-toast": "/components/kk-toast/kk-toast",
+        "mp-dialog": "/components/kk-weui-dialog/dialog",
+        "kk-pay-half": "/components/kk-pay-half/index",
+        "kk-barrage-controller": "/components/kk-barrage-recycle/controller/controller",
+        "kk-barrage-editor": "/components/kk-barrage-recycle/editor/editor",
+        "kk-barrage-position": "/components/kk-barrage-recycle/position/position",
+        "kk-directory": "/components/kk-directory/kk-directory",
+        "recycle-view": "miniprogram-recycle-view/recycle-view",
+        "recycle-item": "miniprogram-recycle-view/recycle-item",
+        "kk-ad": "/components/kk-ad/kk-ad",
+        "kk-kkb-directpay": "/components/kk-kkb-directpay/kk-kkb-directpay",
+        "kk-comic-recommend": "/components/kk-comic-recommend/kk-comic-recommend",
+        "kk-comic-tools": "../comic/comps/kk-comic-tools/index",
+        "kk-comic-aside": "../comic/comps/kk-comic-aside/index",
+        "kk-comic-bottom": "./comps/kk-comic-bottom/index",
+        "kk-suspended-win": "/components/kk-suspended-win/index",
+        "kk-top-notify": "/components/kk-top-notify/kk-top-notify"
+    }
+}

@@ -1,0 +1,228 @@
+<!-- topic.wxml -->
+<view class="navigation" id="navigation">
+    <kk-navigation-bar title="{{ topicTit }}"></kk-navigation-bar>
+</view>
+
+<!-- 引导任务 -->
+<kk-guide
+    customNav
+    userInfo="{{ userInfo }}"
+    curPage="{{ 'TopicPage' }}">
+</kk-guide>
+
+<view class="topic-page">
+    <view class="new {{ isIpx ? 'ipxBottom' : '' }}" wx:if="{{ banner }}">
+        <!-- 顶部图 -->
+        <view class="top-img">
+            <kk-cover src="{{ banner }}" width="{{ 750 }}" height="{{ 455 }}"></kk-cover>
+            
+            <!-- 浮层 -->
+            <view class="super">
+                <view class="contain">
+                    <view class="left">
+                        <view class="title">{{ topicTit }}</view>
+                        <view class="desc">
+                            <text class="txt" wx:for="{{ ['popular', 'comment', 'follow'] }}" wx:key="item">{{ topicInfo[item] }}{{ index == 0 ? '人气值' : index == 1 ? '总评论' : '关注' }}</text>
+                        </view>
+                    </view>
+                    <view class="right">
+                        <block wx:if="{{ isLogin }}">
+                            <view class="follow {{ follows[topicId] ? 'followed' : '' }}" catchtap="followClick">
+                                <text>{{ follows[topicId] ? '已关注' : '+关注' }}</text>
+                            </view>
+                        </block>
+                        <button wx:else hover-class="btn-hover" class="follow {{ follows[topicId] ? 'followed' : '' }}" type="success" catchtap="originLogin">
+                            <text>{{ follows[topicId] ? '已关注' : '+关注' }}</text>
+                        </button>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 运营位 -->
+        <view class="activity" wx:if="{{ !!link }}" catchtap="goActivity">
+            <view class="left-view">
+                <image class="info-icon" src="{{ link.icon }}"></image>
+                <text class="txt">{{ link.text }}</text>
+            </view>
+            <image class="arrow" src="{{ cdnIconsImgs['common-arrow'] }}"></image>
+        </view>
+
+        <!-- banner位 -->
+        <view class="topic-banner" wx:if="{{ !!topicBanner }}" catchtap="goTopicBanner">
+            <image class="image" src="{{ topicBanner.image_url }}"></image>
+        </view>
+        
+        <!-- 简介 -->
+        <view class="new-about">
+            <view class="lables">
+                <text wx:for="{{ topicInfo.tags }}" wx:key="*this">{{ item }}</text>
+            </view>
+            <view class="body" id="toggle-wrapper">
+                <text id="toggle-content">{{ topicInfo.intro }}</text>
+            </view>
+            <view class="author">
+                <scroll-view class="author-list" scroll-x>
+                    <view class="single" wx:for="{{ topicInfo.authors }}" wx:key="item">
+                        <kk-avatar class="avatar" size="{{ 40 }}" src="{{ item.avatar_url }}" vip="{{ false }}">
+                        </kk-avatar>
+                        <text class="name">{{ item.nickname }}</text>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+
+        <!-- 漫画选集 -->
+        <view class="anthology">
+            <view class="intro">
+                <view class="left">
+                    <view class="title">
+                        <text class="name">漫画选集</text>
+                        <button wx:if="{{ !userInfo && isBatchBuy }}" class="batchBuy" catchtap="batchBuy">整本购</button>
+                        <button wx:if="{{ userInfo && isBatchBuy }}" class="batchBuy" catchtap="oneKeyBuy">整本购</button>
+                    </view>
+                    <view wx:if="{{ anthologyList.length }}" class="update">
+                        <text class="day" wx:if="{{ topicInfo.updateTime }}">{{ topicInfo.updateTime }}</text>
+                        <text wx:if="{{ topicInfo.count }}">已更{{ topicInfo.count }}集</text>
+                    </view>
+                </view>
+                <view wx:if="{{ anthologyList.length }}" class="right" bindtap="directory">
+                    <text class="more-text">展开选集</text>
+                    <image class="more-icon" src="{{ cdnIconsImgs['common-arrow'] }}"></image>
+                </view>
+            </view>
+            
+            <view class="topic-list">
+                <scroll-view
+                    scroll-x
+                    class="scroll"
+                    scroll-left="{{ scrollLeft }}"
+                    wx:if="{{ anthologyList.length }}">
+                    <!-- 查看更多 -->
+                    <view wx:if="{{ hasPrevious }}" class="more befor" bindtap="directory">
+                        <image class="more-icon" src="{{ cdnIconsImgs['circle-arrow'] }}"></image>
+                        <text class="txt">查看更多</text>
+                    </view>
+
+                    <!-- list -->
+                    <view wx:for="{{ anthologyList }}" class="single {{ hasPrevious && index == 0 ? 'has-first' : !hasPrevious && index == 0 ? 'no-first' : '' }}" wx:key="id" data-id="{{ item.key }}" bindtap="anthologyAction">
+                        <view class="img">
+                            <kk-cover src="{{ item.imgUrl }}" width="{{ 320 }}" height="{{ 180 }}"></kk-cover>
+                            <!-- 已看过 -->
+                            <view wx:if="{{ item.readed }}" class="place {{ item.readed ? 'shadow' : '' }}"></view>
+
+                            <!-- 续读标签 -->
+                            <image wx:if="{{ item.clock }}" class="sign" src="{{ cdnIconsImgs['topic-new-clock'] }}"></image>
+
+                            <!-- 锁住/续读标签 -->
+                            <view wx:if="{{ item.forbidden }}" class="place forbidden {{ item.forbiddenType }}">
+                                <!-- 解锁/锁住 -->
+                                <image wx:if="{{ !item.clock }}" class="icon" src="{{ cdnIconsImgs['topic-' + item.forbiddenType] }}"></image>
+                            </view>
+                        </view>
+                        <text class="title">{{ item.title }}</text>
+                    </view>
+
+                    <!-- 查看更多 -->
+                    <view wx:if="{{ hasNext }}" class="more after" bindtap="directory">
+                        <image class="more-icon" src="{{ cdnIconsImgs['circle-arrow'] }}"></image>
+                        <text class="txt">查看更多</text>
+                    </view>
+                </scroll-view>
+
+                <!-- 没有选集 -->
+                <view class="no-list" wx:else>
+                    <image class="img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/new-icon/list-null_0e17c9e.png"></image>
+                </view>
+            </view>              
+        </view>
+          
+        <!-- 漫画推荐 -->
+        <kk-comic-recommend
+            border="{{ false }}"
+            topicId="{{ topicId }}"
+            topicTitle="{{ topicTit }}"
+            bind:onRecommend="onRecommend">
+        </kk-comic-recommend>
+    </view>
+</view>
+
+<!-- 固定底部新增实验组改版 -->
+<view wx:if="{{ continueId }}" class="fixed-base-new {{ isIpx }}" style="transform: translateY({{ banner ? '0' : '152' }}rpx);" catchtouchmove>
+    <view class="infos">
+        <view class="title">{{ continueTitle }}</view>
+        <view class="btn" data-id="{{ continueId }}" bindtap="actionComic">{{ (historyList.length || (userInfo && continueObj.id)) ? '继续' : '开始' }}阅读</view>
+    </view>
+</view>
+  
+<kk-toast toast="{{ toast }}"></kk-toast>
+
+<mp-dialog
+    show="{{ dialogShow }}"
+    extClass="text-center"
+    title="{{ dialogTitle }}"
+    content="{{ dialogContent }}"
+    buttons="{{ [{ text: '我知道了' }] }}"
+    bindbuttontap="tapDialogButton">
+</mp-dialog>
+
+<!-- 微信获取手机号授权dialog -->
+<mp-dialog
+    show="{{ dialog.show }}"
+    title="{{ dialog.title }}"
+    content="{{ dialog.content }}"
+    buttons="{{ dialog.button }}"
+    bindbuttontap="onDialogButtontapEvent"
+    bindgetphonenumber="onDiallogGetPhoneNumberEvent"
+    buttonGetPhoneNumber="{{true}}">
+    <!-- 内容区块：额外增加内容 slot -->
+    <view slot="bd-content" class="weui-dialog__content2">
+        <text class="content-two">{{dialog.contentTwo}}</text>
+        <text catchtap="onDialogTapEvent" class="content-three">{{dialog.contentThree}}</text>
+    </view>
+    <!-- 内容区块：额外增加内容 slot [END] -->
+</mp-dialog>
+
+<!-- 引入目录组件 -->
+<kk-directory
+    wx:if="{{ directoryShow }}"
+    page="{{ 'topic' }}"
+    comicId="{{ continueId }}"
+    topicId="{{ topicId }}"
+    topicTitle="{{ topicTit }}"
+    userInfo="{{ userInfo }}"
+    directoryShow="{{ directoryShow }}"
+    bind:directoryTap="directoryTap"
+    bind:buyTapEvent="buyTapEvent">
+</kk-directory>
+
+<!-- 一键购买弹窗 -->
+<kk-bulk-purchase 
+    wx:if="{{ isShowBulkPurchase }}"
+    show="{{ isShowBulkPurchase }}"
+    topicId="{{ topicId }}"
+    topicName="{{ topicTit }}"
+    topicCover="{{ banner }}"
+    wallet="{{ wallet }}"
+    vipInfo="{{ vipInfo }}"
+    triggerPage="TopicPage"
+    preposition="{{ preposition }}"
+    bind:closeBulkPurchase="closeBulkPurchase"
+></kk-bulk-purchase>
+
+<!-- 专题特惠组件 -->
+<t-discounts
+    wx:if="{{ showDiscount }}"
+    userInfo="{{ userInfo }}"
+    wallet="{{ wallet || 0 }}"
+    topicId="{{ topicId }}"
+    topicName="{{ topicTit }}"
+    vipInfo="{{ vipInfo }}"
+    loginSuccess="{{ showDiscount }}"
+    bind:closeDiscounts="closeDiscounts"
+    bind:loginSuccessCb="loginSuccessCb"
+    bind:topicApiRefresh="topicApiRefresh">
+</t-discounts>
+
+<!-- 新用户充值弹窗 -->
+<kk-newuser-recharge></kk-newuser-recharge>

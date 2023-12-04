@@ -1,0 +1,308 @@
+.kk-pay-spree {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    &.shrink {
+        width: auto;
+        right: 32rpx;
+    }
+    .center {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        .adorn {
+            width: 100%;
+        }
+        .spree {
+            position: absolute;
+            width: 312rpx;
+            height: 289rpx;
+            // background: blueviolet;
+            bottom: 0;
+            animation: step 2s steps(5) infinite;
+        }
+        .txt {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 40rpx;
+            color: #ffffff;
+            line-height: 46rpx;
+            bottom: -62rpx;
+        }
+    }
+    .right {
+        width: 244rpx;
+        height: 153rpx;
+        // background: turquoise;
+        .spree {
+            width: 100%;
+            height: 100%;
+        }
+        .status {
+            position: absolute;
+            top: 32rpx;
+            left: -48rpx;
+            background: #000;
+            height: 36rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18rpx;
+            border-radius: 36rpx 36rpx 16rpx 36rpx;
+            .txt {
+                max-width: 72rpx;
+                text-align: center;
+                font-weight: 500;
+                color: #ffffff;
+                font-size: 24rpx;
+                overflow: hidden;
+                white-space: nowrap;
+                // position: absolute;
+            }
+        }
+        .title {
+            position: absolute;
+            z-index: 9;
+            left: 0;
+            bottom: -56rpx;
+            width: 231rpx;
+            height: 72rpx;
+            // border-radius: 72rpx;
+            // background: #FF2E7D;
+            // border: 4rpx solid #FFDE30;
+            // padding: 0 20rpx;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            .bg {
+                width: 100%;
+                height: 100%;
+            }
+            .bottom {
+                width: 100%;
+                height: 100%;
+                padding: 0 20rpx;
+                box-sizing: border-box;
+                position: absolute;
+                display: flex;
+                align-items: center;
+            }
+            .txt {
+                width: 100%;
+                overflow: hidden;
+                // text-overflow: ellipsis;
+                white-space: nowrap;
+                text-align: center;
+                font-size: 32rpx;
+                font-weight: 500;
+                color: #ffffff;
+            }
+        }
+    }
+
+    &.max-bottom {
+        bottom: 50%;
+        margin-top: -130rpx;
+    }
+    .suspended-icon,
+    .suspended-icon .image {
+        width: 188rpx;
+        height: 188rpx;
+    }
+    .close-suspended {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 40rpx;
+        height: 40rpx;
+        .image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@keyframes step {
+    0%,
+    40% {
+        transform: rotate(0deg) scale(0.8);
+    }
+    45%,
+    65%,
+    85% {
+        transform: rotate(10deg);
+    }
+    50%,
+    60%,
+    70%,
+    80%,
+    90% {
+        transform: rotate(0deg);
+    }
+    55%,
+    75%,
+    95% {
+        transform: rotate(-10deg);
+    }
+}
+
+@media only screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+    .bigfit {
+        bottom: 400px;
+    }
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    &-success {
+        width: 574rpx;
+        padding: 46rpx 40rpx;
+        box-sizing: border-box;
+        border-radius: 24rpx;
+        background: #fff;
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -287rpx;
+        transform: translateY(-50%);
+        &-title {
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 40rpx;
+            line-height: 56rpx;
+            height: 56rpx;
+            overflow: hidden;
+            text-align: center;
+            color: #ff751a;
+        }
+        &-subtitle {
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 30rpx;
+            line-height: 36rpx;
+            height: 36rpx;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+            color: #666666;
+            margin-top: 8rpx;
+        }
+        &-cover {
+            margin-top: 24rpx;
+            width: 494rpx;
+            height: 278rpx;
+            border-radius: 16rpx;
+            overflow: hidden;
+            background: #ccc;
+        }
+        &-infos {
+            padding-top: 24rpx;
+            padding-bottom: 24rpx;
+            .infos-title {
+                font-family: PingFang SC;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 32rpx;
+                line-height: 42rpx;
+                height: 42rpx;
+                overflow: hidden;
+                color: #222222;
+                display: flex;
+                align-items: center;
+                image {
+                    width: 38rpx;
+                    height: 38rpx;
+                }
+                text {
+                    padding-left: 10rpx;
+                }
+            }
+            .infos-time {
+                font-family: PingFang SC;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24rpx;
+                line-height: 36rpx;
+                height: 36rpx;
+                overflow: hidden;
+                color: #999999;
+                margin-top: 8rpx;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+    &-warn {
+        width: 574rpx;
+        padding: 46rpx 40rpx;
+        box-sizing: border-box;
+        border-radius: 24rpx;
+        background: #fff;
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -287rpx;
+        transform: translateY(-50%);
+        &-title {
+            font-family: PingFang SC;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 34rpx;
+            line-height: 48rpx;
+            height: 48rpx;
+            text-align: center;
+            color: #222222;
+            margin-bottom: 48rpx;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    &-button {
+        width: 100%;
+        height: 88rpx;
+        line-height: 88rpx;
+        background: #ffe120;
+        border-radius: 100rpx;
+        text-align: center;
+        font-family: PingFang SC;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32rpx;
+        text-align: center;
+        color: #000000;
+    }
+    &-close {
+        width: 64rpx;
+        height: 64rpx;
+        position: absolute;
+        left: 50%;
+        bottom: -112rpx;
+        margin-left: -32rpx;
+        image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

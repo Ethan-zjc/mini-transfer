@@ -1,0 +1,54 @@
+<!-- 漫画页工具栏 -->
+<view class="btn-bottom">
+    <view wx:if="{{ openContinuRead }}" class="list" bindtap="clickEvent">
+        <text style="color: red;">连续读</text>
+    </view>
+    <view
+        class="list"
+        data-type="prev"
+        data-id="{{ lastId }}"
+        data-disabled="{{ !lastId }}"
+        bindtap="clickEvent">
+        <image src="{{ comicImgs['pre'] }}"></image>
+        <text>上一话</text>
+    </view>
+    <view class="list" data-type="cata" bindtap="clickEvent">
+        <image src="{{comicImgs['catalog'] }}"></image>
+        <text>目录</text>
+    </view>
+    <view
+        class="list"
+        data-type="next"
+        data-id="{{ nextId }}"
+        data-disabled="{{ !nextId }}"
+        data-tools="{{ true }}"
+        bindtap="clickEvent">
+        <image src="{{ comicImgs['next'] }}"></image>
+        <text>下一话</text>
+    </view>
+    <view class="list">
+        <view class="view-btn" data-type="login" catchtap="clickEvent" wx:if="{{ userInfo }}">
+            <image
+                src="{{ comicImgs[follows[topicId] ? 'followed' : 'follow'] }}"
+            ></image>
+            <text>{{ follows[topicId] ? '已关注' : '关注' }}</text>
+        </view>
+        <view wx:else catchtap="stopPop">
+            <button
+                class="view-btn"
+                size="mini"
+                hover-class="none"
+                data-type="nologin"
+                bindtap="clickEvent">
+                <image
+                    src="{{ comicImgs[follows[topicId] ? 'followed' : 'follow'] }}"
+                ></image>
+                <text>{{ follows[topicId] ? '已关注' : '关注' }}</text>
+            </button>
+        </view>
+    </view>
+    <view class="list" data-type="detail" bindtap="clickEvent">
+        <image src="{{ comicImgs['tools-detail'] }}"></image>
+        <text>详情</text>
+    </view>
+</view>

@@ -1,0 +1,36 @@
+.wrap image {
+  width: 750rpx;
+  height: 1158rpx;
+  overflow: auto;
+}
+
+.wrap .title {
+  padding: 20rpx 0 0 32rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.wrap .content {
+  padding: 30rpx 20rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.wrap .coupon {
+  padding: 14rpx 32rpx;
+  text-align: justify;
+}
+
+.wrap .coupon .question {
+  margin: 36rpx 0 14rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #555;
+  font-weight: 500;
+}
+
+.wrap .coupon .answer {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #999;
+}

@@ -1,0 +1,83 @@
+<view class="kk-directory {{ directoryShow ? 'show-kk-directory' : 'hide-kk-directory' }}" hover-class="none" hover-stop-propagation="false" data-type="1" bindtap="eventTap" catchtouchmove>
+    <!-- 目录弹窗内容 -->
+    <view class="directory-wrap">
+        <view class="directory-body" style="padding-bottom: {{ page == 'topic' ? 0 : padBottom }}rpx">
+            <view class="top-txt" data-type="3" catchtap="eventTap">
+                <view class="body-title">
+                    <view class="left">
+                        <scroll-view class="tabs" scroll-into-view="{{ tabPos }}" scroll-x>
+                            <view class="single" wx:for="{{ tabs }}" wx:key="seasonIndex" id="{{ item.key }}" data-id="{{ item.seasonIndex }}" bindtap="toggleTab">
+                                <view class="name">
+                                    <text class="txt {{ activeId == item.seasonIndex ? 'active-txt' : '' }}">{{ item.title }}</text>
+                                </view>
+                                <view class="{{ tabs.length > 1 && activeId == item.seasonIndex ? 'active-sign' : '' }}"></view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                    <view class="shadow" wx:if="{{ tabs.length >= 5 }}"></view>
+                    <view class="sort">
+                        <view class="sort-btn" data-sort="{{ sort == 'asc' ? 'desc' : 'asc' }}" bindtap="sortFunc">
+                            <image class="sort-img" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/icons/mulu-{{ sort == 'asc' ? 'asc_402e9a5' : 'desc_f852926' }}.png"></image>
+                            <text class="txt">{{ sort == 'asc' ? '正序' : '倒序' }}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="sub-title">
+                    <text wx:if="{{ listAry.length }}" class="txt">{{ updateRemind }}</text>
+                    <view wx:if="{{ !isExperiment && listAry.length && buyText }}" class="buy" catchtap="oneKeyBuy">
+                        <text class="txt">整本购</text>
+                    </view>
+                </view>
+            </view>
+            <view class="body-content">
+                <scroll-view scroll-y="{{ scrollY }}" class="scroll-wrap" scroll-anchoring scroll-into-view="{{ oriPos }}" bindscroll="onScroll">
+                    <kk-bottom loading="{{ upperLoading }}"></kk-bottom>
+                    <block wx:for="{{ listAry }}" wx:for-item="group" wx:key="index">
+                        <block wx:for="{{ group }}" wx:key="id">
+                            <view class="comic" data-type="2" data-id="{{ item.key }}" id="{{ item.id }}" catchtap="eventTap">
+                                <view class="pic">
+                                    <kk-cover src="{{ item.imgUrl }}" width="{{ 158 }}" height="{{ 96 }}"></kk-cover>
+                                    <view wx:if="{{ item.forbidden }}" class="forbidden {{ item.forbiddenType }}">
+                                        <image src="{{ comDireImgs[item.forbiddenType] }}"></image>
+                                    </view>
+                                </view>
+                                <view class="txt">
+                                    <view class="descLine">
+                                        <text wx:if="{{ item.label }}" class="label" style="{{ item.label.style }}">{{ item.label.text }}</text>
+                                        <text class="title {{ item.readed }} {{ item.label ? 'before' : '' }}">{{ item.tit }}</text>
+                                    </view>
+                                    <view class="infos">
+                                        <text class="time">{{ item.time }}</text>
+                                    </view>
+                                </view>
+                                <view class="clock" wx:if="{{ item.clock }}">
+                                    <image src="{{ comDireImgs['topic-clock'] }}"></image>
+                                </view>
+                            </view>
+                        </block>
+                    </block>
+
+                    <!-- 当数据是空时展示 -->
+                    <block wx:if="{{ isEmpty }}">
+                        <view class="no-data">
+                            <image class="cover" src="https://static3w.kuaikanmanhua.com/assets/img/remote_images/video/popup-empty_df8cc7d.png"></image>
+                            <view class="tips"><text>呜呜，再怎么找也找不到啦...T_T</text></view>
+                        </view>
+                    </block>
+                    <kk-bottom loading="{{ lowerLoading }}" finish="{{ finished }}"></kk-bottom>
+                    <view wx:if="{{ page == 'topic' && !lowerMore }}" style="width: 100%; height: {{ iPhoneX ? 236 : 168 }}rpx;"></view>
+                </scroll-view>
+            </view>
+
+            <!-- 新增顶部/当前前 -->
+            <view wx:if="{{ listAry.length }}" class="suspend" style="top: {{ comicCount <= 15 ? '600' : '490' }}rpx">
+                <view wx:if="{{ comicCount > 15 }}" data-type="top" catchtap="changeStatus">
+                    <image class="img" src="{{ comDireImgs['location-top'] }}"></image>
+                </view>
+                <view data-type="cur" catchtap="changeStatus">
+                    <image class="img" src="{{ comDireImgs['location-cur'] }}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

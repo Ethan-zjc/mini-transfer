@@ -1,0 +1,248 @@
+//定向限免
+.limit-free {
+    background: #fff;
+    .limit-view {
+        width: 100%;
+        .title {
+            display: flex;
+            justify-content: center;
+            margin: 9rpx 0 39rpx;
+            text {
+                display: inline-block;
+                font-size: 34rpx;
+                font-family: PingFangSC-Medium, 'PingFang SC';
+                font-weight: 500;
+                color: rgba(51, 51, 51, 1);
+                line-height: 36rpx;
+                &.color {
+                    color: #5b29f4;
+                }
+            }
+        }
+        .hidden-scrollbar {
+            overflow: hidden;
+            width: 100%;
+            height: 175rpx;
+        }
+        .scroll-view-x {
+            width: 100%;
+            height: 188rpx;
+            white-space: nowrap;
+            .list-view {
+                position: relative;
+                display: inline-block;
+                margin-right: 20rpx;
+                width: 110rpx;
+                .img {
+                    overflow: hidden;
+                    width: 110rpx;
+                    height: 133rpx;
+                    border-radius: 4rpx;
+                }
+            }
+            .list-view:first-child {
+                margin-left: 60rpx;
+            }
+            .name {
+                display: block;
+                overflow: hidden;
+                margin-top: 20rpx;
+                width: 100%;
+                font-size: 22rpx;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: rgba(128, 128, 128, 1);
+                line-height: 24rpx;
+            }
+            .tag {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 2;
+                padding: 0 4rpx;
+                font-size: 20rpx;
+                border-radius: 0 0 0 4rpx;
+                color: rgba(255, 255, 255, 1);
+                background: rgba(0, 0, 0, 1);
+                opacity: 0.7;
+                line-height: 28rpx;
+                border-top-right-radius: 4rpx;
+                border-bottom-left-radius: 4rpx;
+            }
+        }
+    }
+    .btn-bg {
+        position: absolute;
+        top: -20rpx;
+        right: -2rpx;
+        width: 280rpx !important;
+        height: 130rpx !important;
+    }
+    .limit-vip-btn {
+        position: relative;
+        margin: auto;
+        width: 679rpx;
+        height: 158rpx;
+        image {
+            width: 100%;
+            height: 100%;
+        }
+        .open-desc {
+            position: absolute;
+            top: 32rpx;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: 90rpx;
+        }
+        .infos {
+            font-family: PingFangSC-Regular, 'PingFang SC';
+            .del {
+                position: absolute;
+                top: 18rpx;
+                left: 40rpx;
+                font-size: 24rpx;
+                text-decoration: line-through;
+                color: rgba(183, 153, 255, 1);
+                line-height: 30rpx;
+            }
+            .now {
+                position: absolute;
+                bottom: 0rpx;
+                left: 40rpx;
+                display: flex;
+                align-items: flex-end;
+                height: 90rpx;
+                text {
+                    font-size: 24rpx;
+                    font-weight: 500;
+                    color: rgba(255, 255, 255, 1);
+                    line-height: 48rpx;
+                    &.color {
+                        font-size: 74rpx;
+                        font-family: BebasNeue-Regular, BebasNeue;
+                        color: rgba(253, 226, 61, 1);
+                        line-height: 90rpx;
+                        vertical-align: top;
+                        text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.09);
+                    }
+                }
+            }
+        }
+    }
+    .pay-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        display: inline-block;
+        margin-left: 10rpx;
+        width: 280rpx;
+        height: 96rpx;
+        font-size: 36rpx;
+        font-family: PingFangSC-Regular, 'PingFang SC';
+        font-weight: 500;
+        text-align: center;
+        color: #442509;
+        line-height: 96rpx;
+        letter-spacing: 1rpx;
+    }
+    .bubble {
+        margin-left: 10rpx;
+        // right: -40rpx;
+        // top: -8rpx;
+        padding: 0 12rpx;
+        // width: 118rpx;
+        height: 34rpx;
+        // position: absolute;
+        font-size: 18rpx;
+        font-weight: 500;
+        border-radius: 15rpx 15rpx 15rpx 4rpx;
+        text-align: center;
+        color: rgba(255, 255, 255, 1);
+        background: linear-gradient(90deg, rgba(255, 37, 127, 1) 0%, rgba(255, 0, 71, 1) 100%);
+        line-height: 34rpx;
+    }
+    .infos {
+        display: flex;
+        align-items: center;
+        padding-left: 56rpx;
+        width: 679rpx;
+        height: 90rpx;
+        border-radius: 12rpx;
+        background: #5b29f4;
+        box-shadow: 0 10rpx 10rpx rgba(201, 193, 252, 0.6);
+        box-sizing: border-box;
+        .txt {
+            font-size: 24rpx;
+            color: #fff;
+            line-height: 90rpx;
+        }
+        .yellow {
+            margin-left: 0rpx;
+            color: #fdeb3d;
+        }
+    }
+    .just-one-list {
+        display: flex;
+        justify-content: left;
+        margin: 0 auto;
+        padding: 24rpx;
+        width: 686rpx;
+        height: 181rpx;
+        border-radius: 16rpx;
+        background: #fff;
+        box-shadow: 0 6rpx 20rpx 0 rgba(0, 0, 0, 0.04);
+        box-sizing: border-box;
+        .left-img {
+            overflow: hidden;
+            margin-right: 24rpx;
+            width: 216rpx;
+            height: 133rpx;
+            border-radius: 10px;
+            image {
+                width: 216rpx;
+                height: 133rpx;
+            }
+        }
+        .right-content {
+            overflow: hidden;
+            flex: 1;
+            .weight-font {
+                overflow: hidden;
+                margin: 26rpx 0 10rpx;
+                width: 100%;
+                font-size: 32rpx;
+                font-weight: 500;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: #333;
+            }
+            .grey-font {
+                font-size: 24rpx;
+                color: #999;
+            }
+        }
+    }
+    .list-view {
+        margin-right: 24rpx !important;
+        width: 240rpx !important;
+        .images {
+            overflow: hidden;
+            width: 240rpx;
+            height: 148rpx;
+            border-radius: 12rpx;
+        }
+    }
+    .hidden-scrollbar {
+        height: 194rpx !important;
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            color: transparent;
+        }
+        .scroll-view-x {
+            height: 194rpx !important;
+        }
+    }
+}

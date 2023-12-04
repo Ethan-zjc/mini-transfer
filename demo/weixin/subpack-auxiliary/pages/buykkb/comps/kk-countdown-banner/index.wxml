@@ -1,0 +1,14 @@
+<view wx:if="{{ isShow }}" class="kk-countdown-banner">
+    <image src="{{ activityData.float_small_icon }}" mode=""/>
+    <text class="title">{{ activityData.float_left_text }}</text>
+    <view class="time">
+        <view wx:if="{{ time.D !== '00' }}" class="time-box">{{ time.D }}</view>
+        <text wx:if="{{ time.D !== '00' }}">天</text>
+        <view wx:if="{{ time.H !== '00' }}" class="time-box">{{ time.H }}</view>
+        <text wx:if="{{ time.H !== '00' }}">时</text>
+        <view wx:if="{{ time.M !== '00' }}" class="time-box">{{ time.M }}</view>
+        <text wx:if="{{ time.M !== '00' }}">分</text>
+        <view wx:if="{{ time.S !== '00' }}" class="time-box">{{ time.S }}</view>
+        <text wx:if="{{ time.S !== '00' }}">秒</text>
+    </view>
+</view>

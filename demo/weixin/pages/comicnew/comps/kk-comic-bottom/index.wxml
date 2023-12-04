@@ -1,0 +1,48 @@
+<!-- 漫画底部关注、点赞、广告等 -->
+<view class="kk-comic-bottom">
+    <!-- 加入点赞等内容 -->
+    <view class="observe-carton carton-action" hidden="{{ !hasImgList }}">
+        <view class="comic-bottom" wx:if="{{ !!updateRemind }}">
+            <text>{{ updateRemind }}</text>
+            <image hidden="{{ !updateRemind }}" src="{{ comicImgs['comic_news_pen'] }}"></image>
+        </view>
+
+        <!-- 底部上一篇、下一篇 -->
+        <view class="pagination">
+            <view>
+                <view
+                    class="btn {{ !lastId ? 'disabled back-color' : '' }}"
+                    data-disabled="{{ !lastId }}"
+                    data-id="{{ lastId }}"
+                    data-type="prev"
+                    bindtap="clickEvent"
+                >
+                    <view class="btn-prev">
+                        <text></text>
+                        <text></text>
+                    </view>
+                    <text>上一话</text>
+                </view>
+            </view>
+            <view></view>
+            <view>
+                <view
+                    class="btn {{ !nextId ? 'disabled back-color' : '' }}"
+                    data-disabled="{{ !nextId }}"
+                    data-id="{{ nextId }}"
+                    data-type="next"
+                    bindtap="clickEvent"
+                >
+                    <text>下一话</text>
+                    <view class="btn-next">
+                        <text></text>
+                        <text></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 底部广告 -->
+        <!-- <kk-ad position="comic_center" wx:if="{{ adVisible }}"></kk-ad> -->
+    </view>
+</view>

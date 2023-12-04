@@ -1,0 +1,121 @@
+.video-controls {
+    position: relative;
+    z-index: 22;
+    display: flex;
+    align-items: center;
+    .controls-play {
+        width: 48rpx;
+        height: 48rpx;
+        margin-left: 24rpx;
+        flex-shrink: 0;
+        display: none;
+        image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .controls-time {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 24rpx;
+        font-family: "PingFang SC";
+        font-style: normal;
+        font-weight: 400;
+        margin: 0 16rpx;
+        flex-shrink: 0;
+        display: none;
+    }
+    .time-start {
+        min-width: 76rpx;
+        margin-left: 0;
+        text-align: right;
+    }
+    .time-end {
+        margin-right: 24rpx;
+    }
+    .controls-info {
+        width: 686rpx;
+        height: 58rpx;
+        position: relative;
+        flex-shrink: 0;
+        margin: 0 auto;
+        .area {
+            position: relative;
+            height: 58rpx;
+            z-index: 5;
+            width: 750rpx;
+            margin-left: -32rpx;
+        }
+        .child {
+            width: 74rpx;
+            height: 58rpx;
+            opacity: 0.3;
+        }
+        .controls-line {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            z-index: 1;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.1s linear;
+        }
+        .controls-active {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            z-index: 3;
+            width: 50%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            transition: all 0.1s linear;
+        }
+        .controls-dot {
+            position: absolute;
+            right: 0;
+            top: 1px;
+            z-index: 3;
+            transform: translateY(-50%);
+            width: 10rpx;
+            height: 10rpx;
+            border-radius: 5rpx;
+            background: #fff;
+            // opacity: .6;
+            transition: all 0.1s linear;
+        }
+    }
+    .controls-bold {
+        .controls-line {
+            height: 10rpx;
+            margin-top: -5rpx;
+            border-radius: 5rpx;
+        }
+        .controls-active {
+            height: 10rpx;
+            margin-top: -5rpx;
+            border-radius: 5rpx;
+        }
+        .controls-dot {
+            top: 50%;
+            width: 20rpx;
+            height: 20rpx;
+            border-radius: 10rpx;
+        }
+    }
+}
+
+.video-controls-clear {
+    margin-bottom: 12rpx;
+    .controls-play {
+        display: block;
+    }
+    .controls-time {
+        display: block;
+    }
+    .controls-info {
+        width: 480rpx;
+        .area {
+            width: 544rpx;
+        }
+    }
+}
